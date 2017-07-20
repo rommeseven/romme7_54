@@ -1,5 +1,9 @@
-.error-text {
-  color: get-color(alert);
+li {
+  z-index: 5;
+}
+
+.fa.icon {
+  color: get-color(primary);
 }
 
 .topcontent,

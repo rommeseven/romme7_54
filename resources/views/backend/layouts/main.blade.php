@@ -156,7 +156,7 @@
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
 
-@include("layouts.partials.flash")
+@include("partials.flash")
 
 <div class="topcontent">
 @stack("content")

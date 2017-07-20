@@ -11048,8 +11048,12 @@ a.thumbnail image {
   transition: border-color 0.25s ease-out;
 }
 
-.error-text {
-  color: #cc4b37;
+li {
+  z-index: 5;
+}
+
+.fa.icon {
+  color: #1779ba;
 }
 
 .topcontent,
@@ -11137,6 +11141,19 @@ td .button-icon .fa:hover {
 
 .topcontent {
   border-top: 1px solid #fefefe;
+}
+
+.errortext {
+  padding-left: 1rem;
+  top: -18px;
+  position: relative;
+  color: #cc4b37;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.errortext::before {
+  content: "*";
 }
 
 input:focus::-webkit-input-placeholder {

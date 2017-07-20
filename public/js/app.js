@@ -49995,17 +49995,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_foundation_sites__ = __webpack_require__("./node_modules/foundation-sites/dist/js/npm.js");
 __webpack_require__("./resources/assets/js/bootstrap.js");
 
-
-
 $(document).foundation();
-
 $(function () {
     //alert("jquery and js are working.");
     $(".userRemover").click(function () {
         $(this).next("form").submit();
     });
+    $("input").focus(function () {
+        $(this).next(".errortext").fadeOut("fast");
+        $(this).parent("label.is-invalid-label").removeClass("is-invalid-label");
+    });
 });
-
 /*
 
 new Vue(
