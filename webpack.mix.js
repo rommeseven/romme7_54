@@ -16,3 +16,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .version();
 
 mix.copy('resources/assets/other', 'public/other', false);   
+mix.copy('resources/assets/img', 'public/img', false);   
