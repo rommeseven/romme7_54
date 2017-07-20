@@ -1,4 +1,37 @@
-.header
-{
+.header {
+  max-height: 75px;
+  background: get-color(logoblue);
 
+  img {
+    max-height: 75px;
+    height: auto;
+    width: auto;
+
+    @include breakpoint(small only) {
+      max-height: 57px;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    color: $white;
+  }
+
+  a {
+    color: $white;
+
+    &:hover {
+      color: scale-color($white, $lightness: -14%);
+    }
+  }
+}
+
+.off-canvas {
+  ul {
+    li {
+      a {
+        color: get-color(logoblue);
+      }
+    }
+  }
 }

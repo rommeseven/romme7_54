@@ -1,0 +1,1 @@
+findstr /v "pseudo" _settings.scss > __settings.scss

@@ -1,11 +1,11 @@
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+//@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 @import "settings";
 @import "../../../node_modules/foundation-sites/scss/foundation.scss";
 @import "../../../node_modules/motion-ui/motion-ui";
 
-// @import "font-awesome/font-awesome";
+@import "./fontawesome/font-awesome";
 
 $global-flexbox: true !global;
 
@@ -85,6 +85,9 @@ $global-flexbox: true !global;
 
 @include foundation-flex-classes;
 
+@import "partials/general";
+
 @import "partials/header";
+@import "partials/topcontent";
 @import "partials/forms";
 @import "partials/footer";
