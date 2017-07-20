@@ -7,7 +7,7 @@ $(document).foundation();
 
 $(function()
 {
-    alert("jquery and js are working.");
+    //alert("jquery and js are working.");
 });
 
 

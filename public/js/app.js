@@ -39925,7 +39925,7 @@ __webpack_require__("./resources/assets/js/bootstrap.js");
 $(document).foundation();
 
 $(function () {
-    alert("jquery and js are working.");
+    //alert("jquery and js are working.");
 });
 
 /*

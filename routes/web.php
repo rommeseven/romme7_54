@@ -12,7 +12,16 @@
 */
 
 Route::get('/', 'PagesController@index')->name('pages');
-
 Auth::routes();
+
+Route::get('/403', 'ManageController@no_permission');
+Route::prefix('manage')
+//->middleware('role:superadministrator|administrator')
+->group(function ()
+{
+	Route::get('/', 'ManageController@index');
+	Route::resource('/users', 'UserController');
+
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

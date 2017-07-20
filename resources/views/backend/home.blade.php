@@ -25,6 +25,11 @@
       <li><a href="#">Configuration</a></li>
       <li><a href="#">Account Settings</a></li>
     </ul><!-- END OF .topnav menu -->
+    <ul class="menu vertical"><li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+    Logout
+</a>
+</li></ul><!-- END OF .menu vertical -->
   </div>
 
   <div class="off-canvas-content" data-off-canvas-content>
@@ -57,6 +62,11 @@
       <li><a href="#">Account Settings</a></li>
     </ul>
   </li>                </li>
+  <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+    Logout
+</a>
+</li>
             </ul><!-- END OF .topnav menu -->
         </div><!-- END OF .columns shrink -->
     </div><!-- END OF .header row align-middle align-justify -->
@@ -152,6 +162,9 @@
     </div><!-- END OF .footer row small-up-1 medium-up-2 large-up-3 -->
 </div><!-- END OF .container -->
   </div>
+  <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
 @endpush
 
 
@@ -187,13 +200,6 @@ Dashboard
                                                      document.getElementById('logout-form').submit();">
     Logout
 </a>
-<form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
-    {{ csrf_field() }}
-</form>
+
 @endpush
 
-@push('extrajs')
-<script>
-    alert('welcome home');
-</script>
-@endpush
