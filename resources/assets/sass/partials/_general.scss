@@ -1,3 +1,49 @@
-.topcontent, .bottomcontent {
+.error-text {
+  color: get-color(alert);
+}
+
+.topcontent,
+.bottomcontent {
   min-height: 10em;
+}
+
+.responsive_button {
+  font-size: 0.75rem;
+
+  @include breakpoint(medium) {
+    font-size: 0.9rem;
+  }
+
+
+  @include breakpoint(large) {
+    font-size: 1rem;
+  }
+}
+
+.button-icon {
+  width: 38px;
+  padding: 0;
+}
+
+.button-icon .fa {
+  width: 38px;
+  line-height: 38px;
+  font-size: 1.4rem;
+  vertical-align: top;
+}
+
+td .button-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0;
+}
+
+td .button-icon .fa {
+  width: 28px;
+  line-height: 28px;
+  font-size: 1rem;
+
+  &:hover {
+    font-size: 1.2rem;
+  }
 }

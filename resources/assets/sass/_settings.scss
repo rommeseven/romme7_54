@@ -159,7 +159,7 @@ $blockquote-padding: rem-calc(9 20 0 19);
 $blockquote-border: 1px solid $medium-gray;
 $cite-font-size: rem-calc(13);
 $cite-color: $dark-gray;
-$cite-pseudo-content: '\2014 \0020';
+$cite-pseudo-content: "ÔÇö ";
 $keystroke-font: $font-family-monospace;
 $keystroke-color: $black;
 $keystroke-background: $light-gray;
@@ -757,7 +757,7 @@ $topbar-unstack-breakpoint: medium;
 // 56. Xy Grid
 // -----------
 
-$xy-grid: true;
+$xy-grid: false;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (small: 20px, medium: 30px);

@@ -160,7 +160,7 @@ return [
          * Method to be called in the middleware return case.
          * Available: abort|redirect
          */
-        'handling' => 'redirect',
+        'handling' => 'abort',
 
         /**
          * Parameter passed to the middleware_handling method

@@ -8,6 +8,13 @@ $(document).foundation();
 $(function()
 {
     //alert("jquery and js are working.");
+  $(".userRemover").click(function() {
+  		$(this).next("form").submit();
+  		
+
+  });
+
+
 });
 
 
