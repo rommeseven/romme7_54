@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         if ($user->delete())
         {
-            Session::flash("success", 'You delete User#'.$user->id.' successfully!');
+            Session::flash("success", 'You have deleted User#'.$user->id.' successfully!');
             return redirect("manage/users");
         }
         else

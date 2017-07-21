@@ -99,7 +99,7 @@ All Users
                                         <a class="button fabu before fa-trash userRemover responsive_button">
                                             Yes, delete.
                                         </a>
-                                        <form action="{{ url('manage/users/' . $user->id) }}" id='method="POST"' style="display: none;">
+                                        <form action="{{ url('manage/users/' . $user->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
     {{ csrf_field() }}
                                         </form>
