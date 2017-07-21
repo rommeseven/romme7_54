@@ -80,18 +80,24 @@ Edit User#{{ $user->id }}
             >
                 Password:
                 <br/>
-                <input id="pw1" name="pwchoice" required="" type="radio" v-model="pwchoice" value="keep">
-                    <label for="pw1">
-                        Keep Current Password
-                    </label><br />
-                    <input id="pw2" name="pwchoice" type="radio" v-model="pwchoice" value="genpw">
-                        <label for="pw2">
-                            Generate New Password
-                        </label><br />
-                        <input id="pw3" name="pwchoice" type="radio" v-model="pwchoice" value="typepw">
-                            <label for="pw3">
-                                Set New Password Manually
-                            </label><br />
+               <div class="radio primary">
+                    <input id="pw1" name="pwchoice" required="" type="radio" v-model="pwchoice" value="keep">
+                       <label for="pw1">
+                           Keep Current Password
+                       </label><br />
+               </div><!-- END OF .radio primary -->
+                   <div class="radio primary">
+                        <input id="pw2" name="pwchoice" type="radio" v-model="pwchoice" value="genpw">
+                           <label for="pw2">
+                               Generate New Password
+                           </label><br />
+                   </div><!-- END OF .radio primary -->
+                        <div class="radio primary">
+                            <input id="pw3" name="pwchoice" type="radio" v-model="pwchoice" value="typepw">
+                                <label for="pw3">
+                                    Set New Password Manually
+                                </label><br /><br />
+                        </div><!-- END OF .radio primary -->
                             <input name="password" placeholder="Your Password" type="password" v-if="pwchoice == 'typepw'"/>
                             @if ($errors->has('password'))
                             <small class="errortext">
@@ -106,11 +112,15 @@ Edit User#{{ $user->id }}
         </div>
     </div>
     <div class="row">
-    <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-        <input class="button" type="submit" value="Update User"/>
+        <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+            {{-- <input class="button" type="submit" value="Add User"/> --}}
+            <div class="row align-center">
+                <div class="column small-9 medium-7 large-5 small-offset-3 medium-offset-0 large-offset-7"><button type="submit" class="button expanded fabu before fa-save">Save Changes</button></div><!-- END OF .column small-10 medium-5 -->
+            </div><!-- END OF .row align-center -->
+        </div>
+        <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
     </div>
-    <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-</div>
+    <!-- END OF .row -->
 </form>
 <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
 

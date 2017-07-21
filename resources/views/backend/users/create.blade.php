@@ -66,10 +66,12 @@ Create New User
             >
                 Password:
                 <br/>
-                <input id="genpw" type="checkbox" v-model="genpw">
-                    <label for="genpw">
-                        Generate Password
-                    </label>
+                <div class="checkbox primary">
+                    <input id="genpw" type="checkbox" v-model="genpw" class="styled">
+                        <label for="genpw">
+                            Generate Password
+                        </label>
+                </div><!-- END OF .checkbox --> <br />
                     <input name="password" placeholder="Your Password" type="password" v-if="!genpw"/>
                 @if ($errors->has('password'))
                 <small class="errortext">
@@ -84,7 +86,10 @@ Create New User
     </div>
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-            <input class="button" type="submit" value="Add User"/>
+            {{-- <input class="button" type="submit" value="Add User"/> --}}
+            <div class="row align-center">
+                <div class="column small-10 medium-8 large-5 small-offset-2 medium-offset-0 large-offset-7"><button type="submit" class="button expanded fabu before fa-plus">Add User</button></div><!-- END OF .column small-10 medium-5 -->
+            </div><!-- END OF .row align-center -->
         </div>
         <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
     </div>
