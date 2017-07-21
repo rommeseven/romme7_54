@@ -8,12 +8,8 @@ $(function()
     {
         $(this).next("form").submit();
     });
-    $("input").focus(function()
-    {
-        $(this).next(".errortext").fadeOut("fast");
-        $(this).parent("label.is-invalid-label").removeClass("is-invalid-label");
-    });
 });
+require('./form/core');
 /*
 
 new Vue(
