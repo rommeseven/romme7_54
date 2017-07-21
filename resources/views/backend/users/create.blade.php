@@ -21,11 +21,7 @@ Create New User
     {{csrf_field()}}
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-            <label for="name"
-                    @if ($errors->has('name'))
-                class = "is-invalid-label"
-                @endif
-            >
+            <label for="name" >
                 Username:
                 <input name="name" placeholder="example17" type="text"/>
                 @if ($errors->has('name'))
@@ -40,9 +36,6 @@ Create New User
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
             <label for="email"
-@if ($errors->has('email'))
-                class = "is-invalid-label"
-                @endif
             
             >
                 Email:
@@ -59,9 +52,6 @@ Create New User
     <div class="row" id="app">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
             <label for="password"
-@if ($errors->has('password'))
-                class = "is-invalid-label"
-                @endif
             
             >
                 Password:
@@ -104,7 +94,6 @@ Create New User
 padding-top:24px;
 }
 </style>
-@endpush
 
 @push('extrajs')
 <script>

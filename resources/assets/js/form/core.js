@@ -1,0 +1,9 @@
+$(function()
+{
+    $("input").focus(function()
+    {
+        $(this).next(".errortext").fadeOut("fast");
+        $(this).parent("label.is-invalid-label").removeClass("is-invalid-label");
+    });
+    $("label").has(".errortext:not(:empty)").addClass("is-invalid-label");
+});

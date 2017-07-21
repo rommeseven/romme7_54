@@ -50001,11 +50001,8 @@ $(function () {
     $(".userRemover").click(function () {
         $(this).next("form").submit();
     });
-    $("input").focus(function () {
-        $(this).next(".errortext").fadeOut("fast");
-        $(this).parent("label.is-invalid-label").removeClass("is-invalid-label");
-    });
 });
+__webpack_require__("./resources/assets/js/form/core.js");
 /*
 
 new Vue(
@@ -50053,6 +50050,19 @@ if (token) {
 }
 
 window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
+
+/***/ }),
+
+/***/ "./resources/assets/js/form/core.js":
+/***/ (function(module, exports) {
+
+$(function () {
+    $("input").focus(function () {
+        $(this).next(".errortext").fadeOut("fast");
+        $(this).parent("label.is-invalid-label").removeClass("is-invalid-label");
+    });
+    $("label").has(".errortext:not(:empty)").addClass("is-invalid-label");
+});
 
 /***/ }),
 
