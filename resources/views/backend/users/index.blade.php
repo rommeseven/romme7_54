@@ -125,7 +125,13 @@ All Users
                 @endforeach
             </tbody>
         </table>
+        <br />
         <!-- END OF .stack hover -->
+        <div class="row align-center">
+            <div class="column shrink">
+                {!! $users->render() !!}
+            </div><!-- END OF .column shrink -->
+        </div><!-- END OF .row align-center -->
     </div>
     <!-- END OF .columns -->
 </div>

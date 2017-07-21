@@ -41,7 +41,7 @@ Edit User#{{ $user->id }}
                 @endif
             >
                 Username:
-                <input name="name" placeholder="example17" type="text"/>
+                <input name="name" placeholder="{{$user->name}}" type="text"/>
                 @if ($errors->has('name'))
                 <small class="errortext">
                     {{ $errors->first('name') }}
@@ -60,7 +60,7 @@ Edit User#{{ $user->id }}
             
             >
                 Email:
-                <input name="email" placeholder="example@mail.com" type="email"/>
+                <input name="email" placeholder="{{$user->email}}" type="email"/>
                 @if ($errors->has('email'))
                 <small class="errortext">
                     {{ $errors->first('email') }}
