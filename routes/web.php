@@ -20,6 +20,7 @@ Route::prefix('manage')
 {
 	Route::get('/', 'ManageController@index');
 	Route::resource('/users', 'UserController');
+	Route::post('/users/find', 'UserController@search');
 
 });
 

@@ -62,6 +62,23 @@ class UserController extends Controller
         return view('backend.users.index')->withUsers($users);
     }
 
+    public function search(Request $request)
+    {
+
+        $this->validate($request, array(
+            'search' => 'required|max:255',
+        ));
+        $users = User::search($request->input('search'))->paginate(10);
+        if(!$users->count())
+        {
+            Session::flash("error",'Could not find user with data "'. $request->input('search') .'". Try again.');
+            return redirect()->back();
+
+        }
+        $searched = $users->count() . ' User(s) Found:';
+        return view('backend.users.index')->withUsers($users)->with("searched",$searched)->with('searchQuery',$request->input('search'));
+    }
+
     /**
      * Display the specified resource.
      *

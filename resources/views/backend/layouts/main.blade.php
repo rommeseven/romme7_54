@@ -1,5 +1,4 @@
 @include("layouts.partials.head")
-
 <div class="off-canvas position-right" data-off-canvas="" id="offCanvas">
     <!-- Close button -->
     <button aria-label="Close menu" class="close-button" data-close="" type="button">
@@ -49,6 +48,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{url('manage/permissions')}}">
+                        Permissions
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         Configuration
                     </a>
@@ -75,9 +79,11 @@
         <div class="header row collapse align-middle align-justify">
             <div class="columns shrink">
                 <div class="flex-container align-middle">
-                    <img alt="Seven Logo" src="{{ asset("img/logo.png") }}"/>
+                    <img alt="Seven Logo" src="{{ asset('img/logo.png') }}" />
                     <h1>
-                        <a href="{{ route('home') }}">CMSeven</a>
+                        <a href="{{ route('home') }}">
+                            CMSeven
+                        </a>
                     </h1>
                 </div>
                 <!-- END OF .flex-container align-middle -->
@@ -130,6 +136,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="{{url('manage/permissions')}}">
+                                    Permissions
+                                </a>
+                            </li>
+                            <li>
                                 <a href="#">
                                     Configuration
                                 </a>
@@ -155,28 +166,21 @@
 <!-- END OF .topnav menu -->
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
-
 @include("partials.flash")
-
 <div class="topcontent">
-@stack("content")
+    @stack("content")
 </div>
 <!-- END OF .topcontent -->
 <div class="bottomcontent">
-
-@stack('bottomcontent')
+    @stack('bottomcontent')
 </div>
 <!-- END OF .bottomcontent -->
 <div class="footer row small-up-1 medium-up-2 large-up-3">
-	@stack("footer")
+    @stack("footer")
 </div>
 <!-- END OF .footer row small-up-1 medium-up-2 large-up-3 -->
 <!-- END OF .container -->
 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
-
-
-
-
 @include("layouts.partials.tail")

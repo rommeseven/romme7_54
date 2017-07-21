@@ -26,3 +26,7 @@ input:focus::-moz-placeholder {
 input:focus:-ms-input-placeholder {
   color: transparent;
 }
+
+#search_panel {
+  @include mui-hinge($state: in, $from: top, $turn-origin: from-back, $duration: 0.3s, $timing: easeInOut);
+}
