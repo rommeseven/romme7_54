@@ -115,6 +115,7 @@ Edit User#{{ $user->id }}
             </label>
         </div>
     </div>
+</form>
 <div class="row">
     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
         {{--
@@ -132,7 +133,6 @@ Edit User#{{ $user->id }}
     </div>
     <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
 </div>
-</form>
 <!-- END OF .row -->
 <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
 <!-- END OF .row -->

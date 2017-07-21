@@ -9,7 +9,7 @@ use Session;
 
 class UserController extends Controller
 {
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -164,7 +164,7 @@ class UserController extends Controller
         }
         $user = User::findOrFail($id);
 
-        if (!null === $password)
+        if (null !== $password)
         {
             $user->password = Hash::make($password);
         }
@@ -172,7 +172,6 @@ class UserController extends Controller
         $user->name  = (null === $request->input("name")) ? $user->name : $request->input("name");
         $user->email = (null === $request->input("email")) ? $user->email : $request->input("email");
 
-        //dd("validation done");
         if ($user->save())
         {
             Session::flash("success", "Your changes have been saved.");
