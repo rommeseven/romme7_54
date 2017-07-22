@@ -51,8 +51,26 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(10);
+        $roles = Role::with("permissions")->paginate(10);
         return view('backend.roles.index')->withRoles($roles);
+    }
+
+    public function search(Request $request)
+    {
+
+        $this->validate($request, array(
+            'search' => 'required|max:255',
+        ));
+        $roles = Role::search($request->input('search'))->with("permissions")->paginate(10);
+
+
+        if (!$roles->count())
+        {
+            Session::flash("error", 'Could not find role with data "'.$request->input('search').'". Try again.');
+            return redirect('/manage/roles');
+        }
+        $searched = $roles->count().' User(s) Found:';
+        return view('backend.roles.index')->withRoles($roles)->with("searched", $searched)->with('searchQuery', $request->input('search'));
     }
 
     /**
@@ -64,6 +82,8 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::where('id', $id)->with('permissions')->first();
+ 
+
         return view('backend.roles.show')->withRole($role);
     }
 
@@ -93,7 +113,7 @@ class RoleController extends Controller
         }
 
         Session::flash('success', 'Successfully created the new '.$role->display_name.' role in the database.');
-        return redirect('/manage/roles/' . $role->id);
+        return redirect('/manage/roles/'.$role->id);
     }
 
     /**
@@ -110,10 +130,9 @@ class RoleController extends Controller
             'description'  => 'sometimes|max:255',
         ));
 
-            $role = Role::findOrFail($id);
+        $role = Role::findOrFail($id);
         if ($request->has('display_name') || $request->has('description'))
         {
-
             if ($request->has('display_name'))
             {
                 $role->display_name = $request->display_name;
@@ -132,7 +151,7 @@ class RoleController extends Controller
             $role->syncPermissions(explode(',', $request->permissions));
         }
 
-        Session::flash('success', 'Successfully updated the '. $role->display_name.' role.');
+        Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');
         return redirect('/manage/roles/'.$id);
     }
 }

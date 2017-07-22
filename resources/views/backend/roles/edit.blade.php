@@ -165,6 +165,8 @@ Array.prototype.equals = function (array) {
 }
 // Hide method from for-in loops
 Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+
+
     var app = new Vue({
         el:'#app',
         data:{
@@ -176,7 +178,7 @@ Object.defineProperty(Array.prototype, "equals", {enumerable: false});
         methods:{
             changed()
             {
-                return ((this.permissions.sort(.equals(this.originalPermissions.sort()) && this.description == '' && this.display_name == '');
+                return ((this.permissions.sort().equals(this.originalPermissions.sort())) && this.description == '' && this.display_name == '');
             }
         }
 

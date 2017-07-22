@@ -41,11 +41,11 @@ User
         <form action="{{ url('/manage/users/find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
-                Find User By Username:
+                Find User:
                 <div class="input-group">
                     <input id="search" name="search" placeholder="Username..." type="text"/>
                     <div class="input-group-button">
-                        <button class="button button-icon">
+                        <button class="button button-icon purple">
                             <i class="fa fa-search">
                             </i>
                         </button>

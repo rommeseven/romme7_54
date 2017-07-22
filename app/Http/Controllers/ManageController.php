@@ -16,7 +16,7 @@ class ManageController extends Controller
     	//
     	//Settings::set('APP_NAME',"Program");
 
-    	dd(Settings::get('APP_NAME'));
+    	dd(setting('app.title'));
 
 
         return "Index";

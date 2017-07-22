@@ -15,7 +15,7 @@ class InstallCommand extends Command
      */
     protected $signature = 'cms:install';
 
-    protected $appname="Website Title";
+    protected $appname;
 
     /**
      * The console command description.
@@ -29,7 +29,7 @@ class InstallCommand extends Command
      *
      * @return void
      */
-    public function __construct($app_name)
+    public function __construct($app_name="Website Title")
     {
         parent::__construct();
         $this->appname = $app_name;
@@ -43,6 +43,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        Settings::set('APP_NAME',$this->appname);
+        Settings::set('app.title',$this->appname);
     }
 }

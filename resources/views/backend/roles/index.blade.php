@@ -74,7 +74,7 @@ Role
 <div class="row small-up-1 medium-up-2 large-up-4">
 
 
-@foreach($roles as $role)
+@foreach($roles->unique() as $role)
 <div class="column flex-container">
     <div class="card">
         <div class="card-section">
@@ -97,6 +97,20 @@ Role
                 Edit
             </a>
         </div>
+        <div class="card-divider row collapse align-center">
+            <div class="column shrink">
+                <a class="button secondary tiny fabu fa-chevron-down before" data-toggle="permissions_{{$role->id}}">
+                    Permissions
+                </a>
+            </div>
+            <div class="small-12 column" id="permissions_{{$role->id}}" data-toggler data-animate="fade-in fade-out" style="display:none">
+                <small>
+                                    @foreach($role->permissions as $permission)
+                    {{ $permission->display_name }} | 
+                    @endforeach
+                    </small>
+            </div><!-- END OF #permissions -->
+        </div>        
         <!-- END OF .card-divider flex-container align-spaced align-middle -->
     </div>
     <!-- END OF .card -->
