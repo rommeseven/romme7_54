@@ -8,9 +8,9 @@ class ManageController extends Controller
 {
     public function index()
     {
-    	dump(config('APP_NAME'));
-        config(['APP_NAME' => "Program based"]);
-        dd(config('APP_NAME'));
+    	dump(config('app.name'));
+        config(['app.name' => "Program based"]);
+        dd(config('app.name'));
 
         return "Index";
     }
