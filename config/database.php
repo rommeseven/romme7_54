@@ -1,18 +1,18 @@
 <?php
-$url = parse_url(getenv("DATABASE_URL"));
+$dburl = parse_dburl(getenv("DATABASE_dburl"));
 
-if (!$url['path'])
+if (!$dburl['path'])
 {
-    $url["host"] = null;
-    $url["user"] = null;
-    $url["pass"] = null;
-    $url["path"] = null;
+    $dburl["host"] = null;
+    $dburl["user"] = null;
+    $dburl["pass"] = null;
+    $dburl["path"] = null;
 }
 
-$host     = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
+$host     = $dburl["host"];
+$username = $dburl["user"];
+$password = $dburl["pass"];
+$database = substr($dburl["path"], 1);
 return [
 
     /*
