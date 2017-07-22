@@ -2472,7 +2472,7 @@ h4 small,
 h5 small,
 h6 small {
   line-height: 0;
-  color: wheat;
+  color: #527D99;
 }
 
 h1 {
@@ -2566,7 +2566,7 @@ hr {
   margin: 1.25rem auto;
   border-top: 0;
   border-right: 0;
-  border-bottom: 1px solid wheat;
+  border-bottom: 1px solid #527D99;
   border-left: 0;
 }
 
@@ -2611,7 +2611,7 @@ dl dt {
 blockquote {
   margin: 0 0 1rem;
   padding: 0.5625rem 1.25rem 0 1.1875rem;
-  border-left: 1px solid wheat;
+  border-left: 1px solid #527D99;
 }
 
 blockquote,
@@ -2627,7 +2627,7 @@ cite {
 }
 
 cite:before {
-  content: "\D4\C7\F6   ";
+  content: "\D4\F6\165\251C\C2\D4\F6\165\251C\E9\D4\F6\255D\2500\16F\251C\F6\251C\C2\253C\105\D4\F6\165\251C\119\D4\F6\165\251C\C2\D4\F6\165\251C\E9\D4\F6\255D\2500\16F\251C\F6\251C\C2\253C\105\D4\F6\255D\253C\255D\D4\F6\165\251C\C2\D4\F6\165\251C\E9\D4\F6\255D\2500\16F\251C\F6\251C\C2\253C\105\D4\F6\165\2500\D6   ";
 }
 
 abbr,
@@ -2643,8 +2643,8 @@ figure {
 
 code {
   padding: 0.125rem 0.3125rem 0.0625rem;
-  border: 1px solid wheat;
-  background-color: gray;
+  border: 1px solid #527D99;
+  background-color: #BDBDBD;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #0a0a0a;
@@ -2653,7 +2653,7 @@ code {
 kbd {
   margin: 0;
   padding: 0.125rem 0.25rem 0;
-  background-color: gray;
+  background-color: #BDBDBD;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   color: #0a0a0a;
 }
@@ -2864,7 +2864,7 @@ textarea {
   height: 2.4375rem;
   margin: 0 0 1rem;
   padding: 0.5rem;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 0;
   background-color: #fefefe;
   -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
@@ -2901,8 +2901,8 @@ textarea:focus {
   outline: none;
   border: 1px solid black;
   background-color: #fefefe;
-  -webkit-box-shadow: 0 0 5px wheat;
-          box-shadow: 0 0 5px wheat;
+  -webkit-box-shadow: 0 0 5px #527D99;
+          box-shadow: 0 0 5px #527D99;
   -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
   transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
@@ -2919,24 +2919,24 @@ textarea[rows] {
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  color: wheat;
+  color: #527D99;
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-  color: wheat;
+  color: #527D99;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: wheat;
+  color: #527D99;
 }
 
 input:disabled,
 input[readonly],
 textarea:disabled,
 textarea[readonly] {
-  background-color: gray;
+  background-color: #BDBDBD;
   cursor: not-allowed;
 }
 
@@ -3035,8 +3035,8 @@ label.middle {
 
 .input-group-label {
   padding: 0 1rem;
-  border: 1px solid wheat;
-  background: gray;
+  border: 1px solid #527D99;
+  background: #BDBDBD;
   color: #0a0a0a;
   text-align: center;
   white-space: nowrap;
@@ -3101,7 +3101,7 @@ legend {
 .fieldset {
   margin: 1.125rem 0;
   padding: 1.25rem;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
 }
 
 .fieldset legend {
@@ -3117,7 +3117,7 @@ select {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 0;
   background-color: #fefefe;
   font-family: inherit;
@@ -3147,8 +3147,8 @@ select:focus {
   outline: none;
   border: 1px solid black;
   background-color: #fefefe;
-  -webkit-box-shadow: 0 0 5px wheat;
-          box-shadow: 0 0 5px wheat;
+  -webkit-box-shadow: 0 0 5px #527D99;
+          box-shadow: 0 0 5px #527D99;
   -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
   transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
@@ -3156,7 +3156,7 @@ select:focus {
 }
 
 select:disabled {
-  background-color: gray;
+  background-color: #BDBDBD;
   cursor: not-allowed;
 }
 
@@ -3881,7 +3881,7 @@ select[multiple] {
   position: relative;
   display: block;
   padding: 1.25rem 1rem;
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   border-bottom: 0;
   font-size: 0.75rem;
   line-height: 1;
@@ -3889,13 +3889,13 @@ select[multiple] {
 }
 
 :last-child:not(.is-active) > .accordion-title {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #BDBDBD;
   border-radius: 0 0 0 0;
 }
 
 .accordion-title:hover,
 .accordion-title:focus {
-  background-color: gray;
+  background-color: #BDBDBD;
 }
 
 .accordion-title::before {
@@ -3913,14 +3913,14 @@ select[multiple] {
 .accordion-content {
   display: none;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   border-bottom: 0;
   background-color: #fefefe;
   color: #0a0a0a;
 }
 
 :last-child > .accordion-content:last-child {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #BDBDBD;
 }
 
 .accordion-menu li {
@@ -4106,7 +4106,7 @@ select[multiple] {
   margin: 0 0.75rem;
   opacity: 1;
   content: "/";
-  color: wheat;
+  color: #527D99;
 }
 
 .breadcrumbs a {
@@ -4118,7 +4118,7 @@ select[multiple] {
 }
 
 .breadcrumbs .disabled {
-  color: wheat;
+  color: #527D99;
   cursor: not-allowed;
 }
 
@@ -4371,7 +4371,7 @@ select[multiple] {
       -ms-flex-positive: 1;
           flex-grow: 1;
   margin-bottom: 1rem;
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   border-radius: 0;
   background: #fefefe;
   -webkit-box-shadow: none;
@@ -4392,7 +4392,7 @@ select[multiple] {
   display: -ms-flexbox;
   display: flex;
   padding: 1rem;
-  background: gray;
+  background: #BDBDBD;
 }
 
 .card-divider > :last-child {
@@ -4767,9 +4767,9 @@ select[multiple] {
 }
 
 .menu-icon:hover::after {
-  background: wheat;
-  -webkit-box-shadow: 0 7px 0 wheat, 0 14px 0 wheat;
-          box-shadow: 0 7px 0 wheat, 0 14px 0 wheat;
+  background: #527D99;
+  -webkit-box-shadow: 0 7px 0 #527D99, 0 14px 0 #527D99;
+          box-shadow: 0 7px 0 #527D99, 0 14px 0 #527D99;
 }
 
 .menu-icon.dark {
@@ -4925,7 +4925,7 @@ select[multiple] {
   padding: 1rem;
   visibility: hidden;
   display: none;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 0;
   background-color: #21295C;
   font-size: 1rem;
@@ -5471,7 +5471,7 @@ select[multiple] {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: gray;
+  background: #BDBDBD;
 }
 
 [data-whatinput='mouse'] .off-canvas {
@@ -5509,7 +5509,7 @@ select[multiple] {
   transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: gray;
+  background: #BDBDBD;
 }
 
 [data-whatinput='mouse'] .off-canvas-absolute {
@@ -6036,7 +6036,7 @@ select[multiple] {
   height: 1.2rem;
   margin: 0.1rem;
   border-radius: 50%;
-  background-color: wheat;
+  background-color: #527D99;
 }
 
 .orbit-bullets button:hover {
@@ -6095,7 +6095,7 @@ select[multiple] {
 
 .pagination a:hover,
 .pagination button:hover {
-  background: gray;
+  background: #BDBDBD;
 }
 
 .pagination .current {
@@ -6107,7 +6107,7 @@ select[multiple] {
 
 .pagination .disabled {
   padding: 0.1875rem 0.625rem;
-  color: wheat;
+  color: #527D99;
   cursor: not-allowed;
 }
 
@@ -6139,7 +6139,7 @@ select[multiple] {
   height: 1rem;
   margin-bottom: 1rem;
   border-radius: 0;
-  background-color: wheat;
+  background-color: #527D99;
 }
 
 .progress.primary .progress-meter {
@@ -6193,7 +6193,7 @@ select[multiple] {
   height: 0.5rem;
   margin-top: 1.25rem;
   margin-bottom: 2.25rem;
-  background-color: gray;
+  background-color: #BDBDBD;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -6210,7 +6210,7 @@ select[multiple] {
   display: inline-block;
   max-width: 100%;
   height: 0.5rem;
-  background-color: wheat;
+  background-color: #527D99;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -6350,7 +6350,7 @@ html.is-reveal-open body {
           backface-visibility: hidden;
   display: none;
   padding: 1rem;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 0;
   background-color: #fefefe;
   position: relative;
@@ -6469,7 +6469,7 @@ html.is-reveal-open body {
   width: 4rem;
   height: 2rem;
   border-radius: 0;
-  background: wheat;
+  background: #527D99;
   -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   font-weight: inherit;
@@ -6712,7 +6712,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs {
   margin: 0;
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   background: #fefefe;
   list-style-type: none;
 }
@@ -6778,12 +6778,12 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 .tabs-title > a:focus,
 .tabs-title > a[aria-selected='true'] {
-  background: gray;
+  background: #BDBDBD;
   color: #1779ba;
 }
 
 .tabs-content {
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   border-top: 0;
   background: #fefefe;
   color: #0a0a0a;
@@ -6792,7 +6792,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 }
 
 .tabs-content.vertical {
-  border: 1px solid gray;
+  border: 1px solid #BDBDBD;
   border-left: 0;
 }
 
@@ -7010,7 +7010,7 @@ a.thumbnail image {
 
 .top-bar,
 .top-bar ul {
-  background-color: gray;
+  background-color: #BDBDBD;
 }
 
 .top-bar input {
@@ -11068,7 +11068,7 @@ a.thumbnail image {
   height: 21px;
   left: 0;
   margin-left: -28px;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 0;
   background-color: #fff;
   -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
@@ -11128,7 +11128,7 @@ a.thumbnail image {
 
 .checkbox input[type="checkbox"]:disabled + label::before,
 .checkbox input[type="radio"]:disabled + label::before {
-  background-color: gray;
+  background-color: #BDBDBD;
   cursor: not-allowed;
 }
 
@@ -11271,7 +11271,7 @@ a.thumbnail image {
   height: 21px;
   left: 0;
   margin-left: -28px;
-  border: 1px solid wheat;
+  border: 1px solid #527D99;
   border-radius: 50%;
   background-color: #fff;
   -webkit-transition: border 0.15s ease-in-out;

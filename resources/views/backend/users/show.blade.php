@@ -24,7 +24,7 @@ User Profile of {{ $user->name }}
     <!-- END OF .small-8 small-offset-2  medium-4 medium-offset-7 columns -->
 </div>
 <div class="callout row align-justify">
-    <div class="colum">
+    <div class="column shrink">
         <div class="row align-top align-spaced">
             <div class="column">
                 ID:
@@ -52,7 +52,16 @@ User Profile of {{ $user->name }}
         <!-- END OF .row -->
     </div>
     <!-- END OF .colum -->
-    <div class="colum">
+    <div class="column small-offset-1">
+    <h4>Roles</h4>
+        @foreach($user->roles as $role)
+            <div class="checkbox success">
+                <input id="pcheckbox_{{$role->id}}" type="checkbox" checked disabled class="styled">
+                    <label for="pcheckbox_{{$role->id}}">
+                        {{ $role->display_name }} ({{ $role->description }})
+                    </label>
+            </div><!-- END OF .checkbox -->          
+        @endforeach    
     </div>
     <!-- END OF .colum -->
 </div>

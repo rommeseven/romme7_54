@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Hash;
 use Illuminate\Http\Request;
@@ -47,7 +48,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('backend.users.edit')->withUser($user);
+        $roles = Role::all();
+
+        return view('backend.users.edit')->withUser($user)->withRoles($roles);
     }
 
     /**
@@ -188,15 +191,25 @@ class UserController extends Controller
         $user->name  = (null === $request->input("name")) ? $user->name : $request->input("name");
         $user->email = (null === $request->input("email")) ? $user->email : $request->input("email");
 
-        if ($user->save())
+        $user->save();
+
+        if ($request->roles)
         {
-            Session::flash("success", "Your changes have been saved.");
-            return redirect()->route('users.show', $user->id);
+            $user->syncRoles(explode(',', $request->roles));
         }
-        else
-        {
-            Session::flash("error", "An error occured while creating the user. Try again.");
-            return redirect()->back();
-        }
+
+        Session::flash("success", "Your changes have been saved.");
+        return redirect()->route('users.show', $user->id);
+
+        /*
+    {
+    Session::flash("success", "Your changes have been saved.");
+    return redirect()->route('users.show', $user->id);
     }
+    else
+    {
+    Session::flash("error", "An error occured while creating the user. Try again.");
+    return redirect()->back();
+    }
+     */}
 };
