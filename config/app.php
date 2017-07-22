@@ -181,6 +181,7 @@ return array(
          * Third Party Providers...
          */
         Laratrust\LaratrustServiceProvider::class,
+        Krucas\Settings\Providers\SettingsServiceProvider::class,
     ),
 
     /*
@@ -234,6 +235,7 @@ return array(
          * Third Party Aliases...
          */
         'Laratrust'    => Laratrust\LaratrustFacade::class,
+        'Settings'     => Krucas\Settings\Facades\Settings::class,
 
     ),
 

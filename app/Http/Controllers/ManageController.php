@@ -1,16 +1,23 @@
 <?php
 
+/*
+TODO: install command (custom seed)
+REMEMBER: on init Settings::set('APP_NAME',"App Name");
+ */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Settings;
 class ManageController extends Controller
 {
     public function index()
     {
-    	dump(config('app.name'));
-        config(['app.name' => "Program based"]);
-        dd(config('app.name'));
+    	//
+    	//Settings::set('APP_NAME',"Program");
+
+    	dd(Settings::get('APP_NAME'));
+
 
         return "Index";
     }

@@ -213,3 +213,8 @@ class UserController extends Controller
     }
      */}
 };
+/*
+
+TODO: viewcomposer pass settings
+
+ */
