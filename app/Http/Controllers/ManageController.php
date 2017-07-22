@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 class ManageController extends Controller
 {
     public function index()
     {
-    	config('APP_NAME',"Program based");
+        config('APP_NAME', "Program based");
+        dd(config('APP_NAME'));
 
-    	return "Index";
+        return "Index";
     }
+
     public function no_permission()
     {
-//    	Auth::user()->roles()->attach(['superadministrator']);
+//        Auth::user()->roles()->attach(['superadministrator']);
 
-    	return view('errors.403');
-
+        return view('errors.403');
 
     }
 }
