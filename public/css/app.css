@@ -11512,6 +11512,10 @@ td .button-icon .fa:hover {
   content: "*";
 }
 
+label {
+  cursor: pointer;
+}
+
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
@@ -11528,29 +11532,14 @@ input:focus:-ms-input-placeholder {
   color: transparent;
 }
 
-#search_panel.mui-enter {
-  -webkit-transition-duration: 500ms;
-          transition-duration: 500ms;
-  -webkit-transition-timing-function: linear;
-          transition-timing-function: linear;
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-  -webkit-transition-timing-function: easeInOut;
-          transition-timing-function: easeInOut;
-  -webkit-transform: perspective(2000px) rotateX(-90deg);
-          transform: perspective(2000px) rotateX(-90deg);
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-transition-property: opacity, -webkit-transform;
-  transition-property: opacity, -webkit-transform;
-  transition-property: transform, opacity;
-  transition-property: transform, opacity, -webkit-transform;
-  opacity: 0;
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
-#search_panel.mui-enter.mui-enter-active {
-  -webkit-transform: perspective(2000px) rotate(0deg);
-          transform: perspective(2000px) rotate(0deg);
-  opacity: 1;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 

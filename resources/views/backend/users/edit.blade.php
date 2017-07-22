@@ -137,8 +137,6 @@ Edit User#{{ $user->id }}
 <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
 <!-- END OF .row -->
 @endpush
-{{-- TODO: better checkbox and radio 
---}}
 @push('extracss')
 <style>
     .topcontent

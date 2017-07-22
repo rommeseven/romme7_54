@@ -11,6 +11,10 @@
   }
 }
 
+label {
+  cursor: pointer;
+}
+
 input:focus::-webkit-input-placeholder {
   color: transparent;
 }
@@ -27,6 +31,10 @@ input:focus:-ms-input-placeholder {
   color: transparent;
 }
 
-#search_panel {
-  @include mui-hinge($state: in, $from: top, $turn-origin: from-back, $duration: 0.3s, $timing: easeInOut);
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

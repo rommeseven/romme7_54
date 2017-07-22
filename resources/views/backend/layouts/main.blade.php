@@ -48,6 +48,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{url('manage/roles')}}">
+                        Roles
+                    </a>
+                </li>
+                <li>
                     <a href="{{url('manage/permissions')}}">
                         Permissions
                     </a>
@@ -79,7 +84,7 @@
         <div class="header row collapse align-middle align-justify">
             <div class="columns shrink">
                 <div class="flex-container align-middle">
-                    <img alt="Seven Logo" src="{{ asset('img/logo.png') }}" />
+                    <img alt="Seven Logo" src="{{ asset('img/logo.png') }}"/>
                     <h1>
                         <a href="{{ route('home') }}">
                             CMSeven
@@ -133,6 +138,11 @@
                             <li>
                                 <a href="{{url('manage/users')}}">
                                     Users
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('manage/roles')}}">
+                                    Roles
                                 </a>
                             </li>
                             <li>

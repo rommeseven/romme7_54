@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     /*
      * Show the form for creating a new resource.
-     *
+     *l
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -69,14 +69,13 @@ class UserController extends Controller
             'search' => 'required|max:255',
         ));
         $users = User::search($request->input('search'))->paginate(10);
-        if(!$users->count())
+        if (!$users->count())
         {
-            Session::flash("error",'Could not find user with data "'. $request->input('search') .'". Try again.');
-            return redirect()->back();
-
+            Session::flash("error", 'Could not find user with data "'.$request->input('search').'". Try again.');
+            return redirect('/manage/users');
         }
-        $searched = $users->count() . ' User(s) Found:';
-        return view('backend.users.index')->withUsers($users)->with("searched",$searched)->with('searchQuery',$request->input('search'));
+        $searched = $users->count().' User(s) Found:';
+        return view('backend.users.index')->withUsers($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));
     }
 
     /**
