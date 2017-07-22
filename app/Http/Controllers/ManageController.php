@@ -9,6 +9,8 @@ class ManageController extends Controller
 {
     public function index()
     {
+    	config('app.name',"Program based");
+    	
     	return "Index";
     }
     public function no_permission()

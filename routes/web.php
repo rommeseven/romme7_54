@@ -19,17 +19,29 @@ Route::prefix('manage')
 ->group(function ()
 {
     Route::get('/', 'ManageController@index');
-    Route::resource('/users', 'UserController');
-    Route::resource('/permissions', 'PermissionController', array('except' => array('show', 'destroy')));
 
-    Route::resource('/roles', 'RoleController', array('except' => array('destroy')));
-    Route::get('/roles/find', 'RoleController@index');
-    Route::post('/roles/find', 'RoleController@search');
+    Route::resource('users', 'UserController');
+    Route::prefix('users')->group(function ()
+    {
+        Route::get('/find', 'UserController@index');
+        Route::post('/find', 'UserController@search');
+    });
 
-    Route::get('/users/find', 'UserController@index');
-    Route::get('/permissions/find', 'PermissionController@index');
-    Route::post('/users/find', 'UserController@search');
-    Route::post('/permissions/find', 'PermissionController@search');
+    Route::resource('roles', 'RoleController', array('except' => array('destroy')));
+    Route::prefix('roles')->group(function ()
+    {
+        Route::get('/find', 'RoleController@index');
+        Route::post('/find', 'RoleController@search');
+
+    });
+
+    Route::resource('permissions', 'PermissionController', array('except' => array('show', 'destroy')));
+    Route::prefix('permissions')->group(function ()
+    {
+        Route::get('/find', 'PermissionController@index');
+        Route::post('/find', 'PermissionController@search');
+    });
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

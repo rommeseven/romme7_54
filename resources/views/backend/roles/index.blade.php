@@ -182,7 +182,6 @@ $(this).html(src_str);
 
 TODO: better secondary color
 TODO: better success color (its too light)
-TODO: better $card-divider-background color (check _settings.scss)
 
 
  --}}
