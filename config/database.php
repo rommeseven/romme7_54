@@ -1,5 +1,5 @@
 <?php
-$dburl = parse_dburl(getenv("DATABASE_dburl"));
+$dburl = parse_url(getenv("DATABASE_URL"));
 
 if (!$dburl['path'])
 {
