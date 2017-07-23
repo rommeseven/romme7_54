@@ -9,4 +9,7 @@
         <h5>On my extraordinary webpage!</h5>
     </div><!-- END OF .callout -->
 </div><!-- END OF .row -->
+
+
+@include("navi")
 @endpush
