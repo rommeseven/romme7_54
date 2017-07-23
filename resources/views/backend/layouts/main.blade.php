@@ -1,4 +1,4 @@
-@include("layouts.partials.head")
+@include("backend.layouts.partials.head")
 <div class="off-canvas position-right" data-off-canvas="" id="offCanvas">
     <!-- Close button -->
     <button aria-label="Close menu" class="close-button" data-close="" type="button">
@@ -58,8 +58,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Configuration
+                    <a href="{{ route('settings') }}">
+                        Settings
                     </a>
                 </li>
                 <li>
@@ -151,8 +151,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    Configuration
+                                <a href="{{ route('settings') }}">
+                                    Settings
                                 </a>
                             </li>
                             <li>
@@ -176,7 +176,7 @@
 <!-- END OF .topnav menu -->
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
-@include("partials.flash")
+@include("backend.layouts.partials.flash")
 <div class="row medium-offset-1">
     <div class="column shrink"><br />
         <nav aria-label="You are here:" role="navigation">
@@ -203,4 +203,4 @@
 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
-@include("layouts.partials.tail")
+@include("backend.layouts.partials.tail")

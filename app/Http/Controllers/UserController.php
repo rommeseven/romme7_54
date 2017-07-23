@@ -121,7 +121,8 @@ class UserController extends Controller
             {
                 $password .= $keyspace[random_int(0, $max)];
             }
-
+            
+        }
             $user           = new User();
             $user->name     = $request->name;
             $user->email    = $request->email;
@@ -136,7 +137,6 @@ class UserController extends Controller
                 Session::flash("error", "An error occured while creating the user. Try again.");
                 return redirect()->back();
             }
-        }
     }
 
     /**

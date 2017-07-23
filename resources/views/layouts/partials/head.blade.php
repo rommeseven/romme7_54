@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <title>{{ settings('app.title') }} | @stack('title')</title>
+        <title> | @stack('title')</title>
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Fonts -->

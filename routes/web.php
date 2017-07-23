@@ -14,9 +14,7 @@
 Route::get('/', 'PagesController@index')->name('pages');
 Auth::routes();
 
-Route::prefix('manage')
-//->middleware('role:superadministrator|administrator')
-->group(function ()
+Route::prefix('manage')->group(function ()
 {
     Route::get('/', 'ManageController@index');
 
@@ -40,6 +38,11 @@ Route::prefix('manage')
     {
         Route::get('/find', 'PermissionController@index');
         Route::post('/find', 'PermissionController@search');
+    });
+    Route::prefix('settings')->group(function ()
+    {
+        Route::get('/', 'SettingController@index')->name("settings");
+        Route::post('/', 'SettingController@update');
     });
 
 });

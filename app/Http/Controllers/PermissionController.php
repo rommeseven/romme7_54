@@ -107,6 +107,8 @@ class PermissionController extends Controller
                 $permission->description  = $description;
                 $permission->save();
             }
+            Session::flash("success", "You successfully create this permission.");
+            return redirect()->route('permissions.index');
         }
         abort(404);
     }
