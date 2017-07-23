@@ -25,9 +25,9 @@
 
 @push('extrajs')
 
-<script src="{{asset('other/vendor/jquery-ui.min.js')}}"></script>
-<script src="{{asset('other/vendor/jquery-ui.touch.min.js')}}"></script>
-<script src="{{asset('other/vendor/jquery-ui.nested.min.js')}}"></script>
+<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.min.js"></script>
+<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.touch.min.js"></script>
+<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.nested.min.js"></script>
 <script>
  $( "ul.sortable" ).nestedSortable({
  	listType:'ul',
