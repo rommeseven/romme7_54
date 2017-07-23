@@ -12,6 +12,8 @@ $(function()
 require('./form/core'); 
 
 
+require('./vendor/sortable.js');
+
 
 
 /*

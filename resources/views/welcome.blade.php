@@ -19,15 +19,13 @@
 
 
 @push('extracss')
-<link href="{{ asset('other/vendor/jquery-ui.min.css') }}" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 @endpush
 
 
 @push('extrajs')
 
-<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.min.js"></script>
-<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.touch.min.js"></script>
-<script src="https://7.fanclub.rocks/cmsvendor/jquery-ui.nested.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js"></script>
 <script>
  $( "ul.sortable" ).nestedSortable({
  	listType:'ul',
