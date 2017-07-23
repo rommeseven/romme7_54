@@ -2,11 +2,49 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
 class Page extends Model
 {
-	    /**
+    /**
+     * children relationship
+     * @author Takács László
+     * @date    2017-07-23
+     * @version v1
+     * @return  relationship     children
+     */
+    public function children()
+    {
+        return $this->hasMany('App\Page', 'parent_id', 'id');
+    }
+
+    /**
+     * parent relationship
+     * @author Takács László
+     * @date    2017-07-23
+     * @version v1
+     * @return  relationship     parent
+     */
+    public function parent()
+    {
+        return $this->hasOne('App\Page', 'id', 'parent_id');
+    }
+
+    /**
+     * scope for nav
+     * @author Takács László
+     * @date    2017-07-23
+     * @version v1
+     * @param   Query     $query init
+     * @return  Query            with scope
+     */
+    public function scopeNav($query)
+    {
+        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0);
+    }
+
+    /**
      * The "booting" method of the model.
      *
      * @return void
@@ -14,34 +52,9 @@ class Page extends Model
     protected static function boot()
     {
         parent::boot();
-
-        static::addGlobalScope('order', function (Builder $builder) {
-            $builder->orderBy('display_order','asc');
+        static::addGlobalScope('order', function (Builder $builder)
+        {
+            $builder->orderBy('display_order', 'asc');
         });
-    }
-
-
-    public function children()
-    {
-
-        return $this->hasMany('App\Page', 'parent_id', 'id');
-
-    }
-
-    public function parent()
-    {
-
-        return $this->hasOne('App\Page', 'id', 'parent_id');
-
-    }
-
-    public static function tree()
-    {
-
-        return static::with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', null)->get();
-    }
-    public function scopeNav($query)
-    {
-    	return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0);
     }
 }

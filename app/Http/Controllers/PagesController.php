@@ -30,7 +30,9 @@ class PagesController extends Controller
     	$p = new Page();
     	$p->title = $title;
     	$p->parent_id = $parent;
-    	return $p->save();
+    	$p->save();
+        return redirect('/');
+        
 
     }
 }

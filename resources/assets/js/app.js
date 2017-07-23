@@ -9,7 +9,11 @@ $(function()
         $(this).next("form").submit();
     });
 });
-require('./form/core');
+require('./form/core'); 
+
+
+
+
 /*
 
 new Vue(

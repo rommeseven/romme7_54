@@ -45,6 +45,20 @@ Route::prefix('manage')->group(function ()
         Route::post('/', 'SettingController@update');
     });
 
+    Route::resource('pages', 'PageController');
+    Route::prefix('pages')->group(function ()
+    {
+
+        Route::prefix('create')->group(function ()
+        {
+            Route::prefix('step')->group(function ()
+            {
+                Route::get('/2', 'PageController@navigation')->name("pageeditor.step2");
+            });
+        });
+
+    });
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

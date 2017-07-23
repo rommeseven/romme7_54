@@ -50003,6 +50003,7 @@ $(function () {
     });
 });
 __webpack_require__("./resources/assets/js/form/core.js");
+
 /*
 
 new Vue(

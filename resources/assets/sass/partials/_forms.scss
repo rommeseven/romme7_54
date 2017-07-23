@@ -38,3 +38,6 @@ input:focus:-ms-input-placeholder {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+@import "./forms/progress";
+@import "./forms/sortable";
