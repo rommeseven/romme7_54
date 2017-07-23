@@ -4,6 +4,15 @@
 All Permissions
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li>Permissions</li>
+@endpush
+
 
 @push('content')
 <div class="row align-justify">

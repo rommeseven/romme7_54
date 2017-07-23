@@ -5,6 +5,19 @@ Edit Permission#{{ $permission->id }}
 @endpush
 
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/permissions') }}">Permissions</a></li>
+@endpush
+
+@push('bread')
+<li>Editing</li>
+@endpush
+
 @push('content')
 <div class="row">
     <div class="column">

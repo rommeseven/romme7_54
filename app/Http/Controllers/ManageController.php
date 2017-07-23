@@ -2,7 +2,7 @@
 
 /*
 TODO: install command (custom seed)
-REMEMBER: on init Settings::set('APP_NAME',"App Name");
+
  */
 
 namespace App\Http\Controllers;
@@ -13,11 +13,7 @@ class ManageController extends Controller
 {
     public function index()
     {
-    	//
-    	//Settings::set('APP_NAME',"Program");
-
-    	dd(setting('app.title'));
-
+    	
 
         return "Index";
     }

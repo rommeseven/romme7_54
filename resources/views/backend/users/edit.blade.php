@@ -4,6 +4,18 @@
 Edit User#{{ $user->id }}
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/users') }}">Users</a></li>
+@endpush
+
+@push('bread')
+<li>Editing</li>
+@endpush
 
 @push('content')
 <div id="app"><div class="row">

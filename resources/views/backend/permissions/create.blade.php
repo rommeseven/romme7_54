@@ -4,6 +4,18 @@
 Create New Permission
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/permissions') }}">Permissions</a></li>
+@endpush
+
+@push('bread')
+<li>Creating</li>
+@endpush
 
 @push('content')
 <div id="app">

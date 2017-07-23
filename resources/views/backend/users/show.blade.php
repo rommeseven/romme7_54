@@ -4,6 +4,18 @@
 User Profile of {{ $user->name }}
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/users') }}">Users</a></li>
+@endpush
+
+@push('bread')
+<li>Details</li>
+@endpush
 
 @push('content')
 <div class="row align-justify">

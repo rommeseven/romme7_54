@@ -4,6 +4,18 @@
 Create New User
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/users') }}">Users</a></li>
+@endpush
+
+@push('bread')
+<li>Creating</li>
+@endpush
 
 @push('content')
 <div class="row">

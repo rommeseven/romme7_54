@@ -4,6 +4,18 @@
 Create New Role
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/roles') }}">Roles</a></li>
+@endpush
+
+@push('bread')
+<li>Creating</li>
+@endpush
 
 @push('content')
 <div id="app">

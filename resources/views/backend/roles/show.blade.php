@@ -4,6 +4,19 @@
 Details on Role {{ $role->name }}
 @endpush
 
+@push('bread')
+<li><a href="{{ url('/manage') }}">Management</a></li>
+@endpush
+
+
+@push('bread')
+<li><a href="{{ url('/manage/roles') }}">Roles</a></li>
+@endpush
+
+@push('bread')
+<li>Details</li>
+@endpush
+
 
 @push('content')
 <div class="row align-justify">

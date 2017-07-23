@@ -177,6 +177,16 @@
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
 @include("partials.flash")
+<div class="row medium-offset-1">
+    <div class="column shrink"><br />
+        <nav aria-label="You are here:" role="navigation">
+          <ul class="breadcrumbs">
+            <li><a href="{{ url('/dashboard') }}">Home</a></li>
+            @stack("bread")
+          </ul>
+        </nav>
+    </div><!-- END OF .column shrink -->
+</div><!-- END OF .row breadcrumps -->
 <div class="topcontent">
     @stack("content")
 </div>
