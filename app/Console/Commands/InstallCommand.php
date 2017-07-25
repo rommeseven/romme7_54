@@ -43,6 +43,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        Settings::set('apptitle',$this->appname);
+        Settings::set('app_title',$this->appname);
     }
 }

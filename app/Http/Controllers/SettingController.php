@@ -30,7 +30,7 @@ class SettingController extends Controller
             'app_title' => 'sometimes|min:2|max:255',
         ));
         
-        Settings:set('apptitle', $request->input('app_title'));
+        Settings::set('app_title', $request->input('app_title'));
         Session::flash("success","Your changes have been saved!");
         return redirect()->route("settings");
     }
