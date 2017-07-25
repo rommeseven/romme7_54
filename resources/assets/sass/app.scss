@@ -96,3 +96,27 @@ $global-flexbox: true !global;
 @import "partials/topcontent";
 @import "partials/forms";
 @import "partials/footer";
+
+.muster {
+  border: solid 3px $primary-color;
+  height: 110px;
+  width: 110px;
+
+  .row {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    max-width: 110px;
+    min-height: 90%;
+
+    .column {
+      margin-left: 5%;
+      margin-right: 5%;
+
+      .content {
+        border: solid 1px $primary-color;
+        min-height: 100%;
+        min-width: 100%;
+      }
+    }
+  }
+}

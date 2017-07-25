@@ -2,17 +2,82 @@
 
 @push("title","Welcome Page")
 @push("content")
-<div class="row">
-    <div class="callout">
-        <h1>
-            Welcome
-        </h1>
-        <h5>
-            On my extraordinary webpage!
-        </h5>
-    </div>
-    <!-- END OF .callout -->
-</div>
+
+<div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster --><div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster --><div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster --><div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster --><div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster --><div class="muster">
+    <div class="row collapse">
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+        <div class="column">
+            <div class="content"></div><!-- END OF .content -->
+        </div><!-- END OF .column -->
+    </div><!-- END OF .row -->
+</div><!-- END OF .muster -->
+
+
 <!-- END OF .row -->
 @include("backend.navigation.partials.normal")
 @endpush

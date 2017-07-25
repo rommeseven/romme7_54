@@ -11777,3 +11777,29 @@ li.menu-highlight {
   background-color: #5364C3;
 }
 
+.muster {
+  border: solid 3px #5364C3;
+  height: 110px;
+  width: 110px;
+}
+
+.muster .row {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  max-width: 110px;
+  min-height: 90%;
+}
+
+.muster .row .column,
+.muster .row .columns {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.muster .row .column .content,
+.muster .row .columns .content {
+  border: solid 1px #5364C3;
+  min-height: 100%;
+  min-width: 100%;
+}
+
