@@ -1,25 +1,12 @@
-body.dragging,
-body.dragging * {
-  cursor: move !important;
+li.menu-highlight {
+  border: 1px solid $primary-color !important;
+  background: lighten($primary-color, 20%);
 }
 
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
+.menucard-light {
+  background-color: lighten($primary-color, 20%);
 }
 
-ul.sortable {
-  li.placeholder {
-    position: relative;
-  }
-
-  li.placeholder:before {
-    position: absolute;
-
-    /** TODO:Define arrowhead **/
-  }
-
-  min-height: 15px;
-  min-width: 15px;
+.card-divider.menucard {
+  background-color: $primary-color;
 }

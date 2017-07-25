@@ -9,13 +9,8 @@ $(function()
         $(this).next("form").submit();
     });
 });
-require('./form/core'); 
-
-
+require('./form/core');
 require('./vendor/sortable.js');
-
-
-
 /*
 
 new Vue(

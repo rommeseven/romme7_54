@@ -24,6 +24,26 @@
       color: scale-color($white, $lightness: -14%);
     }
   }
+
+  .underline-from-center {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(100% - #{0.125});
+      border-bottom: 0.125 solid $white;
+      left: 50%;
+      right: 50%;
+      transition: all 0.5s ease;
+    }
+
+    &:hover::after {
+      left: 0;
+      right: 0;
+      transition: all 0.5s ease;
+    }
+  }
 }
 
 .off-canvas {

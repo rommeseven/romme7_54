@@ -17,6 +17,12 @@ Auth::routes();
 Route::prefix('manage')->group(function ()
 {
     Route::get('/', 'ManageController@index');
+    Route::prefix('navigation')->group(function ()
+    {
+        Route::post('/', 'PageController@postNavigation');
+        Route::get('/', 'PageController@getNavigation');
+        Route::put('/', 'PageController@putNavigation');
+    });
 
     Route::resource('users', 'UserController');
     Route::prefix('users')->group(function ()
@@ -53,7 +59,7 @@ Route::prefix('manage')->group(function ()
         {
             Route::prefix('step')->group(function ()
             {
-                Route::get('/2', 'PageController@navigation')->name("pageeditor.step2");
+                Route::get('/2/page/{page}', 'PageController@navigation')->name("pageeditor.step2");
             });
         });
 

@@ -70,7 +70,7 @@ Settings
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="name">
                     Website Title:
-                    <input name="app_title" placeholder="{{settings('app.title')}}" type="text" v-model="app_title"/>
+                    <input name="app_title" placeholder="{{settings('app_title')}}" type="text" v-model="app_title"/>
                     @if ($errors->has('app_title'))
                     <small class="errortext">
                         {{ $errors->first('app_title') }}

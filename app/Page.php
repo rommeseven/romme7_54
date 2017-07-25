@@ -41,7 +41,7 @@ class Page extends Model
      */
     public function scopeNav($query)
     {
-        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0);
+        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0)->where('published','=', true);
     }
 
     /**

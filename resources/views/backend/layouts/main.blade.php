@@ -102,12 +102,12 @@
                         Menu
                     </div>
                 </div>
-                <ul class="topnav horizontal menu show-for-large dropdown" data-dropdown-menu="">
+                <ul class="topnav horizontal menu show-for-large dropdown underline-from-center" data-dropdown-menu="">
                     <li>
                         <a href="">
                             Pages
                         </a>
-                        <ul class="menu vertical">
+                        <ul class="menu">
                             <li>
                                 <a href="#">
                                     New Page

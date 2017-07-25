@@ -16,7 +16,6 @@ class PageController extends Controller
     public function create()
     {
         return view("backend.pages.create");
-
     }
 
     /**
@@ -42,6 +41,22 @@ class PageController extends Controller
     }
 
     /**
+     * Show the form for changing nav
+     * @return \Illuminate\Http\Response
+     */
+    public function getNavigation()
+    {
+        if (!Page::nav()->count())
+        {
+            Session::flash("error", "There are no pages. Create one first!");
+
+            return redirect('/manage/pages/create');
+        }
+        $pages = Page::nav()->get();
+        return view("backend.navigation.sort")->withPages($pages);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -56,12 +71,65 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function navigation()
+    public function navigation(Page $page)
     {
-        $pages = Page::nav()->get();
+        if (!Page::nav()->count())
+        {
+            /* TODO: not publish, just next step! */
+            $page->step      = $page->step + 1;
+            $page->published = true;
+            $page->save();
+            return redirect('/manage/pages/create/step/3/page/'.$page->id);
+        }
+        elseif ($page->published)
+        {
+            return redirect('/manage/navigation'.$page->id);
+        }
+        else
+        {
+            $pages = Page::nav()->get();
+            return view("backend.pages.step2")->withPages($pages)->withPage($page);
+        }
+    }
 
-        return view("backend.pages.navigation")->withPages($pages);
+    public function postNavigation(Request $request)
+    {
+        $pages = str_replace('anchor#', null, $request->pages);
+        parse_str($pages, $list);
+        $toBePublished            = Page::findOrFail($request->input("page"));
+        $toBePublished->published = true;
+        $toBePublished->step      = $toBePublished->step + 1;
+        $toBePublished->save();
+        $sort = 1;
+        foreach ($list['page'] as $id => $parentId)
+        {
+            $page                = Page::findOrFail($id);
+            $parentId            = ($parentId === null || $parentId == "null" || empty($parentId) || !$parentId || is_null($parentId)) ? 0 : $parentId;
+            $page->display_order = $sort;
+            $page->parent_id     = $parentId;
+            $page->save();
+            $sort++;
+        }
+        return dd($request);
+    }
 
+    public function putNavigation(Request $request)
+    {
+        $pages = str_replace('anchor#', null, $request->pages);
+        parse_str($pages, $list);
+        $sort = 1;
+        foreach ($list['page'] as $id => $parentId)
+        {
+            $page                = Page::findOrFail($id);
+            $parentId            = ($parentId === null || $parentId == "null" || empty($parentId) || !$parentId || is_null($parentId)) ? 0 : $parentId;
+            $page->display_order = $sort;
+            $page->parent_id     = $parentId;
+            $page->save();
+            $sort++;
+        }
+        Session::flash("success", "Your changes have been saved!");
+        return redirect("manage/navigation");
+        
     }
 
     /**
@@ -89,10 +157,14 @@ class PageController extends Controller
         ));
         $p        = new Page();
         $p->title = $request->input('title');
+        if (!Page::nav()->count())
+        {
+            $p->published = "true";
+            $page->step   = $page->step + 2;
+        }
         $p->save();
         Session::flash("success", "Page successfully create. Proceed to the next step");
-        return redirect()->route("pageeditor.step2");
-
+        return redirect()->route("pageeditor.step2", $p->id);
     }
 
     /**
@@ -110,4 +182,5 @@ class PageController extends Controller
 /*
 
 TODO: progress bar handy test
+TODO: putnavigation func
  */

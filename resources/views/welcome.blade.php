@@ -14,12 +14,15 @@
     <!-- END OF .callout -->
 </div>
 <!-- END OF .row -->
-@include("navi")
+@include("backend.navigation.partials.normal")
 @endpush
 
 
 @push('extracss')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<style>
+	.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+</style>
 @endpush
 
 

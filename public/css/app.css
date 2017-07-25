@@ -11602,6 +11602,28 @@ td .button-icon .fa:hover {
   color: #acffa7;
 }
 
+.header .underline-from-center {
+  position: relative;
+}
+
+.header .underline-from-center::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 0.125);
+  border-bottom: 0.125 solid #EDFFEC;
+  left: 50%;
+  right: 50%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.header .underline-from-center:hover::after {
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
 .off-canvas ul li a {
   color: #21295C;
 }
@@ -11742,28 +11764,16 @@ input:focus:-ms-input-placeholder {
   color: #9fa8dd;
 }
 
-body.dragging,
-body.dragging * {
-  cursor: move !important;
+li.menu-highlight {
+  border: 1px solid #5364C3 !important;
+  background: #9fa8dd;
 }
 
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
+.menucard-light {
+  background-color: #9fa8dd;
 }
 
-ul.sortable {
-  min-height: 15px;
-  min-width: 15px;
-}
-
-ul.sortable li.placeholder {
-  position: relative;
-}
-
-ul.sortable li.placeholder:before {
-  position: absolute;
-  /** TODO:Define arrowhead **/
+.card-divider.menucard {
+  background-color: #5364C3;
 }
 

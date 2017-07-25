@@ -50003,9 +50003,7 @@ $(function () {
     });
 });
 __webpack_require__("./resources/assets/js/form/core.js");
-
 __webpack_require__("./resources/assets/js/vendor/sortable.js");
-
 /*
 
 new Vue(
