@@ -14,3 +14,4 @@
         @stack("extracss")
     </head>
     <body>
+    <div id="app2">

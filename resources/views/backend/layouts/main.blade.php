@@ -135,7 +135,10 @@
             </div>
             <!-- END OF .column shrink -->
         </div>
+
+
         @stack("content")
+            <!-- END OF #app2 -->
     </div>
     <!-- END OF .column -->
 </div>

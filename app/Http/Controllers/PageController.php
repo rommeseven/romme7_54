@@ -40,6 +40,24 @@ class PageController extends Controller
         //
     }
 
+    public function getLayout(Page $page)
+    {
+        if ($page->step != 3)
+        {
+            dump("page not in step 3");
+            dd($page);
+// TODO: ERROR MSG
+        }
+        return view("backend.pages.step3")->withPage($page);
+    }
+public function postLayout(Request $request)
+    {
+     
+        dd($request);
+
+        return view("backend.pages.step3")->withPage($page);
+    }
+
     /**
      * Show the form for changing nav
      * @return \Illuminate\Http\Response
@@ -90,18 +108,7 @@ class PageController extends Controller
             return view("backend.pages.step2")->withPages($pages)->withPage($page);
         }
     }
-public function getLayout(Page $page)
-{
-    if($page->step != 3)
-    {
-        dump("page not in step 3");
-        dd($page);
-// TODO: ERROR MSG
-    }
-    return view("backend.pages.step3")->withPage($page);
-    
-    
-}
+
     public function postNavigation(Request $request)
     {
         $pages = str_replace('anchor#', null, $request->pages);
@@ -170,7 +177,7 @@ public function getLayout(Page $page)
         if (!Page::nav()->count())
         {
             $p->published = "true";
-            $p->step   = 2;
+            $p->step      = 2;
         }
         $p->save();
         Session::flash("success", "Page successfully created. Proceed to the next step");
