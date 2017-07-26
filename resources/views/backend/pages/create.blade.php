@@ -54,17 +54,22 @@ Create New Page
                 </li>
                 <li class="" data-step="">
                     <span>
-                        Contents
+                        Layout
                     </span>
                 </li>
-                <li class="" data-step="">
+                <li class="extra" data-step="">
+                    <span>
+                        Content
+                    </span>
+                </li>                
+                <li class="extra" data-step="">
                     <span>
                         Settings
                     </span>
                 </li>
-                <li class="" data-step="">
+                <li class="extra" data-step="">
                     <span>
-                        Publish
+                        <strong>Publish</strong>
                     </span>
                 </li>
             </ol>

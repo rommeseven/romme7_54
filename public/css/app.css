@@ -11737,8 +11737,20 @@ input:focus:-ms-input-placeholder {
   display: none;
 }
 
+@media screen and (max-width: 39.9375em) {
+  .progress-indicator > li.extra {
+    display: none;
+  }
+}
+
 .progress-indicator > li.is-complete {
   color: #5364C3;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .progress-indicator > li.is-complete {
+    display: none;
+  }
 }
 
 .progress-indicator > li.is-complete::before,
@@ -11777,29 +11789,46 @@ li.menu-highlight {
   background-color: #5364C3;
 }
 
-.muster {
-  border: solid 3px #5364C3;
+#editor {
+  min-height: 110px;
+  background: #EDFFEC;
+  border: solid 3px #527D99;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+#editor .row:not(.editor-ignore) .column:not(.editor-ignore),
+#editor .row:not(.editor-ignore) .columns:not(.editor-ignore) {
   height: 110px;
-  width: 110px;
+  text-align: center;
+  border: dashed 2px #0a0a0a;
+  background: #527D99;
 }
 
-.muster .row {
-  margin-top: 4%;
-  margin-bottom: 4%;
-  max-width: 110px;
-  min-height: 90%;
+#editor #newRow {
+  width: 100%;
+  background: #EDFFEC;
+  height: 110px;
 }
 
-.muster .row .column,
-.muster .row .columns {
-  margin-left: 5%;
-  margin-right: 5%;
+#editor #newRow:hover {
+  cursor: pointer;
+  background: #BDBDBD;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
-.muster .row .column .content,
-.muster .row .columns .content {
-  border: solid 1px #5364C3;
-  min-height: 100%;
-  min-width: 100%;
+#editor #newRow:hover a.add-column {
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+#editor #newRow a.add-column {
+  opacity: 0;
+  display: inline;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 

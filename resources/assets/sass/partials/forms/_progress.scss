@@ -64,7 +64,18 @@ $progress-indicator-width: 100%;
       display: none;
     }
 
+    &.extra {
+      @include breakpoint(small only) {
+        display: none;
+      }
+    }
+
     &.is-complete {
+      @include breakpoint(small only) {
+        display: none;
+      }
+
+
       color: $progress-indicator-complete;
 
       &::before,

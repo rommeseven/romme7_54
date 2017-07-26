@@ -1,6 +1,5 @@
 // Fonts
 //@import url("https://fonts.googleapis.com/css?family=Roboto");
-
 @import "settings";
 @import "../../../node_modules/foundation-sites/scss/foundation.scss";
 @import "../../../node_modules/motion-ui/motion-ui";
@@ -89,34 +88,52 @@ $global-flexbox: true !global;
 @include ffab-everything;
 
 @import "fa-checkboxes/fa-checkboxes";
-
 @import "partials/general";
-
 @import "partials/header";
 @import "partials/topcontent";
 @import "partials/forms";
 @import "partials/footer";
 
-.muster {
-  border: solid 3px $primary-color;
-  height: 110px;
-  width: 110px;
+#editor {
+  min-height: 110px;
+  background: $white;
+  border: solid 3px $medium-gray;
+  transition: 0.2s;
+  overflow: hidden;
 
-  .row {
-    margin-top: 4%;
-    margin-bottom: 4%;
-    max-width: 110px;
-    min-height: 90%;
+  .row:not(.editor-ignore) {
+    .column:not(.editor-ignore) {
+      height: 110px;
+      text-align: center;
+      border: dashed 2px $black;
 
-    .column {
-      margin-left: 5%;
-      margin-right: 5%;
+      // overflow: hidden;
+      background: $medium-gray;
+    }
+  }
 
-      .content {
-        border: solid 1px $primary-color;
-        min-height: 100%;
-        min-width: 100%;
+  #newRow {
+    width: 100%;
+    background: $white;
+    height: 110px;
+
+    &:hover {
+      cursor: pointer;
+      background: $light-gray;
+      transition: 0.2s;
+
+      a.add-column {
+        opacity: 1;
+        transition: 0.2s;
       }
+    }
+
+    a.add-column {
+      opacity: 0;
+      display: inline;
+
+      // display: none;
+      transition: 0.2s;
     }
   }
 }

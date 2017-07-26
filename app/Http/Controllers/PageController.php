@@ -75,9 +75,8 @@ class PageController extends Controller
     {
         if (!Page::nav()->count())
         {
-            /* TODO: not publish, just next step! */
-            $page->step      = $page->step + 1;
-            $page->published = true;
+            $page->step      = 3;
+            $page->published = false;
             $page->save();
             return redirect('/manage/pages/create/step/3/page/'.$page->id);
         }
@@ -91,14 +90,25 @@ class PageController extends Controller
             return view("backend.pages.step2")->withPages($pages)->withPage($page);
         }
     }
-
+public function getLayout(Page $page)
+{
+    if($page->step != 3)
+    {
+        dump("page not in step 3");
+        dd($page);
+// TODO: ERROR MSG
+    }
+    return view("backend.pages.step3")->withPage($page);
+    
+    
+}
     public function postNavigation(Request $request)
     {
         $pages = str_replace('anchor#', null, $request->pages);
         parse_str($pages, $list);
         $toBePublished            = Page::findOrFail($request->input("page"));
         $toBePublished->published = true;
-        $toBePublished->step      = $toBePublished->step + 1;
+        $toBePublished->step      = 3;
         $toBePublished->save();
         $sort = 1;
         foreach ($list['page'] as $id => $parentId)
@@ -110,7 +120,8 @@ class PageController extends Controller
             $page->save();
             $sort++;
         }
-        return dd($request);
+        Session::flash("success", "Page successfully added to the navigation. Proceed to the next step");
+        return redirect()->route("pageeditor.step3", $p->id);
     }
 
     public function putNavigation(Request $request)
@@ -129,7 +140,6 @@ class PageController extends Controller
         }
         Session::flash("success", "Your changes have been saved!");
         return redirect("manage/navigation");
-        
     }
 
     /**
@@ -160,10 +170,10 @@ class PageController extends Controller
         if (!Page::nav()->count())
         {
             $p->published = "true";
-            $page->step   = $page->step + 2;
+            $p->step   = 2;
         }
         $p->save();
-        Session::flash("success", "Page successfully create. Proceed to the next step");
+        Session::flash("success", "Page successfully created. Proceed to the next step");
         return redirect()->route("pageeditor.step2", $p->id);
     }
 
@@ -181,6 +191,4 @@ class PageController extends Controller
 }
 /*
 
-TODO: progress bar handy test
-TODO: putnavigation func
  */

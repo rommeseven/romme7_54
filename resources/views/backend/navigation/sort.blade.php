@@ -134,15 +134,15 @@ padding-top:24px;
 </script>
 @endpush
 @push('extracss')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
-    @endpush
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+@endpush
 
 
 @push('extrajs')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js">
-    </script>
-    <script>
-        $(function()
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js">
+</script>
+<script>
+    $(function()
 {
     $("ul.sortable").nestedSortable(
     {
@@ -171,9 +171,5 @@ padding-top:24px;
         attribute: 'id'
     })
 });
-    </script>
-    @endpush
-{{-- 
-TODO: created page->title!
- --}}
-</link>
+</script>
+@endpush

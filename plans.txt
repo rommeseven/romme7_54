@@ -1,0 +1,27 @@
+TODO: this plans.txt
+
+row
+
+collapse: false
+align:spaced   (left, right, justify, center)
+valign: top (top, middle, bottom) whole row
+columns[]
+
+
+
+
+column
+
+size: auto (shrink, expand, exact
+Tabs for Handy, Tablet, Laptop
+slider for size (step by 3) INFO: You only have to set it for mobile, the tablet and laptop settings are optional
+)
+valign: top (top, middle, bottom) only this column
+offset: none (exact)
+Tabs for Handy, Tablet, Laptop
+slider for size (step by 3) INFO: You only have to set it for mobile, the tablet and laptop settings are optional
+)
+
+
+TODO: row modal
+TODO: column modal
