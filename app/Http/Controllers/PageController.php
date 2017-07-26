@@ -100,7 +100,7 @@ public function postLayout(Request $request)
         }
         elseif ($page->published)
         {
-            return redirect('/manage/navigation'.$page->id);
+            return redirect('/manage/pages/create/step/3/page/'.$page->id);
         }
         else
         {
@@ -128,7 +128,7 @@ public function postLayout(Request $request)
             $sort++;
         }
         Session::flash("success", "Page successfully added to the navigation. Proceed to the next step");
-        return redirect()->route("pageeditor.step3", $p->id);
+        return redirect()->route("pageeditor.step3", $toBePublished->id);
     }
 
     public function putNavigation(Request $request)
@@ -181,7 +181,7 @@ public function postLayout(Request $request)
         }
         $p->save();
         Session::flash("success", "Page successfully created. Proceed to the next step");
-        return redirect()->route("pageeditor.step2", $p->id);
+        return redirect('/manage/pages/create/step/2/page/'. $p->id);
     }
 
     /**
