@@ -54,7 +54,7 @@ Create New Page
     </div>
     <!-- END OF .column -->
 </div>
-<div class="row align-center">
+<div class="row align-center" style="overflow:hidden;max-width:100%;">
     <div class="column shrink">
         <ol class="progress-indicator">
             <li class="is-complete" data-step="">
@@ -114,7 +114,7 @@ Create New Page
             <div class="radio primary">
                 <input id="c2" name="layout_choice" type="radio" v-model="layout_choice" value="create">
                     <label for="c2">
-                        Build on from scratch
+                        Build from scratch
                     </label>
                     <br/>
                     <br/>
@@ -190,9 +190,10 @@ Create New Page
 padding-top:24px;
 }
 </style>
+@endpush
 @push('extrajs')
 <script>
-    @include("backend.pages.editor.colComponent")
+@include("backend.pages.editor.colComponent")
 @include("backend.pages.editor.rowComponent")
 
 let app = new Vue(

@@ -101,6 +101,14 @@
               </div>
             </div>
             </div>
+<label for="spaced">
+                Offset
+            </label>
+                      <div class="slider" data-slider data-initial-start="0"  data-end="10" @click="updateoffset()">
+                <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" :aria-controls="panelid('offsetslider')"></span>
+                <span class="slider-fill" data-slider-fill></span>
+              </div>          
+               <input type="hidden" @update="updateoffset()" :id="panelid('offsetslider')">
             <div class="row align-left">
                 <div class="column shrink">
                     <a @click="update()" data-close class="button fabu fa-plus before">
@@ -214,6 +222,10 @@
                 this.mediumsize = $("#" + this.panelid('tabletslider')).val();
                 this.largesize = $("#" + this.panelid('desktopslider')).val();
             },
+            updateoffset()
+            {
+                this.Myoffset = $("#" + this.panelid('offsetslider')).val();
+            },
             open()
             {
                 $('#' + this.id).foundation();
@@ -230,6 +242,7 @@
             update()
             {
                 this.updatesizes();
+                this.updateoffset();
                 this.Mysize = this.newSize;
             }
         }
