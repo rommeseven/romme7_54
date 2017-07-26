@@ -6,6 +6,9 @@ Vue.component('editorrow',
     <div :class="MyClassObject" title="Edit Row"  @click.self="open()">
     <editorcol :preview="preview" v-for="(column,index) in MyColumns"  :size="column.size" @deld="delcol(index)" :valign="column.valign" :offset="column.offset" :key="column.id"></editorcol>
 <div :id="id" class="editor-ignore reveal large" data-reveal="">
+<p>
+    <h3>Row Settings</h3>
+</p>
     <div class="row collapse align-bottom">
         <div class="column small-12 medium-expand">
  <label :for="panelid('spaced')">

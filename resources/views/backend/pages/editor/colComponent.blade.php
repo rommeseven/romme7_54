@@ -4,6 +4,9 @@
         template: `
     <div :class="MyClassObject" :data-id = "id" @click="open()">
         <div :id="id" title="Edit Column" class="editor-ignore reveal large" data-reveal="">
+        <p>
+            <h3>Column Settings</h3>
+        </p>
     <div class="row collapse align-bottom">
         <div class="column small-12 medium-expand"><button aria-label="Dismiss alert" class="close-button" data-close="" type="button">
                 <span aria-hidden="true">
