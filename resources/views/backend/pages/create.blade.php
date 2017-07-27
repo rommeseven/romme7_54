@@ -39,9 +39,9 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
-    <div class="row align-center">
+    <div class="row align-center show-for-medium">
         <div class="column shrink">
-            <ol class="progress-indicator">
+            <ol class="progress-indicator ">
                 <li class="is-current" data-step="">
                     <span>
                         Title & Url

@@ -54,7 +54,7 @@ Create New Page
     </div>
     <!-- END OF .column -->
 </div>
-<div class="row align-center" style="height:84px;overflow:hidden;max-width:100%;">
+<div class="row align-center show-for-medium" style="height:84px;overflow:hidden;max-width:100%;">
     <div class="column shrink">
         <ol class="progress-indicator">
             <li class="is-complete" data-step="">

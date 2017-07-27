@@ -7,6 +7,8 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <title>{{ settings('app_title') }} | @stack('title')</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Biryani" rel="stylesheet">        
         <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Fonts -->
