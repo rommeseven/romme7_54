@@ -259,7 +259,4 @@ String.prototype.insertAt=function(index, string) {
 }
     </script>
     @endpush
-{{-- 
-TODO: created page->title!
- --}}
 </link>

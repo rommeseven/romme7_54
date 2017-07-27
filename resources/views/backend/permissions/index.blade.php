@@ -156,17 +156,6 @@ Permission
 <!-- END OF .row -->
 @endpush
 
-
-
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
-@endpush
-
 @if(isset($searched))
 @push('extrajs')
 <script>

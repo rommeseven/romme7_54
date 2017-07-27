@@ -83,12 +83,3 @@ User Profile of {{ $user->name }}
 </div>
 <!-- END OF .row -->
 @endpush
-
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
-@endpush

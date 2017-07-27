@@ -113,14 +113,6 @@ Settings
 </div>
 <!-- END OF #app -->
 @endpush
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
-@endpush
 
 @push('extrajs')
 <script>

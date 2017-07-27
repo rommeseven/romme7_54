@@ -43,6 +43,23 @@ class PageController extends Controller
         //
     }
 
+    public function getContent(Page $page)
+    {
+        if ($page->step != 4)
+        {
+            dump("page not in step 4");
+            dd($page);
+// TODO: ERROR MSG
+        }
+        $collection = $page->load("rows.columns")->toArray()["rows"];
+        $collection = $collection->sortBy('id')->toJson();
+        $collection = str_replace("columns", "cols", $collection);
+        dd($collection);
+        
+
+        return view("backend.pages.step3")->withPage($page)->withRows($collection);
+    }
+
     public function getLayout(Page $page)
     {
         if ($page->step != 3)
@@ -113,6 +130,70 @@ class PageController extends Controller
         {
             $pages = Page::nav()->get();
             return view("backend.pages.step2")->withPages($pages)->withPage($page);
+        }
+    }
+
+    public function postContent(Page $page, Request $request)
+    {
+
+        if (!$request->has("serial") || !$request->has("saving"))
+        {
+            dump($request);
+
+            dd("TODO: GENERAL ERROR");
+        }
+
+        $object = json_decode($request->serial, true);
+        if ($request->saving == "page")
+        {
+            foreach ($object as $row)
+            {
+                $row_model = new Row(array('align' => $row['align']));
+                $page->rows()->save($row_model);
+                foreach ($row['cols'] as $column)
+                {
+                    $column_model = new Column(array(
+                        'size'   => $column['size'],
+                        'valign' => $column['valign'],
+                        'offset' => (array_key_exists('offset', $column)) ? $column['offset'] : '',
+                        'small'  => (array_key_exists('small', $column)) ? $column['small'] : '',
+                        'medium' => (array_key_exists('medium', $column)) ? $column['medium'] : '',
+                        'large'  => (array_key_exists('large', $column)) ? $column['large'] : '',
+                    ));
+                    $row_model->columns()->save($column_model);
+                }
+            }
+            $page->step = 4;
+            $page->save();
+            Session::flash("success", "Page layout has been successfully set! Proceed to the next step.");
+            return redirect('manage/pages/create/step/4/page/'.$page->id);
+        }
+        else
+        {
+            if (!$request->has("layoutname"))
+            {
+                dd("TODO: GENERAL ERROR1");
+            }
+            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname));
+            foreach ($object as $row)
+            {
+                $row_model = new Row(array('align' => $row['align']));
+                $templ->rows()->save($row_model);
+                foreach ($row['cols'] as $column)
+                {
+                    $column_model = new Column(array(
+                        'size'   => $column['size'],
+                        'valign' => $column['valign'],
+                        'offset' => (array_key_exists('offset', $column)) ? $column['offset'] : '',
+                        'small'  => (array_key_exists('small', $column)) ? $column['small'] : '',
+                        'medium' => (array_key_exists('medium', $column)) ? $column['medium'] : '',
+                        'large'  => (array_key_exists('large', $column)) ? $column['large'] : '',
+                    ));
+                    $row_model->columns()->save($column_model);
+                }
+            }
+            Session::flash("success", "Layout Templated created!");
+            return redirect('manage/pages/create/step/3/page/'.$page->id);
         }
     }
 

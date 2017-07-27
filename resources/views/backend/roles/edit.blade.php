@@ -142,14 +142,6 @@ Edit Role#{{ $role->id }}
     <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
     <!-- END OF .row --></div><!-- END OF #app -->
 @endpush
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
-@endpush
 
 @push('extrajs')
 <script>

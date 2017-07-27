@@ -113,14 +113,6 @@ Create New User
 </form>
 @endpush
 
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
-
 @push('extrajs')
 <script>
     let app = new Vue({
