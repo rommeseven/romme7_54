@@ -1,8 +1,11 @@
 require('./bootstrap');
 import Foundation from 'foundation-sites'
-$(document).foundation();
+
 $(function()
 {
+	$(document).foundation();
+
+
     //alert("jquery and js are working.");
     $(".userRemover").click(function()
     {

@@ -83,9 +83,9 @@ Create New Page
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="name">
+                <label for="title">
                     Title:
-                    <input name="title" placeholder="My Pages Title" type="text" v-model="title"/>
+                    <input  id="title" name="title" placeholder="My Pages Title" type="text" v-model="title"/>
                     @if ($errors->has('title'))
                     <small class="errortext">
                         {{ $errors->first('title') }}

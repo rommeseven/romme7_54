@@ -15,9 +15,7 @@ class CreateLayoutTemplatesTable extends Migration
     {
         Schema::create('layout_templates', function (Blueprint $table) {
             $table->increments('id');
-            $table->text("svg")->default("not yet uploaded");
             $table->string("name");
-            $table->string("serial");
             $table->timestamps();
         });
     }

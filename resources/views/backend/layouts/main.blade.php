@@ -48,24 +48,24 @@
         <!-- Menu -->
         <ul class="topnav vertical menu accordion-menu" data-accordion-menu="">
             <li>
-                <a href="">
+                <a href="#">
                     Pages
                 </a>
                 <ul class="menu vertical nested">
                     <li>
-                        <a href="#">
+                        <a href="{{url('/manage/pages/create')}}">
                             New Page
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('/manage/pages')}}">
                             Manage Pages
                         </a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="">
+                <a href="{{url('/manage/navigation')}}">
                     Navigation
                 </a>
             </li>
@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="#">
                     Manage
                 </a>
                 <ul class="menu vertical nested">
@@ -135,10 +135,8 @@
             </div>
             <!-- END OF .column shrink -->
         </div>
-
-
         @stack("content")
-            <!-- END OF #app2 -->
+        <!-- END OF #app2 -->
     </div>
     <!-- END OF .column -->
 </div>
@@ -156,3 +154,4 @@
     {{ csrf_field() }}
 </form>
 @include("backend.layouts.partials.tail")
+

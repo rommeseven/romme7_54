@@ -32,6 +32,18 @@ class Page extends Model
     }
 
     /**
+     * row can be assigned to pages as well
+     * @author Takács László
+     * @date    2017-07-26
+     * @version v1
+     * @return  relationship
+     */
+    public function rows()
+    {
+        return $this->hasMany('App\Row', 'layout_template_id', 'id');
+    }
+
+    /**
      * scope for nav
      * @author Takács László
      * @date    2017-07-23
@@ -41,7 +53,7 @@ class Page extends Model
      */
     public function scopeNav($query)
     {
-        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0)->where('published','=', true);
+        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0)->where('published', '=', true);
     }
 
     /**

@@ -1,4 +1,4 @@
-@push('content')
+@push('outside_app')
 <div class="reveal" data-reveal="" id="addRow">
     <div id="addRow_app">
         <button aria-label="Dismiss alert" class="close-button" data-close="" type="button">
@@ -108,7 +108,7 @@
 @endpush
 @push('extrajs')
 <script>
-    let addRow_app = new Vue(
+let addRow_app = new Vue(
 {
     el: '#addRow_app',
     data:
@@ -121,8 +121,6 @@
         close()
         {
             $('#addRow').foundation('close');
-  
-            //EventBus.$emit('generateRows', {align:this.newRowAlign,colCount:this.colCount});      
             let newrow = {
                 align:this.newRowAlign,
                 cols:[]
@@ -130,13 +128,15 @@
             for (var i = this.colCount; i > 0; i--) {
                 let col = {
                     size:'auto',
-            valign:'top',
-            offset:''
+                    valign:'top',
+                    offset:'',
+                    small: '',
+                    medium: '',
+                    large: ''                    
                 };
                 newrow.cols.push(col);
 
             };
-            
             app.rows.push(newrow);
 
         }
