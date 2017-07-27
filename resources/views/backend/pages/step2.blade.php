@@ -148,17 +148,6 @@ Create New Page
 --}}
 @endpush
 
-@push('extracss')
-<style>
-    ul
-{
-    list-style-type: none !important;
-}
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
 @push('extrajs')
 <script>
 let app = new Vue(

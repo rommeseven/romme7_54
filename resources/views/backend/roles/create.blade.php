@@ -5,16 +5,26 @@ Create New Role
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li>
+    <a href="{{ url('/manage') }}">
+        Management
+    </a>
+</li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/roles') }}">Roles</a></li>
+<li>
+    <a href="{{ url('/manage/roles') }}">
+        Roles
+    </a>
+</li>
 @endpush
 
 @push('bread')
-<li>Creating</li>
+<li>
+    Creating
+</li>
 @endpush
 
 @push('content')
@@ -29,7 +39,6 @@ Create New Role
         </div>
         <!-- END OF .column -->
     </div>
-
     <!-- END OF .row -->
     <!-- END OF .row -->
     <form action="{{ url('manage/roles/') }}" method="POST">
@@ -84,7 +93,8 @@ Create New Role
             </div>
             <!-- END OF .row -->
             <div class="callout">
-                @foreach($permissions as $permission)
+
+                @forelse($permissions as $permission)
                 <div class="checkbox primary">
                     <input class="styled" id="pcheckbox_{{$permission->id}}" name="permissions" type="checkbox" v-model="permissions" value="{{$permission->id}}">
                         <label for="pcheckbox_{{$permission->id}}">
@@ -92,8 +102,11 @@ Create New Role
                         </label>
                     </input>
                 </div>
-                <!-- END OF .checkbox -->
-                @endforeach
+                @empty
+                <p>
+                    There are no Permissions created yet.
+                </p>
+                @endforelse
             </div>
             <!-- END OF .callout -->
         </div>

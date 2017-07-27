@@ -34,11 +34,25 @@ Create New User
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
             <label for="name" >
-                Username:
-                <input name="name" placeholder="example17" type="text"/>
+                Name:
+                <input name="name" id="name" placeholder="example17" type="text"/>
                 @if ($errors->has('name'))
                 <small class="errortext">
                     {{ $errors->first('name') }}
+                </small>
+                @endif
+            </label>
+        </div>
+        <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+    </div>
+    <div class="row">
+        <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+            <label for="username" >
+                Username:
+                <input name="username" id = "username" placeholder="example17" type="text"/>
+                @if ($errors->has('username'))
+                <small class="errortext">
+                    {{ $errors->first('username') }}
                 </small>
                 @endif
             </label>

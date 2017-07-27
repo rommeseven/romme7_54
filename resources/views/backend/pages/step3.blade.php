@@ -230,14 +230,6 @@ Create New Page
     </form>
     @endpush
 
-@push('extracss')
-    <style>
-        .topcontent
-{
-padding-top:24px;
-}
-    </style>
-    @endpush
 @include("backend.pages.editor.addRow")
 
 @push('extrajs')

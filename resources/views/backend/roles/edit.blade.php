@@ -93,18 +93,22 @@ Edit Role#{{ $role->id }}
                 </label>
                
         </div><!-- END OF .row -->
-<div class="callout">
+            <div class="callout">
 
-        @foreach($permissions as $permission)
-            <div class="checkbox primary">
-                <input id="pcheckbox_{{$permission->id}}" type="checkbox" value="{{$permission->id}}" name="permissions"  v-model="permissions" class="styled">
-                    <label for="pcheckbox_{{$permission->id}}">
-                        {{ $permission->display_name }} ({{ $permission->description }})
-                    </label>
-            </div><!-- END OF .checkbox -->          
-        @endforeach
-        
-    </div>
+                @forelse($permissions as $permission)
+                <div class="checkbox primary">
+                    <input class="styled" id="pcheckbox_{{$permission->id}}" name="permissions" type="checkbox" v-model="permissions" value="{{$permission->id}}">
+                        <label for="pcheckbox_{{$permission->id}}">
+                            {{ $permission->display_name }} ({{ $permission->description }})
+                        </label>
+                    </input>
+                </div>
+                @empty
+                <p>
+                    There are no Permissions created yet.
+                </p>
+                @endforelse
+            </div>
     <!-- END OF .callout --></div><!-- END OF #app -->
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">

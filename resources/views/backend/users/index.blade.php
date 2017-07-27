@@ -90,6 +90,9 @@ User
                         Name
                     </th>
                     <th>
+                        Username
+                    </th>
+                    <th>
                         Email
                     </th>
                     <th>
@@ -114,6 +117,9 @@ User
                     </td>
                     <td>
                         {{$user->name }}
+                    </td>
+                    <td>
+                        {{$user->username }}
                     </td>
                     <td>
                         {{$user->email }}

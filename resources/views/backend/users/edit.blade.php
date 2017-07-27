@@ -58,11 +58,25 @@ Edit User#{{ $user->id }}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="name">
-                    Username:
-                    <input name="name" placeholder="{{$user->name}}" v-model="username" type="text"/>
+                    Name:
+                    <input name="name" placeholder="{{$user->name}}" v-model="dname" type="text"/>
                     @if ($errors->has('name'))
                     <small class="errortext">
                         {{ $errors->first('name') }}
+                    </small>
+                    @endif
+                </label>
+            </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>
+        <div class="row">
+            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                <label for="name">
+                    Username:
+                    <input name="username" placeholder="{{$user->username}}" v-model="username" type="text"/>
+                    @if ($errors->has('username'))
+                    <small class="errortext">
+                        {{ $errors->first('username') }}
                     </small>
                     @endif
                 </label>
@@ -135,7 +149,7 @@ Edit User#{{ $user->id }}
                 </div>
                 <!-- END OF .row -->
                 <div class="callout">
-                    @foreach($roles as $role)
+                    @forelse($roles as $role)
                     <div class="checkbox success">
                         <input class="styled" id="pcheckbox_{{$role->id}}" name="roles" type="checkbox" v-model="roles" value="{{$role->id}}">
                             <label for="pcheckbox_{{$role->id}}">
@@ -143,8 +157,9 @@ Edit User#{{ $user->id }}
                             </label>
                         </input>
                     </div>
-                    <!-- END OF .checkbox -->
-                    @endforeach
+                    @empty
+                    <p>There are no Roles created yet.</p>
+                    @endforelse
                 </div>
                 <!-- END OF .callout -->
             </div>
@@ -227,13 +242,16 @@ Object.defineProperty(Array.prototype, "equals", {enumerable: false});
             roles:{!! $user->roles->pluck('id') !!},
             originalroles:{!! $user->roles->pluck('id') !!},
             username:'',
+            dname:'',
             email:'',
              pwchoice:'keep'
         },
         methods:{
             changed()
             {
-                return ((this.roles.sort().equals(this.originalroles.sort())) && this.email == '' && this.username == '' && this.pwchoice=='keep');
+                let rolechanged = (!this.roles || !this.originalroles);
+                if(rolechanged) rolechanged = (this.roles.sort().equals(this.originalroles.sort()));
+                return (rolechanged && this.email == '' && this.username == '' &&this.dname == '' && this.pwchoice=='keep');
             }
         }
 

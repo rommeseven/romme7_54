@@ -21,12 +21,29 @@
                     Menu
                 </div>
             </div>
-            <ul class="topnav horizontal menu show-for-large dropdown underline-from-center" data-dropdown-menu="">
+            <ul class="horizontal menu show-for-large dropdown underline-from-center" style="margin-right:15px;" data-dropdown-menu="" data-closing-time="1500" data-disable-hover="true" data-click-open="true">
                 <li>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        Logout
+                    <a @click.prevent="''">
+                        Takács
                     </a>
+                    <ul class="menu vertical" style="margin-top:18px;text-align:right">
+                        <li>
+                            <a href="#" >
+                                Profile
+                            </a>
+                        </li>                      
+                        <li>
+                            <a href="#">
+                                Account Settings
+                            </a>
+                        </li>                    
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -36,88 +53,93 @@
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
 <!-- END OF .row breadcrumps -->
-<div class="topcontent row">
+<div class="topcontent row collapse">
     <div class="column shrink off-canvas in-canvas-for-large position-right" data-off-canvas="" data-transition="push" id="offCanvas">
-        <button aria-label="Close menu" class="close-button" data-close="" type="button">
-            <span aria-hidden="true">
-                ×
-            </span>
-        </button>
-        <br/>
-        <br/>
-        <!-- Menu -->
-        <ul class="topnav vertical menu accordion-menu" data-accordion-menu="">
-            <li>
-                <a href="#">
-                    Pages
-                </a>
-                <ul class="menu vertical nested">
-                    <li>
-                        <a href="{{url('/manage/pages/create')}}">
-                            New Page
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('/manage/pages')}}">
-                            Manage Pages
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{url('/manage/navigation')}}">
-                    Navigation
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    Support
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    Manage
-                </a>
-                <ul class="menu vertical nested">
-                    <li>
-                        <a href="{{url('manage/users')}}">
-                            Users
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('manage/roles')}}">
-                            Roles
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{url('manage/permissions')}}">
-                            Permissions
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('settings') }}">
-                            Settings
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Account
-                        </a>
-                    </li>
-                </ul>
-                <!-- END OF .topnav menu -->
-                <!-- END OF .menu vertical -->
-            </li>
-            <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-            </li>
-        </ul>
+        <div class="topnav">
+            <button aria-label="Close menu" class="close-button" data-close="" type="button">
+                <span aria-hidden="true">
+                    ×
+                </span>
+            </button>
+            <div class="hide-for-large">
+                <br/>
+                <br/>
+            </div>
+            <!-- END OF .hide-for-large -->
+            <ul class="vertical menu accordion-menu" data-accordion-menu="">
+                <li>
+                    <a href="#">
+                        Pages
+                    </a>
+                    <ul class="menu vertical nested">
+                        <li>
+                            <a href="{{url('/manage/pages/create')}}">
+                                New Page
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/manage/pages')}}">
+                                Manage Pages
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{url('/manage/navigation')}}">
+                        Navigation
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Support
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Manage
+                    </a>
+                    <ul class="menu vertical nested">
+                        <li>
+                            <a href="{{url('manage/users')}}">
+                                Users
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('manage/roles')}}">
+                                Roles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('manage/permissions')}}">
+                                Permissions
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('settings') }}">
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Account
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- END OF .topnav menu -->
+                    <!-- END OF .menu vertical -->
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END OF .topnav -->
     </div>
     <!-- END OF .column -->
-    <div class="column expanded">
+    <div class="column expanded" style="padding-left:15px;padding-right:15px">
         @include("backend.layouts.partials.flash")
         <div class="row medium-offset-1">
             <div class="column shrink">
@@ -154,4 +176,3 @@
     {{ csrf_field() }}
 </form>
 @include("backend.layouts.partials.tail")
-

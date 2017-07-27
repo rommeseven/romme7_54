@@ -101,7 +101,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, array(
-            'name'  => 'required|max:255|unique:users',
+            'name'  => 'required|max:255',
+            'username'  => 'required|max:255|unique:users',
             'email' => "required|email|unique:users",
         ));
         $password = '';
@@ -125,6 +126,7 @@ class UserController extends Controller
         }
             $user           = new User();
             $user->name     = $request->name;
+            $user->username     = $request->username;
             $user->email    = $request->email;
             $user->password = Hash::make($password);
             if ($user->save())
@@ -160,7 +162,13 @@ class UserController extends Controller
         if ($request->has('name') && !empty($request->input('name')))
         {
             $this->validate($request, array(
-                'name' => 'max:255|unique:users',
+                'name' => 'max:255',
+            ));
+        }
+        if ($request->has('username') && !empty($request->input('username')))
+        {
+            $this->validate($request, array(
+                'username' => 'max:255|unique:users',
             ));
         }
 
@@ -189,6 +197,7 @@ class UserController extends Controller
         }
 
         $user->name  = (null === $request->input("name")) ? $user->name : $request->input("name");
+        $user->username  = (null === $request->input("username")) ? $user->username : $request->input("username");
         $user->email = (null === $request->input("email")) ? $user->email : $request->input("email");
 
         $user->save();
@@ -200,16 +209,5 @@ class UserController extends Controller
 
         Session::flash("success", "Your changes have been saved.");
         return redirect()->route('users.show', $user->id);
-
-        /*
-    {
-    Session::flash("success", "Your changes have been saved.");
-    return redirect()->route('users.show', $user->id);
     }
-    else
-    {
-    Session::flash("error", "An error occured while creating the user. Try again.");
-    return redirect()->back();
-    }
-     */}
 };

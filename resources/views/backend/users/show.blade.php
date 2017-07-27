@@ -43,6 +43,8 @@ User Profile of {{ $user->name }}
                 <br/>
                 Name:
                 <br/>
+                Username:
+                <br/>
                 Email:
                 <br/>
                 Account Created:
@@ -53,6 +55,8 @@ User Profile of {{ $user->name }}
                 User#{{$user->id}}
                 <br/>
                 {{$user->name}}
+                <br/>
+                {{$user->username}}
                 <br/>
                 {{$user->email}}
                 <br/>

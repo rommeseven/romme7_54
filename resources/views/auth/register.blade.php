@@ -14,6 +14,9 @@ box-shadow: 7px 7px 7px 2px rgba(0,0,0,0.75);">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
+                    <label for="username">Username</label>
+                    <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
+
                     <label for="name">Name</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
 
