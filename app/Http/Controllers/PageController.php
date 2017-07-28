@@ -51,12 +51,11 @@ class PageController extends Controller
             dd($page);
 // TODO: ERROR MSG
         }
-        $collection = $page->load("rows.columns")->toArray()["rows"];
-        $collection = $collection->sortBy('id')->toJson();
+        $collection = collect($page->load("rows.columns")->toArray());
+        $collection = $collection->toJson();
         $collection = str_replace("columns", "cols", $collection);
-        dd($collection);
-        
 
+        // TODO WEITERMAChEN
         return view("backend.pages.step3")->withPage($page)->withRows($collection);
     }
 

@@ -368,4 +368,5 @@ let app = new Vue(
 });
     </script>
     @endpush
-</div>
+
+

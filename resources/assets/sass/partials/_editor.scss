@@ -26,8 +26,9 @@
   // overflow: hidden;
 
   .row:not(.editor-ignore) {
-    padding-top: 25px;
-    background: purple;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: get-color(logoblue);
 
     .column:not(.editor-ignore) {
       min-height: 110px;

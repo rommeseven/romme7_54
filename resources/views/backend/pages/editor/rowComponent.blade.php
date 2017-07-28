@@ -4,7 +4,7 @@ Vue.component('editorrow',
     // components:{editorcol},
     template: `
 <div :class="MyClassObject" @click.self="open()" title="Edit Row">
-    <editorcol :key="column.id" @coffset="coffset(index,$event)" :small="column.small" :medium="column.medium" :large="column.large" @csmall="csmall(index,$event)"@cmedium="cmedium(index,$event)" @clarge="clarge(index,$event)" @csize="csize(index,$event)" @cvalign="cvalign(index,$event)" :offset="column.offset" :preview="preview" :size="column.size" :valign="column.valign" @deld="delcol(index)" v-for="(column,index) in MyColumns"  >
+    <editorcol :key="column.id" @openRow="open()" @coffset="coffset(index,$event)" :small="column.small" :medium="column.medium" :large="column.large" @csmall="csmall(index,$event)"@cmedium="cmedium(index,$event)" @clarge="clarge(index,$event)" @csize="csize(index,$event)" @cvalign="cvalign(index,$event)" :offset="column.offset" :preview="preview" :size="column.size" :valign="column.valign" @deld="delcol(index)" v-for="(column,index) in MyColumns"  >
     </editorcol>
     <div :id="id" class="editor-ignore reveal large" data-reveal="">
         <p>

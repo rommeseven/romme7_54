@@ -2617,13 +2617,13 @@ blockquote {
 blockquote,
 blockquote p {
   line-height: 1.6;
-  color: black;
+  color: #375366;
 }
 
 cite {
   display: block;
   font-size: 0.8125rem;
-  color: black;
+  color: #375366;
 }
 
 cite:before {
@@ -2663,7 +2663,7 @@ kbd {
   margin-bottom: 0.5rem;
   font-weight: normal;
   line-height: 1.4;
-  color: black;
+  color: #375366;
 }
 
 .lead {
@@ -2804,7 +2804,7 @@ ol.no-bullet {
 
   pre,
   blockquote {
-    border: 1px solid black;
+    border: 1px solid #375366;
     page-break-inside: avoid;
   }
 
@@ -2899,7 +2899,7 @@ textarea {
 [type='color']:focus,
 textarea:focus {
   outline: none;
-  border: 1px solid black;
+  border: 1px solid #375366;
   background-color: #EDFFEC;
   -webkit-box-shadow: 0 0 5px #527D99;
           box-shadow: 0 0 5px #527D99;
@@ -3125,7 +3125,7 @@ select {
   font-weight: normal;
   line-height: 1.5;
   color: #0a0a0a;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%280, 0, 0%29'></polygon></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%2855, 83, 102%29'></polygon></svg>");
   background-origin: content-box;
   background-position: right -1rem center;
   background-repeat: no-repeat;
@@ -3145,7 +3145,7 @@ select {
 
 select:focus {
   outline: none;
-  border: 1px solid black;
+  border: 1px solid #375366;
   background-color: #EDFFEC;
   -webkit-box-shadow: 0 0 5px #527D99;
           box-shadow: 0 0 5px #527D99;
@@ -4620,7 +4620,7 @@ select[multiple] {
 
 .close-button {
   position: absolute;
-  color: black;
+  color: #375366;
   cursor: pointer;
 }
 
@@ -4999,9 +4999,9 @@ select[multiple] {
 }
 
 .menu-icon.dark:hover::after {
-  background: black;
-  -webkit-box-shadow: 0 7px 0 black, 0 14px 0 black;
-          box-shadow: 0 7px 0 black, 0 14px 0 black;
+  background: #375366;
+  -webkit-box-shadow: 0 7px 0 #375366, 0 14px 0 #375366;
+          box-shadow: 0 7px 0 #375366, 0 14px 0 #375366;
 }
 
 .is-drilldown {
@@ -6254,11 +6254,11 @@ select[multiple] {
 }
 
 .orbit-bullets button:hover {
-  background-color: black;
+  background-color: #375366;
 }
 
 .orbit-bullets button.is-active {
-  background-color: black;
+  background-color: #375366;
 }
 
 .pagination {
@@ -7096,7 +7096,7 @@ a.thumbnail image {
 .has-tip {
   position: relative;
   display: inline-block;
-  border-bottom: dotted 1px black;
+  border-bottom: dotted 1px #375366;
   font-weight: bold;
   cursor: help;
 }
@@ -11905,8 +11905,9 @@ li.menu-highlight {
 }
 
 #editor .row:not(.editor-ignore) {
-  padding-top: 25px;
-  background: purple;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #21295C;
 }
 
 #editor .row:not(.editor-ignore) .column:not(.editor-ignore),

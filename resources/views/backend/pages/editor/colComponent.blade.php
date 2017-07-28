@@ -9,11 +9,25 @@ let editorcol = Vue.component('editorcol',
                 ×
             </span>
         </button>
-        <p>
-            <h3>
-                Column Settings
-            </h3>
-        </p>
+        <div class="row align-spaced align-middle">
+            <div class="column shrink">
+                <p>
+                    <h3>
+                        Column Settings
+                    </h3>
+                </p>
+            </div>
+            <!-- END OF .column -->
+            <div class="column shrink">
+        <br />
+                    <a @click.prevent="toRow()" class="button logoblue fabu fa-ellipsis-h" href="#">
+                        Go to Row Settings
+                    </a>
+               
+            </div>
+            <!-- END OF .column -->
+        </div>
+        <!-- END OF .row align-spaced -->
         <div class="row collapse align-bottom">
             <div class="column small-12 medium-expand">
                 <label for="spaced">
@@ -318,6 +332,7 @@ let editorcol = Vue.component('editorcol',
         {
             $('#' + this.id).foundation();
             $('#' + this.id).foundation('open');
+            this.Mysize = 'auto';
         },
         panelhref(i)
         {
@@ -332,6 +347,11 @@ let editorcol = Vue.component('editorcol',
             this.updatesizes();
             this.updateoffset();
             this.Mysize = this.newSize;
+        },
+        toRow()
+        {
+            $('#' + this.id).foundation('close');
+            this.$emit('openRow');
         }
     }
 });
