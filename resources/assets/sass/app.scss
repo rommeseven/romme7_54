@@ -95,3 +95,12 @@ $global-flexbox: true !global;
 @import "partials/footer";
 @import "partials/editor";
 @import "partials/sidebar";
+
+.topnavigation {
+  .menu.vertical {
+    margin-top: 16px;
+
+    // text-align: right;
+ 
+  }
+}

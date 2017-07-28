@@ -21,26 +21,31 @@
                     Menu
                 </div>
             </div>
-            <ul class="horizontal menu show-for-large dropdown underline-from-center" style="margin-right:15px;" data-dropdown-menu="" data-closing-time="1500" data-disable-hover="true" data-click-open="true">
-                <li>
+            <ul class="horizontal menu show-for-large dropdown topnavigation" style="margin-right:15px;" data-dropdown-menu="" data-closing-time="1500" data-disable-hover="true" data-click-open="true">
+            <li class="notifs_large"><a href="#" class="notifs_large" id="notifications_large_toggler" data-toggle="notifications_large"><i class="fa fa-envelope notifs_large"></i><span class="badge success notifs_large" style="position: absolute; left: 28px; top: 6px;">14</span></a> <div class="dropdown-pane large notifs_large" id="notifications_large" data-dropdown data-hover-pane="false" data-close-on-click="true"  data-v-offset="17" >
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+            </li>           
+                <li style="margin-top: 4px;">
                     <a @click.prevent="''">
                         Takács
                     </a>
-                    <ul class="menu vertical" style="margin-top:18px;text-align:right">
+                    <ul class="menu vertical" style="text-align:right">
+
                         <li>
                             <a href="#" >
-                                Profile
+                              <i class="fa fa-user"></i>   Profile
                             </a>
                         </li>                      
                         <li>
                             <a href="#">
-                                Account Settings
+                            <i class="fa fa-cog"></i>    Account Settings 
                             </a>
                         </li>                    
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                Logout
+                                <span>Logout</span> <i class="fa fa-sign-out"></i>
                             </a>
                         </li>
                     </ul>
@@ -175,4 +180,17 @@
 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
-@include("backend.layouts.partials.tail")
+</div><!-- END OF #app2 -->
+@stack("outside_app")
+<script src="{{ mix('js/app.js') }}"></script>
+@stack("extrajs")
+<script>
+    // $(".topnavigation").click(function() {
+    //     alert("hi");
+
+    //     $('#notifications_large_toggler').trigger('click');
+    // });
+
+</script>
+</body>
+</html>

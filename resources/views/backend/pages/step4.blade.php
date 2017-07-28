@@ -30,7 +30,7 @@ Create New Page
 
 @push('bread')
 <li>
-    Layout
+    Content
 </li>
 @endpush
 @push('bread')
@@ -47,7 +47,7 @@ Create New Page
             <h3>
                 Creating A New Page -
                 <strong>
-                    Step 3:
+                    Step 4:
                 </strong>
             </h3>
         </p>
@@ -58,7 +58,7 @@ Create New Page
     <div class="column shrink">            <ol class="progress-indicator ">
                 <li class="is-current" data-step="">
                     <span>
-                        Layout
+                        Content
                     </span>
                 </li></ol></div><!-- END OF .column shrink -->
 </div><!-- END OF .row align-center hide-for-medium -->   
@@ -75,12 +75,12 @@ Create New Page
                     Navigation
                 </span>
             </li>
-            <li class="is-current" data-step="">
+            <li class="is-complete" data-step="">
                 <span>
                     Layout
                 </span>
             </li>
-            <li class="" data-step="">
+            <li class="is-current" data-step="">
                 <span>
                     Content
                 </span>

@@ -55,8 +55,7 @@ class PageController extends Controller
         $collection = $collection->toJson();
         $collection = str_replace("columns", "cols", $collection);
 
-        // TODO WEITERMAChEN
-        return view("backend.pages.step3")->withPage($page)->withRows($collection);
+        return view("backend.pages.step4")->withPage($page)->withRows($collection);
     }
 
     public function getLayout(Page $page)

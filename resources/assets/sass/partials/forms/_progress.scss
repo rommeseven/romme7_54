@@ -64,14 +64,8 @@ $progress-indicator-width: 100%;
       display: none;
     }
 
-    &.extra {
-      @include breakpoint(small only) {
-        display: none;
-      }
-    }
-
     &.is-complete {
-      @include breakpoint(small only) {
+      @include breakpoint(medium down) {
         display: none;
       }
 

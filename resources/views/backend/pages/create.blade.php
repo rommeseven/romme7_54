@@ -39,6 +39,14 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
+<div class="row align-center hide-for-medium">
+    <div class="column shrink">            <ol class="progress-indicator ">
+                <li class="is-current" data-step="">
+                    <span>
+                        Title & Url
+                    </span>
+                </li></ol></div><!-- END OF .column shrink -->
+</div><!-- END OF .row align-center hide-for-medium -->    
     <div class="row align-center show-for-medium">
         <div class="column shrink">
             <ol class="progress-indicator ">
