@@ -190,10 +190,10 @@ let app = new Vue(
 @endpush
 
 @push('extracss')
-ul
-{
-        list-style-type: none;
-}
+<style>ul
+    {
+            list-style-type: none;
+    }</style>
 
 @endpush
 
