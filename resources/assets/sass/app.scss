@@ -104,3 +104,25 @@ $global-flexbox: true !global;
  
   }
 }
+
+.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle) > a::after {
+  width: 0;
+  height: 0;
+
+  /* content: ''; */
+  font-family: FontAwesome;
+  content: '\F078';
+  font-size: 0.95em;
+  border-color: #5364C3 transparent transparent;
+  position: absolute;
+  top: 30%;
+  border: 0;
+  margin-right: 5px;
+  right: 1rem;
+}
+
+.accordion-menu .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+  content: '\F077' !important;
+  -webkit-transform: inherit !important;
+  transform: inherit !important;
+}
