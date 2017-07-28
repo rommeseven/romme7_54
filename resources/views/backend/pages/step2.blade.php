@@ -189,6 +189,14 @@ let app = new Vue(
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 @endpush
 
+@push('extracss')
+ul
+{
+        list-style-type: none;
+}
+
+@endpush
+
 
 @push('extrajs')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js">
