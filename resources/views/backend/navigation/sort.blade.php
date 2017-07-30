@@ -103,10 +103,7 @@ Create New Page
 {
     list-style-type: none !important;
 }
-    .topcontent
-{
-padding-top:24px;
-}
+
 </style>
 @push('extrajs')
 <script>

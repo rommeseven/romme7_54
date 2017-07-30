@@ -88,6 +88,7 @@ $global-flexbox: true !global;
 @include ffab-everything;
 
 @import "fa-checkboxes/fa-checkboxes";
+@import "grideditor";
 @import "partials/general";
 @import "partials/header";
 @import "partials/topcontent";
