@@ -51,9 +51,11 @@ class PageController extends Controller
             dd($page);
 // TODO: ERROR MSG
         }
-        $collection = collect($page->load("rows.columns")->toArray());
+        $init       = $page->load("rows.columns")->rows;
+        $collection = collect($init->toArray());
         $collection = $collection->toJson();
         $collection = str_replace("columns", "cols", $collection);
+// dd($collection);
 
         return view("backend.pages.step4")->withPage($page)->withRows($collection);
     }
@@ -279,6 +281,14 @@ class PageController extends Controller
         }
         Session::flash("success", "Page successfully added to the navigation. Proceed to the next step.");
         return redirect()->route("pageeditor.step3", $toBePublished->id);
+    }
+
+    public function putContent(Column $col,Request $request)
+    {
+        // TODO: sanitize html @internet
+        $col->html = $request->input("html");
+        $col->save();
+        return array('message' => "success");
     }
 
     public function putNavigation(Request $request)

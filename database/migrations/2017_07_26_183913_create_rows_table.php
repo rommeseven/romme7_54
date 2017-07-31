@@ -27,14 +27,12 @@ class CreateRowsTable extends Migration
         {
             $table->increments('id');
             $table->string("align")->default("spaced");
-            $table->integer('layout_template_id')->unsigned();
+            $table->integer('layout_template_id')->unsigned()->nullable();
             $table->foreign('layout_template_id')
-                  ->references('id')->on('layout_templates')
-                  ->onDelete('cascade');
+                  ->references('id')->on('layout_templates');
             $table->integer('page_id')->unsigned()->nullable();
             $table->foreign('page_id')
-                  ->references('id')->on('pages')
-                  ->onDelete('cascade');                  
+                  ->references('id')->on('pages');                  
             $table->timestamps();
         });
     }

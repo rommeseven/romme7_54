@@ -3295,6 +3295,28 @@ select[multiple] {
   color: #0a0a0a;
 }
 
+.button.incomplete {
+  background-color: #BDBDBD;
+  color: #0a0a0a;
+}
+
+.button.incomplete:hover,
+.button.incomplete:focus {
+  background-color: #979797;
+  color: #0a0a0a;
+}
+
+.button.current {
+  background-color: #9fa8dd;
+  color: #0a0a0a;
+}
+
+.button.current:hover,
+.button.current:focus {
+  background-color: #6675ca;
+  color: #0a0a0a;
+}
+
 .button.purple {
   background-color: #731963;
   color: #EDFFEC;
@@ -3416,6 +3438,38 @@ select[multiple] {
 .button[disabled].lightblue:hover,
 .button[disabled].lightblue:focus {
   background-color: #BBCBC9;
+  color: #0a0a0a;
+}
+
+.button.disabled.incomplete,
+.button[disabled].incomplete {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.button.disabled.incomplete,
+.button.disabled.incomplete:hover,
+.button.disabled.incomplete:focus,
+.button[disabled].incomplete,
+.button[disabled].incomplete:hover,
+.button[disabled].incomplete:focus {
+  background-color: #BDBDBD;
+  color: #0a0a0a;
+}
+
+.button.disabled.current,
+.button[disabled].current {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.button.disabled.current,
+.button.disabled.current:hover,
+.button.disabled.current:focus,
+.button[disabled].current,
+.button[disabled].current:hover,
+.button[disabled].current:focus {
+  background-color: #9fa8dd;
   color: #0a0a0a;
 }
 
@@ -3591,6 +3645,44 @@ select[multiple] {
 .button.hollow.lightblue:focus[disabled] {
   border: 1px solid #BBCBC9;
   color: #BBCBC9;
+}
+
+.button.hollow.incomplete {
+  border: 1px solid #BDBDBD;
+  color: #BDBDBD;
+}
+
+.button.hollow.incomplete:hover,
+.button.hollow.incomplete:focus {
+  border-color: #5f5e5e;
+  color: #5f5e5e;
+}
+
+.button.hollow.incomplete:hover.disabled,
+.button.hollow.incomplete:hover[disabled],
+.button.hollow.incomplete:focus.disabled,
+.button.hollow.incomplete:focus[disabled] {
+  border: 1px solid #BDBDBD;
+  color: #BDBDBD;
+}
+
+.button.hollow.current {
+  border: 1px solid #9fa8dd;
+  color: #9fa8dd;
+}
+
+.button.hollow.current:hover,
+.button.hollow.current:focus {
+  border-color: #313f8d;
+  color: #313f8d;
+}
+
+.button.hollow.current:hover.disabled,
+.button.hollow.current:hover[disabled],
+.button.hollow.current:focus.disabled,
+.button.hollow.current:focus[disabled] {
+  border: 1px solid #9fa8dd;
+  color: #9fa8dd;
 }
 
 .button.hollow.purple {
@@ -3839,6 +3931,68 @@ select[multiple] {
   border-color: transparent;
 }
 
+.button.clear.incomplete {
+  border: 1px solid #BDBDBD;
+  color: #BDBDBD;
+}
+
+.button.clear.incomplete:hover,
+.button.clear.incomplete:focus {
+  border-color: #5f5e5e;
+  color: #5f5e5e;
+}
+
+.button.clear.incomplete:hover.disabled,
+.button.clear.incomplete:hover[disabled],
+.button.clear.incomplete:focus.disabled,
+.button.clear.incomplete:focus[disabled] {
+  border: 1px solid #BDBDBD;
+  color: #BDBDBD;
+}
+
+.button.clear.incomplete,
+.button.clear.incomplete.disabled,
+.button.clear.incomplete[disabled],
+.button.clear.incomplete:hover,
+.button.clear.incomplete:hover.disabled,
+.button.clear.incomplete:hover[disabled],
+.button.clear.incomplete:focus,
+.button.clear.incomplete:focus.disabled,
+.button.clear.incomplete:focus[disabled] {
+  border-color: transparent;
+}
+
+.button.clear.current {
+  border: 1px solid #9fa8dd;
+  color: #9fa8dd;
+}
+
+.button.clear.current:hover,
+.button.clear.current:focus {
+  border-color: #313f8d;
+  color: #313f8d;
+}
+
+.button.clear.current:hover.disabled,
+.button.clear.current:hover[disabled],
+.button.clear.current:focus.disabled,
+.button.clear.current:focus[disabled] {
+  border: 1px solid #9fa8dd;
+  color: #9fa8dd;
+}
+
+.button.clear.current,
+.button.clear.current.disabled,
+.button.clear.current[disabled],
+.button.clear.current:hover,
+.button.clear.current:hover.disabled,
+.button.clear.current:hover[disabled],
+.button.clear.current:focus,
+.button.clear.current:focus.disabled,
+.button.clear.current:focus[disabled] {
+  border-color: transparent;
+}
+
 .button.clear.purple {
   border: 1px solid #731963;
   color: #731963;
@@ -3997,6 +4151,14 @@ select[multiple] {
 
 .button.dropdown.hollow.lightblue::after {
   border-top-color: #BBCBC9;
+}
+
+.button.dropdown.hollow.incomplete::after {
+  border-top-color: #BDBDBD;
+}
+
+.button.dropdown.hollow.current::after {
+  border-top-color: #9fa8dd;
 }
 
 .button.dropdown.hollow.purple::after {
@@ -4225,6 +4387,16 @@ select[multiple] {
   color: #0a0a0a;
 }
 
+.badge.incomplete {
+  background: #BDBDBD;
+  color: #0a0a0a;
+}
+
+.badge.current {
+  background: #9fa8dd;
+  color: #0a0a0a;
+}
+
 .badge.purple {
   background: #731963;
   color: #EDFFEC;
@@ -4397,6 +4569,28 @@ select[multiple] {
   color: #0a0a0a;
 }
 
+.button-group.incomplete .button {
+  background-color: #BDBDBD;
+  color: #0a0a0a;
+}
+
+.button-group.incomplete .button:hover,
+.button-group.incomplete .button:focus {
+  background-color: #979797;
+  color: #0a0a0a;
+}
+
+.button-group.current .button {
+  background-color: #9fa8dd;
+  color: #0a0a0a;
+}
+
+.button-group.current .button:hover,
+.button-group.current .button:focus {
+  background-color: #6675ca;
+  color: #0a0a0a;
+}
+
 .button-group.purple .button {
   background-color: #731963;
   color: #EDFFEC;
@@ -4526,6 +4720,16 @@ select[multiple] {
 
 .callout.lightblue {
   background-color: #f5f7f7;
+  color: #0a0a0a;
+}
+
+.callout.incomplete {
+  background-color: whitesmoke;
+  color: #0a0a0a;
+}
+
+.callout.current {
+  background-color: #f1f2fa;
   color: #0a0a0a;
 }
 
@@ -5557,6 +5761,16 @@ select[multiple] {
   color: #0a0a0a;
 }
 
+.label.incomplete {
+  background: #BDBDBD;
+  color: #0a0a0a;
+}
+
+.label.current {
+  background: #9fa8dd;
+  color: #0a0a0a;
+}
+
 .label.purple {
   background: #731963;
   color: #EDFFEC;
@@ -6370,6 +6584,14 @@ select[multiple] {
 
 .progress.lightblue .progress-meter {
   background-color: #BBCBC9;
+}
+
+.progress.incomplete .progress-meter {
+  background-color: #BDBDBD;
+}
+
+.progress.current .progress-meter {
+  background-color: #9fa8dd;
 }
 
 .progress.purple .progress-meter {
@@ -12503,6 +12725,7 @@ li.menu-highlight {
 }
 
 #editor .row:not(.editor-ignore) {
+  cursor: pointer;
   padding-top: 15px;
   padding-bottom: 15px;
   background: #21295C;
@@ -12577,6 +12800,39 @@ li.menu-highlight {
   display: inline;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+}
+
+#editor.forcontent {
+  border-top: none;
+  border-bottom: none;
+}
+
+#editor.forcontent .row {
+  background: #EDFFEC;
+  cursor: default;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#editor.forcontent .row .column,
+#editor.forcontent .row .columns {
+  min-height: 69px;
+  background: #BDBDBD;
+}
+
+#editor.forcontent .row .column.completed,
+#editor.forcontent .row .completed.columns {
+  background: #5364C3;
+}
+
+#editor.forcontent .row .column.active,
+#editor.forcontent .row .active.columns {
+  background: #9fa8dd;
+}
+
+#editor.forcontent .row .column.active:hover,
+#editor.forcontent .row .active.columns:hover {
+  border: solid 2px #E5F040;
 }
 
 /* 515990 */

@@ -26,6 +26,7 @@
   // overflow: hidden;
 
   .row:not(.editor-ignore) {
+    cursor: pointer;
     padding-top: 15px;
     padding-bottom: 15px;
     background: get-color(logoblue);
@@ -94,6 +95,35 @@
 
       // display: none;
       transition: 0.2s;
+    }
+  }
+
+  &.forcontent {
+    border-top: none;
+    border-bottom: none;
+
+    .row {
+      background: $white;
+      cursor: default;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .column {
+        min-height: 69px;
+        background: $light-gray;
+
+        &.completed {
+          background: $primary-color;
+        }
+
+        &.active {
+          background: lighten($primary-color, 20%);
+
+          &:hover {
+            border: solid 2px #E5F040;
+          }
+        }
+      }
     }
   }
 }

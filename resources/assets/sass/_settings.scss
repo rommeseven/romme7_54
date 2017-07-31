@@ -68,9 +68,9 @@
 $global-font-size: 100%;
 $global-width: 100%;
 $global-lineheight: 1.5;
-$foundation-palette: (primary: #5364C3, secondary: #767676, logoblue: #21295C, lightblue: #BBCBC9, purple: #731963, success: #3adb76, warning: #CCA43B, alert: #9B1D20);
-
 $light-gray: #BDBDBD;
+$foundation-palette: (primary: #5364C3, secondary: #767676, logoblue: #21295C, lightblue: #BBCBC9, incomplete: $light-gray, current: lighten(#5364C3, 20%), purple: #731963, success: #3adb76, warning: #CCA43B, alert: #9B1D20);
+
 $medium-gray: #527D99;
 $dark-gray: #375366;
 $black: #0a0a0a;

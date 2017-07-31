@@ -6,11 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "edvinaskrucas/settings": "2.0.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "santigarcor/laratrust": "4.0.*",
         "nicolaslopezj/searchable": "1.*",
-        "edvinaskrucas/settings": "2.0.0"
+        "santigarcor/laratrust": "4.0.*",
+        "unisharp/laravel-fileapi": "^1.0",
+        "unisharp/laravel-filemanager": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

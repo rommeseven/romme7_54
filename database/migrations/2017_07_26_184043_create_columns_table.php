@@ -26,6 +26,7 @@ class CreateColumnsTable extends Migration
         Schema::create('columns', function (Blueprint $table)
         {
             $table->increments('id');
+            $table->text("html")->nullable();
             $table->string("size")->default("auto");
             $table->string("small")->nullable();
             $table->string("medium")->nullable();

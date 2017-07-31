@@ -1,6 +1,6 @@
 {{-- 
 
-TODO: add url
+WTODO: add url
  --}}
 <ul id="sortable" class="sortable menu vertical menu-ul">
     @foreach($pages as $item)

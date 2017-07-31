@@ -65,6 +65,7 @@ Route::prefix('manage')->group(function ()
                 Route::get('/3/page/{page}', 'PageController@getLayout')->name("pageeditor.step3");
 
                 Route::post('/4/page/{page}', 'PageController@postContent');
+                Route::put('/4/column/{col}', 'PageController@putContent');
                 Route::get('/4/page/{page}', 'PageController@getContent')->name("pageeditor.step4");                
             });
         });

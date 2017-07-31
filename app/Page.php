@@ -40,7 +40,7 @@ class Page extends Model
      */
     public function rows()
     {
-        return $this->hasMany('App\Row', 'layout_template_id', 'id');
+        return $this->hasMany('App\Row');
     }
 
     /**

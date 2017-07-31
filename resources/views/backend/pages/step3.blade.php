@@ -242,7 +242,7 @@ Create New Page
 
 @push('extrajs')
     <script>
-        @include("backend.pages.editor.colComponent")
+@include("backend.pages.editor.colComponent")
 @include("backend.pages.editor.rowComponent")
 @include("backend.pages.editor.layoutComponent")
 
@@ -328,7 +328,7 @@ let app = new Vue(
         },
         saveLayout()
         {
-                this.saving = 'layout';
+            this.saving = 'layout';
             if(this.save())
             {
                 if(this.layoutname == '') 
@@ -378,3 +378,4 @@ let app = new Vue(
     @endpush
 
 
+{{-- TODO: Only update on save press --}}
