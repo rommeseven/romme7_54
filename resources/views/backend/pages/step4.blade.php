@@ -173,14 +173,18 @@ let app = new Vue(
         current:-1,
         currenthtml:'',
         result:'',
-        firstsave:true
+        firstsave:true,
+        needtosave:false
     },
     methods:
     {
         chose(colid)
         {
-            if(this.current != -1) this.saveme();
-            
+            if(this.needtosave)
+            {
+                notify("warning","Save your Work!","Click the save button, before going on to an another column!",'save',12000);
+                return false;
+            }
             for (var i = this.rows.length - 1; i >= 0; i--) {
                 for (var j = this.rows[i].cols.length - 1; j >= 0; j--) {
                     let col = this.rows[i].cols[j];
@@ -242,7 +246,7 @@ $('html, body').animate({
             {
                 if(!redirect)
                 {
-
+                    app.needtosave=false;
                     if(firstsave)
                     {
                         setTimeout(function()
@@ -264,6 +268,7 @@ $('html, body').animate({
         update(content)
         {
             this.currenthtml = content;
+            this.needtosave = true;
         }
     },
     mounted()

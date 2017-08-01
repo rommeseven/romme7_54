@@ -276,6 +276,8 @@ hideDuration: 200,
         }); 
     
 }
+
+
 function notify(style, title, text, givenicon = 'default',time=0)
 {
     let icon = '';
