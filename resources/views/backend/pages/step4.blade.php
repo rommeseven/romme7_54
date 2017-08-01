@@ -179,6 +179,8 @@ let app = new Vue(
     {
         chose(colid)
         {
+            if(this.current != -1) this.saveme();
+            
             for (var i = this.rows.length - 1; i >= 0; i--) {
                 for (var j = this.rows[i].cols.length - 1; j >= 0; j--) {
                     let col = this.rows[i].cols[j];
