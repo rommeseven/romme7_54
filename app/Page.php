@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
+    // TODO: pages searchable
+    protected $fillable=['title','url','slug','parent_id','display_order','published','step'];
+
     /**
      * children relationship
      * @author Takács László

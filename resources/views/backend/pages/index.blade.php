@@ -3,7 +3,7 @@
 @extends('backend.layouts.main')
 
 @push('title')
-All Users
+All Pages
 @endpush
 
 @push('bread')
@@ -12,7 +12,7 @@ All Users
 
 
 @push('bread')
-<li>Users</li>
+<li>Pages</li>
 @endpush
 
 
@@ -20,7 +20,7 @@ All Users
 <div class="row align-justify">
     <div class="small-12 medium-expand columns">
         <h3>
-            {{ $searched or 'All Registered Users:' }}
+            {{ $searched or 'All Pages:' }}
         </h3>
     </div>
     <!-- END OF .small-12 large-stack columns -->
@@ -31,16 +31,16 @@ All Users
             @if(isset($searched))
  Another 
 @endif
-User
+Page
         </a>
 
         @if(isset($searched))
-        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/users') }}">
-            All Users
+        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/pages') }}">
+            All Pages
         </a>
         @else
-        <a class="button responsive_button fabu fa-plus cover" href="{{ url('manage/users/create') }}">
-            Add New User
+        <a class="button responsive_button fabu fa-plus cover" href="{{ url('manage/pages/create') }}">
+            Create New Page
         </a>
         @endif        
     </div>
@@ -49,12 +49,12 @@ User
 <!-- END OF .row -->
 <div class="row align-center hiddenPanel" data-animate="hinge-in-from-top hinge-out-from-top" data-toggler="" id="search_panel">
     <div class="column small-12 medium-9 large-7 columns">
-        <form action="{{ url('/manage/users/find') }}" method="POST">
+        <form action="{{ url('/manage/pages/find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
-                Find User:
+                Find Page:
                 <div class="input-group">
-                    <input id="search" name="search" placeholder="Username..." type="text"/>
+                    <input id="search" name="search" placeholder="Page title, content..." type="text"/>
                     <div class="input-group-button">
                         <button class="button button-icon purple">
                             <i class="fa fa-search">
@@ -75,7 +75,7 @@ User
 <!-- END OF .row align-center -->
 <div class="row align-center hide-for-large">
     <div class="column shrink">
-        {!! $users->render() !!}
+        {!! $pages->render() !!}
     </div>
     <!-- END OF .column shrink -->
 </div>
@@ -106,19 +106,19 @@ User
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($pages as $page)
                 <tr>
                     <td>
                         <span class="hide-for-large">
-                            User#
+                            Page#
                         </span>
-                        {{$user->id }}
+                        {{$page->id }}
                     </td>
                     <td>
-                        {{$user->name }}
+                        {{$page->name }}
                     </td>
                     <td>
-                        {{$user->email }}
+                        {{$page->url }}
                     </td>
                     <td>
                         <span class="hide-for-large">

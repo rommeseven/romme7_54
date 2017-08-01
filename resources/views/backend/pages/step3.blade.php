@@ -106,58 +106,80 @@ Create New Page
 {{-- TODO: callout info sort to proceed --}}
 <!-- END OF .row align-center -->
 <!-- END OF .row -->
-<form action="{{ url('manage/layout') }}" id="navi" method="POST">
-    {{csrf_field()}}
-    <div class="row">
-        <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-            <div :class="{radio:true,success:!nothing,alert:nothing}">
-                <input id="c1" name="layout_choice" type="radio" v-model="layout_choice" value="template">
-                    <label for="c1">
-                        Choose from Templates
-                    </label>
-                    <br/>
-                </input>
-            </div>
-            <!-- END OF .radio primary -->
-            <div :class="{radio:true, success:templated, primary:!templated}">
-                <input id="c2" name="layout_choice" type="radio" v-model="layout_choice" value="create">
-                    <label for="c2">
-                        Create new from
-                        <span v-show="!templated">
-                            Scratch
-                        </span>
-                        <span v-show="templated">
-                            a Template
-                        </span>
-                    </label>
-                    <br/>
-                    <br/>
-                </input>
-            </div>
+<div class="row">
+    <div class="column small-12 medium-7 medium-offset-1 large-6 large-offset-0">
+        <div :class="{checkbox:true,primary:true}">
+            <input id="c0" name="c0" type="checkbox" v-model="nocontent" value="true">
+                <label for="c0">
+                    This page redirects to an other
+                </label>
+                <br/>
+            </input>
         </div>
-        <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-    </div>
-</form>
-<!-- END OF .row -->
-<div class="row" v-show="nothing && layout_choice=='template'">
-    <div class="column small-12 medium-expand shrink">
-        <div class="callout alert">
-            <p>
-                <h4>
-                    No Templates
-                </h4>
-                <p>
-                    Currently there are no saved templates
-                </p>
-                <a @click.prevent="layout_choice='create'">
-                    Create Your Own
-                </a>
-            </p>
-        </div>
-        <!-- EN D OF .callout alert -->
+        <br />
+        <div v-show="nocontent"><label for="url">Url:<input name="url" id="url" type="text" placeholder="http://google.com" v-model="url"/></label></div>
+        <div class="row" v-show="nocontent">                <div class="column small-12 medium-7 large-expand">
+                    <button @click="savePage()" class="button primary fabu fa-arrow-right">
+                        Save & Next Step
+                    </button>
+                </div></div><!-- END OF .row -->
     </div>
 </div>
-<div class="row small-up-2 medium-up-3 large-up-4" v-if="layout_choice=='template'">
+<div v-show="!nocontent">
+    
+    <form action="{{ url('manage/layout') }}" id="navi" method="POST">
+        {{csrf_field()}}
+        <div class="row">
+            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                <div :class="{radio:true,success:!nothing,alert:nothing}">
+                    <input id="c1" name="layout_choice" type="radio" @click="scrollc1()" v-model="layout_choice" value="template">
+                        <label for="c1">
+                            Choose from Templates
+                        </label>
+                        <br/>
+                    </input>
+                </div>
+                <!-- END OF .radio primary -->
+                <div :class="{radio:true, success:templated, primary:!templated}">
+                    <input id="c2" name="layout_choice" type="radio" v-model="layout_choice" value="create">
+                        <label for="c2">
+                            Create new from
+                            <span v-show="!templated">
+                                Scratch
+                            </span>
+                            <span v-show="templated">
+                                a Template
+                            </span>
+                        </label>
+                        <br/>
+                        <br/>
+                    </input>
+                </div>
+            </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>
+    </form>
+    <!-- END OF .row -->
+    <div class="row" v-show="nothing && layout_choice=='template'">
+        <div class="column small-12 medium-expand shrink">
+            <div class="callout alert">
+                <p>
+                    <h4>
+                        No Templates
+                    </h4>
+                    <p>
+                        Currently there are no saved templates
+                    </p>
+                    <a @click.prevent="layout_choice='create'">
+                        Create Your Own
+                    </a>
+                </p>
+            </div>
+            <!-- EN D OF .callout alert -->
+        </div>
+    </div>
+</div>
+<div class="row small-up-2 medium-up-3 large-up-4" v-if="layout_choice=='template' && !nocontent">
     <!-- END OF .column small-12 medium-expand shrink -->
     <div class="column" v-for="(layout,index) in layouts">
         <editorlayout :created_at="layout.created_at" :name="layout.name" :rows="layout.rows" @choose="chosen(index)">
@@ -169,7 +191,7 @@ Create New Page
     @endpush
 @push('bottomcontent')
     <transition name="fade">
-        <div id="editor" v-show="layout_choice=='create'">
+        <div id="editor" v-show="layout_choice=='create' && !nocontent">
             <editorrow :align="row.align" :cols="row.cols" :key="row.id" :preview="preview" @calign="calign(index,$event)" @ccols="ccols(index,$event)" @nocol="delrow(index)" v-for="(row,index) in rows">
             </editorrow>
             <!-- END OF .row align-spaced -->
@@ -187,14 +209,14 @@ Create New Page
         </div>
     </transition>
     <br/>
-    <div class="row">
+    <div class="row" v-show="!nocontent">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
             {{--
             <input class="button" type="submit" value="Add User"/>
             --}}
             <div class="row align-left align-middle">
                 <div class="column shrink" v-show="layout_choice=='create'">
-                    <button class="button cover success small fabu fa-save" data-toggle="layoutnamer" type="button">
+                    <button id="layoutsavebtn" class="button cover success small fabu fa-save" data-toggle="layoutnamer" type="button">
                         Save Layout as Template
                     </button>
                     <div class="dropdown-pane" data-auto-focus="true" data-dropdown="" id="layoutnamer">
@@ -260,13 +282,29 @@ let app = new Vue(
         serial: 'serialstr',
         layoutname:'',
         layoutname2:'',
-        saving: ''
+        saving: '',
+        nocontent:false,
+        url:''
     },
     watch:
     {
         rows()
         {
             if(this.rows.length<1) this.templated = false;
+        },
+        nocontent()
+        {
+            $("div.notifyjs-metro-base.notifyjs-metro-white").parent().parent().trigger("click");
+            if(this.nocontent)
+            {
+                tut("Redirect Page","This page redirects every visitor to the given url.","none","white","arrow-right");
+
+            }
+            else
+            {
+                tut("Step 3: Layout","Create Columns that will display your content later!","none","white","th-large");
+            }
+
         }
     },
     computed:
@@ -317,6 +355,10 @@ let app = new Vue(
         delrow(row)
         {
             this.rows.splice(this.rows.indexOf(row));
+            $('html, body').animate({
+                    scrollTop: $("#layoutsavebtn").offset().top
+                }, 1000);   
+            
         },
         editColumn()
         {
@@ -333,7 +375,7 @@ let app = new Vue(
             {
                 if(this.layoutname == '') 
                 {
-                    alert("noname");
+                    err("The layout must have a name!");
 
                     return false;
                 }
@@ -346,7 +388,13 @@ let app = new Vue(
         },
         savePage()
         {
-            this.saving = "page";
+            if(this.nocontent)
+            {
+
+             this.saving = "url";
+             this.serial = this.url;
+            }
+            else this.saving = "page";
             if(this.save())
             {
                 setTimeout(function()
@@ -360,8 +408,14 @@ let app = new Vue(
             let temporary = this.layouts[row].rows.slice(0);
             this.rows = temporary;
             this.templated=true;
-
             this.layout_choice = 'create';
+            setTimeout(function()
+                {
+                       $('html, body').animate({
+                    scrollTop: $("#editor").offset().top
+                }, 1000);   
+                }, 100);
+               
 
         },
         calign(row,e)
@@ -371,11 +425,28 @@ let app = new Vue(
         ccols(row,e)
         {
             this.rows[row].cols = e;
+        },
+        scrollc1()
+        {
+                        setTimeout(function()
+                {
+                       $('html, body').animate({
+                    scrollTop: $("#c1").offset().top
+                }, 1400);   
+                }, 100);
         }
     }
 });
     </script>
     @endpush
+
+
+@push('extrajs')
+<script>$(function()
+    {
+        tut("Step 3: Layout","Create Columns that will display your content later!","white","th-large");
+    });</script>
+@endpush
 
 
 {{-- TODO: Only update on save press --}}

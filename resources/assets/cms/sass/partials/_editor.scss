@@ -27,12 +27,12 @@
 
   .row:not(.editor-ignore) {
     cursor: pointer;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background: get-color(logoblue);
 
     .column:not(.editor-ignore) {
-      min-height: 110px;
+      min-height: 70px;
       text-align: center;
       border: dashed 2px $black;
       background: $light-gray;

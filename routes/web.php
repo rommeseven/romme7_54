@@ -55,6 +55,7 @@ Route::prefix('manage')->group(function ()
     Route::prefix('pages')->group(function ()
     {
 
+        Route::get('/{page}/preview', 'PageController@getPreview');
         Route::prefix('create')->group(function ()
         {
             Route::prefix('step')->group(function ()

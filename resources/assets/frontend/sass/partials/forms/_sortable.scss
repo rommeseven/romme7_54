@@ -1,0 +1,12 @@
+li.menu-highlight {
+  border: 1px solid $primary-color !important;
+  background: lighten($primary-color, 20%);
+}
+
+.menucard-light {
+  background-color: lighten($primary-color, 20%);
+}
+
+.card-divider.menucard {
+  background-color: $primary-color;
+}

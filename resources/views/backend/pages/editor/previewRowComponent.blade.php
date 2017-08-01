@@ -1,11 +1,11 @@
-Vue.component('reviewrow',
+Vue.component('previewrow',
 {
-    props: ["align", "cols","me","current"],
+    props: ["align", "cols"],
     // components:{reviewcol},
     template: `
 <div :class="MyClassObject">
-    <reviewcol :key="column.id" :html="column.html" :me="column.id" :small="column.small" :medium="column.medium" :large="column.large" :offset="column.offset" :current="current" @choseMe="choseCol(column.id)" :size="column.size" :valign="column.valign" v-for="(column,index) in cols"  >
-    </reviewcol>
+    <previewcol :key="column.id" :html="column.html" :me="column.id" :small="column.small" :medium="column.medium" :large="column.large" :offset="column.offset" :size="column.size" :valign="column.valign" v-for="(column,index) in cols"  >
+    </previewcol>
 </div>
     `,
     data()
@@ -26,18 +26,6 @@ Vue.component('reviewrow',
                 'align-spaced': this.align == 'spaced',
                 'row': true
             }
-        }
-    },
-    mounted()
-    {
-      
-    },
-    methods:
-    {
-        choseCol(col)
-        {
-
-            this.$emit("chose",col);
         }
     }
 });

@@ -90,12 +90,20 @@ class PageController extends Controller
     {
         if (!Page::nav()->count())
         {
-            Session::flash("error", "There are no pages. Create one first!");
-
+            Session::flash("warning", "You must create and publish a page to edit the navigation");
+            Session::flash("warning_autohide", "4500");
+            Session::flash("error", "There are no pages published!");
+            Session::flash("error_autohide", "4500");
             return redirect('/manage/pages/create');
         }
         $pages = Page::nav()->get();
         return view("backend.navigation.sort")->withPages($pages);
+    }
+
+    public function getPreview(Page $page)
+    {
+        $init       = $page->load("rows.columns")->rows;
+        return view("frontend/preview")->withPage($page)->withRows($init);
     }
 
     /**
@@ -105,7 +113,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::orderBy("published", "asc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->get();
     }
 
     /**
@@ -120,11 +128,26 @@ class PageController extends Controller
             $page->step      = 3;
             $page->published = false;
             $page->save();
+
+            if (Session::has("success"))
+            {
+                Session::keep(array('success', 'success_autohide'));
+            }
+            Session::flash("info_flash_title", "Skipping Step 2");
+            Session::flash("info", "There are no other pages at the moment.");
+            Session::flash("info_flash_icon", "angle-double-right");
+            Session::flash("info_autohide", "3500");
+
             return redirect('/manage/pages/create/step/3/page/'.$page->id);
         }
         elseif ($page->published)
         {
-            return redirect('/manage/pages/create/step/3/page/'.$page->id);
+            Session::flash("info_flash_title", "Page already published");
+            Session::flash("info", "You can change the navigation on this page");
+            Session::flash("info_flash_icon", "navicon");
+            Session::flash("info_autohide", "3500");
+
+            return redirect('/manage/navigation');
         }
         else
         {
@@ -165,7 +188,8 @@ class PageController extends Controller
             }
             $page->step = 4;
             $page->save();
-            Session::flash("success", "Page layout has been successfully set! Proceed to the next step.");
+            Session::flash("success", "Page layout has been successfully set!");
+            Session::flash("success_autohide", "4500");
             return redirect('manage/pages/create/step/4/page/'.$page->id);
         }
         else
@@ -193,6 +217,7 @@ class PageController extends Controller
                 }
             }
             Session::flash("success", "Layout Templated created!");
+            Session::flash("success_autohide", "4500");
             return redirect('manage/pages/create/step/3/page/'.$page->id);
         }
     }
@@ -206,7 +231,15 @@ class PageController extends Controller
 
             dd("TODO: GENERAL ERROR");
         }
-
+        if ($request->saving == "url")
+        {
+            $page->url  = $request->input("serial");
+            $page->step = 6;
+            $page->save();
+            Session::flash("success", "Page redirect has been successfully set!");
+            Session::flash("success_autohide", "4500");
+            return redirect('manage/pages/create/step/6/page/'.$page->id);
+        }
         $object = json_decode($request->serial, true);
         if ($request->saving == "page")
         {
@@ -229,7 +262,8 @@ class PageController extends Controller
             }
             $page->step = 4;
             $page->save();
-            Session::flash("success", "Page layout has been successfully set! Proceed to the next step.");
+            Session::flash("success", "Page layout has been successfully set!");
+            Session::flash("success_autohide", "4500");
             return redirect('manage/pages/create/step/4/page/'.$page->id);
         }
         else
@@ -257,6 +291,7 @@ class PageController extends Controller
                 }
             }
             Session::flash("success", "Layout Templated created!");
+            Session::flash("success_autohide", "4500");
             return redirect('manage/pages/create/step/3/page/'.$page->id);
         }
     }
@@ -279,11 +314,12 @@ class PageController extends Controller
             $page->save();
             $sort++;
         }
-        Session::flash("success", "Page successfully added to the navigation. Proceed to the next step.");
+        Session::flash("success", "Page successfully added to the navigation.");
+        Session::flash("success_autohide", "4500");
         return redirect()->route("pageeditor.step3", $toBePublished->id);
     }
 
-    public function putContent(Column $col,Request $request)
+    public function putContent(Column $col, Request $request)
     {
         // TODO: sanitize html @internet
         $col->html = $request->input("html");
@@ -306,6 +342,7 @@ class PageController extends Controller
             $sort++;
         }
         Session::flash("success", "Your changes have been saved!");
+        Session::flash("success_autohide", "4500");
         return redirect("manage/navigation");
     }
 
@@ -328,19 +365,23 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-
+// TODO: slug validation @internet
         $this->validate($request, array(
             'title' => 'required|min:2|max:255',
+            'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
         ));
-        $p        = new Page();
-        $p->title = $request->input('title');
+        $p = new Page(array(
+            'title' => $request->input('title'),
+            'slug'  => $request->input('slug'),
+        ));
         if (!Page::nav()->count())
         {
-            $p->published = "true";
-            $p->step      = 2;
+            $p->step = 2;
         }
+
         $p->save();
-        Session::flash("success", "Page successfully created. Proceed to the next step");
+        Session::flash("success", "Page successfully created.");
+        Session::flash("success_autohide", "4500");
         return redirect('/manage/pages/create/step/2/page/'.$p->id);
     }
 

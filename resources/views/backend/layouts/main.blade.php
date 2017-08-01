@@ -21,31 +21,46 @@
                     Menu
                 </div>
             </div>
-            <ul class="horizontal menu show-for-large dropdown topnavigation" style="margin-right:15px;" data-dropdown-menu="" data-closing-time="1500" data-disable-hover="true" data-click-open="true">
-            <li class="notifs_large"><a href="#" class="notifs_large" id="notifications_large_toggler" data-toggle="notifications_large"><i class="fa fa-envelope notifs_large"></i><span class="badge success notifs_large" style="position: absolute; left: 28px; top: 6px;">14</span></a> <div class="dropdown-pane large notifs_large" id="notifications_large" data-dropdown data-hover-pane="false" data-close-on-click="true"  data-v-offset="17" >
-  Just some junk that needs to be said. Or not. Your choice.
-</div>
-            </li>           
+            <ul class="horizontal menu show-for-large dropdown topnavigation" data-click-open="true" data-closing-time="1500" data-disable-hover="true" data-dropdown-menu="" style="margin-right:15px;">
+                <li class="notifs_large">
+                    <a class="notifs_large" data-toggle="notifications_large" href="#" id="notifications_large_toggler">
+                        <i class="fa fa-envelope notifs_large">
+                        </i>
+                        <span class="badge success notifs_large" style="position: absolute; left: 28px; top: 6px;">
+                            14
+                        </span>
+                    </a>
+                    <div class="dropdown-pane large notifs_large" data-close-on-click="true" data-dropdown="" data-hover-pane="false" data-v-offset="17" id="notifications_large">
+                        Just some junk that needs to be said. Or not. Your choice.
+                    </div>
+                </li>
                 <li style="margin-top: 4px;">
                     <a @click.prevent="''">
                         Takács
                     </a>
                     <ul class="menu vertical" style="text-align:right">
-
-                        <li>
-                            <a href="#" >
-                              <i class="fa fa-user"></i>   Profile
-                            </a>
-                        </li>                      
                         <li>
                             <a href="#">
-                            <i class="fa fa-cog"></i>    Account Settings 
+                                <i class="fa fa-user">
+                                </i>
+                                Profile
                             </a>
-                        </li>                    
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cog">
+                                </i>
+                                Account Settings
+                            </a>
+                        </li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                <span>Logout</span> <i class="fa fa-sign-out"></i>
+                                <span>
+                                    Logout
+                                </span>
+                                <i class="fa fa-sign-out">
+                                </i>
                             </a>
                         </li>
                     </ul>
@@ -145,7 +160,6 @@
     </div>
     <!-- END OF .column -->
     <div class="column expanded" style="padding-left:15px;padding-right:15px">
-        @include("backend.layouts.partials.flash")
         <div class="row medium-offset-1">
             <div class="column shrink">
                 <br/>
@@ -180,17 +194,133 @@
 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
-</div><!-- END OF #app2 -->
+</div>
+<!-- END OF #app2 -->
 @stack("outside_app")
-<script src="{{ mix('js/app.js') }}"></script>
-@stack("extrajs")
-<script>
-    // $(".topnavigation").click(function() {
-    //     alert("hi");
-
-    //     $('#notifications_large_toggler').trigger('click');
-    // });
-
+<script src="{{ mix('js/app.js') }}">
 </script>
+<script type="text/javascript">
+    $(function()
+{
+    
+@if(Session::has('info'))
+    notify("info",'{{ Session::get("info_flash_title", function() { return 'Quick Tip:'; }) }}','{{Session::get('info')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}', {{ Session::get("info_autohide",function() { return '0';}) }});
+@endif
+  
+@if(Session::has('warning'))
+    notify("warning",'{{ Session::get("warning_flash_title", function() { return 'Warning:'; }) }}','{{Session::get('warning')}}','{{ Session::get("warning_flash_icon", function() { return 'default'; })   }}', {{ Session::get("warning_autohide",function() { return '0';}) }});
+@endif
+  
+@if(Session::has('success'))
+    notify("success",'{{ Session::get("success_flash_title", function() { return 'Success!'; }) }}','{{Session::get('success')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}', {{ Session::get("success_autohide",function() { return '0';}) }});
+@endif
+
+@if(Session::has('error'))
+    notify("error",'{{ Session::get("error_flash_title", function() { return 'Whoops!'; }) }}','{{Session::get('error')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}', {{ Session::get("error_autohide",function() { return '0';}) }});
+@endif
+
+@if(Session::has('flashinfo'))
+    notify("white",'{{ Session::get("flashinfo_flash_title", function() { return 'Info Box'; }) }}','{{Session::get('flashinfo')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}','{{Session::get('flashinfo')}}','{{ Session::get("flashinfo_flash_icon", function() { return 'default'; })  }}', {{ Session::get("flashinfo_autohide",function() { return '0';}) }});
+@endif
+
+
+@if (count($errors) > 0)
+    notify("warning",'Warning:','You must fix all the errors to proceed.','default', 7000);
+     @foreach ($errors->all() as $error)
+         tut('Error:','{{$error}}',"error");
+      @endforeach  
+@endif
+
+
+});
+function err (error) {
+   notify("error","Error!",error);
+
+}
+function tut (title,text,style="white",givenicon = 'default',time=0) {
+
+
+    var icon = '';
+    
+    if (givenicon == 'default')
+    {
+        
+            icon = '<i class="fa fa-info-circle"></i>';
+        
+    }
+    else
+    {
+        icon = "<i class='fa fa-" + givenicon + "'></i>";
+    }
+
+        $.notify({
+            title: title,
+            text: text,
+            icon: icon
+        },{
+        style: 'metro',
+
+elementPosition: 'bottom right', 
+globalPosition: 'bottom right',         
+        className: style,
+showAnimation: 'slideDown', 
+showDuration: 400, 
+hideAnimation: 'slideUp', 
+        autoHide: (!time) ? false:true,
+        autoHideDelay: (!time) ? 0:time ,
+hideDuration: 200,         
+        clickToHide: true
+        }); 
+    
+}
+function notify(style, title, text, givenicon = 'default',time=0)
+{
+    let icon = '';
+    if (givenicon == 'default')
+    {
+        if (style == "info")
+        {
+            icon = '<i class="fa fa-info"></i>';
+        }
+        if (style == "success")
+        {
+            icon = '<i class="fa fa-check"></i>';
+        }
+        if (style == "white" || style == "black")
+        {
+            icon = '<i class="fa fa-thumbs-up"></i>';
+        }
+        if (style == "error" || style == "warning")
+        {
+            icon = '<i class="fa fa-warning"></i>';
+        }
+    }
+    else
+    {
+        icon = "<i class='fa fa-" + givenicon + "'></i>";
+    }
+    $.notify(
+    {
+        title: title,
+        text: text,
+        icon: icon
+    },
+    {
+        style: 'metro',
+
+elementPosition: 'top center', 
+globalPosition: 'top center',         
+        className: style,
+showAnimation: 'slideDown', 
+showDuration: 400, 
+hideAnimation: 'slideUp', 
+hideDuration: 200,         
+        autoHide: (!time) ? false:true,
+        autoHideDelay: (!time) ? 0:time ,
+        clickToHide: true
+    });
+}
+</script>
+@stack("extrajs")
 </body>
 </html>

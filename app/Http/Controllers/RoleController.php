@@ -66,7 +66,8 @@ class RoleController extends Controller
 
         if (!$roles->count())
         {
-            Session::flash("error", 'Could not find role with data "'.$request->input('search').'". Try again.');
+            Session::flash("error", 'Could not find role with data "'.$request->input('search').'".');
+            Session::flash("error_autohide",4000);
             return redirect('/manage/roles');
         }
         $searched = $roles->count().' User(s) Found:';
@@ -113,6 +114,7 @@ class RoleController extends Controller
         }
 
         Session::flash('success', 'Successfully created the new '.$role->display_name.' role in the database.');
+         Session::flash("success_autohide", "4500");
         return redirect('/manage/roles/'.$role->id);
     }
 
@@ -152,6 +154,7 @@ class RoleController extends Controller
         }
 
         Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');
+         Session::flash("success_autohide", "4500");
         return redirect('/manage/roles/'.$id);
     }
 }

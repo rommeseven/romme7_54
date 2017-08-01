@@ -93,7 +93,7 @@ Create New Page
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="title">
                     Title:
-                    <input  id="title" name="title" placeholder="My Pages Title" type="text" v-model="title"/>
+                    <input  id="title" name="title" placeholder="My Page" type="text" v-model="title"/>
                     @if ($errors->has('title'))
                     <small class="errortext">
                         {{ $errors->first('title') }}
@@ -101,6 +101,25 @@ Create New Page
                     @endif
                     <small class="help-text">
                         This will be shown in the navigation and the title.
+                    </small
+                </label>
+            </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>
+        <div class="row">
+            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                        <br />
+                <label for="slug">
+                    Slug:
+                    <input  id="slug" name="slug" placeholder="my-page" type="text" v-model="slug"/>
+                    @if ($errors->has('slug'))
+                    <small class="errortext">
+                        {{ $errors->first('slug') }}
+                    </small>
+                    @endif
+                    <small class="help-text">
+                        This will be shown part of the url like this. <br />
+                        {{ url('/') }}/@{{slug}}
                     </small>
                 </label>
             </div>
@@ -114,7 +133,7 @@ Create New Page
                 <br/>
                 <div class="row align-center">
                     <div class="column shrink">
-                        <button :disabled=" this.title.length < 2" class="button large expanded fabu fa-arrow-right" type="submit" v-bind:class="classObject">
+                        <button :disabled=" this.title.length < 2 || this.slug.length < 1" class="button large expanded fabu fa-arrow-right" type="submit" v-bind:class="classObject">
                             Save & Next Step
                         </button>
                     </div>
@@ -135,16 +154,27 @@ Create New Page
     let app = new Vue({
         el:'#app',
         data:{
-            title:''
+            title:'',
+            slug:''
         },
         computed: {
   classObject: function () {
     return {
-      'success': this.title.length >= 2,
-      'secondary': this.title.length < 2,
+      'success': this.title.length >= 2 && this.slug.length >= 2,
+      'secondary': !(this.title.length >= 2 && this.slug.length >= 2),
     }
   }
 }
     });
 </script>
+@endpush
+
+
+
+@push('extrajs')
+<script>$(function()
+    {
+        
+        tut("Step 1: General Information","Give your Page a title and an url!","white","file-o");
+    });</script>
 @endpush

@@ -114,12 +114,17 @@ Create New Page
         <div class="callout">
             Fill your Layout with content! <br />
             Click on the column you want to change the contents of. <br />
-<span class="label incomplete">Empty <i class="fa fa-times"></i></span>
-<span class="label primary">Completed <i class="fa fa-check"></i></span>
-<span class="label current">Currently editing <i class="fa fa-pencil"></i></span>
+            <span class="label incomplete">Empty <i class="fa fa-times"></i></span>
+            <span class="label primary">Completed <i class="fa fa-check"></i></span>
+            <span class="label current">Currently editing <i class="fa fa-pencil"></i></span>
         </div><!-- END OF .callout -->
     </div><!-- END OF .column small-offset-1 medium-offset-2 -->
 </div><!-- END OF .row -->
+<div class="row column small-offset-1 medium-offset 2" v-if="result.length>0">
+    <div class="callout success">
+        <p v-text="result"></p>
+    </div><!-- END OF .callout success -->
+</div><!-- END OF .row column small-offset-1 medium-offset 2 -->
 <div class="forcontent" id="editor">
     <reviewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" :me="index" @chose="chose($event)" v-for="(row,index) in rows">
     </reviewrow>
@@ -128,7 +133,7 @@ Create New Page
 <form action="{{ url('manage/content') }}" id="navi" method="POST">
     {{csrf_field()}}
     {{--
-    <layoutpreviewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" v-for="(row,index) in rows">
+    <layouttooiewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" v-for="(row,index) in rows">
     </layoutpreviewrow>
     --}}
 
@@ -149,12 +154,11 @@ Create New Page
         <!-- END OF .column -->
     </div>
 @endpush
-
 @push('extrajs')
 <script src="{{ asset('other/vendor/tinymce/tinymce.min.js') }}">
 </script>
 <script>
-    @include("backend.pages.editor.reviewColComponent")
+@include("backend.pages.editor.reviewColComponent")
 @include("backend.pages.editor.reviewRowComponent")
 
 let app = new Vue(
@@ -166,17 +170,9 @@ let app = new Vue(
         page:  {!! $page or '[]' !!},
         rows: {!! $rows or '[]' !!},
         current:-1,
-        currenthtml:''
-    },
-    watch:
-    {
-        current()
-        {
-            if(this.current != -1)
-            {
-                alert($("#tinymce").html());
-            }
-        }
+        currenthtml:'',
+        result:'',
+        firstsave:true
     },
     methods:
     {
@@ -191,12 +187,36 @@ let app = new Vue(
                     }
                 };
             };
+            let oldcurrent = this.current;
             this.current = colid;
+            if(oldcurrent == -1)
+            {
+
+             setTimeout(function(){
+                that = (!that) ? ' ':that;
+
+
+    $(window).trigger('test:event', {test_data: that});
+},1000);
+            }
+            else
+
+            {
+                             setTimeout(function(){
+                that = (!that) ? ' ':that;
+
+
+    $(window).trigger('test:event', {test_data: that});
+},100);
+            }
+$('html, body').animate({
+        scrollTop: $(".bottomcontent").offset().top
+    }, 1000);            
+            var that = this.currenthtml;
         },
-        saveme()
+        saveme(redirect=false)
         {
-            if(this.current == -1) alert("current is -1");
-            else alert(this.current);
+
             let col_id = -1;
             let col_html = '';
             for (var i = this.rows.length - 1; i >= 0; i--) {
@@ -214,14 +234,33 @@ let app = new Vue(
             };
             axios.put("{{url('/manage/pages/create/step/4/column/')}}/"+col_id,{
                 html:col_html
-            }).then(data => alert("success")).catch(error => alert("fail"));
+            }).then(data => _then(redirect,this.firstsave)).catch(error => err(error));
+            function _then(redirect,firstsave=true)
+            {
+                if(!redirect)
+                {
 
+                    if(firstsave)
+                    {
+                        setTimeout(function()
+                        {
+                            tut("Tip:",'By clicking the Preview button in the editor you can preview your page.','info','file-text-o',7000);
+                        }, 4754);
 
+                        if(app.firstsave)
+                        {
+                           app.firstsave=false;
+                        }                                    
+                    }
+                    notify("success","Changes Saved!","Your changes on the column content have been saved.","save",3000);
+
+                }  else window.location="{{ url('manage/pages/'. $page->id .'/preview') }}";
+            }
+            
         },
         update(content)
         {
             this.currenthtml = content;
-
         }
     },
     mounted()
@@ -233,7 +272,7 @@ let app = new Vue(
 </script>
 <script>
 // TODO: tinymce addclass button anchor @internet
-// TODO: neuherz delegate templates @internet
+
     tinymce.init({
   selector: 'textarea',
   height: 300,
@@ -245,7 +284,7 @@ let app = new Vue(
     'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
   ],
   toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help | colsavebutton | colloadbutton',
+  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help | colsavebutton | colprevbutton',
   image_advtab: true,
   templates: [
     { title: 'Test template 2', content: '<span class="label primary">Primary Label</span>' }
@@ -257,42 +296,50 @@ let app = new Vue(
     // '//www.tinymce.com/css/codepen.min.css'
   ],
   setup: function (editor) {
-
-
-
        editor.on('change', function(e) {
 app.update(editor.getContent());
-
-
        });
       editor.on('keyup', function(e) {
 app.update(editor.getContent())        ;
-
-
        });
 
+
+    editor.addButton('colprevbutton', {
+      text: 'Preview',
+      icon: false,
+      onclick: function () {
+        app.saveme(true);
+      }
+    });
     editor.addButton('colsavebutton', {
       text: 'Save',
       icon: false,
       onclick: function () {
-
         app.saveme();
-
-      }
-    });
-    editor.addButton('colloadbutton', {
-      text: 'Load',
-      icon: false,
-      onclick: function () {
-
-        alert("loading" + app.currenthtml);
-
-        $("textarea#html").html(app.currenthtml);
-        // TODO: change tinymce content jquery @internet
-
       }
     });
   }
  });
+$(function()
+{
+
+tut("Step 4: Content","Fill up the grey columns with content to proceed!","white","edit");
+   $(window).on('test:event', function (event,data) {
+    //console.log("gotthebus",data.test_data);
+    let that = (!data) ? ' ':data.test_data;
+   setTimeout(function()
+                {
+                    tinyMCE.activeEditor.setContent(that);
+                }, 100);
+});
+
+});
+
 </script>
 @endpush
+{{-- TODO: scrollto by step3--}}
+{{-- 
+    $('html, body').animate({
+        scrollTop: $("#elementtoScrollToID").offset().top
+    }, 2000);
+ --}}

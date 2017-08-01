@@ -31,11 +31,12 @@ class UserController extends Controller
         if ($user->delete())
         {
             Session::flash("success", 'You have deleted User#'.$user->id.' successfully!');
+             Session::flash("success_autohide", "4500");
             return redirect("manage/users");
         }
         else
         {
-            Session::flash("error", "An error occured while removing the user. Try again.");
+            Session::flash("error", "An error occured while removing the user. (ErrCode 39)");
             return redirect()->back();
         }
     }
@@ -74,7 +75,8 @@ class UserController extends Controller
         $users = User::search($request->input('search'))->paginate(10);
         if (!$users->count())
         {
-            Session::flash("error", 'Could not find user with data "'.$request->input('search').'". Try again.');
+            Session::flash("error", 'Could not find user with data "'.$request->input('search').'".');
+             Session::flash("error_autohide", "4500");
             return redirect('/manage/users');
         }
         $searched = $users->count().' User(s) Found:';
@@ -132,11 +134,13 @@ class UserController extends Controller
             if ($user->save())
             {
                 Session::flash("success", "You successfully create this user.");
+                 Session::flash("success_autohide", "4500");
                 return redirect()->route('users.show', $user->id);
             }
             else
             {
-                Session::flash("error", "An error occured while creating the user. Try again.");
+                Session::flash("error", "An error occured while creating the user. (ErrCode: 142)");
+                 Session::flash("error_autohide", "4500");
                 return redirect()->back();
             }
     }
@@ -208,6 +212,7 @@ class UserController extends Controller
         }
 
         Session::flash("success", "Your changes have been saved.");
+         Session::flash("success_autohide", "4500");
         return redirect()->route('users.show', $user->id);
     }
 };

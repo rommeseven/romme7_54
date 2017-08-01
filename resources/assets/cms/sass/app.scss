@@ -1,8 +1,8 @@
 // Fonts
 
 @import "settings";
-@import "../../../node_modules/foundation-sites/scss/foundation.scss";
-@import "../../../node_modules/motion-ui/motion-ui";
+@import "../../../../node_modules/foundation-sites/scss/foundation.scss";
+@import "../../../../node_modules/motion-ui/motion-ui";
 
 $global-flexbox: true !global;
 
@@ -96,6 +96,7 @@ $global-flexbox: true !global;
 @import "partials/footer";
 @import "partials/editor";
 @import "partials/sidebar";
+@import "partials/notifications";
 
 .topnavigation {
   .menu.vertical {

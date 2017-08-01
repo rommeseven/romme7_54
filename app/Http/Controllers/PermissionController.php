@@ -81,11 +81,13 @@ class PermissionController extends Controller
             if ($permission->save())
             {
                 Session::flash("success", "You successfully create this permission.");
+                 Session::flash("success_autohide", "4500");
                 return redirect()->route('permissions.show', $permission->id);
             }
             else
             {
-                Session::flash("error", "An error occured while creating the permission. Try again.");
+                Session::flash("error", "An error occured while creating the permission. (ErrCode: 89)");
+                 Session::flash("success_autohide", "4500");
                 return redirect()->back();
             }
         }
@@ -107,7 +109,8 @@ class PermissionController extends Controller
                 $permission->description  = $description;
                 $permission->save();
             }
-            Session::flash("success", "You successfully create this permission.");
+            Session::flash("success", "You've successfully created this permission.");
+             Session::flash("success_autohide", "4500");
             return redirect()->route('permissions.index');
         }
         abort(404);
@@ -149,11 +152,12 @@ class PermissionController extends Controller
             if ($permission->save())
             {
                 Session::flash("success", "Your changes have been saved.");
+                 Session::flash("success_autohide", "4500");
                 return redirect()->route('permissions.show', $id);
             }
             else
             {
-                Session::flash("error", "An error occured while saving the changes. Try again.");
+                Session::flash("error", "An error occured while saving the changes. (ErrCode:90)");
                 return redirect()->back();
             }
         }

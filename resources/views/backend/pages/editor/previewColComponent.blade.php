@@ -1,9 +1,8 @@
-let nem = Vue.component('reviewcol',
+let previewc = Vue.component('previewcol',
 {
-    props: ["size", "valign", "offset", "preview", "medium", "small", "html","large","me", "current"],
+    props: ["size", "valign", "offset", "preview", "medium", "small", "html","large"],
     template: `
-<div :class="MyClassObject" :data-id="id" @click="$emit('choseMe')">
-    
+<div :class="MyClassObject" :data-id="id" v-html="html">
 </div>
 `,
     data()
@@ -52,9 +51,7 @@ let nem = Vue.component('reviewcol',
                 'align-top': this.Myvalign == 'top',
                 'align-middle': this.Myvalign == 'middle',
                 'align-bottom': this.Myvalign == 'bottom',
-                'column': true,
-                'active': this.me == this.current,
-                'completed': (!(!this.html))
+                'column': true
             }, this.MyoffsetClass, this.smallsizeClass, this.mediumsizeClass, this.largesizeClass, this.MysizeClass];
         },
         columnid()

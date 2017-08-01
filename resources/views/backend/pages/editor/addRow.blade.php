@@ -138,7 +138,9 @@ let addRow_app = new Vue(
 
             };
             app.rows.push(newrow);
-
+            $('html, body').animate({
+                    scrollTop: $("#layoutsavebtn").offset().top
+                }, 1000);   
         }
     }
 });

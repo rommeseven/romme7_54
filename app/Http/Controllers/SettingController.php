@@ -32,6 +32,7 @@ class SettingController extends Controller
         
         Settings::set('app_title', $request->input('app_title'));
         Session::flash("success","Your changes have been saved!");
+         Session::flash("success_autohide", "4500");
         return redirect()->route("settings");
     }
 }

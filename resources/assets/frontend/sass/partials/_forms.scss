@@ -1,0 +1,43 @@
+.errortext {
+  padding-left: 1rem;
+  top: -18px;
+  position: relative;
+  color: get-color(alert);
+  font-weight: bold;
+  font-size: 0.9em;
+
+  &::before {
+    content: "*";
+  }
+}
+
+label {
+  cursor: pointer;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+@import "./forms/progress";
+@import "./forms/sortable";
