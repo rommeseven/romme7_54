@@ -4,9 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Settings;
-use \App\Permission;
-use \App\Role;
-use \App\User;
+
 // TODO: use class from other namespace laravel @internet
 
 class InstallCommand extends Command
@@ -49,252 +47,178 @@ class InstallCommand extends Command
         Settings::set('app_title', $this->appname);
         // 1. User Erstellen
 
-        $laci = new App\User(
-            array(
-                'name'     => 'laci',
-                'email'    => "email@email.com",
-                'password' => bcrypt("admin"), // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einloggen
-            )
-        );
-        $chrisi = new App\User(
-            array(
-                'name'     => 'chrisii',
-                'email'    => "email@email.com",
-                'password' => bcrypt("admin"), // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einloggen
-            )
-        );
-        $admin = new App\User( // für den Chef, sollte superadmin rolle haben
-            array(
-                'name'     => 'admin',
-                'email'    => "email@email.com",
-                'password' => bcrypt("admin"), // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einloggen
-            )
-        );
-        $person = new App\User( // für den Chef, sollta admin rolle haben (es ist für alltägliche gedacht, wenn ned sein muss, soll er ned als superadmin herumwirkeln... möglichkeit hat er aber)
-            array(
-                'name'     => 'person',
-                'email'    => "email@email.com",
-                'password' => bcrypt("admin"), // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einloggen
-            )
-        );
+        $laci           = new \App\User;
+        $laci->name     = 'László Takács';
+        $laci->username = 'takl95';
+        $laci->email    = "laszlo.takacs.95@gmail.com";
+        $laci->password = bcrypt("admin"); // lass admin als pw; ich programiere später; dass es nach änderung fragt beim ersten einloggen
+        $laci->save();
+
+        $chrisi           = new \App\User;
+        $chrisi->name     = 'Christan Neuherz';
+        $chrisi->username = 'chrisii';
+        $chrisi->email    = "christian.neuherz@gmail.com";
+        $chrisi->password = bcrypt("admin"); // lass admin als pw; ich programiere später; dass es nach änderung fragt beim ersten einloggen
+        $chrisi->save();
+
+        $padmin           = new \App\User; // für den Chef; sollte superadmin rolle haben
+        $padmin->name     = 'Der Chef';
+        $padmin->username = 'superadmin';
+        $padmin->email    = "chef@gmail.com";
+        $padmin->password = bcrypt("admin"); // lass admin als pw; ich programiere später; dass es nach änderung fragt beim ersten einloggen
+        $padmin->save();
+
+        $person           = new \App\User; // für den Chef; sollta admin rolle haben (es ist für alltägliche gedacht; wenn ned sein muss; soll er ned als superadmin herumwirkeln... möglichkeit hat er aber)
+        $person->name     = 'Der Chef';
+        $person->username = 'admin';
+        $person->email    = "chef@gmail.com";
+        $person->password = bcrypt("admin"); // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einlogge;
+        $person->save();
 
         // 2. Rollen erstellen
-        $superadmin = new App\Role(
-            array(
-                'name'         => 'superadmin', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $superadmin               = new \App\Role;
+        $superadmin->name         = "superadmin";
+        $superadmin->description  = "NOTE: Chrisi description";
+        $superadmin->display_name = "Superadmin";
+        $superadmin->save();
 
-        $admin = new App\Role(
-            array(
-                'name'         => 'admin', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $admin               = new \App\Role;
+        $admin->name         = "admin";
+        $admin->description  = "NOTE: Chrisi description";
+        $admin->display_name = "Admin";
+        $admin->save();
 
-        $supereditor = new App\Role(
-            array(
-                'name'         => 'supereditor', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $supereditor               = new \App\Role;
+        $supereditor->name         = "supereditor";
+        $supereditor->description  = "NOTE: Chrisi description";
+        $supereditor->display_name = "Supereditor";
+        $supereditor->save();
 
-        $editor = new App\Role(
-            array(
-                'name'         => 'editor', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $editor               = new \App\Role;
+        $editor->name         = "editor";
+        $editor->description  = "NOTE: Chrisi description";
+        $editor->display_name = "editor";
+        $editor->save();
 
-        // 3. Berechtigungen erstellen
-        $create_users = new App\Permission(
-            array(
-                'name'         => 'create-users', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $create_users               = new \App\Permission;
+        $create_users->name         = 'create_users'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $create_users->display_name = "NOTE: Chrisi display name";
+        $create_users->description  = "NOTE: Chrisi description";
+        $create_users->save();
 
-        $update_users = new App\Permission(
-            array(
-                'name'         => 'update-users', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $update_users               = new \App\Permission;
+        $update_users->name         = 'update_users'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $update_users->display_name = "NOTE: Chrisi display name";
+        $update_users->description  = "NOTE: Chrisi description";
+        $update_users->save();
 
-        $delete_users = new App\Permission(
-            array(
-                'name'         => 'delete-users', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $delete_users               = new \App\Permission;
+        $delete_users->name         = 'delete_users'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $delete_users->display_name = "NOTE: Chrisi display name";
+        $delete_users->description  = "NOTE: Chrisi description";
+        $delete_users->save();
 
-        $read_users = new App\Permission(
-            array(
-                'name'         => 'delete-users', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $read_users               = new \App\Permission;
+        $read_users->name         = 'read_users'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $read_users->display_name = "NOTE: Chrisi display name";
+        $read_users->description  = "NOTE: Chrisi description";
+        $read_users->save();
 
-        $create_permissions = new App\Permission(
-            array(
-                'name'         => 'create-permissions', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $create_permissions               = new \App\Permission;
+        $create_permissions->name         = 'create_permissions'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $create_permissions->display_name = "NOTE: Chrisi display name";
+        $create_permissions->description  = "NOTE: Chrisi description";
+        $create_permissions->save();
 
-        $give_permissions = new App\Permission(
-            array(
-                'name'         => 'give-permissions', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $give_permissions               = new \App\Permission;
+        $give_permissions->name         = 'give_permissions'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $give_permissions->display_name = "NOTE: Chrisi display name";
+        $give_permissions->description  = "NOTE: Chrisi description";
+        $give_permissions->save();
 
-        $update_permissions = new App\Permission(
-            array(
-                'name'         => 'update-permissions', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $read_permissions               = new \App\Permission;
+        $read_permissions->name         = 'read_permissions'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $read_permissions->display_name = "NOTE: Chrisi display name";
+        $read_permissions->description  = "NOTE: Chrisi description";
+        $read_permissions->save();
 
-        $delete_permissions = new App\Permission(
-            array(
-                'name'         => 'delete-permissions', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $delete_permissions               = new \App\Permission;
+        $delete_permissions->name         = 'delete_permissions'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $delete_permissions->display_name = "NOTE: Chrisi display name";
+        $delete_permissions->description  = "NOTE: Chrisi description";
+        $delete_permissions->save();
 
-        $read_permissions = new App\Permission(
-            array(
-                'name'         => 'delete-permissions', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $update_permissions               = new \App\Permission;
+        $update_permissions->name         = 'update_permissions'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $update_permissions->display_name = "NOTE: Chrisi display name";
+        $update_permissions->description  = "NOTE: Chrisi description";
+        $update_permissions->save();
 
-        $create_roles = new App\Permission(
-            array(
-                'name'         => 'create-roles', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $create_pages               = new \App\Permission;
+        $create_pages->name         = 'create_pages'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $create_pages->display_name = "NOTE: Chrisi display name";
+        $create_pages->description  = "NOTE: Chrisi description";
+        $create_pages->save();
 
-        $give_roles = new App\Permission(
-            array(
-                'name'         => 'give-roles', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $give_pages               = new \App\Permission;
+        $give_pages->name         = 'give_pages'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $give_pages->display_name = "NOTE: Chrisi display name";
+        $give_pages->description  = "NOTE: Chrisi description";
+        $give_pages->save();
 
-        $update_roles = new App\Permission(
-            array(
-                'name'         => 'update-roles', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $read_pages               = new \App\Permission;
+        $read_pages->name         = 'read_pages'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $read_pages->display_name = "NOTE: Chrisi display name";
+        $read_pages->description  = "NOTE: Chrisi description";
+        $read_pages->save();
 
-        $delete_roles = new App\Permission(
-            array(
-                'name'         => 'delete-roles', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $delete_pages               = new \App\Permission;
+        $delete_pages->name         = 'delete_pages'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $delete_pages->display_name = "NOTE: Chrisi display name";
+        $delete_pages->description  = "NOTE: Chrisi description";
+        $delete_pages->save();
 
-        $read_roles = new App\Permission(
-            array(
-                'name'         => 'delete-roles', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $update_pages               = new \App\Permission;
+        $update_pages->name         = 'update_pages'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $update_pages->display_name = "NOTE: Chrisi display name";
+        $update_pages->description  = "NOTE: Chrisi description";
+        $update_pages->save();
 
-        $create_sites = new App\Permission(
-            array(
-                'name'         => 'create-sites', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $read_roles               = new \App\Permission;
+        $read_roles->name         = 'read_roles'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $read_roles->display_name = "NOTE: Chrisi display name";
+        $read_roles->description  = "NOTE: Chrisi description";
+        $read_roles->save();
 
-        $update_sites = new App\Permission(
-            array(
-                'name'         => 'update-sites', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $delete_roles               = new \App\Permission;
+        $delete_roles->name         = 'delete_roles'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $delete_roles->display_name = "NOTE: Chrisi display name";
+        $delete_roles->description  = "NOTE: Chrisi description";
+        $delete_roles->save();
 
-        $delete_sites = new App\Permission(
-            array(
-                'name'         => 'delete-sites', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $update_roles               = new \App\Permission;
+        $update_roles->name         = 'update_roles'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $update_roles->display_name = "NOTE: Chrisi display name";
+        $update_roles->description  = "NOTE: Chrisi description";
+        $update_roles->save();
 
-        $read_sites = new App\Permission(
-            array(
-                'name'         => 'delete-sites', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $update_settings               = new \App\Permission;
+        $update_settings->name         = 'update_settings'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $update_settings->display_name = "NOTE: Chrisi display name";
+        $update_settings->description  = "NOTE: Chrisi description";
+        $update_settings->save();
 
-        $create_content = new App\Permission(
-            array(
-                'name'         => 'create-content', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $give_roles               = new \App\Permission;
+        $give_roles->name         = 'give_roles'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $give_roles->display_name = "NOTE: Chrisi display name";
+        $give_roles->description  = "NOTE: Chrisi description";
+        $give_roles->save();
 
-        $update_content = new App\Permission(
-            array(
-                'name'         => 'update-content', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
-
-        $delete_content = new App\Permission(
-            array(
-                'name'         => 'delete-content', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
-
-        $read_content = new App\Permission(
-            array(
-                'name'         => 'delete-content', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
-
-        $update_settings = new App\Permission(
-            array(
-                'name'         => 'update-settings', // name = slug
-                'display_name' => "email@email.com",
-                'description'  => 'text was ich halt herschreibe',
-            )
-        );
+        $create_roles               = new \App\Permission;
+        $create_roles->name         = 'create_roles'; // NOTE: Chrisi underline zum Bindestrich ( _  -> - )
+        $create_roles->display_name = "NOTE: Chrisi display name";
+        $create_roles->description  = "NOTE: Chrisi description";
+        $create_roles->save();
 
 // Rollen berechtigungen geben (für jede einzelne eine zeile)
         $superadmin->permissions()->save($create_users); // superadmin recht geben zu ...
@@ -311,14 +235,10 @@ class InstallCommand extends Command
         $superadmin->permissions()->save($update_roles);
         $superadmin->permissions()->save($delete_roles);
         $superadmin->permissions()->save($read_roles);
-        $superadmin->permissions()->save($create_sites);
-        $superadmin->permissions()->save($update_sites);
-        $superadmin->permissions()->save($delete_sites);
-        $superadmin->permissions()->save($read_sites);
-        $superadmin->permissions()->save($create_content);
-        $superadmin->permissions()->save($update_content);
-        $superadmin->permissions()->save($delete_content);
-        $superadmin->permissions()->save($read_content);
+        $superadmin->permissions()->save($create_pages);
+        $superadmin->permissions()->save($update_pages);
+        $superadmin->permissions()->save($delete_pages);
+        $superadmin->permissions()->save($read_pages);
         $superadmin->permissions()->save($update_settings);
 
         $admin->permissions()->save($create_users); // superadmin recht geben zu ...
@@ -332,34 +252,27 @@ class InstallCommand extends Command
         $admin->permissions()->save($update_roles);
         $admin->permissions()->save($delete_roles);
         $admin->permissions()->save($read_roles);
-        $admin->permissions()->save($create_sites);
-        $admin->permissions()->save($update_sites);
-        $admin->permissions()->save($delete_sites);
-        $admin->permissions()->save($read_sites);
-        $admin->permissions()->save($create_content);
-        $admin->permissions()->save($update_content);
-        $admin->permissions()->save($delete_content);
-        $admin->permissions()->save($read_content);
+        $admin->permissions()->save($create_pages);
+        $admin->permissions()->save($update_pages);
+        $admin->permissions()->save($delete_pages);
+        $admin->permissions()->save($read_pages);
         $admin->permissions()->save($update_settings);
 
-        $supereditor->permissions()->save($create_sites);
-        $supereditor->permissions()->save($update_sites);
-        $supereditor->permissions()->save($delete_sites);
-        $supereditor->permissions()->save($read_sites);
-        $supereditor->permissions()->save($create_content);
-        $supereditor->permissions()->save($update_content);
-        $supereditor->permissions()->save($delete_content);
-        $supereditor->permissions()->save($read_content);
+        $supereditor->permissions()->save($create_pages);
+        $supereditor->permissions()->save($update_pages);
+        $supereditor->permissions()->save($delete_pages);
+        $supereditor->permissions()->save($read_pages);
         $supereditor->permissions()->save($update_settings);
 
-        $editor->permissions()->save($create_sites);
-        $editor->permissions()->save($update_sites);
-        $editor->permissions()->save($delete_sites);
-        $editor->permissions()->save($read_sites);
-        $editor->permissions()->save($create_content);
-        $editor->permissions()->save($update_content);
-        $editor->permissions()->save($delete_content);
-        $editor->permissions()->save($read_content);
+        $editor->permissions()->save($create_pages);
+        $editor->permissions()->save($update_pages);
+        $editor->permissions()->save($delete_pages);
+        $editor->permissions()->save($read_pages);
+
+        $laci->attachRole($superadmin);
+        $chrisi->attachRole($superadmin);
+        $person->attachRole($admin);
+        $padmin->attachRole($superadmin);
 
     }
 }

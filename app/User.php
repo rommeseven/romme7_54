@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = array(
-        'name', 'email', 'password', 'username'
+        'name', 'email', 'password', 'username',
     );
 
     /**
@@ -45,10 +45,10 @@ class User extends Authenticatable
          * @var array
          */
         'columns' => array(
-            'users.name'  => 10,
-            'users.username'  => 10,
-            'users.email' => 8,
-            'users.created_at' => 4
+            'users.name'       => 10,
+            'users.username'   => 10,
+            'users.email'      => 8,
+            'users.created_at' => 4,
 /*
 'users.bio' => 2,
 'users.email' => 5,
@@ -60,4 +60,5 @@ class User extends Authenticatable
             //   'posts' => ['users.id','posts.user_id'],
         ),
     );
+
 }
