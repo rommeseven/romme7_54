@@ -121,26 +121,18 @@ Create New Page
         </div><!-- END OF .callout -->
     </div><!-- END OF .column small-offset-1 medium-offset-2 -->
 </div><!-- END OF .row -->
-<div class="row column small-offset-1 medium-offset 2" v-if="result.length>0">
-    <div class="callout success">
-        <p v-text="result"></p>
-    </div><!-- END OF .callout success -->
-</div><!-- END OF .row column small-offset-1 medium-offset 2 -->
 <div class="forcontent" id="editor">
     <reviewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" :me="index" @chose="chose($event)" v-for="(row,index) in rows">
     </reviewrow>
 </div>
-<!-- END OF #editor -->
-<form action="{{ url('manage/content') }}" id="navi" method="POST">
-    {{csrf_field()}}
-    {{--
-    <layouttooiewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" v-for="(row,index) in rows">
-    </layoutpreviewrow>
-    --}}
+<div class="row">
+    <div class="column small-offset-1 medium-offset-2">
+<form action="{{url('/manage/pages/create/step/5/page/' . $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
+    Save & Next Step
+    </button> </form>
+    </div><!-- END OF .row column small-offset-1 medium-offset 2 -->
+</div><!-- END OF .row -->
 
-    <!-- END OF .row -->
-    <!-- END OF .row -->
-</form>
 @endpush
 
 @push('bottomcontent')
@@ -183,7 +175,7 @@ let app = new Vue(
         {
             if(this.needtosave)
             {
-                notify("warning","Save your Work!","Click the save button, before going on to an another column!",'save',12000);
+                notify("warning","Save your Work!","Click the save button, before going on to an another column!",'save',6000);
                 return false;
             }
             for (var i = this.rows.length - 1; i >= 0; i--) {
@@ -268,8 +260,19 @@ $('html, body').animate({
         },
         update(content)
         {
+
+            if(this.current != -1 &&this.currenthtml != content) this.needtosave = true;
             this.currenthtml = content;
-            this.needtosave = true;
+        },
+        nextstep()
+        {
+            if(this.needtosave == true)
+            {
+                notify("warning","Save your Work!","Click the save button, before going on to the next step!",'save',6000);
+                return false;
+            }
+            window.location="{{url('/manage/pages/create/step/5/page/' . $page->id )}}";
+
         }
     },
     mounted()
@@ -279,8 +282,8 @@ $('html, body').animate({
         
  });
 </script>
+{{-- // TODO: tinymce addclass button anchor @internet --}}
 <script>
-// TODO: tinymce addclass button anchor @internet
 
     tinymce.init({
   selector: 'textarea',

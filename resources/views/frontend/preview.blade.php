@@ -13,7 +13,7 @@
 @endpush
 
 @push('content')
-@foreach($rows as $row)
+@foreach($page->rows as $row)
 <div class="row
 align-{{$row->align}}
 ">

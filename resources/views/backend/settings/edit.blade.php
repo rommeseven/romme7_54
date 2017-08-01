@@ -80,6 +80,20 @@ Settings
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
         </div>
+        <div class="row">
+            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                <label for="slogan">
+                    Website Slogan:
+                    <input name="slogan" placeholder="{{settings('slogan')}}" type="text" v-model="slogan"/>
+                    @if ($errors->has('slogan'))
+                    <small class="errortext">
+                        {{ $errors->first('slogan') }}
+                    </small>
+                    @endif
+                </label>
+            </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>
         <!-- END OF #app -->
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
@@ -119,12 +133,13 @@ Settings
     var app = new Vue({
         el:'#app',
         data:{
-            app_title:''
+            app_title:'',
+            slogan:''
         },
         methods:{
             changed()
             {
-                return ( this.app_title == '');
+                return ( this.app_title == '' && this.slogan == '');
             }
         }
 

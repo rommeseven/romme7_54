@@ -236,6 +236,7 @@ return array(
          */
         'Laratrust'    => Laratrust\LaratrustFacade::class,
         'Settings'     => Krucas\Settings\Facades\Settings::class,
+        'Context'     => Krucas\Settings\Context::class,
 
     ),
 

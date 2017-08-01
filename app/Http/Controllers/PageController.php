@@ -6,8 +6,10 @@ use App\Column;
 use App\LayoutTemplate;
 use App\Page;
 use App\Row;
+use Context;
 use Illuminate\Http\Request;
 use Session;
+use Settings;
 
 class PageController extends Controller
 {
@@ -47,9 +49,10 @@ class PageController extends Controller
     {
         if ($page->step != 4)
         {
-            dump("page not in step 4");
-            dd($page);
-// TODO: ERROR MSG
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
         $init       = $page->load("rows.columns")->rows;
         $collection = collect($init->toArray());
@@ -64,9 +67,10 @@ class PageController extends Controller
     {
         if ($page->step != 3)
         {
-            dump("page not in step 3");
-            dd($page);
-// TODO: ERROR MSG
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
         // dd(LayoutTemplate::where('id',4)->with("rows.columns")->first()->toArray()["rows"]);
         // $collection = collect(LayoutTemplate::where('id', 4)->with("rows.columns")->first()["rows"]);
@@ -102,8 +106,60 @@ class PageController extends Controller
 
     public function getPreview(Page $page)
     {
-        $init       = $page->load("rows.columns")->rows;
-        return view("frontend/preview")->withPage($page)->withRows($init);
+        $loadedpage = $page->load("rows.columns");
+        $pages      = Page::nav()->get();
+        //  $PageContext = new \Krucas\Settings\Context(['page' => $page->id]);
+        $building_blocks = array(
+            'slogan' => $this->GetPageSetting($page, "slogan", "Something Clever"),
+
+        );
+
+        return view("frontend/preview")->withPage($loadedpage)->withPages($pages)->withBbs($building_blocks);
+    }
+
+    /**
+     * Step 6 in creating a page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page       $page The page being created
+     * @return  view           Publish form
+     */
+    public function getPublish(Page $page)
+    {
+        if ($page->step != 6)
+        {
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }
+        return view("backend/pages/step6")->withPage($page);
+    }
+
+    /**
+     * Step 5 of creating a page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page       $page The page the user is working on
+     * @return  view           the page with the form for the per-page settings
+     */
+    public function getSettings(Page $page)
+    {
+        if ($page->step == 4)
+        {
+            $page->step = 5;
+            $page->save();
+        }
+        if ($page->step != 5)
+        {
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }
+
+        return view("backend.pages.step5")->withPage($page);
     }
 
     /**
@@ -115,8 +171,7 @@ class PageController extends Controller
     {
         $pages = Page::orderBy("published", "asc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->paginate(10);
 
-
-        return view('backend.pages.index')->withPages($pages);        
+        return view('backend.pages.index')->withPages($pages);
     }
 
     /**
@@ -134,7 +189,7 @@ class PageController extends Controller
 
             if (Session::has("success"))
             {
-                Session::keep(array('success', 'success_autohide','info2','info2_autohide','info2_flash_title'));
+                Session::keep(array('success', 'success_autohide', 'info2', 'info2_autohide', 'info2_flash_title'));
             }
             Session::flash("info_flash_title", "Skipping Step 2");
             Session::flash("info", "There are no other pages at the moment.");
@@ -325,6 +380,90 @@ class PageController extends Controller
         return redirect()->route("pageeditor.step3", $toBePublished->id);
     }
 
+    /**
+     * User searches for page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Request    $request search_query
+     * @return  view
+     */
+    public function postSearch(Request $request)
+    {
+
+        $this->validate($request, array(
+            'search' => 'required|max:255',
+        ));
+        $users = Page::search($request->input('search'))->paginate(10);
+        if (!$users->count())
+        {
+            Session::flash("error", 'Could not find page with title "'.$request->input('search').'".');
+            Session::flash("error_autohide", "4500");
+            return redirect('/manage/pages');
+        }
+        $searched = $users->unique()->count().' Page(s) Found:';
+        return view('backend.pages.index')->withPages($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));
+    }
+
+    /**
+     * Step 5 of creating a page POSTING
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page       $page The page the user is working on
+     * @return  view           the page with the form for the per-page settings
+     */
+    public function postSettings(Page $page, Request $request)
+    {
+        if ($page->step != 5)
+        {
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }
+
+        $this->validate($request, array(
+            'slogan' => 'sometimes|max:255',
+        ));
+        if ($request->has('slogan'))
+        {
+            $this->SetPageSetting($page, "slogan", $request->slogan);
+        }
+
+        $page->step = 6;
+        $page->save();
+        Session::flash("success", "Page-specific settings have been saved!");
+        Session::flash("success_autohide", "4500");
+
+        return redirect()->route("pageeditor.step6", $page);
+    }
+
+    /**
+     * "Step 7" aka Actually publishing the page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page       $page The page being created
+     * @return  view           Publish form
+     */
+    public function publish(Page $page)
+    {
+        if ($page->step < 6)
+        {
+            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning_autohide", "4500");
+
+            return redirect('/manage/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }
+        $page->step      = 7;
+        $page->published = true;
+        $page->save();
+        Session::flash("success", "The page has been published!");
+        Session::flash("success_autohide", "5500");
+        return redirect("manage/pages");
+        // TODO: redirect to page edit page
+    }
+
     public function putContent(Column $col, Request $request)
     {
         $col->html = $request->input("html");
@@ -374,11 +513,11 @@ class PageController extends Controller
             'title' => 'required|min:2|max:255',
             'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
         ));
-        if($request->input('slug') !== str_slug($request->input('slug')))
+        if ($request->input('slug') !== str_slug($request->input('slug')))
         {
-            Session::flash("info2", 'The slug "' . $request->input('slug') .'" has been changed to "'. str_slug($request->input('slug')). '"');
-            Session::flash("info2_autohide",5400);
-            Session::flash("info2_flash_title", "Slug Optimization");   
+            Session::flash("info2", 'The slug "'.$request->input('slug').'" has been changed to "'.str_slug($request->input('slug')).'"');
+            Session::flash("info2_autohide", 5400);
+            Session::flash("info2_flash_title", "Slug Optimization");
         }
         $p = new Page(array(
             'title' => $request->input('title'),
@@ -408,27 +547,31 @@ class PageController extends Controller
     }
 
     /**
-     * User searches for page
+     * Get The setting for the current page
      * @author Takács László
      * @date    2017-08-01
      * @version v1
-     * @param   Request    $request search_query
-     * @return  view              
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $default when nothing comes
      */
-    public function postSearch(Request $request)
+    protected function GetPageSetting(Page $page, $key, $default = '')
     {
+        $fallback = Settings::get($key, $default);
+        return Settings::context(new Context(array("page" => $page->id)))->get($key, $fallback);
+    }
 
-        $this->validate($request, array(
-            'search' => 'required|max:255',
-        ));
-        $users = Page::search($request->input('search'))->paginate(10);
-        if (!$users->count())
-        {
-            Session::flash("error", 'Could not find page with title "'.$request->input('search').'".');
-             Session::flash("error_autohide", "4500");
-            return redirect('/manage/pages');
-        }
-        $searched = $users->unique()->count().' Page(s) Found:';
-        return view('backend.pages.index')->withPages($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));
-    }    
+    /**
+     * Set The setting for the current page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $value the value to set the setting to
+     */
+    protected function SetPageSetting(Page $page, $key, $value = '')
+    {
+        return Settings::context(new Context(array("page" => $page->id)))->set($key, $value);
+    }
 }

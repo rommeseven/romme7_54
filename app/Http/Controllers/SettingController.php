@@ -27,10 +27,12 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, array(
-            'app_title' => 'sometimes|min:2|max:255',
+            'app_title' => 'sometimes|max:255',
+            'slogan' => 'sometimes|max:255',
         ));
         
-        Settings::set('app_title', $request->input('app_title'));
+        if($request->has('app_title')) Settings::set('app_title', $request->input('app_title'));
+        if($request->has('slogan')) Settings::set('slogan', $request->input('slogan'));
         Session::flash("success","Your changes have been saved!");
          Session::flash("success_autohide", "4500");
         return redirect()->route("settings");

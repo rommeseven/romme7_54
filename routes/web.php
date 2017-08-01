@@ -58,6 +58,7 @@ Route::prefix('manage')->group(function ()
         Route::post('/find', 'PageController@postSearch');
        
         Route::get('/{page}/preview', 'PageController@getPreview');
+        Route::get('/{page}/publish', 'PageController@publish');
         Route::prefix('create')->group(function ()
         {
             Route::prefix('step')->group(function ()
@@ -70,6 +71,11 @@ Route::prefix('manage')->group(function ()
                 Route::post('/4/page/{page}', 'PageController@postContent');
                 Route::put('/4/column/{col}', 'PageController@putContent');
                 Route::get('/4/page/{page}', 'PageController@getContent')->name("pageeditor.step4");                
+
+                Route::get('/5/page/{page}', 'PageController@getSettings')->name("pageeditor.step5");                
+                Route::post('/5/page/{page}', 'PageController@postSettings');                
+                
+                Route::get('/6/page/{page}', 'PageController@getPublish')->name("pageeditor.step6");                
             });
         });
 

@@ -98,14 +98,14 @@ Create New Page
 
 @push('extracss')
 <style>
-    ul
+ul
 {
     list-style-type: none !important;
 }
-
 </style>
 @push('extrajs')
 <script>
+// CHANGED: to .js @bigproject
     let app = new Vue({
         el:'#app',
         data:{
@@ -161,6 +161,8 @@ Create New Page
             if (!app.done) app.done = true;
         }
     });
+	
+	
     app.order = $("ul.sortable").sortable('serialize',
     {
         key: 'page',

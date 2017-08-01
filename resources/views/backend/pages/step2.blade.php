@@ -230,6 +230,7 @@ $(function()
         key: 'page',
         attribute: 'id'
     })
+
 });
 </script>
 @endpush
