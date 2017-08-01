@@ -292,6 +292,9 @@ class PageController extends Controller
             }
             Session::flash("success", "Layout Templated created!");
             Session::flash("success_autohide", "4500");
+            Session::flash("info", "Any previous layout with the same name has been overwritten.");
+            Session::flash("info_autohide", "3000");
+            Session::flash("info_title", "Notice");
             return redirect('manage/pages/create/step/3/page/'.$page->id);
         }
     }
