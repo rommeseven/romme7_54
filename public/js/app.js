@@ -50060,7 +50060,7 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 /***/ (function(module, exports) {
 
 $.notify.addStyle("metro", {
-    html: "<div>" + "<div class='row collapse align-middle align-left'>" + "<div class='column shrink icon' data-notify-html='icon'/>" + "<div class='column text-wrapper'>" + "<div class='title' data-notify-html='title'/>" + "<div class='text' data-notify-html='text'/>" + "</div>" + "</div>" + "</div>"
+    html: "<div>" + "<div class='row collapse align-middle align-left'>" + "<div class='column shrink icon' data-notify-html='icon'/>" + "<div class='column text-wrapper'>" + "<h6 class='title' data-notify-html='title'/>" + "<p class='text' data-notify-html='text'/>" + "</div>" + "</div>" + "</div>"
 });
 
 /***/ }),

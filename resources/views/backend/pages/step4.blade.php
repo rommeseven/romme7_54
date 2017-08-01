@@ -52,6 +52,7 @@ Create New Page
             </h3>
         </p>
     </div>
+    <br />
     <!-- END OF .column -->
 </div>
 <div class="row align-center hide-for-medium">
