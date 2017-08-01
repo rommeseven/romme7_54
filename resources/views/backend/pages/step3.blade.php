@@ -296,12 +296,12 @@ let app = new Vue(
             $("div.notifyjs-metro-base.notifyjs-metro-white").parent().parent().trigger("click");
             if(this.nocontent)
             {
-                tut("Redirect Page","This page redirects every visitor to the given url.","none","white","arrow-right");
+                tut("Redirect Page","This page redirects every visitor to the given url.","white","arrow-right");
 
             }
             else
             {
-                tut("Step 3: Layout","Create Columns that will display your content later!","none","white","th-large");
+                tut("Step 3: Layout","Create Columns that will display your content later!","white","th-large");
             }
 
         }
