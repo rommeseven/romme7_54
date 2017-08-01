@@ -134,7 +134,7 @@ class PageController extends Controller
 
             if (Session::has("success"))
             {
-                Session::keep(array('success', 'success_autohide'));
+                Session::keep(array('success', 'success_autohide','info2','info2_autohide','info2_flash_title'));
             }
             Session::flash("info_flash_title", "Skipping Step 2");
             Session::flash("info", "There are no other pages at the moment.");
@@ -376,9 +376,15 @@ class PageController extends Controller
             'title' => 'required|min:2|max:255',
             'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
         ));
+        if($request->input('slug') !== str_slug($request->input('slug')))
+        {
+            Session::flash("info2", 'The slug "' . $request->input('slug') .'" has been changed to "'. str_slug($request->input('slug')). '"');
+            Session::flash("info2_autohide",5400);
+            Session::flash("info2_flash_title", "Slug Optimization");   
+        }
         $p = new Page(array(
             'title' => $request->input('title'),
-            'slug'  => $request->input('slug'),
+            'slug'  => str_slug($request->input('slug')),
         ));
         if (!Page::nav()->count())
         {

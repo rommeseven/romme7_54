@@ -206,6 +206,9 @@
 @if(Session::has('info'))
     notify("info",'{{ Session::get("info_flash_title", function() { return 'Quick Tip:'; }) }}','{{Session::get('info')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}', {{ Session::get("info_autohide",function() { return '0';}) }});
 @endif
+  @if(Session::has('info2'))
+    notify("info",'{{ Session::get("info2_flash_title", function() { return 'Quick Tip:'; }) }}','{{Session::get('info2')}}','{{ Session::get("success_flash_icon", function() { return 'default'; })  }}', {{ Session::get("info2_autohide",function() { return '0';}) }});
+@endif
   
 @if(Session::has('warning'))
     notify("warning",'{{ Session::get("warning_flash_title", function() { return 'Warning:'; }) }}','{{Session::get('warning')}}','{{ Session::get("warning_flash_icon", function() { return 'default'; })   }}', {{ Session::get("warning_autohide",function() { return '0';}) }});
