@@ -41,7 +41,6 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
-    {{-- TODO: callout info sort to proceed in nav editor --}}
     <form action="{{ url('manage/navigation') }}" id="navi" method="POST">
         {{csrf_field()}}
         {{method_field("put")}}
@@ -169,4 +168,11 @@ Create New Page
     })
 });
 </script>
+@endpush
+@push('extrajs')
+<script>$(function()
+    {
+        tut("Edit Navigation","Drag and Drop the pages to the position you want them to have!","white","navicon");
+    tut("Tipp:","Move your page to the right to make it a submenu","none","white","long-arrow-right");
+    });</script>
 @endpush

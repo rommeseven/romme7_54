@@ -54,7 +54,9 @@ Route::prefix('manage')->group(function ()
     Route::resource('pages', 'PageController');
     Route::prefix('pages')->group(function ()
     {
-
+        Route::get('/find', 'PageController@index');
+        Route::post('/find', 'PageController@postSearch');
+       
         Route::get('/{page}/preview', 'PageController@getPreview');
         Route::prefix('create')->group(function ()
         {

@@ -13,7 +13,6 @@ All Users
 <li>Users</li>
 @endpush
 
-
 @push('content')
 <div class="row align-justify">
     <div class="small-12 medium-expand columns">
@@ -107,7 +106,7 @@ User
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($users->unique() as $user)
                 <tr>
                     <td>
                         <span class="hide-for-large">
@@ -216,8 +215,6 @@ User
 </div>
 <!-- END OF .row -->
 @endpush
-
-
 
 @if(isset($searched))
 @push('extrajs')

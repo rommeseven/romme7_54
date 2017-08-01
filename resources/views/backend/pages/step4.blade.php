@@ -337,9 +337,3 @@ tut("Step 4: Content","Fill up the grey columns with content to proceed!","white
 
 </script>
 @endpush
-{{-- TODO: scrollto by step3--}}
-{{-- 
-    $('html, body').animate({
-        scrollTop: $("#elementtoScrollToID").offset().top
-    }, 2000);
- --}}

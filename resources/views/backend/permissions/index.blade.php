@@ -104,7 +104,7 @@ Permission
                 </tr>
             </thead>
             <tbody>
-                @foreach($permissions as $permission)
+                @foreach($permissions->unique() as $permission)
                 <tr>
                     <td>
                         <span class="hide-for-large">

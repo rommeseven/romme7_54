@@ -103,7 +103,6 @@ Create New Page
 </div>
 <br/>
 <br/>
-{{-- TODO: callout info sort to proceed --}}
 <!-- END OF .row align-center -->
 <!-- END OF .row -->
 <div class="row">

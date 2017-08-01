@@ -102,7 +102,6 @@ Create New Page
     <br/>
     <br/>
 
-{{-- TODO: callout info sort to proceed --}}
 
     <!-- END OF .row align-center -->
     <!-- END OF .row -->

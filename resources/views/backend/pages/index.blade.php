@@ -1,5 +1,3 @@
-
-
 @extends('backend.layouts.main')
 
 @push('title')
@@ -106,7 +104,7 @@ Page
                 </tr>
             </thead>
             <tbody>
-                @foreach($pages as $page)
+                @foreach($pages->unique() as $page)
                 <tr>
                     <td>
                         <span class="hide-for-large">
@@ -115,7 +113,7 @@ Page
                         {{$page->id }}
                     </td>
                     <td>
-                        {{$page->name }}
+                        {{$page->title }}
                     </td>
                     <td>
                         {{$page->url }}
@@ -124,38 +122,38 @@ Page
                         <span class="hide-for-large">
                             Created:
                         </span>
-                        {{$user->created_at }}
+                        {{$page->created_at }}
                     </td>
                     <td>
                         <span class="hide-for-large">
                             Updated:
                         </span>
-                        {{$user->updated_at }}
+                        {{$page->updated_at }}
                     </td>
                     <td>
-                        <a class="button button-icon" href="{{ url('manage/users/' . $user->id) }}" title="Profile">
+                        <a class="button button-icon" href="{{ url('manage/pages/' . $page->id) }}" title="Profile">
                             <i class="fa fa-id-card">
                             </i>
                         </a>
-                        <a class="button button-icon" href="{{ url('manage/users/' . $user->id .  '/edit') }}" title="Edit User">
+                        <a class="button button-icon" href="{{ url('manage/pages/' . $page->id .  '/edit') }}" title="Edit Page">
                             <i class="fa fa-pencil">
                             </i>
                         </a>
-                        <a class="button button-icon" data-toggle="userdelmodal_{{$user->id}}" title="Remove User">
+                        <a class="button button-icon" data-toggle="pagedelmodal_{{$page->id}}" title="Remove Page">
                             <i class="fa fa-remove">
                             </i>
                         </a>
-                        <div class="small reveal" data-animation-in="scale-in-up fast" data-animation-out="scale-out-down fast" data-reveal="" id="userdelmodal_{{ $user->id }}">
+                        <div class="small reveal" data-animation-in="scale-in-up fast" data-animation-out="scale-out-down fast" data-reveal="" id="pagedelmodal_{{ $page->id }}">
                             <div style="text-align:center">
                                 <div class="row align-center">
                                     <div class="small-12 column">
                                         <h5 class="subheader">
                                             <br/>
-                                            You are deleting  User#{{ $user->id }}
+                                            You are deleting  Page#{{ $page->id }}
                                             <span class="show-for-medium-only">
                                                 <br/>
                                             </span>
-                                            ( {{$user->name}} )
+                                            ( {{$page->name}} )
                                         </h5>
                                         <h3>
                                             <br/>
@@ -169,10 +167,10 @@ Page
                                 <!-- END OF .row -->
                                 <div class="row">
                                     <div class="column">
-                                        <a class="button fabu remove fa-trash userRemover responsive_button">
+                                        <a class="button fabu remove fa-trash pageRemover responsive_button">
                                             Yes, delete.
                                         </a>
-                                        <form action="{{ url('manage/users/' . $user->id) }}" method="POST" style="display: none;">
+                                        <form action="{{ url('manage/pages/' . $page->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
     {{ csrf_field() }}
                                         </form>
@@ -202,7 +200,7 @@ Page
         <!-- END OF .stack hover -->
         <div class="row align-center">
             <div class="column shrink">
-                {!! $users->render() !!}
+                {!! $pages->render() !!}
             </div>
             <!-- END OF .column shrink -->
         </div>

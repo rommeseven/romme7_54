@@ -199,8 +199,6 @@ $(this).html(src_str);
 
 {{-- 
 
-TODO: better secondary color
-TODO: better success color (its too light)
 
 
  --}}

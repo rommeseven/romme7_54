@@ -1,6 +1,5 @@
 
 {{-- 
-TODO: form errors next to input
 @if (count($errors) > 0)
 <div class="row">
   <div class="small-10 small-offset-1 medium-6 medium-offset-3 column flash" data-closable="fade-out" style="margin-top:11px;margin-bottom:11px;">

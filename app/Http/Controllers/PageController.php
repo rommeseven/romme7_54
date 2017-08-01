@@ -113,7 +113,10 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderBy("published", "asc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->get();
+        $pages = Page::orderBy("published", "asc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->paginate(10);
+
+
+        return view('backend.pages.index')->withPages($pages);        
     }
 
     /**
@@ -399,8 +402,29 @@ class PageController extends Controller
     {
         //
     }
+
+    /**
+     * User searches for page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Request    $request search_query
+     * @return  view              
+     */
+    public function postSearch(Request $request)
+    {
+
+        $this->validate($request, array(
+            'search' => 'required|max:255',
+        ));
+        $users = Page::search($request->input('search'))->paginate(10);
+        if (!$users->count())
+        {
+            Session::flash("error", 'Could not find page with title "'.$request->input('search').'".');
+             Session::flash("error_autohide", "4500");
+            return redirect('/manage/pages');
+        }
+        $searched = $users->unique()->count().' Page(s) Found:';
+        return view('backend.pages.index')->withPages($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));
+    }    
 }
-/*
-TODO: overwrite box
-TODO: navigation tutorial
- */

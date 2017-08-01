@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Page extends Model
 {
-    // TODO: pages searchable
+     use SearchableTrait;
     protected $fillable=['title','url','slug','parent_id','display_order','published','step'];
 
     /**
@@ -72,4 +73,36 @@ class Page extends Model
             $builder->orderBy('display_order', 'asc');
         });
     }
+
+    /**
+     * Searchable rules.
+     *
+     * @var array
+     */
+    protected $searchable = array(
+        /**
+         * Columns and their priority in search results.
+         * Columns with higher values are more important.
+         * Columns with equal values have equal importance.
+         *
+         * @var array
+         */
+        'columns' => array(
+            'pages.title'        => 10,
+            'pages.slug'              => 10,
+            'pages.url'              => 10,
+            'columns.html' => 5,
+/*
+'users.bio' => 2,
+'users.email' => 5,
+'posts.title' => 2,
+'posts.body' => 1,
+ */
+        ),
+        'joins'   => array(
+
+            'rows' => array('pages.id', 'rows.page_id'),
+            'columns'     => array('pages.id', 'rows.page_id', 'columns.row_id'),
+        ),
+    );    
 }
