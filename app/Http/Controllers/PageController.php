@@ -327,7 +327,6 @@ class PageController extends Controller
 
     public function putContent(Column $col, Request $request)
     {
-        // TODO: sanitize html @internet
         $col->html = $request->input("html");
         $col->save();
         return array('message' => "success");
@@ -371,7 +370,6 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-// TODO: slug validation @internet
         $this->validate($request, array(
             'title' => 'required|min:2|max:255',
             'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
