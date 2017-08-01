@@ -17,7 +17,7 @@ class ManageController extends Controller
 {
     public function index()
     {
-        dd(LayoutTemplate::with("rows.columns")->get());
+        dd(str_slug("Lárávél 5% Framework", "-"));
 
 
         return "Index";

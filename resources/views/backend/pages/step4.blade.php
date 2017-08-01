@@ -155,7 +155,8 @@ Create New Page
     </div>
 @endpush
 @push('extrajs')
-<script src="{{ asset('other/vendor/tinymce/tinymce.min.js') }}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.6.4/tinymce.min.js">
 </script>
 <script>
 @include("backend.pages.editor.reviewColComponent")
