@@ -87,10 +87,13 @@ Page
                         ID
                     </th>
                     <th>
-                        Name
+                        Title
                     </th>
                     <th>
-                        Email
+                        Url
+                    </th>
+                    <th>
+                        Status
                     </th>
                     <th>
                         Created
@@ -116,7 +119,23 @@ Page
                         {{$page->title }}
                     </td>
                     <td>
-                        {{$page->url }}
+                        <code>{{url($page->slug) }}</code>
+                    </td>
+                    <td>
+                    @if($page->published)
+                        <div class="label success">published</div><!-- END OF .label --> 
+                    @else
+                        <div class="label warning">not published</div><!-- END OF .label -->
+                    @endif
+                    
+                    @if($page->url)
+                        <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Redirects to: {{$page->url}}">redirect</span></div>
+                    @endif
+                    @if($page->step < 7)
+                        <div class="label current">at Step {{$page->step}}</div>
+                    @endif
+                      
+                        
                     </td>
                     <td>
                         <span class="hide-for-large">
@@ -186,8 +205,7 @@ Page
                                 <!-- END OF .row -->
                             </div>
                             <button aria-label="Close reveal" class="close-button" data-close="" type="button">
-                                <span aria-hidden="true">
-                                    ×
+                                <span aria-hidden="true">                                ×
                                 </span>
                             </button>
                         </div>

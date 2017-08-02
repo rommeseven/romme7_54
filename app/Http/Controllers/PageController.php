@@ -31,7 +31,17 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        if ($page->delete())
+        {
+            Session::flash("success", 'You have deleted Page#'.$page->id.' successfully!');
+            Session::flash("success_autohide", "4500");
+            return redirect("cmseven/pages");
+        }
+        else
+        {
+            Session::flash("error", "An error occured while removing the page. (ErrCode 39)");
+            return redirect()->back();
+        }
     }
 
     /**
@@ -111,7 +121,6 @@ class PageController extends Controller
         //  $PageContext = new \Krucas\Settings\Context(['page' => $page->id]);
         $building_blocks = $page->GetSettings();
 
-
         return view("frontend/preview")->withPage($loadedpage)->withPages($pages)->withBbs($building_blocks);
     }
 
@@ -167,7 +176,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::orderBy("published", "asc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->paginate(10);
+        $pages = Page::orderBy("published", "desc")->orderBy("step", "desc")->orderBy("updated_at", "desc")->paginate(10);
 
         return view('backend.pages.index')->withPages($pages);
     }
@@ -425,7 +434,7 @@ class PageController extends Controller
         ));
         if ($request->has('slogan'))
         {
-            $this->SetSetting( "slogan", $request->slogan);
+            $this->SetSetting("slogan", $request->slogan);
         }
 
         $page->step = 6;
@@ -496,7 +505,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+        return view('backend.pages.show')->withPage($page);
     }
 
     /**
@@ -543,5 +552,4 @@ class PageController extends Controller
     {
         //
     }
-
 }

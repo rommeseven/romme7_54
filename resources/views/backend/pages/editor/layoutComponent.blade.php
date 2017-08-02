@@ -22,7 +22,7 @@ let editorlayout = Vue.component('editorlayout',
     {
         when()
         {
-        {{-- TODO: created at for humans --}}
+        {{-- TODO: created at for humans @internet--}}
             return "Created at: " + this.created_at;
         }
     }

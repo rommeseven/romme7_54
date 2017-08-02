@@ -4,7 +4,7 @@ $(function()
 {
     $(document).foundation();
     //alert("jquery and js are working.");
-    $(".userRemover").click(function()
+    $(".userRemover, .pageRemover").click(function()
     {
         $(this).next("form").submit();
     });

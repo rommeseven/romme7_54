@@ -49998,7 +49998,7 @@ __webpack_require__("./resources/assets/cms/js/bootstrap.js");
 $(function () {
     $(document).foundation();
     //alert("jquery and js are working.");
-    $(".userRemover").click(function () {
+    $(".userRemover, .pageRemover").click(function () {
         $(this).next("form").submit();
     });
 });

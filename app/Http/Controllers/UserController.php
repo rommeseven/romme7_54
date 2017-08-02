@@ -32,7 +32,7 @@ class UserController extends Controller
         {
             Session::flash("success", 'You have deleted User#'.$user->id.' successfully!');
              Session::flash("success_autohide", "4500");
-            return redirect("manage/users");
+            return redirect("cmseven/users");
         }
         else
         {
@@ -77,7 +77,7 @@ class UserController extends Controller
         {
             Session::flash("error", 'Could not find user with data "'.$request->input('search').'".');
              Session::flash("error_autohide", "4500");
-            return redirect('/manage/users');
+            return redirect('/cmseven/users');
         }
         $searched = $users->count().' User(s) Found:';
         return view('backend.users.index')->withUsers($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));

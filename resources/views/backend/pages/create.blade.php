@@ -150,7 +150,7 @@ Create New Page
 @endpush
 
 @push('extrajs')
-{{-- TODO: str_slug js --}}
+{{-- TODO: str_slug js  @internet--}}
 <script>
     let app = new Vue({
         el:'#app',
@@ -194,4 +194,3 @@ Create New Page
         tut("Step 1: General Information","Give your Page a title and an url!","white","file-o");
     });</script>
 @endpush
-{{-- TODO: auto slug vue  --}}

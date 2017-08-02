@@ -1,7 +1,7 @@
 @extends('backend.layouts.main')
 
 @push('title')
-User Profile of {{ $user->name }}
+{{ $page->title }} Page Details 
 @endpush
 
 @push('bread')
@@ -10,7 +10,7 @@ User Profile of {{ $user->name }}
 
 
 @push('bread')
-<li><a href="{{ route('users.index') }}">Users</a></li>
+<li><a href="{{ route('pages.index') }}">Pages</a></li>
 @endpush
 
 @push('bread')
@@ -21,42 +21,63 @@ User Profile of {{ $user->name }}
 <div class="row align-justify">
     <div class="small-12 medium-expand columns">
         <h3>
-            User Profile of
             <strong>
-                {{ $user->name }}
+                {{ $page->title }}
             </strong>
+            Page Details             
         </h3>
     </div>
     <!-- END OF .small-12 large-stack columns -->
     <div class="small-12 medium-expand columns" style="text-align:right">
-        <a class="button responsive_button fabu fa-pencil before" href="{{ route('users.edit', $user->id ) }}">
-            Edit This User
+        <a class="button responsive_button fabu fa-pencil before" href="{{ route('pages.edit', $page->id ) }}">
+            Edit This Page
         </a>
     </div>
     <!-- END OF .small-8 small-offset-2  medium-4 medium-offset-7 columns -->
 </div>
 <div class="callout row align-justify">
-    <div class="column shrink">
-        <div class="row align-top align-spaced">
-            <div class="column">
+    <div class="column small-12 medium-8 large-7">
+        <div class="row align-top align-left">
+            <div class="column shrink">
                 ID:
                 <br/>
-                Name:
+                Title:
                 <br/>
-                Email:
+                Url:
                 <br/>
-                Account Created:
+                Created:
+                <br/>
+                Updated:
+                {{-- TODO: change default carbon style model laravel @internet --}}
+                <br/>
+                Status:
                 <br/>
             </div>
             <!-- END OF .column -->
             <div class="column">
-                User#{{$user->id}}
+                Page#{{$page->id}}
                 <br/>
-                {{$user->name}}
+                {{$page->title}}
                 <br/>
-                {{$user->email}}
+               <code> {{url($page->slug)}}</code>
                 <br/>
-                {{$user->created_at}}
+                {{$page->created_at}}
+                <br/>
+                {{$page->updated_at}}
+                <br/>
+                
+                  <div style="display:inline">  @if($page->published)
+                          <div class="label success">published</div><!-- END OF .label --> 
+                      @else
+                          <div class="label warning">not published</div><!-- END OF .label -->
+                      @endif
+                      
+                      @if($page->url)
+                          <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Redirects to: {{$page->url}}">redirect</span></div>
+                      @endif
+                      @if($page->step < 7)
+                          <div class="label current">at Step {{$page->step}}</div>
+                      @endif</div>
                 <br/>
             </div>
             <!-- END OF .column -->
@@ -64,17 +85,6 @@ User Profile of {{ $user->name }}
         <!-- END OF .row -->
     </div>
     <!-- END OF .colum -->
-    <div class="column small-offset-1">
-    <h4>Roles</h4>
-        @foreach($user->roles as $role)
-            <div class="checkbox success">
-                <input id="pcheckbox_{{$role->id}}" type="checkbox" checked disabled class="styled">
-                    <label for="pcheckbox_{{$role->id}}">
-                        {{ $role->display_name }} ({{ $role->description }})
-                    </label>
-            </div><!-- END OF .checkbox -->          
-        @endforeach    
-    </div>
     <!-- END OF .colum -->
 </div>
 <!-- END OF .row -->
