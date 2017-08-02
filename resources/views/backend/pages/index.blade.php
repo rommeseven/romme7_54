@@ -119,35 +119,35 @@ Page
                         {{$page->title }}
                     </td>
                     <td>
-                        <code>{{url($page->slug) }}</code>
+                        <code><small>{{url($page->slug) }}</small></code>
                     </td>
-                    <td>
-                    @if($page->published)
-                        <div class="label success">published</div><!-- END OF .label --> 
-                    @else
-                        <div class="label warning">not published</div><!-- END OF .label -->
-                    @endif
-                    
-                    @if($page->url)
-                        <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Redirects to: {{$page->url}}">redirect</span></div>
-                    @endif
-                    @if($page->step < 7)
-                        <div class="label current">at Step {{$page->step}}</div>
-                    @endif
+                    <td><small>
+                        @if($page->published)
+                            <div class="label success">published</div><!-- END OF .label --> 
+                        @else
+                            <div class="label warning">not published</div><!-- END OF .label -->
+                        @endif
+                        
+                        @if($page->url)
+                            <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Redirects to: {{$page->url}}">redirect</span></div>
+                        @endif
+                        @if($page->step < 7)
+                            <div class="label current">at Step {{$page->step}}</div>
+                        @endif</small>
                       
                         
                     </td>
-                    <td>
-                        <span class="hide-for-large">
-                            Created:
-                        </span>
-                        {{$page->created_at }}
+                    <td><small>
+                            <span class="hide-for-large">
+                                Created:
+                            </span>
+                            {{$page->created_at }}</small>
                     </td>
-                    <td>
-                        <span class="hide-for-large">
-                            Updated:
-                        </span>
-                        {{$page->updated_at }}
+                    <td><small>
+                            <span class="hide-for-large">
+                                Updated:
+                            </span>
+                            {{$page->updated_at }}</small>
                     </td>
                     <td>
                         <a class="button button-icon" href="{{ route('pages.show' , $page->id) }}" title="Profile">

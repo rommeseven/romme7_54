@@ -49,4 +49,29 @@ class Role extends LaratrustRole
             'permissions'     => array('permissions.id', 'permission_role.permission_id'),
         ),
     );
+    /**
+     * Format date fields
+     * @author Takács László
+     * @date    2017-08-02
+     * @version v1
+     * @param   unformatted     $date
+     * @return  date           formatted
+     */
+    public function getCreatedAtAttribute($date)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y,H:i:s');
+    }
+
+    /**
+     * Format date fields
+     * @author Takács László
+     * @date    2017-08-02
+     * @version v1
+     * @param   unformatted     $date
+     * @return  date           formatted
+     */
+    public function getUpdatedAtAttribute($date)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y.m.d,H:i:s');
+    }
 }

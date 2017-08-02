@@ -34,7 +34,7 @@ class SettingController extends Controller
         $bb_toValidate = array(
             'app_title' => 'sometimes|max:255',
         );
-        // TODO: array_push() @internet
+        // TODO: array_push() #evernote
         for ($i = 0; $i < sizeof($bbs); $i++)
         {
             if ($bbs[$i]['type'] == 'text')

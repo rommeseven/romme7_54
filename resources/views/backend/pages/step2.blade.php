@@ -240,6 +240,6 @@ $(function()
     {
         tut("Step 2: Navigation","Drag and Drop your page to the position you want to have it!","white","navicon");
     tut("Tipp:","Move your page to the right to make it a submenu","none","white","long-arrow-right");
-       </script>
 });
+       </script>
 @endpush

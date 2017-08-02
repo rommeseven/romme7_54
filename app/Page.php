@@ -12,16 +12,6 @@ class Page extends Model
 {
     use SearchableTrait;
 
-    /**
-     * Define building blocks used in design, editable in Page Editor Step-5
-     * @var array
-     * 'building-block-name' => 'fallback-description'
-     */
-    private static $building_blocks = array(
-        array('key' => 'slogen', 'name' => 'Slogen', 'default' => 'Something Clever', 'type' => "text","description" => 'The text show in the header'),
-        array('key' => 'motto', 'name' => 'Motto', 'default' => 'This is our OTTO', 'type' => "text","description" => 'The smaller text in the header')
-    );
-
     protected $fillable = array('title', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
 
     /**
@@ -57,6 +47,55 @@ class Page extends Model
     );
 
     /**
+     * Define building blocks used in design, editable in Page Editor Step-5
+     * @var array
+     * 'building-block-name' => 'fallback-description'
+     */
+    private static $building_blocks = array(
+        array('key' => 'slogen', 'name' => 'Slogen', 'default' => 'Something Clever', 'type' => "text", "description" => 'The text show in the header'),
+        array('key' => 'motto', 'name' => 'Motto', 'default' => 'This is our OTTO', 'type' => "text", "description" => 'The smaller text in the header'),
+    );
+
+    /**
+     * Get all the building blocks for the current page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $default when nothing comes
+     */
+    public static function GetPageBbs()
+    {
+        // TODO: GetPAgeBbs (arra push in evernote)
+        // $all = array();
+        // foreach ($this->building_blocks as $bb)
+        // {
+        //     $fallback = Settings::get($bb->key, $bb->default);
+            
+        //     Settings::context(new Context(array("page" => $this->id)))->get($bb->key, $fallback);
+        //     //  TODO: array_push @internet
+        // }
+
+        return static::$building_blocks;
+    }
+
+    /**
+     * Get all the building blocks
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $default when nothing comes
+     */
+    public static function GetBbs()
+    {
+        return static::$building_blocks;
+    }
+
+
+    /**
      * Get The setting for the current page
      * @author Takács László
      * @date    2017-08-01
@@ -69,28 +108,6 @@ class Page extends Model
     {
         $fallback = Settings::get($key, $default);
         return Settings::context(new Context(array("page" => $this->id)))->get($key, $fallback);
-    }
-
-    /**
-     * Get all the building blocks for the current page
-     * @author Takács László
-     * @date    2017-08-01
-     * @version v1
-     * @param   Page     $page    the page
-     * @param   [string]     $key     the info
-     * @param   string     $default when nothing comes
-     */
-    public static function GetBbs()
-    {
-        // $all = array();
-        // foreach ($this->building_blocks as $bb)
-        // {
-        //     $fallback = Settings::get($bb->key, $bb->default);
-        //     Settings::context(new Context(array("page" => $this->id)))->get($bb->key, $fallback);
-        //     //  TODO: array_push @internet
-        // }
-
-        return static::$building_blocks;
     }
 
     /**
@@ -117,6 +134,32 @@ class Page extends Model
     public function children()
     {
         return $this->hasMany('App\Page', 'parent_id', 'id');
+    }
+
+    /**
+     * Format date fields
+     * @author Takács László
+     * @date    2017-08-02
+     * @version v1
+     * @param   unformatted     $date
+     * @return  date           formatted
+     */
+    public function getCreatedAtAttribute($date)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y,H:i:s');
+    }
+
+    /**
+     * Format date fields
+     * @author Takács László
+     * @date    2017-08-02
+     * @version v1
+     * @param   unformatted     $date
+     * @return  date           formatted
+     */
+    public function getUpdatedAtAttribute($date)
+    {
+        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y.m.d,H:i:s');
     }
 
     /**
