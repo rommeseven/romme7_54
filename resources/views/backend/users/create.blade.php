@@ -5,12 +5,12 @@ Create New User
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/users') }}">Users</a></li>
+<li><a href="{{ url('/cmseven/users') }}">Users</a></li>
 @endpush
 
 @push('bread')
@@ -29,7 +29,7 @@ Create New User
     <!-- END OF .column -->
 </div>
 <!-- END OF .row -->
-<form action="{{ url('manage/users') }}" method="POST">
+<form action="{{ url('cmseven/users') }}" method="POST">
     {{csrf_field()}}
     <div class="row">
         <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">

@@ -6,7 +6,7 @@ Settings
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ url('/cmseven') }}">
         Management
     </a>
 </li>
@@ -15,7 +15,7 @@ Settings
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/settings') }}">
+    <a href="{{ url('/cmseven/settings') }}">
         Settings
     </a>
 </li>
@@ -64,36 +64,45 @@ Settings
     </div>
     <!-- END OF .row -->
     <!-- END OF .row -->
-    <form action="{{ url('manage/settings/') }}" method="POST">
+    <form action="{{ url('cmseven/settings/') }}" method="POST">
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="name">
-                    Website Title:
+                <label for="app_title">
+                    Website Title
                     <input name="app_title" placeholder="{{settings('app_title')}}" type="text" v-model="app_title"/>
                     @if ($errors->has('app_title'))
                     <small class="errortext">
                         {{ $errors->first('app_title') }}
                     </small>
                     @endif
-                </label>
-            </div>
-            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-        </div>
-        <div class="row">
-            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="slogan">
-                    Website Slogan:
-                    <input name="slogan" placeholder="{{settings('slogan')}}" type="text" v-model="slogan"/>
-                    @if ($errors->has('slogan'))
-                    <small class="errortext">
-                        {{ $errors->first('slogan') }}
+                    <small class="help-text">
+                        Show in the browser tab and <strong>search engines</strong>
                     </small>
-                    @endif
                 </label>
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-        </div>
+        </div>        
+        @for ($i = 0; $i < sizeof($bbs); $i++)
+                <div class="row">
+                    <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                        <label for="{{$bbs[$i]['key']}}">
+                            {{$bbs[$i]['name']}}:
+                            <input name="{{$bbs[$i]['key']}}" placeholder="{{settings($bbs[$i]['key'],$bbs[$i]['default'] )}}" type="text" v-model="{{$bbs[$i]['key']}}"/>
+                            @if ($errors->has($bbs[$i]['key']))
+                            <small class="errortext">
+                                {{ $errors->first($bbs[$i]['key']) }}
+                            </small>
+                            @endif
+                            <small class="help-text">
+                                {{$bbs[$i]['description']}}
+                            </small>
+                        </label>
+                    </div>
+                    <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+                </div>
+        @endfor
+
         <!-- END OF #app -->
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
@@ -133,13 +142,22 @@ Settings
     var app = new Vue({
         el:'#app',
         data:{
-            app_title:'',
-            slogan:''
+            
+@for ($i = 0; $i < sizeof($bbs); $i++)
+      {{$bbs[$i]['key']}}:'',
+@endfor
+
+            app_title:''
         },
         methods:{
             changed()
             {
-                return ( this.app_title == '' && this.slogan == '');
+                return (
+                 this.app_title == ''
+@for ($i = 0; $i < sizeof($bbs); $i++)
+      && this.{{$bbs[$i]['key']}} == ''
+@endfor
+                 );
             }
         }
 

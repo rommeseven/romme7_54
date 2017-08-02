@@ -5,7 +5,7 @@ All Pages
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ route('home') }}">Management</a></li>
 @endpush
 
 
@@ -33,11 +33,11 @@ Page
         </a>
 
         @if(isset($searched))
-        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/pages') }}">
+        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ route('pages.index') }}">
             All Pages
         </a>
         @else
-        <a class="button responsive_button fabu fa-plus cover" href="{{ url('manage/pages/create') }}">
+        <a class="button responsive_button fabu fa-plus cover" href="{{ route('pages.create') }}">
             Create New Page
         </a>
         @endif        
@@ -47,7 +47,7 @@ Page
 <!-- END OF .row -->
 <div class="row align-center hiddenPanel" data-animate="hinge-in-from-top hinge-out-from-top" data-toggler="" id="search_panel">
     <div class="column small-12 medium-9 large-7 columns">
-        <form action="{{ url('/manage/pages/find') }}" method="POST">
+        <form action="{{ route('pages.find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
                 Find Page:
@@ -131,11 +131,11 @@ Page
                         {{$page->updated_at }}
                     </td>
                     <td>
-                        <a class="button button-icon" href="{{ url('manage/pages/' . $page->id) }}" title="Profile">
+                        <a class="button button-icon" href="{{ route('pages.show' , $page->id) }}" title="Profile">
                             <i class="fa fa-id-card">
                             </i>
                         </a>
-                        <a class="button button-icon" href="{{ url('manage/pages/' . $page->id .  '/edit') }}" title="Edit Page">
+                        <a class="button button-icon" href="{{ route('pages.edit' , $page->id ) }}" title="Edit Page">
                             <i class="fa fa-pencil">
                             </i>
                         </a>
@@ -170,7 +170,7 @@ Page
                                         <a class="button fabu remove fa-trash pageRemover responsive_button">
                                             Yes, delete.
                                         </a>
-                                        <form action="{{ url('manage/pages/' . $page->id) }}" method="POST" style="display: none;">
+                                        <form action="{{ route('pages.destroy', $page->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
     {{ csrf_field() }}
                                         </form>

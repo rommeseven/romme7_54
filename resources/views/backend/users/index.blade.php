@@ -5,7 +5,7 @@ All Users
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
@@ -32,11 +32,11 @@ User
         </a>
 
         @if(isset($searched))
-        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/users') }}">
+        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/cmseven/users') }}">
             All Users
         </a>
         @else
-        <a class="button responsive_button fabu fa-plus cover" href="{{ url('manage/users/create') }}">
+        <a class="button responsive_button fabu fa-plus cover" href="{{ url('cmseven/users/create') }}">
             Add New User
         </a>
         @endif        
@@ -46,7 +46,7 @@ User
 <!-- END OF .row -->
 <div class="row align-center hiddenPanel" data-animate="hinge-in-from-top hinge-out-from-top" data-toggler="" id="search_panel">
     <div class="column small-12 medium-9 large-7 columns">
-        <form action="{{ url('/manage/users/find') }}" method="POST">
+        <form action="{{ url('/cmseven/users/find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
                 Find User:
@@ -136,11 +136,11 @@ User
                         {{$user->updated_at }}
                     </td>
                     <td>
-                        <a class="button button-icon" href="{{ url('manage/users/' . $user->id) }}" title="Profile">
+                        <a class="button button-icon" href="{{ url('cmseven/users/' . $user->id) }}" title="Profile">
                             <i class="fa fa-id-card">
                             </i>
                         </a>
-                        <a class="button button-icon" href="{{ url('manage/users/' . $user->id .  '/edit') }}" title="Edit User">
+                        <a class="button button-icon" href="{{ url('cmseven/users/' . $user->id .  '/edit') }}" title="Edit User">
                             <i class="fa fa-pencil">
                             </i>
                         </a>
@@ -175,7 +175,7 @@ User
                                         <a class="button fabu remove fa-trash userRemover responsive_button">
                                             Yes, delete.
                                         </a>
-                                        <form action="{{ url('manage/users/' . $user->id) }}" method="POST" style="display: none;">
+                                        <form action="{{ url('cmseven/users/' . $user->id) }}" method="POST" style="display: none;">
                                             {{ method_field('DELETE') }}
     {{ csrf_field() }}
                                         </form>

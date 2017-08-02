@@ -68,7 +68,7 @@ class RoleController extends Controller
         {
             Session::flash("error", 'Could not find role with data "'.$request->input('search').'".');
             Session::flash("error_autohide",4000);
-            return redirect('/manage/roles');
+            return redirect('/cmseven/roles');
         }
         $searched = $roles->count().' User(s) Found:';
         return view('backend.roles.index')->withRoles($roles)->with("searched", $searched)->with('searchQuery', $request->input('search'));
@@ -115,7 +115,7 @@ class RoleController extends Controller
 
         Session::flash('success', 'Successfully created the new '.$role->display_name.' role in the database.');
          Session::flash("success_autohide", "4500");
-        return redirect('/manage/roles/'.$role->id);
+        return redirect('/cmseven/roles/'.$role->id);
     }
 
     /**
@@ -155,6 +155,6 @@ class RoleController extends Controller
 
         Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');
          Session::flash("success_autohide", "4500");
-        return redirect('/manage/roles/'.$id);
+        return redirect('/cmseven/roles/'.$id);
     }
 }

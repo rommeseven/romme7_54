@@ -6,12 +6,12 @@ Edit Permission#{{ $permission->id }}
 
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/permissions') }}">Permissions</a></li>
+<li><a href="{{ url('/cmseven/permissions') }}">Permissions</a></li>
 @endpush
 
 @push('bread')
@@ -53,7 +53,7 @@ Edit Permission#{{ $permission->id }}
 </div>
 <!-- END OF .row -->
 <!-- END OF .row -->
-<form action="{{ url('manage/permissions/' . $permission->id) }}" method="POST">
+<form action="{{ url('cmseven/permissions/' . $permission->id) }}" method="POST">
     {{csrf_field()}}
     {{method_field("PATCH")}}
     <div class="row">

@@ -7,7 +7,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ route('home') }}">
         Management
     </a>
 </li>
@@ -16,7 +16,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ route('pages.index') }}">
         Pages
     </a>
 </li>
@@ -41,7 +41,7 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
-    <form action="{{ url('manage/navigation') }}" id="navi" method="POST">
+    <form action="{{ route('navigation') }}" id="navi" method="POST">
         {{csrf_field()}}
         {{method_field("put")}}
         <input :value="order" id="order" name="pages" type="hidden"/>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
-use Settings;
 use Session;
+use Settings;
+
 class SettingController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view("backend.settings.edit");
+        $collection = collect(Page::GetBbs());
+        return view("backend.settings.edit")->withBbs($collection);
     }
 
     /**
@@ -26,15 +29,44 @@ class SettingController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, array(
+
+        $bbs           = collect(Page::GetBbs());
+        $bb_toValidate = array(
             'app_title' => 'sometimes|max:255',
-            'slogan' => 'sometimes|max:255',
-        ));
-        
-        if($request->has('app_title')) Settings::set('app_title', $request->input('app_title'));
-        if($request->has('slogan')) Settings::set('slogan', $request->input('slogan'));
-        Session::flash("success","Your changes have been saved!");
-         Session::flash("success_autohide", "4500");
+        );
+        // TODO: array_push() @internet
+        for ($i = 0; $i < sizeof($bbs); $i++)
+        {
+            if ($bbs[$i]['type'] == 'text')
+            {
+                //
+            }
+            if ($bbs[$i]['type'] == 'image')
+            {
+                // TODO: store image in db @internet
+            }
+            if ($bbs[$i]['type'] == 'video')
+            {
+                // TODO: laravel youtube @internet
+            }
+        }
+
+        $this->validate($request, $bb_toValidate);
+
+        if ($request->has('app_title'))
+        {
+            Settings::set('app_title', $request->input('app_title'));
+        }
+        for ($i = 0; $i < sizeof($bbs); $i++)
+        {
+            if ($request->has($bbs[$i]['key']))
+            {
+                Settings::set($bbs[$i]['key'], $request->input($bbs[$i]['key']));
+            }
+        }
+
+        Session::flash("success", "Your changes have been saved!");
+        Session::flash("success_autohide", "4500");
         return redirect()->route("settings");
     }
 }

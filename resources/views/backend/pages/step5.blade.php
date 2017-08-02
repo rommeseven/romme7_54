@@ -7,7 +7,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ url('/cmseven') }}">
         Management
     </a>
 </li>
@@ -16,7 +16,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ url('/cmseven/pages') }}">
         Pages
     </a>
 </li>
@@ -109,7 +109,7 @@ Create New Page
 </div>
 <!-- END OF .row align-center -->
 <!-- END OF .row -->
- <form action="{{ url('manage/pages/create/step/5/page/' . $page->id) }}" id="navi" method="POST">
+ <form action="{{ url('cmseven/pages/create/step/5/page/' . $page->id) }}" id="navi" method="POST">
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">

@@ -7,7 +7,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ route('home') }}">
         Management
     </a>
 </li>
@@ -16,7 +16,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ route('pages.index') }}">
         Pages
     </a>
 </li>
@@ -126,7 +126,7 @@ Create New Page
 </div>
 <div v-show="!nocontent">
     
-    <form action="{{ url('manage/layout') }}" id="navi" method="POST">
+    <form action="" id="navi" method="POST">
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
@@ -251,7 +251,7 @@ Create New Page
         </div>
         <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
     </div>
-    <form action="{{ url('manage/pages/create/step/3/page/' . $page->id) }}" id="editorForm" method="POST">
+    <form action="{{ route('pageeditor.poststep3' , $page->id) }}" id="editorForm" method="POST">
         {{csrf_field()}}
         <input name="serial" type="hidden" v-model="serial"/>
         <input name="saving" type="hidden" v-model="saving"/>

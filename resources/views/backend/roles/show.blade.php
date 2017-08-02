@@ -5,12 +5,12 @@ Details on Role {{ $role->name }}
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/roles') }}">Roles</a></li>
+<li><a href="{{ url('/cmseven/roles') }}">Roles</a></li>
 @endpush
 
 @push('bread')
@@ -22,7 +22,7 @@ Details on Role {{ $role->name }}
 <div class="row align-justify">
     <!-- END OF .small-12 large-stack columns -->
     <div class="small-12 medium-expand columns" style="text-align:right">
-        <a class="button responsive_button fabu fa-pencil before" href="{{ url('manage/roles/'. $role->id .'/edit' ) }}">
+        <a class="button responsive_button fabu fa-pencil before" href="{{ url('cmseven/roles/'. $role->id .'/edit' ) }}">
             Edit This Role
         </a>
     </div>
@@ -66,7 +66,7 @@ Details on Role {{ $role->name }}
                     </h5>
                 </div><!-- END OF .column shrink -->
     <div class="column shrink" style="text-align:right">
-        <a class="button small secondary responsive_button fabu fa-pencil before" href="{{ url('manage/roles/'. $role->id .'/edit' ) }}">
+        <a class="button small secondary responsive_button fabu fa-pencil before" href="{{ url('cmseven/roles/'. $role->id .'/edit' ) }}">
             Edit Permissions
         </a>
     </div>                

@@ -6,7 +6,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ route('dashboard') }}">
         Management
     </a>
 </li>
@@ -15,7 +15,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ route('pages.index') }}">
         Pages
     </a>
 </li>
@@ -87,13 +87,13 @@ Create New Page
     <br /><br />
     <!-- END OF .row align-center -->
     <!-- END OF .row -->
-    <form action="{{ url('manage/pages') }}" method="POST">
+    <form action="{{ route('pages.index') }}" method="POST">
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="title">
                     Title:
-                    <input  id="title" name="title" placeholder="My Page" type="text" v-model="title"/>
+                    <input  id="title" name="title" @keyup="autoslug($event.target.value)" placeholder="My Page" type="text" v-model="title"/>
                     @if ($errors->has('title'))
                     <small class="errortext">
                         {{ $errors->first('title') }}
@@ -111,7 +111,7 @@ Create New Page
                         <br />
                 <label for="slug">
                     Slug:
-                    <input  id="slug" name="slug" placeholder="my-page" type="text" v-model="slug"/>
+                    <input  id="slug" @keydown.once="slugged=true" name="slug" placeholder="my-page" type="text" v-model="slug"/>
                     @if ($errors->has('slug'))
                     <small class="errortext">
                         {{ $errors->first('slug') }}
@@ -150,12 +150,28 @@ Create New Page
 @endpush
 
 @push('extrajs')
+{{-- TODO: str_slug js --}}
 <script>
     let app = new Vue({
         el:'#app',
         data:{
             title:'',
-            slug:''
+            slug:'',
+            slugged : false
+        },
+        methods:{
+                    autoslug(slug)
+        {
+            if (!this.slugged)
+            {
+                this.slug = slug.toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
+                    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+                    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+                    .replace(/^-+/, '') // Trim - from start of text
+                    .replace(/-+$/, ''); // Trim - from end of text
+            }
+
+        }
         },
         computed: {
   classObject: function () {
@@ -178,3 +194,4 @@ Create New Page
         tut("Step 1: General Information","Give your Page a title and an url!","white","file-o");
     });</script>
 @endpush
+{{-- TODO: auto slug vue  --}}

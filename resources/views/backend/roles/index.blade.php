@@ -5,7 +5,7 @@ Available Roles
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
@@ -31,11 +31,11 @@ Available Roles
 Role
         </a>
         @if(isset($searched))
-        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/roles') }}">
+        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/cmseven/roles') }}">
             All Available Roles
         </a>
         @else
-        <a class="button responsive_button fabu fa-plus cover" href="{{ url('/manage/roles/create') }}">
+        <a class="button responsive_button fabu fa-plus cover" href="{{ url('/cmseven/roles/create') }}">
             Create New Role
         </a>
         @endif
@@ -45,7 +45,7 @@ Role
 <!-- END OF .row -->
 <div class="row align-center hiddenPanel" data-animate="hinge-in-from-top hinge-out-from-top" data-toggler="" id="search_panel">
     <div class="column small-12 medium-9 large-7 columns">
-        <form action="{{ url('/manage/roles/find') }}" method="POST">
+        <form action="{{ url('/cmseven/roles/find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
                 Find Role:
@@ -99,10 +99,10 @@ Role
         </div>
         <!-- END OF .card-section -->
         <div class="card-divider flex-container align-spaced align-middle">
-            <a class="button success fabu fa-newspaper-o before" href="{{ url('/manage/roles/'.$role->id) }}">
+            <a class="button success fabu fa-newspaper-o before" href="{{ url('/cmseven/roles/'.$role->id) }}">
                 Details
             </a>
-            <a class="button fabu fa-pencil" href="{{ url('/manage/roles/'.$role->id .'/edit') }}">
+            <a class="button fabu fa-pencil" href="{{ url('/cmseven/roles/'.$role->id .'/edit') }}">
                 Edit
             </a>
         </div>

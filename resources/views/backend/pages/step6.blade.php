@@ -7,7 +7,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ url('/cmseven') }}">
         Management
     </a>
 </li>
@@ -16,7 +16,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ url('/cmseven/pages') }}">
         Pages
     </a>
 </li>
@@ -111,8 +111,8 @@ Create New Page
 <!-- END OF .row -->
 <br /><br />
 <div class="row align-center align-bottom">
-    <div class="column shrink"><a target="_blank" href="{{ url('manage/pages/'. $page->id .'/preview') }}" class="button primary fabu before fa-eye">Preview</a></div><!-- END OF .column shrink -->
-    <div class="column shrink "><a href="{{ url('manage/pages/' . $page->id.'/publish') }}" class="button large success fabu before fa-thumbs-o-up">Publish this Page</a></div><!-- END OF .column shrink -->
+    <div class="column shrink"><a target="_blank" href="{{ url('cmseven/pages/'. $page->id .'/preview') }}" class="button primary fabu before fa-eye">Preview</a></div><!-- END OF .column shrink -->
+    <div class="column shrink "><a href="{{ url('cmseven/pages/' . $page->id.'/publish') }}" class="button large success fabu before fa-thumbs-o-up">Publish this Page</a></div><!-- END OF .column shrink -->
 </div><!-- END OF .row -->
 
 @endpush

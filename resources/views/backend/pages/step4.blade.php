@@ -7,7 +7,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ route('home') }}">
         Management
     </a>
 </li>
@@ -16,7 +16,7 @@ Create New Page
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/pages') }}">
+    <a href="{{ route('pages.index') }}">
         Pages
     </a>
 </li>
@@ -127,7 +127,7 @@ Create New Page
 </div>
 <div class="row">
     <div class="column small-offset-1 medium-offset-2">
-<form action="{{url('/manage/pages/create/step/5/page/' . $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
+<form action="{{route('pageeditor.poststep5' , $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
     Save & Next Step
     </button> </form>
     </div><!-- END OF .row column small-offset-1 medium-offset 2 -->
@@ -232,7 +232,7 @@ $('html, body').animate({
                     }
                 };
             };
-            axios.put("{{url('/manage/pages/create/step/4/column/')}}/"+col_id,{
+            axios.put("{{url('/cmseven/pages/create/step/4/column/')}}/"+col_id,{
                 html:col_html
             }).then(data => _then(redirect,this.firstsave)).catch(error => err(error));
             function _then(redirect,firstsave=true)
@@ -254,7 +254,7 @@ $('html, body').animate({
                     }
                     notify("success","Changes Saved!","Your changes on the column content have been saved.","save",3000);
 
-                }  else window.location="{{ url('manage/pages/'. $page->id .'/preview') }}";
+                }  else window.location="{{ url('cmseven/pages/'. $page->id .'/preview') }}";
             }
             
         },
@@ -271,7 +271,7 @@ $('html, body').animate({
                 notify("warning","Save your Work!","Click the save button, before going on to the next step!",'save',6000);
                 return false;
             }
-            window.location="{{url('/manage/pages/create/step/5/page/' . $page->id )}}";
+            window.location="{{url('/cmseven/pages/create/step/5/page/' . $page->id )}}";
 
         }
     },

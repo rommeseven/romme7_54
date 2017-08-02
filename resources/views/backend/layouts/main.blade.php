@@ -93,19 +93,19 @@
                     </a>
                     <ul class="menu vertical nested">
                         <li>
-                            <a href="{{url('/manage/pages/create')}}">
+                            <a href="{{route('pages.create')}}">
                                 New Page
                             </a>
                         </li>
                         <li>
-                            <a href="{{url('/manage/pages')}}">
+                            <a href="{{route("pages.index")}}">
                                 Manage Pages
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{url('/manage/navigation')}}">
+                    <a href="{{route("navigation")}}">
                         Navigation
                     </a>
                 </li>
@@ -120,17 +120,17 @@
                     </a>
                     <ul class="menu vertical nested">
                         <li>
-                            <a href="{{url('manage/users')}}">
+                            <a href="{{route("users.index")}}">
                                 Users
                             </a>
                         </li>
                         <li>
-                            <a href="{{url('manage/roles')}}">
+                            <a href="{{route("roles.index")}}">
                                 Roles
                             </a>
                         </li>
                         <li>
-                            <a href="{{url('manage/permissions')}}">
+                            <a href="{{route("permissions.index")}}">
                                 Permissions
                             </a>
                         </li>
@@ -166,7 +166,7 @@
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
                         <li>
-                            <a href="{{ url('/dashboard') }}">
+                            <a href="{{ route('home') }}">
                                 Home
                             </a>
                         </li>

@@ -12547,6 +12547,11 @@ td .button-icon .fa:hover {
   border-top: 1px solid #EDFFEC;
 }
 
+.help-text {
+  position: relative;
+  top: -0.5rem;
+}
+
 .errortext {
   padding-left: 1rem;
   top: -18px;

@@ -6,12 +6,12 @@ Edit User#{{ $user->id }}
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ route('home') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/users') }}">Users</a></li>
+<li><a href="{{ route('users.index') }}">Users</a></li>
 @endpush
 
 @push('bread')
@@ -53,7 +53,7 @@ Edit User#{{ $user->id }}
     </div>
     <!-- END OF .row -->
     <!-- END OF .row -->
-    <form action="{{ url('manage/users/' . $user->id) }}" method="POST">
+    <form action="{{ route('users.update', $user->id) }}" method="POST">
         {{csrf_field()}}
         {{method_field("PATCH")}}
         <div class="row">

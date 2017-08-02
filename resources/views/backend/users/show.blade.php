@@ -5,12 +5,12 @@ User Profile of {{ $user->name }}
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/users') }}">Users</a></li>
+<li><a href="{{ url('/cmseven/users') }}">Users</a></li>
 @endpush
 
 @push('bread')
@@ -29,7 +29,7 @@ User Profile of {{ $user->name }}
     </div>
     <!-- END OF .small-12 large-stack columns -->
     <div class="small-12 medium-expand columns" style="text-align:right">
-        <a class="button responsive_button fabu fa-pencil before" href="{{ url('manage/users/'. $user->id .'/edit' ) }}">
+        <a class="button responsive_button fabu fa-pencil before" href="{{ url('cmseven/users/'. $user->id .'/edit' ) }}">
             Edit This User
         </a>
     </div>

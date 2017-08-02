@@ -17,10 +17,8 @@ class ManageController extends Controller
 {
     public function index()
     {
-        dd(str_slug("Lárávél 5% Framework", "-"));
-
-
-        return "Index";
+        return "TODO: dashboard";
+        
     }
 
     public function no_permission()

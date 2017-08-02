@@ -6,7 +6,7 @@ Create New Role
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage') }}">
+    <a href="{{ url('/cmseven') }}">
         Management
     </a>
 </li>
@@ -15,7 +15,7 @@ Create New Role
 
 @push('bread')
 <li>
-    <a href="{{ url('/manage/roles') }}">
+    <a href="{{ url('/cmseven/roles') }}">
         Roles
     </a>
 </li>
@@ -41,7 +41,7 @@ Create New Role
     </div>
     <!-- END OF .row -->
     <!-- END OF .row -->
-    <form action="{{ url('manage/roles/') }}" method="POST">
+    <form action="{{ url('cmseven/roles/') }}" method="POST">
         {{csrf_field()}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">

@@ -5,7 +5,7 @@ All Permissions
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
@@ -33,11 +33,11 @@ Permission
         </a>
 
         @if(isset($searched))
-        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/manage/permissions') }}">
+        <a class="button responsive_button fabu fa-list-alt primary before" data-toggle="search_panel" href="{{ url('/cmseven/permissions') }}">
             All Permissions
         </a>
         @else
-        <a class="button responsive_button fabu fa-plus cover" href="{{ url('manage/permissions/create') }}">
+        <a class="button responsive_button fabu fa-plus cover" href="{{ url('cmseven/permissions/create') }}">
             Add New Permission
         </a>
         @endif        
@@ -47,7 +47,7 @@ Permission
 <!-- END OF .row -->
 <div class="row align-center hiddenPanel" data-animate="hinge-in-from-top hinge-out-from-top" data-toggler="" id="search_panel">
     <div class="column small-12 medium-9 large-7 columns">
-        <form action="{{ url('/manage/permissions/find') }}" method="POST">
+        <form action="{{ url('/cmseven/permissions/find') }}" method="POST">
             {{csrf_field()}}
             <label for="search">
                 Find Permission:
@@ -131,7 +131,7 @@ Permission
                         {{$permission->updated_at }}
                     </td>
                     <td>
-                        <a class="button button-icon" href="{{ url('manage/permissions/' . $permission->id .  '/edit') }}" title="Edit Permission">
+                        <a class="button button-icon" href="{{ url('cmseven/permissions/' . $permission->id .  '/edit') }}" title="Edit Permission">
                             <i class="fa fa-pencil">
                             </i>
                         </a>

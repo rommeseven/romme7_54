@@ -50,7 +50,7 @@ class PermissionController extends Controller
         if (!$permission->count())
         {
             Session::flash("error", 'Could not find Permission ("'.$request->input('search').'"). Try again.');
-            return redirect('/manage/permissions');
+            return redirect('/cmseven/permissions');
         }
         $searched = $permission->count().' Permission(s) Found:';
         return view('backend.permissions.index')->withPermissions($permission)->with("searched", $searched)->with('searchQuery', $request->input('search'));

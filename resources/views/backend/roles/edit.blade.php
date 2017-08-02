@@ -5,12 +5,12 @@ Edit Role#{{ $role->id }}
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/roles') }}">Roles</a></li>
+<li><a href="{{ url('/cmseven/roles') }}">Roles</a></li>
 @endpush
 
 @push('bread')
@@ -53,7 +53,7 @@ Edit Role#{{ $role->id }}
     </div>
     <!-- END OF .row -->
     <!-- END OF .row -->
-    <form action="{{ url('manage/roles/' . $role->id) }}" method="POST">
+    <form action="{{ url('cmseven/roles/' . $role->id) }}" method="POST">
         {{csrf_field()}}
         {{method_field("PATCH")}}
         <div class="row">

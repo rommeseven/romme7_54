@@ -5,12 +5,12 @@ Create New Permission
 @endpush
 
 @push('bread')
-<li><a href="{{ url('/manage') }}">Management</a></li>
+<li><a href="{{ url('/cmseven') }}">Management</a></li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ url('/manage/permissions') }}">Permissions</a></li>
+<li><a href="{{ url('/cmseven/permissions') }}">Permissions</a></li>
 @endpush
 
 @push('bread')
@@ -19,7 +19,7 @@ Create New Permission
 
 @push('content')
 <div id="app">
-    <form action="{{ url('manage/permissions') }}" method="POST">
+    <form action="{{ url('cmseven/permissions') }}" method="POST">
         <div class="row">
             <div class="column">
                 <p>
