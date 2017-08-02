@@ -48,7 +48,6 @@
                 Created:
                 <br/>
                 Updated:
-                {{-- TODO: change default carbon style model laravel @internet --}}
                 <br/>
                 Status:
                 <br/>

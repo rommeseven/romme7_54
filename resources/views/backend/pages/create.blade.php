@@ -150,7 +150,6 @@ Create New Page
 @endpush
 
 @push('extrajs')
-{{-- TODO: str_slug js  @internet--}}
 <script>
     let app = new Vue({
         el:'#app',

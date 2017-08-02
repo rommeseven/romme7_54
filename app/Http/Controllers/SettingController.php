@@ -34,7 +34,6 @@ class SettingController extends Controller
         $bb_toValidate = array(
             'app_title' => 'sometimes|max:255',
         );
-        // TODO: array_push() #evernote
         for ($i = 0; $i < sizeof($bbs); $i++)
         {
             if ($bbs[$i]['type'] == 'text')
@@ -43,7 +42,6 @@ class SettingController extends Controller
             }
             if ($bbs[$i]['type'] == 'image')
             {
-                // TODO: store image in db @internet
             }
             if ($bbs[$i]['type'] == 'video')
             {
