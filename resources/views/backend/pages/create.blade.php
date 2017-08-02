@@ -118,7 +118,7 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        This will be shown part of the url like this: <br />
+                        This will be part of the url like this: <br />
                         <code>{{ url('/') }}/@{{slug}}</code>
                     </small>
                 </label>

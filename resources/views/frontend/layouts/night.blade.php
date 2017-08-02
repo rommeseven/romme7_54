@@ -13,10 +13,15 @@
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Biryani" rel="stylesheet">        
 
-        <title>{{ settings('app_title') }} - @stack('title')</title>
+        <title>*Night mode* {{ settings('app_title') }} - @stack('title')</title>
         <link href="{{ mix('css/public.css') }}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <style>
+        body
+        {
+            background:black;
+        }
+        </style>
         @stack("extracss")
     </head>
     <body>

@@ -1,4 +1,4 @@
-@extends("frontend.layouts.page")
+@extends('frontend.layouts.' . $layout)
 
 @push('title')
 {{$page->title}}

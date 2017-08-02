@@ -11,6 +11,7 @@
 |
  */
 
+Route::get('/{slug}', 'PagesController@getPage')->name('page');
 Route::get('/', 'PagesController@index')->name('pages');
     Auth::routes();
 Route::prefix('cmseven')->group(function ()

@@ -46,6 +46,8 @@ class Page extends Model
         ),
     );
 
+
+    // TODO: custom config file
     /**
      * Define building blocks used in design, editable in Page Editor Step-5
      * @var array
@@ -54,31 +56,9 @@ class Page extends Model
     private static $building_blocks = array(
         array('key' => 'slogen', 'name' => 'Slogen', 'default' => 'Something Clever', 'type' => "text", "description" => 'The text show in the header'),
         array('key' => 'motto', 'name' => 'Motto', 'default' => 'This is our OTTO', 'type' => "text", "description" => 'The smaller text in the header'),
+        array('key' => 'teszti', 'name' => 'Teszttészta', 'default' => 'Spagettii', 'type' => "text", "description" => 'Footer secret'),
+
     );
-
-    /**
-     * Get all the building blocks for the current page
-     * @author Takács László
-     * @date    2017-08-01
-     * @version v1
-     * @param   Page     $page    the page
-     * @param   [string]     $key     the info
-     * @param   string     $default when nothing comes
-     */
-    public static function GetPageBbs()
-    {
-        // TODO: GetPAgeBbs (arra push in evernote)
-        // $all = array();
-        // foreach ($this->building_blocks as $bb)
-        // {
-        //     $fallback = Settings::get($bb->key, $bb->default);
-            
-        //     Settings::context(new Context(array("page" => $this->id)))->get($bb->key, $fallback);
-        //     //  TODO: array_push @internet
-        // }
-
-        return static::$building_blocks;
-    }
 
     /**
      * Get all the building blocks
@@ -94,6 +74,30 @@ class Page extends Model
         return static::$building_blocks;
     }
 
+    /**
+     * Get all the building blocks for the current page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $default when nothing comes
+     */
+    public function GetPageBbs()
+    {
+        $bbs = array(
+                "layout" => $this->GetSetting("layout", "page")
+            );
+
+        $bb          = collect(static::GetBbs());
+        $bb_keys     = $bb->pluck("key");
+        $bb_defaults = $bb->pluck("default");
+        for ($i = 0; $i < sizeof($bb_keys); $i++)
+        {
+            $bbs = array_add($bbs,$bb_keys[$i],$this->GetSetting($bb_keys[$i], $bb_defaults[$i])    );
+        }
+        return $bbs;
+    }
 
     /**
      * Get The setting for the current page
