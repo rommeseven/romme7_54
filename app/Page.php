@@ -57,6 +57,7 @@ class Page extends Model
         array('key' => 'slogen', 'name' => 'Slogen', 'default' => 'Something Clever', 'type' => "text", "description" => 'The text show in the header'),
         array('key' => 'motto', 'name' => 'Motto', 'default' => 'This is our OTTO', 'type' => "text", "description" => 'The smaller text in the header'),
         array('key' => 'teszti', 'name' => 'Teszttészta', 'default' => 'Spagettii', 'type' => "text", "description" => 'Footer secret'),
+        array('key' => 'chrneu', 'name' => 'Christians Einstellung', 'default' => 'E-Card', 'type' => "text", "description" => 'Neue weg, alte bleibt'),
 
     );
 
@@ -86,7 +87,7 @@ class Page extends Model
     public function GetPageBbs()
     {
         $bbs = array(
-                "layout" => $this->GetSetting("layout", "page")
+                "layout" => "page"//$this->GetSetting("layout", "page")"
             );
 
         $bb          = collect(static::GetBbs());

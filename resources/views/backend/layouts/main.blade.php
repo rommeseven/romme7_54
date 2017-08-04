@@ -177,14 +177,14 @@
             <!-- END OF .column shrink -->
         </div>
         @stack("content")
+<div class="bottomcontent">
+    @stack('bottomcontent')
+</div>
         <!-- END OF #app2 -->
     </div>
     <!-- END OF .column -->
 </div>
 <!-- END OF .topcontent -->
-<div class="bottomcontent">
-    @stack('bottomcontent')
-</div>
 <!-- END OF .bottomcontent -->
 <div class="footer row small-up-1 medium-up-2 large-up-3">
     @stack("footer")

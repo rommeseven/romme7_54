@@ -33,7 +33,7 @@
         <hr/>
         <div id="footer row">
         <div class="column shrink">
-            ©2013. Minden jog fenntartva!
+            ©2013. Minden jog fenntartva! <br /> {{$chrneu}}
             <br/>
             A weboldalt készítette: Takács László  ➺
             <a href="mailto://laszlo.takacs.95@gmail.com">

@@ -13,7 +13,7 @@
 
 Route::get('/{slug}', 'PagesController@getPage')->name('page');
 Route::get('/', 'PagesController@index')->name('pages');
-    Auth::routes();
+Auth::routes();
 Route::prefix('cmseven')->group(function ()
 {
 
@@ -84,5 +84,3 @@ Route::prefix('cmseven')->group(function ()
         });
 
     });
-// FIXME: Fix all links
-// TODO: Working slug links
