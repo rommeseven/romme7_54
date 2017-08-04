@@ -344,7 +344,10 @@ tut("Step 4: Content","Fill up the grey columns with content to proceed!","white
                     tinyMCE.activeEditor.setContent(that);
                 }, 100);
 });
-
+window.onbeforeunload =
+    function() {
+        return "Please make sure your data is saved."
+    }
 });
 
 </script>
