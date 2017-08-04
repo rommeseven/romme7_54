@@ -146,6 +146,13 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 @endpush
 @push('extrajs')
 
@@ -296,7 +303,7 @@ $('html, body').animate({
     'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
   ],
   toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help | colsavebutton | colprevbutton',
+  toolbar2: ' preview media | forecolor backcolor | colsavebutton | colprevbutton',
   image_advtab: true,
   templates: [
     { title: 'Test template 2', content: '<span class="label primary">Primary Label</span>' }
@@ -346,6 +353,7 @@ tut("Step 4: Content","Fill up the grey columns with content to proceed!","white
 });
 window.onbeforeunload =
     function() {
+                notify("warning","Save your Work!","Click the save button, before going back!",'save',6000);
         return "Please make sure your data is saved."
     }
 });
