@@ -46,7 +46,10 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $page = Page::find(1);
-        return $this->getPage($page->slug);
+        return view("landing");
+        
+        /*$page = Page::find(1);
+        if(!$page) return "landing page";
+        return $this->getPage($page->slug);*/
     }
 }

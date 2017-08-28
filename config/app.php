@@ -182,6 +182,7 @@ return array(
          */
         Laratrust\LaratrustServiceProvider::class,
         Krucas\Settings\Providers\SettingsServiceProvider::class,
+        JD\Cloudder\CloudderServiceProvider::class,        
     ),
 
     /*
@@ -237,6 +238,7 @@ return array(
         'Laratrust'    => Laratrust\LaratrustFacade::class,
         'Settings'     => Krucas\Settings\Facades\Settings::class,
         'Context'     => Krucas\Settings\Context::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class
 
     ),
 

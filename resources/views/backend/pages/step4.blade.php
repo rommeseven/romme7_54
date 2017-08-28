@@ -134,7 +134,13 @@ Create New Page
 </div><!-- END OF .row -->
 
 @endpush
+{{-- 
+TODO: tinymce fullscreen btn
+TODO: kein Toolbar
+TODO: tinymice underline btn
+TODO: tinymice clear-format btn
 
+ --}}
 @push('bottomcontent')
     <div class="row">
         <div class="column medium-offset-1" v-show="current!=-1">
@@ -146,13 +152,6 @@ Create New Page
         </div>
         <!-- END OF .column -->
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
 @endpush
 @push('extrajs')
 
