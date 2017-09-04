@@ -155,7 +155,7 @@ TODO: tinymice clear-format btn
 @endpush
 @push('extrajs')
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.6.4/tinymce.min.js">
+<script src="{{ url("other/vendor/tinymce/tinymce.js")}}">
 </script>
 <script>
 @include("backend.pages.editor.reviewColComponent")
@@ -299,9 +299,9 @@ $('html, body').animate({
     'advlist autolink lists link image charmap print preview hr anchor pagebreak',
     'searchreplace wordcount visualblocks visualchars code fullscreen',
     'insertdatetime media nonbreaking save table contextmenu directionality',
-    'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
+    'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help jbimages'
   ],
-  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages',
   toolbar2: ' preview media | forecolor backcolor | colsavebutton | colprevbutton',
   image_advtab: true,
   templates: [

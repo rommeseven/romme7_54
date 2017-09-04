@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Settings;
 
-
 class InstallCommand extends Command
 {
     protected $appname;
@@ -272,6 +271,9 @@ class InstallCommand extends Command
         $chrisi->attachRole($superadmin);
         $person->attachRole($admin);
         $padmin->attachRole($superadmin);
+
+        Settings::set("slogen", "Default Slogen");
+        Settings::set("motto", "Default Motto");
 
     }
 }

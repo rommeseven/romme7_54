@@ -56,10 +56,11 @@ class Page extends Model
     private static $building_blocks = array(
         array('key' => 'slogen', 'name' => 'Slogen', 'default' => 'Something Clever', 'type' => "text", "description" => 'The text show in the header'),
         array('key' => 'motto', 'name' => 'Motto', 'default' => 'This is our OTTO', 'type' => "text", "description" => 'The smaller text in the header'),
-        array('key' => 'teszti', 'name' => 'Teszttészta', 'default' => 'Spagettii', 'type' => "text", "description" => 'Footer secret'),
-        array('key' => 'chrneu', 'name' => 'Christians Einstellung', 'default' => 'E-Card', 'type' => "text", "description" => 'Neue weg, alte bleibt'),
-
+   //     array('key' => 'teszti', 'name' => 'Teszttészta', 'default' => 'Spagettii', 'type' => "text", "description" => 'Footer secret'),
+     //   array('key' => 'chrneu', 'name' => 'Christians Einstellung', 'default' => 'E-Card', 'type' => "text", "description" => 'Neue weg, alte bleibt'),
     );
+
+
 
     /**
      * Get all the building blocks

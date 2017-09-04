@@ -70,7 +70,7 @@ Settings
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="app_title">
                     Website Title
-                    <input name="app_title" placeholder="{{settings('app_title')}}" type="text" v-model="app_title"/>
+                    <input name="app_title" id="app_title" placeholder="{{settings('app_title')}}" type="text" v-model="app_title"/>
                     @if ($errors->has('app_title'))
                     <small class="errortext">
                         {{ $errors->first('app_title') }}
@@ -88,7 +88,7 @@ Settings
                     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <label for="{{$bbs[$i]['key']}}">
                             {{$bbs[$i]['name']}}:
-                            <input name="{{$bbs[$i]['key']}}" placeholder="{{settings($bbs[$i]['key'],$bbs[$i]['default'] )}}" type="text" v-model="{{$bbs[$i]['key']}}"/>
+                            <input name="{{$bbs[$i]['key']}}" id="{{$bbs[$i]['key']}}" placeholder="{{settings($bbs[$i]['key'],$bbs[$i]['default'] )}}" type="text" v-model="{{$bbs[$i]['key']}}"/>
                             @if ($errors->has($bbs[$i]['key']))
                             <small class="errortext">
                                 {{ $errors->first($bbs[$i]['key']) }}

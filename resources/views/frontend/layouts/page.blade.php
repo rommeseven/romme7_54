@@ -33,13 +33,13 @@
         <hr/>
         <div id="footer row">
         <div class="column shrink">
-            ©2013. Minden jog fenntartva! <br /> {{$chrneu}}
+            ©2013. Minden jog fenntartva! <br /> 
             <br/>
             A weboldalt készítette: Takács László  ➺
             <a href="mailto://laszlo.takacs.95@gmail.com">
                 laszlo.takacs.95@gmail.com
             </a>
-            <h1>{{$teszti}}</h1>
+           
             </div><!-- END OF .column shrink -->
         </div>
     </div>

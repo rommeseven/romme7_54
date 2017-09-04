@@ -119,9 +119,8 @@ class PageController extends Controller
         $loadedpage = $page->load("rows.columns");
         $pages      = Page::nav()->get();
         //  $PageContext = new \Krucas\Settings\Context(['page' => $page->id]);
-        $building_blocks = $page->GetSettings();
-
-        return view("frontend/preview")->withPage($loadedpage)->withPages($pages)->withBbs($building_blocks);
+        $bbs             = $page->GetPageBbs();
+        return view("frontend/preview")->withPage($loadedpage)->withPages($pages)->with($bbs);
     }
 
     /**

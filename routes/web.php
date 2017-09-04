@@ -11,28 +11,56 @@
 |
  */
 
+Route::get("/cmseven/blank", function ()
+{
 
+    return " BLANK MESSAGE ";
 
+});
+Route::get("/cmseven/plugin/image-upload", function ()
+{
 
-Route::get("/filetest",function() {
-    
-    return view("filetest");
-    
+    return view("backend.plugins.tinymce.jbimages.dialog");
+
+});
+Route::post("/cmseven/upload/image", function ()
+{
+
+    $result['result']      = "file_uploaded";
+    $result['resultcode']  = 'ok';
+    $result['oldfilename'] = request()->file("userfile");
+    $result['file_name']   = Cloudder::upload($result['oldfilename'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId();
+                                                                            // Output to user
+    return view('backend.upload_result')->withResult($result['result'])->withResultcode($result['resultcode'])->withFilename($result['file_name']);
+
+    /* // Failure
+
+// Compile data for output
+$result['result']       = $this->upload->display_errors(' ', ' ');
+$result['resultcode']   = 'failed';
+
+// Output to user
+$this->load->view('ajax_upload_result', $result);
+ */
+
 });
 
-Route::post("/fileuploadtest",function() {
-   request()->file("avatar")->store("avatars");
+Route::get("/filetest", function ()
+{
+
+    return view("filetest");
+
+});
+
+Route::post("/fileuploadtest", function ()
+{
+    $result['file_name'] = request()->file("avatar")->getPathName();
+
+    dd(Cloudder::upload($result['file_name'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId());
 
     return back();
 
-
 });
-
-
-
-
-
-
 
 Route::get('/{slug}', 'PagesController@getPage')->name('page');
 Route::get('/', 'PagesController@index')->name('pages');
