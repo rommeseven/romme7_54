@@ -180,6 +180,7 @@ return array(
         /*
          * Third Party Providers...
          */
+        Danhunsaker\Laravel\Flysystem\FlysystemOtherServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Krucas\Settings\Providers\SettingsServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,        

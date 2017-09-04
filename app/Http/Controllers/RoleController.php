@@ -139,6 +139,7 @@ class RoleController extends Controller
             {
                 $role->display_name = $request->display_name;
             }
+            /*FIXME: Role update blank field gets saved*/
 
             if ($request->has('description'))
             {
