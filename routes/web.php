@@ -15,8 +15,8 @@ use App\Mail\TestEmail;
 use App\Notifications\TestPageVisited;
 
 Route::get("/qtest", function () {
-    Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
-//auth()->user()->notify(new TestPageVisited);
+    // Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
+auth()->user()->notify(new TestPageVisited);
 
     return "Wait for it...";
 

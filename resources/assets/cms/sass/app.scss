@@ -128,3 +128,35 @@ $global-flexbox: true !global;
   -webkit-transform: inherit !important;
   transform: inherit !important;
 }
+
+.notif {
+  li {
+    background: #9DB4B2;
+
+    a {
+      color: $body-font-color;
+    }
+
+    &:hover {
+      background: #BACAC9;
+
+      a {
+        color: get-color(logoblue);
+      }
+    }
+  }
+
+  li.unread {
+    a {
+      padding: 1rem;
+      font-weight: $global-weight-bold;
+      color: get-color(logoblue);
+    }
+
+    &:hover {
+      a {
+        color: $primary-color;
+      }
+    }
+  }
+}

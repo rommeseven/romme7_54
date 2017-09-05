@@ -13000,3 +13000,28 @@ li.menu-highlight {
   transform: inherit !important;
 }
 
+.notif li {
+  background: #9DB4B2;
+}
+
+.notif li a {
+  color: #0a0a0a;
+}
+
+.notif li:hover {
+  background: #BACAC9;
+}
+
+.notif li:hover a {
+  color: #21295C;
+}
+
+.notif li.unread a {
+  font-weight: bold;
+  color: #21295C;
+}
+
+.notif li.unread:hover a {
+  color: #5364C3;
+}
+

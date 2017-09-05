@@ -10,8 +10,10 @@
                     </a>
                 </h1>
             </div>
-            <!-- END OF .flex-container align-middle -->
+            <!-- END OF .flex-container align-fdsafmiddle -->
         </div>
+        
+
         <!-- END OF .columns shrink -->
         <div class="columns shrink">
             <div class="title-bar hide-for-large" data-hide-for="large" data-toggle="offCanvas">
@@ -22,17 +24,41 @@
                 </div>
             </div>
             <ul class="horizontal menu show-for-large dropdown topnavigation" data-click-open="true" data-closing-time="1500" data-disable-hover="true" data-dropdown-menu="" style="margin-right:15px;">
-                <li class="notifs_large">
-                    <a class="notifs_large" data-toggle="notifications_large" href="#" id="notifications_large_toggler">
-                        <i class="fa fa-envelope notifs_large">
-                        </i>
-                        <span class="badge success notifs_large" style="position: absolute; left: 28px; top: 6px;">
-                            14
+                <li style="margin-top: 4px;">
+                {{-- TODO: DISABLE ARROW ON NOTIFS
+                 --}}
+                    <a @click.prevent="''">
+                        Notification <span class="badge 
+                @if(!count(auth()->user()->unreadNotifications))
+                secondary
+                @elseif(count(auth()->user()->unreadNotifications) < 10 )
+                warning
+                @else
+                alert
+                @endif
+                         notifs_large" style="position:relative;top:-10px;left:-6px;">
+                           @auth
+                           {{ count(auth()->user()->unreadNotifications)}}
+                           @endauth
                         </span>
                     </a>
-                    <div class="dropdown-pane large notifs_large" data-close-on-click="true" data-dropdown="" data-hover-pane="false" data-v-offset="17" id="notifications_large">
-                        Just some junk that needs to be said. Or not. Your choice.
-                    </div>
+                    <ul class="menu vertical notif" style="text-align:left">
+                        <li class="unread">
+                            <a href="#">
+
+                                <il class="fa fa-user-plus"></il><!-- END OF .fa fa-bell --> The Chef created a new User!
+                                <il class="fa fa-bell"></il><!-- END OF .fa fa-bell -->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-wrench">
+                                </i>
+                                Account Settings have been updated! <i class="fa fa-bell-o">
+                                </i>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li style="margin-top: 4px;">
                     <a @click.prevent="''">
