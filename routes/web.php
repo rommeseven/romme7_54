@@ -11,6 +11,18 @@
 |
  */
 
+use App\Mail\TestEmail;
+use App\Notifications\TestPageVisited;
+
+Route::get("/qtest", function () {
+auth()->user()->notify(new TestPageVisited);
+    //Mail::to("laszlotakacs.95+emailtest@gmail.com")->later(5,new TestEmail);
+
+    return "Wait for it...";
+
+});
+
+
 Route::get("/cmseven/blank", function ()
 {
 
@@ -44,7 +56,7 @@ $this->load->view('ajax_upload_result', $result);
  */
 
 });
-
+/*
 Route::get("/filetest", function ()
 {
 
@@ -60,12 +72,12 @@ Route::post("/fileuploadtest", function ()
 
     return back();
 
-});
+});*/
 
+Auth::routes();
 Route::get('/{slug}', 'PagesController@getPage')->name('page');
 Route::get('/', 'PagesController@index')->name('pages');
-Auth::routes();
-Route::prefix('cmseven')->group(function ()
+Route::prefix('cmseven')->middleware('auth')->group(function ()
 {
 
     Route::get('/dashboard', 'ManageController@index')->name("dashboard");
