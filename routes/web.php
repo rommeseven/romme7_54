@@ -44,10 +44,22 @@ Route::get("/qtest", function ()
 Route::get("/dropbox", function ()
 {
 
-    echo '<img src="'.Storage::url("bild.png").'" alt="" />';
+    echo '<img src="'.LAImg::url("bild.png").'" alt="" />';
+    /*
+    TODO: test dropbox @dropbox
+     */
     echo "<br />";
     return " good MESSAGE ";
 });
+
+Route::get("/laciapp", function ()
+{
+
+LAImg::url("bild.png");
+
+    return " good MESSAGE ";
+});
+
 
 Route::get("/cmseven/blank", function ()
 {

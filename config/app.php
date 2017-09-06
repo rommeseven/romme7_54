@@ -183,8 +183,8 @@ return array(
         Danhunsaker\Laravel\Flysystem\FlysystemOtherServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Krucas\Settings\Providers\SettingsServiceProvider::class,
-        JD\Cloudder\CloudderServiceProvider::class,      
-         BC\Laravel\DropboxDriver\ServiceProvider::class, 
+        JD\Cloudder\CloudderServiceProvider::class,
+        BC\Laravel\DropboxDriver\ServiceProvider::class,
     ),
 
     /*
@@ -239,8 +239,9 @@ return array(
          */
         'Laratrust'    => Laratrust\LaratrustFacade::class,
         'Settings'     => Krucas\Settings\Facades\Settings::class,
-        'Context'     => Krucas\Settings\Context::class,
-        'Cloudder' => JD\Cloudder\Facades\Cloudder::class
+        'Context'      => Krucas\Settings\Context::class,
+        'Cloudder'     => JD\Cloudder\Facades\Cloudder::class,
+        'LAImg'        => App\LaciApp\LAImg::class,
 
     ),
 

@@ -25,7 +25,7 @@
             </div>
             <ul class="horizontal menu show-for-large dropdown topnavigation" data-click-open="true" data-closing-time="1500" data-disable-hover="true" data-dropdown-menu="" style="margin-right:15px;">
                 <li style="margin-top: 4px;">
-                {{-- TODO: DISABLE ARROW ON NOTIFS
+                {{-- TODO: DISABLE ARROW ON NOTIFS @internet
                  --}}
                     <a @click.prevent="''">
                         Notification <span class="badge 
