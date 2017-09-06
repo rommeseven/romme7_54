@@ -23,7 +23,8 @@ auth()->user()->notify(new TestPageVisited);
 });
 Route::get("/dropbox", function ()
 {
-Storage::disk('dropbox')->put('file.txt', 'Hello laravel ');
+    echo '<img src="'. Storage::url('bild.png') .'" alt="" />';
+    echo "<br />";
     return " good MESSAGE ";
 
 });
