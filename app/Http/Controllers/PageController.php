@@ -119,7 +119,7 @@ class PageController extends Controller
         $loadedpage = $page->load("rows.columns");
         $pages      = Page::nav()->get();
         //  $PageContext = new \Krucas\Settings\Context(['page' => $page->id]);
-        $bbs             = $page->GetPageBbs();
+        $bbs = $page->GetPageBbs();
         return view("frontend/preview")->withPage($loadedpage)->withPages($pages)->with($bbs);
     }
 
@@ -164,8 +164,8 @@ class PageController extends Controller
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-
-        return view("backend.pages.step5")->withPage($page);
+        $bbs = config("building_blocks");
+        return view("backend.pages.step5")->withPage($page)->withBbs($bbs);
     }
 
     /**
@@ -427,15 +427,19 @@ class PageController extends Controller
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-
-        $this->validate($request, array(
+/*
+TODO: validate @bbs from config @internet array
+ */
+        $data = $this->validate($request, array(
             'slogan' => 'sometimes|max:255',
         ));
         if ($request->has('slogan'))
         {
-            $this->SetSetting("slogan", $request->slogan);
+            $page->SetSetting("slogan", $request->slogan);
         }
-
+/*
+TODO: @bbs loop setsetting
+ */
         $page->step = 6;
         $page->save();
         Session::flash("success", "Page-specific settings have been saved!");

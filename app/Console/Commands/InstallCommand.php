@@ -272,8 +272,14 @@ class InstallCommand extends Command
         $person->attachRole($admin);
         $padmin->attachRole($superadmin);
 
-        Settings::set("slogen", "Default Slogen");
-        Settings::set("motto", "Default Motto");
+        $bb          = collect(config("building_blocks"));
+        $bb_keys     = $bb->pluck("key");
+        $bb_defaults = $bb->pluck("default");
+        for ($i = 0; $i < sizeof($bb_keys); $i++)
+        {
+            Settings::set($bb_keys[$i], $bb_defaults[$i]);
+        }
+
 
     }
 }
