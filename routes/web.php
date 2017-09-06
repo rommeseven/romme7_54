@@ -49,7 +49,7 @@ Route::get("/dropbox", function ()
     TODO: test dropbox @dropbox
      */
     echo "<br />";
-    return " good MESSAGE ";
+    return " goood MESSAGE ";
 });
 
 Route::get("/laciapp", function ()
