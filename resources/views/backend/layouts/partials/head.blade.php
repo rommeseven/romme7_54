@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {{-- //TODO: Add app favicon --}}
+        {{-- //TODO: Add app favicon  @dropbox @internet --}}
         <link rel="shortcut icon" href="asset('cms/img/favicon.ico')" type="image/x-icon">
         <link rel="icon" href="asset('cms/img/favicon.ico')" type="image/x-icon">
         <title>{{ settings('app_title') }} | @stack('title')</title>

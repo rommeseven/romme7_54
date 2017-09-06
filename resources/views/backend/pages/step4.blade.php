@@ -258,6 +258,7 @@ $('html, body').animate({
                            app.firstsave=false;
                         }                                    
                     }
+                    app.needtosave=false;
                     notify("success","Changes Saved!","Your changes on the column content have been saved.","save",3000);
 
                 }  else window.location="{{ url('cmseven/pages/'. $page->id .'/preview') }}";
@@ -272,7 +273,7 @@ $('html, body').animate({
         },
         nextstep()
         {
-            if(this.needtosave == true)
+            if(app.needtosave == true)
             {
                 notify("warning","Save your Work!","Click the save button, before going on to the next step!",'save',6000);
                 return false;
@@ -352,8 +353,10 @@ tut("Step 4: Content","Fill up the grey columns with content to proceed!","white
 });
 window.onbeforeunload =
     function() {
-                notify("warning","Save your Work!","Click the save button, before going back!",'save',6000);
-        return "Please make sure your data is saved."
+if(app.needtosave) notify("warning","Save your Work!","Click the save button, before going back!",'save',6000);
+        if(app.needtosave)  return "Please make sure your data is saved.";
+        
+
     }
 });
 
