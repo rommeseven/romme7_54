@@ -140,6 +140,9 @@ class PageController extends Controller
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
+        /*
+        TODO: page info on publish confirm @offline
+         */
         return view("backend/pages/step6")->withPage($page);
     }
 
@@ -309,7 +312,7 @@ class PageController extends Controller
         {
             // TODO: extract to function @offline
             $page->module  = $request->input("serial");
-            $page->step = 6;
+            $page->step = 5;
             $page->save();
             Session::flash("success", "Page Module has been successfully setup!");
             Session::flash("success_autohide", "4500");
