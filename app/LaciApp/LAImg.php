@@ -6,9 +6,7 @@ class LAImg
 {
     public static function url($path)
     {
-        dd(config('filesystems.default'));
-
-        if (\App::environment('local'))
+        if (config('filesystems.default') == 'local')
         {
             return Storage::url($path);
         }
