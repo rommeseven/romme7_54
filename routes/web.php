@@ -11,35 +11,53 @@
 |
  */
 
+if (App::environment('local'))
+{
+    Route::get('storage/{filename}', function ($filename)
+    {
+        $path = storage_path('app/'.$filename);
+
+        if (!File::exists($path))
+        {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    });
+}
+
 use App\Mail\TestEmail;
 use App\Notifications\TestPageVisited;
 
-Route::get("/qtest", function () {
+Route::get("/qtest", function ()
+{
     // Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
-auth()->user()->notify(new TestPageVisited);
+    auth()->user()->notify(new TestPageVisited);
 
     return "Wait for it...";
-
 });
 Route::get("/dropbox", function ()
 {
-    echo '<img src="'. Storage::url('bild.png') .'" alt="" />';
+
+    echo '<img src="'.Storage::url("bild.png").'" alt="" />';
     echo "<br />";
     return " good MESSAGE ";
-
 });
 
 Route::get("/cmseven/blank", function ()
 {
 
     return " BLANK MESSAGE ";
-
 });
 Route::get("/cmseven/plugin/image-upload", function ()
 {
 
     return view("backend.plugins.tinymce.jbimages.dialog");
-
 });
 Route::post("/cmseven/upload/image", function ()
 {
@@ -48,7 +66,7 @@ Route::post("/cmseven/upload/image", function ()
     $result['resultcode']  = 'ok';
     $result['oldfilename'] = request()->file("userfile");
     $result['file_name']   = Cloudder::upload($result['oldfilename'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId();
-                                                                            // Output to user
+    // Output to user
     return view('backend.upload_result')->withResult($result['result'])->withResultcode($result['resultcode'])->withFilename($result['file_name']);
 
     /* // Failure
@@ -60,23 +78,22 @@ $result['resultcode']   = 'failed';
 // Output to user
 $this->load->view('ajax_upload_result', $result);
  */
-
 });
 /*
 Route::get("/filetest", function ()
 {
 
-    return view("filetest");
+return view("filetest");
 
 });
 
 Route::post("/fileuploadtest", function ()
 {
-    $result['file_name'] = request()->file("avatar")->getPathName();
+$result['file_name'] = request()->file("avatar")->getPathName();
 
-    dd(Cloudder::upload($result['file_name'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId());
+dd(Cloudder::upload($result['file_name'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId());
 
-    return back();
+return back();
 
 });*/
 
@@ -107,7 +124,6 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
     {
         Route::get('/find', 'RoleController@index')->name("roles.find");
         Route::post('/find', 'RoleController@search');
-
     });
 
     Route::resource('permissions', 'PermissionController', array('except' => array('show', 'destroy')));
@@ -149,7 +165,5 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
                 Route::get('/6/page/{page}', 'PageController@getPublish')->name("pageeditor.step6");
             });
         });
-
     });
-
 });
