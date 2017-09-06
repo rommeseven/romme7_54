@@ -21,7 +21,12 @@ auth()->user()->notify(new TestPageVisited);
     return "Wait for it...";
 
 });
+Route::get("/dropbox", function ()
+{
+Storage::disk('dropbox')->put('file.txt', 'Hello laravel ');
+    return " good MESSAGE ";
 
+});
 
 Route::get("/cmseven/blank", function ()
 {

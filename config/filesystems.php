@@ -114,11 +114,18 @@ return [
             'tokenSecret'    => 'your-token-secret',
         ],
 
-        'dropbox' => [
+
+    'dropbox' => [
+        'driver' => 'dropbox',
+        'app_secret' => env('DROPBOX_APP_SECRET'),
+        'token' => env('DROPBOX_TOKEN'),
+    ],
+
+/*        'dropbox' => [
             'driver'           => 'dropbox',
             'accessToken'      => 'your-access-token',
             'clientIdentifier' => 'your-client-identifier',
-        ],
+        ],*/
 
         'gridfs' => [
             'driver'  => 'gridfs',

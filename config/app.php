@@ -183,7 +183,8 @@ return array(
         Danhunsaker\Laravel\Flysystem\FlysystemOtherServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Krucas\Settings\Providers\SettingsServiceProvider::class,
-        JD\Cloudder\CloudderServiceProvider::class,        
+        JD\Cloudder\CloudderServiceProvider::class,      
+         BC\Laravel\DropboxDriver\ServiceProvider::class, 
     ),
 
     /*

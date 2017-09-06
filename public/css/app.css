@@ -13017,6 +13017,7 @@ li.menu-highlight {
 }
 
 .notif li.unread a {
+  padding: 1rem;
   font-weight: bold;
   color: #21295C;
 }
