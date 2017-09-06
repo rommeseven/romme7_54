@@ -12,7 +12,7 @@ class LAImg
         }
         else
         {
-            return Storage::getDriver()->getAdapter()->applyPathPrefix($path);
+            return Storage::getDriver()->getAdapter()->getClient()->createTemporaryDirectLink($path);
         }
     }
 }
