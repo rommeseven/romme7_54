@@ -297,13 +297,24 @@ class PageController extends Controller
         }
         if ($request->saving == "url")
         {
+            // TODO: extract to function @offline
             $page->url  = $request->input("serial");
-            $page->step = 6;
+            $page->step = 5;
             $page->save();
             Session::flash("success", "Page redirect has been successfully set!");
             Session::flash("success_autohide", "4500");
             return redirect('cmseven/pages/create/step/6/page/'.$page->id);
         }
+        if ($request->saving == "module")
+        {
+            // TODO: extract to function @offline
+            $page->module  = $request->input("serial");
+            $page->step = 6;
+            $page->save();
+            Session::flash("success", "Page Module has been successfully setup!");
+            Session::flash("success_autohide", "4500");
+            return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+        }        
         $object = json_decode($request->serial, true);
         if ($request->saving == "page")
         {

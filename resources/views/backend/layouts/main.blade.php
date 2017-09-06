@@ -46,8 +46,8 @@
                         <li class="unread">
                             <a href="#">
 
-                                <il class="fa fa-user-plus"></il><!-- END OF .fa fa-bell --> The Chef created a new User!
-                                <il class="fa fa-bell"></il><!-- END OF .fa fa-bell -->
+                                <i class="fa fa-user-plus"></i><!-- END OF .fa fa-bell --> The Chef created a new User!
+                                <i class="fa fa-bell"></i><!-- END OF .fa fa-bell -->
                             </a>
                         </li>
                         <li>
