@@ -15,7 +15,7 @@ return [
     */
 
     'mailgun' => [
-        'domain' => 'https://api.mailgun.net/v3/'.env('MAILGUN_DOMAIN'),
+        'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_API_KEY'),
     ],
 
