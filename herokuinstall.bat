@@ -10,4 +10,12 @@ call heroku config:set MAIL_USERNAME=laszlotakacs.95@gmail.com
 call heroku config:set MAIL_PASSWORD=eTL95+MyWish2187
 call heroku config:set MAIL_ENCRYPTION=ssl
 call heroku config:set MAIL_FROM_ADDRESS=laszlotakacs.95+seven@gmail.com
-call heroku config:set MAIL_FROM_NAME="Takács László - SEVEN Webagentur"
+call heroku config:set MAIL_FROM_NAME="Christian Neuherz - SEVEN Webagentur"
+call heroku config:set APP_CODE=%1
+call heroku addons:create cloudinary:starter
+call heroku addons:create heroku-postgresql:hobby-dev
+call heroku addons:create mailgun:starter
+call git push heroku master
+call heroku run php artisan migrate
+call heroku run php artisan cms:install
+
