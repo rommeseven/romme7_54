@@ -43,7 +43,7 @@ Route::get("/atest", function ()
 });
 Route::get("/mailtest", function ()
 {
-        Mail::rahw('Sending emails with Mailgun and Laravel is easy!', function($message)
+        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
     {
         $message->to('laszlotakacs.95@gmail.com');
     });
