@@ -3,3 +3,9 @@ TODO: EVERY JS IN ONE FILE! @bigproject
 
 
 
+
+TODO: bb type img
+	Can be uploaded
+
+TODO: bb type block
+	Can be edited with tinyMCE

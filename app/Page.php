@@ -59,7 +59,7 @@ class Page extends Model
      */
     public static function GetBbs()
     {
-        return config("building_blocks");
+        return LABB::all();
     }
 
     /**

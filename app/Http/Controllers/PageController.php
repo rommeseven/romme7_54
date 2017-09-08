@@ -311,13 +311,13 @@ class PageController extends Controller
         if ($request->saving == "module")
         {
             // TODO: extract to function @offline
-            $page->module  = $request->input("serial");
-            $page->step = 5;
+            $page->module = $request->input("serial");
+            $page->step   = 5;
             $page->save();
             Session::flash("success", "Page Module has been successfully setup!");
             Session::flash("success_autohide", "4500");
             return redirect('cmseven/pages/create/step/6/page/'.$page->id);
-        }        
+        }
         $object = json_decode($request->serial, true);
         if ($request->saving == "page")
         {
@@ -441,19 +441,19 @@ class PageController extends Controller
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-/*
-TODO: validate @bbs from config @internet array
- */
-        $data = $this->validate($request, array(
-            'slogan' => 'sometimes|max:255',
-        ));
-        if ($request->has('slogan'))
+
+        $arr  = config("building_blocks");
+        $arr  = array_pluck($arr, "validation", "key");
+        $data = request()->validate($arr);
+
+
+        foreach($data as $key => $value)
         {
-            $page->SetSetting("slogan", $request->slogan);
+            $page->SetSetting($key,$value);
+
         }
-/*
-TODO: @bbs loop setsetting
- */
+
+
         $page->step = 6;
         $page->save();
         Session::flash("success", "Page-specific settings have been saved!");

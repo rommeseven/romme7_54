@@ -34,6 +34,19 @@ if (App::environment('local'))
 use App\Mail\TestEmail;
 use App\Notifications\TestPageVisited;
 
+Route::get("/atest", function ()
+{
+    $arr = config("building_blocks");
+    $arr = array_pluck($arr, "validation", "key");
+
+    dd($arr);
+});
+Route::get("/mailtest", function ()
+{
+    Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
+    // auth()->user()->notify(new TestPageVisited);
+});
+
 Route::get("/qtest", function ()
 {
     // Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
@@ -55,11 +68,10 @@ Route::get("/dropbox", function ()
 Route::get("/laciapp", function ()
 {
 
-LAImg::url("bild.png");
+    LAImg::url("bild.png");
 
     return " good MESSAGE ";
 });
-
 
 Route::get("/cmseven/blank", function ()
 {

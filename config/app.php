@@ -242,6 +242,7 @@ return array(
         'Context'      => Krucas\Settings\Context::class,
         'Cloudder'     => JD\Cloudder\Facades\Cloudder::class,
         'LAImg'        => App\LaciApp\LAImg::class,
+        'LABB'        => App\LaciApp\LABB::class,
 
     ),
 
