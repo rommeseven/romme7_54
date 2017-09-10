@@ -124,8 +124,6 @@ return back();
 });*/
 
 Auth::routes();
-Route::get('/{slug}', 'PagesController@getPage')->name('page');
-Route::get('/', 'PagesController@index')->name('pages');
 Route::prefix('cmseven')->middleware('auth')->group(function ()
 {
 
@@ -193,3 +191,5 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
         });
     });
 });
+Route::get('/', 'PagesController@index')->name('pages');
+Route::get('/{slug}', 'PagesController@getPage')->name('page');
