@@ -43,10 +43,10 @@ use App\Notifications\TestPageVisited;
 });*/
 Route::get("/mailtest", function ()
 {
-       dump(Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail));
-        dd('Mail Send Successfully?');
-    //Mail::to("laszlotakacs.95@gmail.com")->send(new TestEmail);
-    // auth()->user()->notify(new TestPageVisited);
+      // dump(Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail));
+      // dd('Mail Send Successfully?');
+    Mail::to("laszlotakacs.95@gmail.com")->send(new TestEmail);
+     auth()->user()->notify(new TestPageVisited);
 });
 /*
 Route::get("/qtest", function ()
