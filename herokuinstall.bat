@@ -4,4 +4,5 @@ call heroku create %appname% --region eu
 call php artisan key:generate --show
 call set /p id="COPY APP KEY HERE: "
 call heroku git:remote -a %appname%
+call heroku labs:enable runtime-dyno-metadata -a %appname%
 call ./herokuconfig.bat
