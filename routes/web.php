@@ -32,7 +32,7 @@ if (App::environment('local'))
 }
 
 use App\Mail\TestEmail;
-use App\Notifications\TestPageVisited;
+//use App\Notifications\TestPageVisited;
 
 /*Route::get("/atest", function ()
 {
