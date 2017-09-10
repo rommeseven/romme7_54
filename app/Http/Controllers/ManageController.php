@@ -17,7 +17,7 @@ class ManageController extends Controller
 {
     public function index()
     {
-        return "TODO: dashboard";
+        return view("backend.dashboard");
         
     }
 
