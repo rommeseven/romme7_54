@@ -63,11 +63,10 @@ class RoleController extends Controller
         ));
         $roles = Role::search($request->input('search'))->with("permissions")->paginate(10);
 
-
         if (!$roles->count())
         {
             Session::flash("error", 'Could not find role with data "'.$request->input('search').'".');
-            Session::flash("error_autohide",4000);
+            Session::flash("error_autohide", 4000);
             return redirect('/cmseven/roles');
         }
         $searched = $roles->count().' User(s) Found:';
@@ -83,7 +82,6 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::where('id', $id)->with('permissions')->first();
- 
 
         return view('backend.roles.show')->withRole($role);
     }
@@ -114,7 +112,7 @@ class RoleController extends Controller
         }
 
         Session::flash('success', 'Successfully created the new '.$role->display_name.' role in the database.');
-         Session::flash("success_autohide", "4500");
+        Session::flash("success_autohide", "4500");
         return redirect('/cmseven/roles/'.$role->id);
     }
 
@@ -127,27 +125,18 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, array(
+        $data = $this->validate($request, array(
             'display_name' => 'sometimes|max:255',
             'description'  => 'sometimes|max:255',
         ));
+        $filteredData = array_filter($data, function ($value)
+        {
+            return ($value !== null && $value !== false && $value !== '');
+        });
 
         $role = Role::findOrFail($id);
-        if ($request->has('display_name') || $request->has('description'))
-        {
-            if ($request->has('display_name'))
-            {
-                $role->display_name = $request->display_name;
-            }
-            /*FIXME: Role update blank field gets saved*/
 
-            if ($request->has('description'))
-            {
-                $role->description = $request->description;
-            }
-
-            $role->save();
-        }
+        $role->update($filteredData);
 
         if ($request->permissions)
         {
@@ -155,7 +144,7 @@ class RoleController extends Controller
         }
 
         Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');
-         Session::flash("success_autohide", "4500");
+        Session::flash("success_autohide", "4500");
         return redirect('/cmseven/roles/'.$id);
     }
 }
