@@ -45,8 +45,15 @@ Route::get("/mailtest", function ()
 {
       // dump(Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail));
       // dd('Mail Send Successfully?');
-    Mail::to("laszlotakacs.95@gmail.com")->send(new TestEmail);
+   // Mail::to("laszlotakacs.95@gmail.com")->send(new TestEmail);
     // auth()->user()->notify(new TestPageVisited);
+    // 
+    // 
+     Mail::raw('Text', function ($message){
+            $message->to('laszlotakacs.95@gmail.com');
+ });
+return "check logs";
+
 });
 /*
 Route::get("/qtest", function ()
