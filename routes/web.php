@@ -34,13 +34,13 @@ if (App::environment('local'))
 use App\Mail\TestEmail;
 use App\Notifications\TestPageVisited;
 
-Route::get("/atest", function ()
+/*Route::get("/atest", function ()
 {
     $arr = config("building_blocks");
     $arr = array_pluck($arr, "validation", "key");
 
     dd($arr);
-});
+});*/
 Route::get("/mailtest", function ()
 {
        dump(Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail));
@@ -48,53 +48,47 @@ Route::get("/mailtest", function ()
     //Mail::to("laszlotakacs.95@gmail.com")->send(new TestEmail);
     // auth()->user()->notify(new TestPageVisited);
 });
-
+/*
 Route::get("/qtest", function ()
 {
     // Mail::to("laszlotakacs.95+emailtest@gmail.com")->send(new TestEmail);
     auth()->user()->notify(new TestPageVisited);
 
     return "Wait for it...";
-});
-Route::get("/dropbox", function ()
+});*/
+/*Route::get("/dropbox", function ()
 {
 
     echo '<img src="'.LAImg::url("bild.png").'" alt="" />';
-    /*
-    TODO: test dropbox @dropbox
-     */
+
     echo "<br />";
     return " goood MESSAGE ";
-});
+});*/
 
-Route::get("/laciapp", function ()
+/*Route::get("/laciapp", function ()
 {
 
     LAImg::url("bild.png");
 
     return " good MESSAGE ";
 });
-
+*/
 Route::get("/cmseven/blank", function ()
 {
-
     return " BLANK MESSAGE ";
 });
 Route::get("/cmseven/plugin/image-upload", function ()
 {
-
     return view("backend.plugins.tinymce.jbimages.dialog");
 });
 Route::post("/cmseven/upload/image", function ()
 {
-
     $result['result']      = "file_uploaded";
     $result['resultcode']  = 'ok';
     $result['oldfilename'] = request()->file("userfile");
     $result['file_name']   = Cloudder::upload($result['oldfilename'], null, array("width" => 1000, "height" => 1000, "crop" => "limit"))->getPublicId();
     // Output to user
     return view('backend.upload_result')->withResult($result['result'])->withResultcode($result['resultcode'])->withFilename($result['file_name']);
-
     /* // Failure
 
 // Compile data for output
@@ -123,14 +117,33 @@ return back();
 
 });*/
 
-Auth::routes();
+Route::group(['middleware' => ['web']], function() {
+
+// Login Routes...
+    Route::get('login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\LoginController@login']);
+    Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+// Registration Routes...
+    Route::get('register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+    Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\RegisterController@register']);
+
+// Password Reset Routes...
+    Route::get('password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
+    Route::post('password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
+    Route::get('password/reset/{token}', ['as' => 'password.reset.token', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
+    Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'Auth\ResetPasswordController@reset']);
+});
+
+
+
+
 
 Route::get('/', 'PagesController@index')->name('pages');
 Route::get('/{slug}', 'PagesController@getPage')->name('page');
 
 Route::prefix('cmseven')->middleware('auth')->group(function ()
 {
-
     Route::get('/dashboard', 'ManageController@index')->name("dashboard");
     Route::get('/', 'ManageController@index')->name("home");
     Route::prefix('navigation')->group(function ()
