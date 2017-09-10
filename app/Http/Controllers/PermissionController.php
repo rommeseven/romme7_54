@@ -81,13 +81,13 @@ class PermissionController extends Controller
             if ($permission->save())
             {
                 Session::flash("success", "You successfully create this permission.");
-                 Session::flash("success_autohide", "4500");
+                Session::flash("success_autohide", "4500");
                 return redirect()->route('permissions.show', $permission->id);
             }
             else
             {
                 Session::flash("error", "An error occured while creating the permission. (ErrCode: 89)");
-                 Session::flash("success_autohide", "4500");
+                Session::flash("success_autohide", "4500");
                 return redirect()->back();
             }
         }
@@ -110,7 +110,7 @@ class PermissionController extends Controller
                 $permission->save();
             }
             Session::flash("success", "You've successfully created this permission.");
-             Session::flash("success_autohide", "4500");
+            Session::flash("success_autohide", "4500");
             return redirect()->route('permissions.index');
         }
         abort(404);
@@ -126,40 +126,28 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $permission = Permission::findOrFail($id);
-        if ($request->has('slug') && !empty($request->input('slug')))
+        $data = $this->validate($request, array(
+            'slug'        => 'sometimes|nullable|max:255|min:5|unique:permissions,name'.$id,
+            'name'        => 'sometimes|nullable|max:255|min:5|unique:permissions,name'.$id,
+            'description' => 'sometimes|nullable|max:255|min:5',
+        ));
+        $filteredData = array_filter($data, function ($value)
         {
-            $this->validate($request, array(
+            return ($value !== null && $value !== false && $value !== '');
+        });
 
-                'slug' => 'required|max:255|min:5|unique:permissions,name'.$id,
-            ));
-            $request->slug    = str_slug($request->slug);
-            $permission->name = $request->slug;
-        }
-        if ($request->has('name') && !empty($request->input('name')))
+        $permission = Permission::findOrFail($id);
+
+        if ($permission->update($filteredData))
         {
-            $this->validate($request, array(
-                'name' => 'required|max:255|min:5|unique:permissions,name'.$id,
-            ));
-            $permission->display_name = $request->name;
+            Session::flash("success", "Your changes have been saved.");
+            Session::flash("success_autohide", "4500");
+            return redirect()->route('permissions.index');
         }
-        if ($request->has('description') && !empty($request->input('description')))
+        else
         {
-            $this->validate($request, array(
-                'description' => 'required|max:255|min:5',
-            ));
-            $permission->description = $request->description;
-            if ($permission->save())
-            {
-                Session::flash("success", "Your changes have been saved.");
-                 Session::flash("success_autohide", "4500");
-                return redirect()->route('permissions.show', $id);
-            }
-            else
-            {
-                Session::flash("error", "An error occured while saving the changes. (ErrCode:90)");
-                return redirect()->back();
-            }
+            Session::flash("error", "An error occured while saving the changes. (ErrCode:90)");
+            return redirect()->back();
         }
     }
 }
