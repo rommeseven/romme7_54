@@ -43,6 +43,8 @@ class InstallCommand extends Command
     public function handle()
     {
 
+
+
         // 1. User Erstellen
 
         $laci           = new \App\User;
