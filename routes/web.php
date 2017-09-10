@@ -139,8 +139,7 @@ Route::group(['middleware' => ['web']], function() {
 
 
 
-Route::get('/', 'PagesController@index')->name('pages');
-Route::get('/{slug}', 'PagesController@getPage')->name('page');
+
 
 Route::prefix('cmseven')->middleware('auth')->group(function ()
 {
@@ -208,3 +207,5 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
         });
     });
 });
+Route::get('/', 'PagesController@index')->name('pages');
+Route::get('/{slug}', 'PagesController@getPage')->name('page');
