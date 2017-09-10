@@ -49,8 +49,8 @@ Route::get("/mailtest", function ()
     // auth()->user()->notify(new TestPageVisited);
     // 
     // 
-     Mail::raw('Text', function ($message){
-            $message->to('laszlotakacs.95@gmail.com');
+     Mail::raw('Was sagst du zu diesem email? richtig angezeigt? kein spam, oder?', function ($message){
+            $message->to('chrisiilps@gmail.com');
  });
 return "check logs";
 
