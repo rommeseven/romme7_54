@@ -42,7 +42,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        Settings::set('app_title', $this->appname);
+
         // 1. User Erstellen
 
         $laci           = new \App\User;
@@ -271,6 +271,9 @@ class InstallCommand extends Command
         $chrisi->attachRole($superadmin);
         $person->attachRole($admin);
         $padmin->attachRole($superadmin);
+
+
+        Settings::set('app_title', env("DEFAULT_APP_TITLE",$this->appname));
 
         $bb          = collect(config("building_blocks"));
         $bb_keys     = $bb->pluck("key");
