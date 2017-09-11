@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
+
+Route::prefix('sevenweb')->group(function ()
+{
+	Route::post('/email/in', 'EmailController@store');
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
