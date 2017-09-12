@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use URL;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -29,5 +30,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        setlocale(LC_TIME, config('app.locale'));
+        Carbon::setLocale(config('app.locale'));
+        date_default_timezone_set(config('app.timezone'));
     }
 }

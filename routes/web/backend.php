@@ -98,4 +98,10 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
             });
         });
     });
+    Route::prefix('notifications')->group(function ()
+    {
+        Route::get('/{id}/delete', 'NotificationController@delete')->name("notif.delete");
+        Route::get('/{id}', 'NotificationController@markAsRead')->name("notif.read");
+        Route::get('/', 'NotificationController@markAllAsRead')->name("notif.readAll");
+    });
 });

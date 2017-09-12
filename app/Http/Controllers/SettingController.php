@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Page;
-use Illuminate\Http\Request;
 use Session;
+use App\Page;
+use App\User;
 use Settings;
+use Illuminate\Http\Request;
+use App\Notifications\GlobalSettingChanged;
+use Illuminate\Support\Facades\Notification;
 
 class SettingController extends Controller
 {
@@ -30,37 +33,21 @@ class SettingController extends Controller
     public function update(Request $request)
     {
 
-        $bbs           = collect(Page::GetBbs());
-        $bb_toValidate = array(
-            'app_title' => 'sometimes|max:255',
-        );
-        for ($i = 0; $i < sizeof($bbs); $i++)
-        {
-            if ($bbs[$i]['type'] == 'text')
-            {
-                //
-            }
-            if ($bbs[$i]['type'] == 'image')
-            {
-            }
-            if ($bbs[$i]['type'] == 'video')
-            {
-                // TODO: laravel youtube @internet
-            }
-        }
+        $arr = collect(Page::GetBbs());
 
-        $this->validate($request, $bb_toValidate);
+        $arr = array_pluck($arr, "validation", "key");
 
-        if ($request->has('app_title'))
+        $data         = request()->validate($arr);
+        $filteredData = array_filter($data, function ($value)
         {
-            Settings::set('app_title', $request->input('app_title'));
-        }
-        for ($i = 0; $i < sizeof($bbs); $i++)
+            return ($value !== null && $value !== false && $value !== '');
+        });
+        $admins = User::wherePermissionIs('update_settings')->get()->except(auth()->user()->id);
+
+        foreach ($filteredData as $key => $value)
         {
-            if ($request->has($bbs[$i]['key']))
-            {
-                Settings::set($bbs[$i]['key'], $request->input($bbs[$i]['key']));
-            }
+            Settings::set($key, $value);
+            Notification::send($admins, new GlobalSettingChanged($key,$value));
         }
 
         Session::flash("success", "Your changes have been saved!");

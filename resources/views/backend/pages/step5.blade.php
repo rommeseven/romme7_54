@@ -112,7 +112,7 @@ Create New Page
  <form action="{{ url('cmseven/pages/create/step/5/page/' . $page->id) }}" id="navi" method="POST">
         {{csrf_field()}}
         
-        @for ($i = 0; $i < sizeof($bbs); $i++)
+        @for ($i = 1; $i < sizeof($bbs); $i++)
                 <div class="row">
                     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <label for="{{$bbs[$i]['key']}}">

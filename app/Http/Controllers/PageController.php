@@ -167,7 +167,7 @@ class PageController extends Controller
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-        $bbs = config("building_blocks");
+        $bbs = config("building_blocks.seven");
         return view("backend.pages.step5")->withPage($page)->withBbs($bbs);
     }
 
@@ -442,17 +442,19 @@ class PageController extends Controller
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
 
-        $arr  = config("building_blocks");
+        $arr  = Page::GetBbs();
         $arr  = array_pluck($arr, "validation", "key");
         $data = request()->validate($arr);
 
-
-        foreach($data as $key => $value)
+        $filteredData = array_filter($data, function ($value)
         {
-            $page->SetSetting($key,$value);
-
+            return ($value !== null && $value !== false && $value !== '');
+        });
+        /* TODO: [test] per page settings */
+        foreach ($filteredData as $key => $value)
+        {
+            $page->SetSetting($key, $value);
         }
-
 
         $page->step = 6;
         $page->save();

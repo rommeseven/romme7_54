@@ -66,23 +66,7 @@ Settings
     <!-- END OF .row -->
     <form action="{{ url('cmseven/settings/') }}" method="POST">
         {{csrf_field()}}
-        <div class="row">
-            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="app_title">
-                    Website Title
-                    <input name="app_title" id="app_title" placeholder="{{settings('app_title')}}" type="text" v-model="app_title"/>
-                    @if ($errors->has('app_title'))
-                    <small class="errortext">
-                        {{ $errors->first('app_title') }}
-                    </small>
-                    @endif
-                    <small class="help-text">
-                        Show in the browser tab and <strong>search engines</strong>
-                    </small>
-                </label>
-            </div>
-            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-        </div>        
+      
         @for ($i = 0; $i < sizeof($bbs); $i++)
                 <div class="row">
                     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">

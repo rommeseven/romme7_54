@@ -74,6 +74,8 @@ class InstallCommand extends Command
         $person->password = bcrypt("admin"); // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einlogge;
         $person->save();
 
+ $this->info('cms: Created Users');
+
         // 2. Rollen erstellen
         $superadmin               = new \App\Role;
         $superadmin->name         = "superadmin";
@@ -99,6 +101,8 @@ class InstallCommand extends Command
         $editor->display_name = "editor";
         $editor->save();
 
+        $this->info('cms: Created Roles');
+        
         $create_users               = new \App\Permission;
         $create_users->name         = 'create_users'; // Chrisi macht underline zum Bindestrich ( _  -> - )
         $create_users->display_name = "Chrisi macht display name";
@@ -219,6 +223,7 @@ class InstallCommand extends Command
         $create_roles->description  = "Chrisi macht description";
         $create_roles->save();
 
+        $this->info('cms: Created Permissions');
 // Rollen berechtigungen geben (für jede einzelne eine zeile)
         $superadmin->permissions()->save($create_users); // superadmin recht geben zu ...
         $superadmin->permissions()->save($update_users);
@@ -237,6 +242,7 @@ class InstallCommand extends Command
         $superadmin->permissions()->save($create_pages);
         $superadmin->permissions()->save($update_pages);
         $superadmin->permissions()->save($delete_pages);
+        
         $superadmin->permissions()->save($read_pages);
         $superadmin->permissions()->save($update_settings);
 
@@ -273,6 +279,7 @@ class InstallCommand extends Command
         $person->attachRole($admin);
         $padmin->attachRole($superadmin);
 
+        $this->info('cms: Create Auth connections');
 
         Settings::set('app_title', env("DEFAULT_APP_TITLE",$this->appname));
 
@@ -283,6 +290,7 @@ class InstallCommand extends Command
         {
             Settings::set($bb_keys[$i], $bb_defaults[$i]);
         }
+        $this->info('cms: Initialized settings and building blocks');
 // CRISI: INSTALL COMMAND DESCRIPTIONS
 
     }
