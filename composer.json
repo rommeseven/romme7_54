@@ -17,14 +17,6 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "nicolaslopezj/searchable": "1.*",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 2a4fbd0... coooki consent added
-        "pragmarx/tracker": "^3.2",
-=======
->>>>>>> parent of 151d594... tracker
         "santigarcor/laratrust": "4.0.*",
         "spatie/laravel-cookie-consent": "^2.0"
     },
