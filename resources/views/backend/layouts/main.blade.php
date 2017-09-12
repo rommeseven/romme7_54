@@ -28,7 +28,13 @@
                 {{-- TODO: DISABLE ARROW ON NOTIFS @internet
                  --}}
                     <a @click.prevent="''">
-                        Notification <span class="badge 
+                        <i class="fa  @if(!count(auth()->user()->unreadNotifications))
+                fa-bell-o
+                @elseif(count(auth()->user()->unreadNotifications) < 10 )
+                fa-bell warning
+                @else
+                alert fa-bell
+                @endif"></i> <span class="badge 
                 @if(!count(auth()->user()->unreadNotifications))
                 secondary
                 @elseif(count(auth()->user()->unreadNotifications) < 10 )

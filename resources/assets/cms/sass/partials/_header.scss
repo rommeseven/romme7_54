@@ -1,9 +1,9 @@
 .header {
-  max-height: 75px;
+  max-height: 48px;
   background: get-color(logoblue);
 
   img {
-    max-height: 75px;
+    max-height: 35px;
     height: auto;
     width: auto;
 
@@ -12,7 +12,7 @@
     }
   }
 
-  h1 {
+  h4 {
     margin: 0;
     color: $white;
   }

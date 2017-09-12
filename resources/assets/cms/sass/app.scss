@@ -100,7 +100,7 @@ $global-flexbox: true !global;
 
 .topnavigation {
   .menu.vertical {
-    margin-top: 16px;
+    margin-top: 1px;
 
     // text-align: right;
  
@@ -127,6 +127,10 @@ $global-flexbox: true !global;
   content: '\F077' !important;
   -webkit-transform: inherit !important;
   transform: inherit !important;
+}
+
+.badge {
+  background: none;
 }
 
 .notif {
@@ -158,5 +162,15 @@ $global-flexbox: true !global;
         color: $primary-color;
       }
     }
+  }
+}
+
+i.fa {
+  &.warning {
+    color: get-color(warning);
+  }
+
+  &.alert {
+    color: get-color(alert);
   }
 }

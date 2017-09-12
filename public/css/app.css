@@ -12514,12 +12514,12 @@ td .button-icon .fa:hover {
 }
 
 .header {
-  max-height: 75px;
+  max-height: 48px;
   background: #21295C;
 }
 
 .header img {
-  max-height: 75px;
+  max-height: 35px;
   height: auto;
   width: auto;
 }
@@ -12530,7 +12530,7 @@ td .button-icon .fa:hover {
   }
 }
 
-.header h1 {
+.header h4 {
   margin: 0;
   color: #EDFFEC;
 }
@@ -12854,6 +12854,7 @@ li.menu-highlight {
 @media print, screen and (min-width: 64em) {
   .topnav {
     /* SIDEBAR */
+    width: 200px;
   }
 }
 
@@ -13000,6 +13001,10 @@ li.menu-highlight {
   transform: inherit !important;
 }
 
+.badge {
+  background: none;
+}
+
 .notif li {
   background: #9DB4B2;
 }
@@ -13024,5 +13029,13 @@ li.menu-highlight {
 
 .notif li.unread:hover a {
   color: #5364C3;
+}
+
+i.fa.warning {
+  color: #EA9440;
+}
+
+i.fa.alert {
+  color: #9B1D20;
 }
 
