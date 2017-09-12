@@ -9,8 +9,16 @@
 }
 
 .alert-callout-subtle {
+  padding: .5rem;
+
+  small {
+    padding-left: 7px;
+    font-style: italic;
+  }
+
   &.unread {
     cursor: pointer;
+    padding: .6rem;
 
     &:hover {
       .notif-text {

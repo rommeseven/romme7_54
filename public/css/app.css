@@ -5969,16 +5969,16 @@ select[multiple] {
 .position-left {
   top: 0;
   left: 0;
-  width: 200px;
+  width: 270px;
   height: 100%;
-  -webkit-transform: translateX(-200px);
-          transform: translateX(-200px);
+  -webkit-transform: translateX(-270px);
+          transform: translateX(-270px);
   overflow-y: auto;
 }
 
 .off-canvas-content .off-canvas.position-left {
-  -webkit-transform: translateX(-200px);
-          transform: translateX(-200px);
+  -webkit-transform: translateX(-270px);
+          transform: translateX(-270px);
 }
 
 .off-canvas-content .off-canvas.position-left.is-transition-overlap.is-open {
@@ -5987,8 +5987,8 @@ select[multiple] {
 }
 
 .off-canvas-content.is-open-left.has-transition-push {
-  -webkit-transform: translateX(200px);
-          transform: translateX(200px);
+  -webkit-transform: translateX(270px);
+          transform: translateX(270px);
 }
 
 .position-left.is-transition-push {
@@ -5999,16 +5999,16 @@ select[multiple] {
 .position-right {
   top: 0;
   right: 0;
-  width: 200px;
+  width: 270px;
   height: 100%;
-  -webkit-transform: translateX(200px);
-          transform: translateX(200px);
+  -webkit-transform: translateX(270px);
+          transform: translateX(270px);
   overflow-y: auto;
 }
 
 .off-canvas-content .off-canvas.position-right {
-  -webkit-transform: translateX(200px);
-          transform: translateX(200px);
+  -webkit-transform: translateX(270px);
+          transform: translateX(270px);
 }
 
 .off-canvas-content .off-canvas.position-right.is-transition-overlap.is-open {
@@ -6017,8 +6017,8 @@ select[multiple] {
 }
 
 .off-canvas-content.is-open-right.has-transition-push {
-  -webkit-transform: translateX(-200px);
-          transform: translateX(-200px);
+  -webkit-transform: translateX(-270px);
+          transform: translateX(-270px);
 }
 
 .position-right.is-transition-push {
@@ -6127,11 +6127,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-left {
-    margin-left: 200px;
+    margin-left: 270px;
   }
 
   .position-left.reveal-for-medium ~ .off-canvas-content {
-    margin-left: 200px;
+    margin-left: 270px;
   }
 
   .position-right.reveal-for-medium {
@@ -6153,11 +6153,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-right {
-    margin-right: 200px;
+    margin-right: 270px;
   }
 
   .position-right.reveal-for-medium ~ .off-canvas-content {
-    margin-right: 200px;
+    margin-right: 270px;
   }
 
   .position-top.reveal-for-medium {
@@ -6179,11 +6179,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-top {
-    margin-top: 200px;
+    margin-top: 270px;
   }
 
   .position-top.reveal-for-medium ~ .off-canvas-content {
-    margin-top: 200px;
+    margin-top: 270px;
   }
 
   .position-bottom.reveal-for-medium {
@@ -6205,11 +6205,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-bottom {
-    margin-bottom: 200px;
+    margin-bottom: 270px;
   }
 
   .position-bottom.reveal-for-medium ~ .off-canvas-content {
-    margin-bottom: 200px;
+    margin-bottom: 270px;
   }
 }
 
@@ -6233,11 +6233,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-left {
-    margin-left: 200px;
+    margin-left: 270px;
   }
 
   .position-left.reveal-for-large ~ .off-canvas-content {
-    margin-left: 200px;
+    margin-left: 270px;
   }
 
   .position-right.reveal-for-large {
@@ -6259,11 +6259,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-right {
-    margin-right: 200px;
+    margin-right: 270px;
   }
 
   .position-right.reveal-for-large ~ .off-canvas-content {
-    margin-right: 200px;
+    margin-right: 270px;
   }
 
   .position-top.reveal-for-large {
@@ -6285,11 +6285,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-top {
-    margin-top: 200px;
+    margin-top: 270px;
   }
 
   .position-top.reveal-for-large ~ .off-canvas-content {
-    margin-top: 200px;
+    margin-top: 270px;
   }
 
   .position-bottom.reveal-for-large {
@@ -6311,11 +6311,11 @@ select[multiple] {
   }
 
   .off-canvas-content.has-reveal-bottom {
-    margin-bottom: 200px;
+    margin-bottom: 270px;
   }
 
   .position-bottom.reveal-for-large ~ .off-canvas-content {
-    margin-bottom: 200px;
+    margin-bottom: 270px;
   }
 }
 
@@ -12989,6 +12989,7 @@ li.menu-highlight {
 }
 
 .alert-callout-subtle {
+  padding: .5rem;
   width: 100%;
   margin: 0 0 0.3rem 0;
   background: #BDBDBD;
@@ -13000,8 +13001,14 @@ li.menu-highlight {
   padding-right: 25px;
 }
 
+.alert-callout-subtle small {
+  padding-left: 7px;
+  font-style: italic;
+}
+
 .alert-callout-subtle.unread {
   cursor: pointer;
+  padding: .6rem;
 }
 
 .alert-callout-subtle.unread:hover {
