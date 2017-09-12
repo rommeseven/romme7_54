@@ -117,8 +117,8 @@ return [
 
     'dropbox' => [
         'driver' => 'dropbox',
-        'app_secret' => env('DROPBOX_APP_SECRET'),
-        'token' => env('DROPBOX_TOKEN'),
+        'app_secret' => env('DBOX_APP_SECRET'),
+        'token' => env('DBOX_TOKEN'),
     ],
 
 /*        'dropbox' => [
