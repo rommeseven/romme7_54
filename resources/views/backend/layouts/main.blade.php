@@ -15,7 +15,7 @@
         
 
         <!-- END OF .columns shrink -->
-        <div class="column shrink align-left hide-for-large"><a href="#" data-auto-focus ="false" data-toggle="offCanvasNotifs">
+        <div class="column shrink align-left hide-for-large"><a href="#" data-toggle="offCanvasNotifs">
                         <i class="fa  @if(!count(auth()->user()->unreadNotifications))
                 fa-bell-o
                 @elseif(count(auth()->user()->unreadNotifications) < 10 )
@@ -112,7 +112,7 @@
 <!-- END OF .header row align-middle align-justify -->
 <!-- END OF .row breadcrumps -->
             <div class="off-canvas-wrapper">
-          <div class="off-canvas-absolute position-top" id="offCanvasNotifs" data-transition="detached" data-off-canvas>
+          <div class="off-canvas-absolute position-top"  data-auto-focus ="false" id="offCanvasNotifs" data-transition="detached" data-off-canvas>
 
 @include("backend.layouts.partials.user_notifications")
 
