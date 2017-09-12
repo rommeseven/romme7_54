@@ -12977,7 +12977,7 @@ li.menu-highlight {
 }
 
 .topnavigation .menu.vertical {
-  margin-top: 16px;
+  margin-top: 1px;
 }
 
 .accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle) > a::after {
