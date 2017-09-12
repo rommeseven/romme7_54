@@ -1,9 +1,7 @@
 {
     "I love programming.": "Ich mag prorammieren.",
     "Profile" : "Profil",
-<<<<<<< HEAD
-    "Account Settings" : "Benutzerverwaltung"
-=======
+    "Account Settings" : "Benutzerverwaltung",
     "Align" : "Ausrichten",
     "Auto" : "Automatisch",
     "Left" : "Linksbündig",
@@ -21,7 +19,5 @@
     "Size" : "Größe",
     "Auto" : "Automatisch",
     "Expand" : "Erweitern",
-    "Shrink" : "Verkleinern",
-
->>>>>>> 10b436a2bd1752b1cfa3e3772b8b6b3df7b03b07
+    "Shrink" : "Verkleinern"
 }
