@@ -261,7 +261,7 @@
 
 
 @if (count($errors) > 0)
-    notify("warning",'Warning:','@lang("You must fix all the errors to proceed.")','default', 7000);
+    notify("warning",'Warning:','@lang("You must fix all the errors to proceed").','default', 7000);
      @foreach ($errors->all() as $error)
          tut('Error:','{{$error}}',"error");
       @endforeach  
