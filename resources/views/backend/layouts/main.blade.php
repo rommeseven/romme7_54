@@ -76,7 +76,7 @@
                             <a href="#">
                                 <i class="fa fa-user">
                                 </i>
-                                {{ __("Profile") }}
+                                @lang("Profile")
                             </a>
                         </li>
                         <li>
