@@ -13,7 +13,7 @@ let editorcol = Vue.component('editorcol',
             <div class="column shrink">
                 <p>
                     <h3>
-                        Column Settings
+                        @lang("Column Settings")
                     </h3>
                 </p>
             </div>
@@ -21,7 +21,7 @@ let editorcol = Vue.component('editorcol',
             <div class="column shrink">
         <br />
                     <a @click.prevent="toRow()" class="button logoblue fabu fa-ellipsis-h" href="#">
-                        Go to Row Settings
+                        @lang("Go to Row Settings")
                     </a>
                
             </div>
@@ -31,14 +31,14 @@ let editorcol = Vue.component('editorcol',
         <div class="row collapse align-bottom">
             <div class="column small-12 medium-expand">
                 <label for="spaced">
-                    Size
+                    @lang("Size")
                 </label>
                 <div class="radio secondary">
                     <input :id="panelid('auto')" name="newSize" type="radio" v-model="newSize" value="auto">
                         <label :for="panelid('auto')">
                             <i class="fa fa-exchange">
                             </i>
-                            Auto
+                            @lang("Auto")
                         </label>
                         <br/>
                     </input>
@@ -49,7 +49,7 @@ let editorcol = Vue.component('editorcol',
                         <label :for="panelid('expand')">
                             <i class="fa fa-arrows-h">
                             </i>
-                            Expand
+                            @lang("Expand")
                         </label>
                         <br/>
                     </input>
@@ -60,7 +60,7 @@ let editorcol = Vue.component('editorcol',
                         <label :for="panelid('shrink')">
                             <i class="fa fa-caret-square-o-left">
                             </i>
-                            Shrink
+                            @lang("Shrink")
                         </label>
                     </input>
                     <br/>
