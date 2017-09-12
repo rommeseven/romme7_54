@@ -4,19 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "content-hash": "95961f2205aeeb11bd2bdc844f9a9f24",
-=======
-    "content-hash": "4710c82d47c61076de99c4c56ad62a0f",
->>>>>>> parent of 9716699... cookie consent added
-=======
     "content-hash": "ede3a942e1a024d8915d0b07aab137c8",
->>>>>>> parent of 151d594... tracker
-=======
-    "content-hash": "95961f2205aeeb11bd2bdc844f9a9f24",
->>>>>>> parent of 2a4fbd0... coooki consent added
     "packages": [
         {
             "name": "benjamincrozat/laravel-dropbox-driver",
