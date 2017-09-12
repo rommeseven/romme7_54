@@ -17,6 +17,7 @@
         "jrm2k6/cloudder": "0.4.*",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "league/flysystem-dropbox": "^1.0",
         "nicolaslopezj/searchable": "1.*",
         "santigarcor/laratrust": "4.0.*",
         "spatie/laravel-cookie-consent": "^2.0"
