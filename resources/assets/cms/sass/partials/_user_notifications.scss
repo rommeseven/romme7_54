@@ -1,0 +1,100 @@
+#offCanvasNotifs {
+  @include breakpoint(large) {
+    padding-left: 200px;
+  }
+
+
+  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 1);
+  padding-top: 15px;
+}
+
+.alert-callout-subtle {
+  &.unread {
+    cursor: pointer;
+
+    &:hover {
+      .notif-text {
+        a {
+          color: $anchor-color;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      background: lighten($light-gray, 5%);
+      color: $black;
+    }
+  }
+
+  width: 100%;
+  margin: 0 0 0.3rem 0;
+  background: $light-gray;
+  color: $dark-gray;
+  border: 0;
+  border-left: $alert-callout-subtle-border-left-width solid $dark-gray;
+  box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+  padding-right: 25px;
+
+  &.success {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $success-color;
+  }
+
+  &.alert {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $alert-color;
+  }
+
+  &.warning {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $warning-color;
+  }
+
+  &.primary {
+    background: $light-gray;
+    color: $dark-gray;
+    border-left: $alert-callout-subtle-border-left-width solid $primary-color;
+  }
+
+  &.small {
+    font-size: $alert-callout-subtle-small-font-scale;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  &.large {
+    font-size: $alert-callout-subtle-large-font-scale;
+
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  .notif-icons {
+    margin-right: 1.5rem;
+  }
+
+  i {
+    font-size: 2rem;
+    margin-right: 1rem;
+
+    @include vertical-center;
+  }
+
+  &.radius {
+    border-radius: $alert-callout-subtle-radius;
+  }
+
+  .notif-text {
+    a {
+      color: $dark-gray;
+    }
+  }
+}

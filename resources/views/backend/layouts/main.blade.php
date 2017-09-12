@@ -15,8 +15,31 @@
         
 
         <!-- END OF .columns shrink -->
-        <div class="columns shrink">
+        <div class="column shrink align-left hide-for-large"><a href="#" data-auto-focus ="false" data-toggle="offCanvasNotifs">
+                        <i class="fa  @if(!count(auth()->user()->unreadNotifications))
+                fa-bell-o
+                @elseif(count(auth()->user()->unreadNotifications) < 10 )
+                fa-bell warning
+                @else
+                alert fa-bell
+                @endif"></i> <span class="badge 
+                @if(!count(auth()->user()->unreadNotifications))
+                secondary
+                @elseif(count(auth()->user()->unreadNotifications) < 10 )
+                warning
+                @else
+                alert
+                @endif
+                         notifs_large" style="position:relative;top:-10px;left:-6px;">
+                           @auth
+                           {{ count(auth()->user()->unreadNotifications)}}
+                           @endauth
+                        </span>
+                    </a></div><!-- END OF .column shrink -->
+        <div class="columns shrink align-left">
+
             <div class="title-bar hide-for-large" data-hide-for="large" data-toggle="offCanvas">
+
                 <button class="menu-icon" type="button">
                 </button>
                 <div class="title-bar-title show-for-medium-only" style="cursor:pointer">
@@ -26,9 +49,8 @@
             </div>
             <ul class="horizontal menu show-for-large dropdown topnavigation" data-click-open="true" data-closing-time="1500" data-disable-hover="true" data-dropdown-menu="" style="margin-right:15px;">
                 <li style="margin-top: 4px;" id="notif">
-                {{-- TODO: DISABLE ARROW ON NOTIFS @internet
-                 --}}
-                    <a @click.prevent="''">
+    
+                    <a @click.prevent="''" data-toggle="offCanvasNotifs">
                         <i class="fa  @if(!count(auth()->user()->unreadNotifications))
                 fa-bell-o
                 @elseif(count(auth()->user()->unreadNotifications) < 10 )
@@ -49,28 +71,10 @@
                            @endauth
                         </span>
                     </a>
-                    <ul class="menu vertical notif" style="text-align:left">
-                        <li class="unread">
-                            <a href="#">
-{{-- TODO: @lang @laci --}}
-                                <i class="fa fa-user-plus"></i><!-- END OF .fa fa-bell --> The Chef created a new User!
-                                <i class="fa fa-bell"></i><!-- END OF .fa fa-bell -->
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-wrench">
-                                </i>
-{{-- TODO: @lang @laci --}}                                
-                                Account Settings have been updated! <i class="fa fa-bell-o">
-                                </i>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-                <li style="margin-top: 4px;">
-                    <a @click.prevent="''">
-                        Takács
+                <li style="margin-top: 4px;" class="show-for-large">
+                    <a onclick="hideNotif()">
+                        {{ auth()->user()->name}}
                     </a>
                     <ul class="menu vertical" style="text-align:right">
                         <li>
@@ -107,8 +111,17 @@
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
 <!-- END OF .row breadcrumps -->
+            <div class="off-canvas-wrapper">
+          <div class="off-canvas-absolute position-top" id="offCanvasNotifs" data-transition="detached" data-off-canvas>
+
+@include("backend.layouts.partials.user_notifications")
+
+      </div>
+
+<div class="off-canvas-content" style="min-idth: 100%;" data-off-canvas-content>
+
 <div class="topcontent row collapse" style="padding-top:0 !important;">
-    <div class="column shrink off-canvas in-canvas-for-large position-right" data-off-canvas="" data-transition="push" id="offCanvas">
+    <div class="column shrink off-canvas in-canvas-for-large position-right" data-off-canvas="" data-transition="detached" id="offCanvas">
         <div class="topnav">
             <button aria-label="Close menu" class="close-button" data-close="" type="button">
                 <span aria-hidden="true">
@@ -120,7 +133,42 @@
                 <br/>
             </div>
             <!-- END OF .hide-for-large -->
+                       <div class="hide-for-large">
+                            <ul class="vertical menu accordion-menu" data-accordion-menu="">
+                           <li class="hide-for-large">
+                               <a href="#">{{ auth()->user()->name}}</a>
+                               <ul class="menu vertical nested">
+                                    <li>
+                               <a href="#">
+                                   <i class="fa fa-user">
+                                   </i>
+                                   @lang("Profile")
+                               </a>
+                           </li>
+                           <li>
+                               <a href="#">
+                                   <i class="fa fa-cog">
+                                   </i>
+                                   @lang("Account Settings")
+                               </a>
+                           </li>
+                           <li>
+                               <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                   <span>
+                                       @lang("Logout")
+                                   </span>
+                                   <i class="fa fa-sign-out">
+                                   </i>
+                               </a>
+                           </li>
+                               </ul><!-- END OF .menu vertical nested -->
+                           </li><!-- END OF .hide-for-large --> 
+                           </ul>
+                           <hr />
+                       </div><!-- END OF .hide-for-large -->
             <ul class="vertical menu accordion-menu" data-accordion-menu="">
+    
                 <li>
                     <a href="#">
                         @lang("Pages")
@@ -173,29 +221,22 @@
                                 Settings
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Account
-                            </a>
-                        </li>
                     </ul>
                     <!-- END OF .topnav menu -->
                     <!-- END OF .menu vertical -->
-                </li>
-                <li>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
                 </li>
             </ul>
         </div>
         <!-- END OF .topnav -->
     </div>
     <!-- END OF .column -->
+
     <div class="column expanded" style="padding-left:15px;padding-right:15px">
+ 
         <div class="row medium-offset-1">
             <div class="column shrink">
+
+
                 <br/>
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
@@ -208,8 +249,8 @@
                     </ul>
                 </nav>
             </div>
-            <!-- END OF .column shrink -->
         </div>
+            <!-- END OF .column shrink -->
         @stack("content")
 <div class="bottomcontent">
     @stack('bottomcontent')
@@ -223,6 +264,9 @@
 <div class="footer row small-up-1 medium-up-2 large-up-3">
     @stack("footer")
 </div>
+      </div>
+    </div>
+
 <!-- END OF .footer row small-up-1 medium-up-2 large-up-3 -->
 <!-- END OF .container -->
 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
@@ -358,6 +402,10 @@ hideDuration: 200,
         autoHideDelay: (!time) ? 0:time ,
         clickToHide: true
     });
+}
+function hideNotif () {
+  $('#offCanvasNotifs').foundation('close');
+
 }
 </script>
 @stack("extrajs")

@@ -97,6 +97,7 @@ $global-flexbox: true !global;
 @import "partials/editor";
 @import "partials/sidebar";
 @import "partials/notifications";
+@import "partials/user_notifications";
 
 .topnavigation {
   .menu.vertical {
@@ -145,6 +146,46 @@ $global-flexbox: true !global;
 .notif {
   li {
     background: #9DB4B2;
+
+    .thenotif {
+      -webkit-display: flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin: 0 auto 3px auto;
+      width: 452px;
+
+      @include breakpoint(large) {
+        width: 452px;
+      }
+
+
+      border-right: 3px solid get-color(logoblue);
+      border-left: 3px solid get-color(logoblue);
+      min-height: 70px;
+
+      .thenotif_icon {
+        width: 70px;
+        text-align: center;
+        font-size: 2.4em;
+        padding: 0 0.4em;
+        color: #ecf0f1;
+        -webkit-box-flex: 1;
+      }
+
+      .thenotif_body {
+        padding: 10px 10px 0 10px;
+        background: #ecf0f1;
+        border-radius: 3px 0 0 3px;
+        border-bottom: 3px solid darken(#ecf0f1, 15%);
+      }
+    }
 
     a {
       color: $body-font-color;

@@ -59,6 +59,7 @@
 //  54. Tooltip
 //  55. Top Bar
 //  56. Xy Grid
+//  57. User Notifications
 
 @import "../../../../node_modules/foundation-sites/scss/util/util";
 
@@ -765,3 +766,9 @@ $grid-margin-gutters: (small: 20px, medium: 30px);
 
 $grid-padding-gutters: $grid-margin-gutters;
 $block-grid-max: 8;
+
+// 57 User Notifications
+$alert-callout-subtle-border-left-width: rem-calc(5);
+$alert-callout-subtle-radius: 0.6rem;
+$alert-callout-subtle-large-font-scale: 150%;
+$alert-callout-subtle-small-font-scale: 80%;
