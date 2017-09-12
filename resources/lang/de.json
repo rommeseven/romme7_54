@@ -13,5 +13,11 @@
     "Three" : "Drei",
     "Four" : "Vier",
     "Add Row" : "Zeile hinzufügen",
-    
+    "Column Settings" : "Spalten Einstellungen",
+    "Go to Row Settings" : "Zeilen Einstellungen",
+    "Size" : "Größe",
+    "Auto" : "Automatisch",
+    "Expand" : "Erweitern",
+    "Shrink" : "Verkleinern",
+
 }
