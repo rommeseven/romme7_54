@@ -81,8 +81,6 @@ $global-flexbox: true !global;
 
 @include foundation-flex-classes;
 
-@import "partials/cookies";
-
 #container #content {
   min-height: 600px;
   width: 986px;

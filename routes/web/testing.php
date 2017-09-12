@@ -39,9 +39,20 @@ Route::get("/qtest", function ()
 
     return "Wait for it...";
 });*/
-
-Route::get("/quicktest", function ()
+/*Route::get("/dropbox", function ()
 {
 
-    return "Wait for it...";
+    echo '<img src="'.LAImg::url("bild.png").'" alt="" />';
+
+    echo "<br />";
+    return " goood MESSAGE ";
+});*/
+
+/*Route::get("/laciapp", function ()
+{
+
+    LAImg::url("bild.png");
+
+    return " good MESSAGE ";
 });
+*/

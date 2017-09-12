@@ -1,0 +1,129 @@
+#editor {
+  width: 100%;
+
+  &.small {
+    margin-left: auto;
+    margin-right: auto;
+    width: 368px;
+    max-width: 368px;
+  }
+
+  &.medium {
+    margin-left: auto;
+    margin-right: auto;
+    width: 832px;
+    max-width: 832px;
+  }
+
+  margin: 0;
+  padding: 0;
+  min-height: 110px;
+  background: $white;
+  border-top: solid 3px $medium-gray;
+  border-bottom: solid 3px $medium-gray;
+  transition: 0.2s;
+
+  // overflow: hidden;
+
+  .row:not(.editor-ignore) {
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: get-color(logoblue);
+
+    .column:not(.editor-ignore) {
+      min-height: 70px;
+      text-align: center;
+      border: dashed 2px $black;
+      background: $light-gray;
+
+      span {
+        opacity: 1;
+      }
+
+      &:hover {
+        background: $medium-gray;
+        transition: 0.2s;
+        cursor: pointer;
+
+        span {
+          opacity: 0;
+          display: inline;
+          position: fixed;
+
+          // display: none;
+       
+        }
+
+        a.edit-column {
+          opacity: 1;
+          color: $black;
+          transition: 0.2s;
+        }
+      }
+
+      a.edit-column {
+        opacity: 0;
+        display: inline;
+
+        // display: none;
+        transition: 0.2s;
+      }
+    }
+  }
+
+  #newRow {
+    width: 100%;
+    background: $white;
+    height: 110px;
+
+    &:hover {
+      cursor: pointer;
+      background: $light-gray;
+      transition: 0.2s;
+
+      a.add-column {
+        opacity: 1;
+        transition: 0.2s;
+        color: $black;
+      }
+    }
+
+    a.add-column {
+      opacity: 0.2;
+      display: inline;
+
+      // display: none;
+      transition: 0.2s;
+    }
+  }
+
+  &.forcontent {
+    border-top: none;
+    border-bottom: none;
+
+    .row {
+      background: $white;
+      cursor: default;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .column {
+        min-height: 69px;
+        background: $light-gray;
+
+        &.completed {
+          background: $primary-color;
+        }
+
+        &.active {
+          background: lighten($primary-color, 20%);
+
+          &:hover {
+            border: solid 2px #E5F040;
+          }
+        }
+      }
+    }
+  }
+}

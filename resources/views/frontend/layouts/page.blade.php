@@ -47,6 +47,5 @@
 <script src="{{ mix('js/public.js') }}">
 </script>
 @stack("extrajs")
-@include('cookieConsent::index')
 </body>
 </html>
