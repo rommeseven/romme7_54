@@ -5,7 +5,7 @@
 <script type="text/javascript">
 $(function()
 {
-	alert('hola');
+	
 	
 @if(Session::has('info'))
     notify("info",'{{ Session::get("flashtitle") or 'Quick Tip:'  }}','{{Session::get('info')}}');
