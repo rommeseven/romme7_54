@@ -1,5 +1,4 @@
 <?php
-// REMEMBER: Chrisi todo
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -284,7 +283,7 @@ class InstallCommand extends Command
         {
             Settings::set($bb_keys[$i], $bb_defaults[$i]);
         }
-
+// CRISI: INSTALL COMMAND DESCRIPTIONS
 
     }
 }

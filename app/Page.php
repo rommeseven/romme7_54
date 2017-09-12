@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Settings;
-
+/* FIX ME: its too much [NEW TAG]*/
 class Page extends Model
 {
     use SearchableTrait;

@@ -13005,6 +13005,15 @@ li.menu-highlight {
   background: none;
 }
 
+.dropdown.menu > li.is-dropdown-submenu-parent#notif > a::after {
+  display: none;
+  padding-right: 0;
+}
+
+.dropdown.menu > li.is-dropdown-submenu-parent#notif > a {
+  padding-right: 0;
+}
+
 .notif li {
   background: #9DB4B2;
 }

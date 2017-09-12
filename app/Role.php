@@ -4,7 +4,6 @@ namespace App;
 
 use Laratrust\LaratrustRole;
 use Nicolaslopezj\Searchable\SearchableTrait;
-
 class Role extends LaratrustRole
 {
     use SearchableTrait;
