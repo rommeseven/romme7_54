@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -17,9 +17,9 @@ return array(
     |            "fallback", "github", "gdrive", "google", "mirror", "onedrive",
     |            "oss", "qiniu", "redis", "runabove", "sae", "smb", "temp"
     |
-     */
+    */
 
-    'default'  => env('FILE_DRIVER', 'dropbox'),
+    'default' => env('FILE_DRIVER', 'dropbox'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +30,9 @@ return array(
     | reason, you may specify a default "cloud" driver here. This driver
     | will be bound as the Cloud disk implementation in the container.
     |
-     */
+    */
 
-    'cloud'    => 's3',
+    'cloud' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -43,31 +43,24 @@ return array(
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
-     */
+    */
 
-    'disks'    => array(
+    'disks' => [
 
-        'local'            => array(
-            'driver'     => 'dropbox',
-            'app_secret' => env('DROPBOX_APP_SECRET'),
-            'token'      => env('DROPBOX_TOKEN'),
-
-
-        ),
-        'dev'            => array(
-            'driver' => 'local',
-            'root'   => storage_path('app'),
+        'local' => [
+            'driver'      => 'local',
+            'root'        => storage_path('app'),
 
             // Optional cache settings, available with any storage driver
-            'cache'  => array(
+            'cache'       => [
                 'driver' => 'laravel',
-            ),
+            ],
 
             // Optional Local Settings...
             // 'permissions' => [],
-        ),
+        ],
 
-        'ftp'              => array(
+        'ftp' => [
             'driver'   => 'ftp',
             'host'     => 'ftp.example.com',
             'username' => 'your-username',
@@ -79,9 +72,9 @@ return array(
             // 'passive'  => true,
             // 'ssl'      => true,
             // 'timeout'  => 30,
-        ),
+        ],
 
-        's3'               => array(
+        's3' => [
             'driver' => 's3',
             'key'    => 'your-key',
             'secret' => 'your-secret',
@@ -90,9 +83,9 @@ return array(
 
             // Optional S3 Settings...
             // 'root'   => '',
-        ),
+        ],
 
-        'rackspace'        => array(
+        'rackspace' => [
             'driver'    => 'rackspace',
             'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
             'username'  => 'your-username',
@@ -100,53 +93,54 @@ return array(
             'region'    => 'IAD',
             'url_type'  => 'publicURL',
             'container' => 'your-container',
-        ),
+        ],
 
-        'null'             => array(
+        'null' => [
             'driver' => 'null',
-        ),
+        ],
 
-        'azure'            => array(
+        'azure' => [
             'driver'      => 'azure',
             'accountName' => 'your-account-name',
             'apiKey'      => 'your-api-key',
             'container'   => 'your-container',
-        ),
+        ],
 
-        'copy'             => array(
+        'copy' => [
             'driver'         => 'copy',
             'consumerKey'    => 'your-consumer-key',
             'consumerSecret' => 'your-consumer-secret',
             'accessToken'    => 'your-access-token',
             'tokenSecret'    => 'your-token-secret',
-        ),
+        ],
 
-        'dropbox'          => array(
-            'driver'     => 'dropbox',
-            'app_secret' => env('DROPBOX_APP_SECRET'),
-            'token'      => env('DROPBOX_TOKEN'),
-        ),
+
+    'dropbox' => [
+        'driver' => 'dropbox',
+        'app_secret' => env('DROPBOX_APP_SECRET'),
+        'token' => env('DROPBOX_TOKEN'),
+    ],
 
 /*        'dropbox' => [
-'driver'           => 'dropbox',
-'accessToken'      => 'your-access-token',
-'clientIdentifier' => 'your-client-identifier',
-],*/
+            'driver'           => 'dropbox',
+            'accessToken'      => 'your-access-token',
+            'clientIdentifier' => 'your-client-identifier',
+        ],*/
 
-        'gridfs'           => array(
+        'gridfs' => [
             'driver'  => 'gridfs',
             'server'  => 'your-server',
             'context' => 'your-context',
             'dbName'  => 'your-db-name',
 
             // You can also provide other MongoDB connection options here
-        ),
+        ],
 
-        'memory'           => array(
+        'memory' => [
             'driver' => 'memory',
-        ),
+        ],
 
-        'phpcr-jackrabbit' => array(
+        'phpcr-jackrabbit' => [
             'driver'         => 'phpcr',
             'jackrabbit_url' => 'your-jackrabbit-url',
             'workspace'      => 'your-workspace',
@@ -155,9 +149,9 @@ return array(
             // Optional PHPCR Settings
             // 'userId'         => 'your-user-id',
             // 'password'       => 'your-password',
-        ),
+        ],
 
-        'phpcr-dbal'       => array(
+        'phpcr-dbal' => [
             'driver'    => 'phpcr',
             'database'  => 'mysql',
             'workspace' => 'your-workspace',
@@ -166,9 +160,9 @@ return array(
             // Optional PHPCR Settings
             // 'userId'    => 'your-user-id',
             // 'password'  => 'your-password',
-        ),
+        ],
 
-        'phpcr-prismic'    => array(
+        'phpcr-prismic' => [
             'driver'      => 'phpcr',
             'prismic_uri' => 'your-prismic-uri',
             'workspace'   => 'your-workspace',
@@ -177,19 +171,19 @@ return array(
             // Optional PHPCR Settings
             // 'userId'      => 'your-user-id',
             // 'password'    => 'your-password',
-        ),
+        ],
 
-        'replicate'        => array(
+        'replicate' => [
             'driver'  => 'replicate',
             'master'  => 'local',
             'replica' => 's3',
-        ),
+        ],
 
-        'sftp'             => array(
-            'driver'   => 'sftp',
-            'host'     => 'sftp.example.com',
-            'username' => 'username',
-            'password' => 'password',
+        'sftp' => [
+            'driver'        => 'sftp',
+            'host'          => 'sftp.example.com',
+            'username'      => 'username',
+            'password'      => 'password',
 
             // Optional SFTP Settings
             // 'privateKey'    => 'path/to/or/contents/of/privatekey',
@@ -199,15 +193,15 @@ return array(
             // 'directoryPerm' => 0755,
             // 'permPublic'    => 0644,
             // 'permPrivate'   => 0600,
-        ),
+        ],
 
-        'vfs'              => array(
+        'vfs' => [
             'driver' => 'vfs',
-        ),
+        ],
 
-        'webdav'           => array(
-            'driver'  => 'webdav',
-            'baseUri' => 'http://example.org/dav/',
+        'webdav' => [
+            'driver'   => 'webdav',
+            'baseUri'  => 'http://example.org/dav/',
 
             // Optional WebDAV Settings
             // 'userName' => 'user',
@@ -215,82 +209,82 @@ return array(
             // 'proxy'    => 'locahost:8888',
             // 'authType' => 'digest',  // alternately 'ntlm' or 'basic'
             // 'encoding' => 'all',     // same as ['deflate', 'gzip', 'identity']
-        ),
+        ],
 
-        'zip'              => array(
+        'zip' => [
             'driver' => 'zip',
             'path'   => 'local://path/to/file.zip',
-        ),
+        ],
 
-        'bos'              => array(
+        'bos' => [
             'driver'      => 'bos',
-            'credentials' => array(
+            'credentials' => [
                 'ak' => 'your-access-key-id',
                 'sk' => 'your-secret-access-key',
-            ),
+            ],
             'bucket'      => 'your-bucket',
 
             // Optional BOS Setting
             // 'endpoint'    => 'http://bj.bcebos.com',
-        ),
+        ],
 
-        'cloudinary'       => array(
+        'cloudinary' => [
             'driver'     => 'cloudinary',
             'api_key'    => env('CLOUDINARY_API_KEY'),
             'api_secret' => env('CLOUDINARY_API_SECRET'),
             'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-        ),
+        ],
 
-        'eloquent'         => array(
+        'eloquent' => [
             'driver' => 'eloquent',
 
             // Optional Eloquent Setting
             // 'model'  => '\Rokde\Flysystem\Adapter\Model\FileModel',
-        ),
+        ],
 
-        'fallback'         => array(
+        'fallback' => [
             'driver'   => 'fallback',
             'main'     => 'local',
             'fallback' => 's3',
-        ),
+        ],
 
-        'github'           => array(
+        'github' => [
             'driver'  => 'github',
             'project' => 'yourname/project',
             'token'   => 'your-github-token',
-        ),
+        ],
 
-        'gdrive'           => array(
+        'gdrive' => [
             'driver'    => 'gdrive',
             'client_id' => 'your-client-id',
             'secret'    => 'your-secret',
             'token'     => 'your-token',
-        ),
+        ],
 
-        'google'           => array(
+        'google' => [
             'driver'        => 'google',
             'account'       => 'your-account',
             'secret'        => 'your-secret',
             'developer_key' => 'your-developer-key',
             'p12_file'      => 'local://path/to/file.p12',
             'bucket'        => 'your-bucket',
-        ),
+        ],
 
-        'mirror'           => array(
+        'mirror' => [
             'driver' => 'mirror',
-            'disks'  => array('local', 's3', 'zip'),
-        ),
+            'disks'  => ['local', 's3', 'zip'],
+        ],
 
-        'onedrive'         => array(
+        'onedrive' => [
             'driver'       => 'onedrive',
             'access_token' => 'your-access-token',
 
             // Options only needed for ignited/flysystem-onedrive
             // 'base_url'     => 'https://api.onedrive.com/v1.0/',
             // 'use_logger'   => false,
-        ),
+        ],
 
-        'oss'              => array(
+        'oss' => [
             'driver'     => 'oss',
             'access_id'  => 'your-access-id',
             'access_key' => 'your-access-key',
@@ -301,9 +295,9 @@ return array(
             // 'prefix'     => '',
             // 'region'     => '',    // One of 'hangzhou', 'qingdao', 'beijing', 'hongkong',
             //                        // 'shenzhen', 'shanghai', 'west-1' and 'southeast-1'
-        ),
+        ],
 
-        'qiniu'            => array(
+        'qiniu' => [
             'driver'    => 'qiniu',
             'accessKey' => 'your-access-key',
             'secretKey' => 'your-secret-key',
@@ -311,45 +305,45 @@ return array(
 
             // Optional Qiniu Settings
             // 'domain'    => '',
-        ),
+        ],
 
-        'redis'            => array(
+        'redis' => [
             'driver'     => 'redis',
             'connection' => 'default',
-        ),
+        ],
 
-        'runabove'         => array(
-            'driver'   => 'runabove',
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'tenantId' => 'your-tenantId',
+        'runabove' => [
+            'driver'    => 'runabove',
+            'username'  => 'your-username',
+            'password'  => 'your-password',
+            'tenantId'  => 'your-tenantId',
 
             // Optional Runabove Settings
             // 'container' => 'container',
             // 'region'    => 'SBG1',   // One of 'SBG1', 'BHS1' and 'GRA1'
-        ),
+        ],
 
-        'sae'              => array(
+        'sae' => [
             'driver' => 'sae',
-        ),
+        ],
 
-        'smb'              => array(
+        'smb' => [
             'driver'   => 'smb',
             'host'     => 'smb.example.com',
             'username' => 'your-username',
             'password' => 'your-password',
             'path'     => 'path/to/shared/directory/for/root',
-        ),
+        ],
 
-        'temp'             => array(
-            'driver' => 'temp',
+        'temp' => [
+            'driver'  => 'temp',
 
             // Optional TempDir Settings
             // 'prefix'  => '',
             // 'tempdir' => '/tmp',
-        ),
+        ],
 
-    ),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -362,12 +356,12 @@ return array(
     | before attempting stream access, as the stream wrapper is otherwise only
     | registered when used.
     |
-     */
+    */
 
-    'autowrap' => array(
+    'autowrap' => [
 
         'local',
 
-    ),
+    ],
 
-);
+];
