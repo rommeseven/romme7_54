@@ -43,5 +43,7 @@ Route::get("/qtest", function ()
 Route::get("/quicktest", function ()
 {
 
+echo storage_path("test.sql");
+
     return "Wait for it...";
 });
