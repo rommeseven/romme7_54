@@ -51,7 +51,7 @@
                     <ul class="menu vertical notif" style="text-align:left">
                         <li class="unread">
                             <a href="#">
-
+{{-- TODO: @lang @laci --}}
                                 <i class="fa fa-user-plus"></i><!-- END OF .fa fa-bell --> The Chef created a new User!
                                 <i class="fa fa-bell"></i><!-- END OF .fa fa-bell -->
                             </a>
@@ -60,6 +60,7 @@
                             <a href="#">
                                 <i class="fa fa-wrench">
                                 </i>
+{{-- TODO: @lang @laci --}}                                
                                 Account Settings have been updated! <i class="fa fa-bell-o">
                                 </i>
                             </a>
@@ -75,21 +76,21 @@
                             <a href="#">
                                 <i class="fa fa-user">
                                 </i>
-                                __("Profile")
+                                {{ __("Profile") }}
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fa fa-cog">
                                 </i>
-                                Account Settings
+                                @lang("Account Settings")
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <span>
-                                    Logout
+                                    @lang("Logout")
                                 </span>
                                 <i class="fa fa-sign-out">
                                 </i>
@@ -121,29 +122,29 @@
             <ul class="vertical menu accordion-menu" data-accordion-menu="">
                 <li>
                     <a href="#">
-                        Pages
+                        @lang("Pages")
                     </a>
                     <ul class="menu vertical nested">
                         <li>
                             <a href="{{route('pages.create')}}">
-                                New Page
+                                @lang("New Page")
                             </a>
                         </li>
                         <li>
                             <a href="{{route("pages.index")}}">
-                                Manage Pages
+                                @lang("Manage Pages")
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="{{route("navigation")}}">
-                        Navigation
+                        @lang("Navigation")
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        Support
+                        @lang("Support")
                     </a>
                 </li>
                 <li>
@@ -260,7 +261,7 @@
 
 
 @if (count($errors) > 0)
-    notify("warning",'Warning:','You must fix all the errors to proceed.','default', 7000);
+    notify("warning",'Warning:','@lang("You must fix all the errors to proceed.")','default', 7000);
      @foreach ($errors->all() as $error)
          tut('Error:','{{$error}}',"error");
       @endforeach  
