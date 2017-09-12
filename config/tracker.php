@@ -5,17 +5,17 @@ return [
     /*
      * Enable it?
      */
-    'enabled' => true,
+    'enabled' => false,
 
     /*
      * Enable cache?
      */
-    'cache_enabled' => true,
+    'cache_enabled' => false,
 
     /*
      * Deffer booting for middleware use
      */
-    'use_middleware' => true,
+    'use_middleware' => false,
 
     /*
      * Robots should be tracked?
@@ -63,7 +63,7 @@ return [
     /*
      * When an IP is not trackable, show a message in log.
      */
-    'log_untrackable_sessions' => true,
+    'log_untrackable_sessions' => false,
 
     /*
      * Log every single access?
@@ -77,19 +77,19 @@ return [
      *    - Error log
      *    - URL queries (including values)
      */
-    'log_enabled' => true,
+    'log_enabled' => false,
 
     /*
      * Log artisan commands?
      */
-    'console_log_enabled' => true,
+    'console_log_enabled' => false,
 
     /*
      * Log SQL queries?
      *
      * Log must be enabled for this option to work.
      */
-    'log_sql_queries' => true,
+    'log_sql_queries' => false,
 
     /*
      * If you prefer to store Tracker data on a different database or connection,
@@ -176,17 +176,17 @@ return [
     /*
      * Do you wish to log the user agent?
      */
-    'log_user_agents' => true,
+    'log_user_agents' => false,
 
     /*
      * Do you wish to log your users?
      */
-    'log_users' => true,
+    'log_users' => false,
 
     /*
      * Do you wish to log devices?
      */
-    'log_devices' => true,
+    'log_devices' => false,
 
     /*
      * Do you wish to log languages?
@@ -196,12 +196,12 @@ return [
     /*
      * Do you wish to log HTTP referers?
      */
-    'log_referers' => true,
+    'log_referers' => false,
 
     /*
      * Do you wish to log url paths?
      */
-    'log_paths' => true,
+    'log_paths' => false,
 
     /*
      * Do you wish to log url queries and query arguments?
@@ -211,18 +211,18 @@ return [
     /*
      * Do you wish to log routes and route parameters?
      */
-    'log_routes' => true,
+    'log_routes' => false,
 
     /*
      * Log errors and exceptions?
      */
-    'log_exceptions' => true,
+    'log_exceptions' => false,
 
     /*
      * A cookie may be created on your visitor device, so you can have information
      * on everything made using that device on your site.	 *
      */
-    'store_cookie_tracker' => true,
+    'store_cookie_tracker' => false,
 
     /*
      * If you are storing cookies, you better change it to a name you of your own.
@@ -310,7 +310,7 @@ return [
     /*
      * Enable the Stats Panel?
      */
-    'stats_panel_enabled' => true,
+    'stats_panel_enabled' => false,
 
     /*
      * Stats Panel routes before filter
