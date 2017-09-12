@@ -11,6 +11,8 @@ call heroku config:set MAIL_ENCRYPTION=ssl
 call heroku config:set MAIL_FROM_ADDRESS=noreply@sevenweb.eu
 call heroku config:set MAIL_FROM_NAME="SEVEN Webagentur"
 call heroku config:set APP_CODE=%1
+call heroku config:set DROPBOX_APP_SECRET=hoc7vwfos8xt0ss
+call heroku config:set DROPBOX_TOKEN=MQAa74FtCyAAAAAAAAAACCU6qlrYJWAK0QgQ1G8aiWuwQVflhHM-KC8eHKvFvL39
 call set /p apptitle="App TITLE: "
 call heroku config:set DEFAULT_APP_TITLE=%apptitle%
 call heroku addons:create cloudinary:starter

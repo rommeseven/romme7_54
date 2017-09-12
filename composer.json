@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "backup-manager/laravel": "^1.2",
         "benjamincrozat/laravel-dropbox-driver": "^2.0",
         "carlosocarvalho/storage-cloudinary-laravel": "^1.0",
         "danhunsaker/laravel-flysystem-others": "^1.3",
