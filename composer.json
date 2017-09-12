@@ -19,21 +19,20 @@
         "nicolaslopezj/searchable": "1.*",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 2a4fbd0... coooki consent added
         "pragmarx/tracker": "^3.2",
 =======
 >>>>>>> parent of 151d594... tracker
         "santigarcor/laratrust": "4.0.*",
         "spatie/laravel-cookie-consent": "^2.0"
-=======
-        "santigarcor/laratrust": "4.0.*"
->>>>>>> parent of 9716699... cookie consent added
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",	
-        "laravel/dusk": "^1.1"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
