@@ -13,22 +13,7 @@ $host     = $dburl["host"];
 $username = $dburl["user"];
 $password = $dburl["pass"];
 $database = substr($dburl["path"], 1);
-
-$tracker_dburl = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-if (!$tracker_dburl['path'])
-{
-    $tracker_dburl["host"] = null;
-    $tracker_dburl["user"] = null;
-    $tracker_dburl["pass"] = null;
-    $tracker_dburl["path"] = null;
-}
-
-$tracker_host     = $tracker_dburl["host"];
-$tracker_username = $tracker_dburl["user"];
-$tracker_password = $tracker_dburl["pass"];
-$tracker_database = substr($tracker_dburl["path"], 1);
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -39,9 +24,9 @@ return array(
     | to use as your default connection for all database work. Of course
     | you may use many connections at once using the Database library.
     |
-     */
+    */
 
-    'default'     => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,40 +42,33 @@ return array(
     | so make sure you have the driver for your particular database of
     | choice installed on your machine before you begin development.
     |
-     */
+    */
 
-    'connections' => array(
+    'connections' => [
 
-        'sqlite'  => array(
-            'driver'   => 'sqlite',
+        'sqlite' => [
+            'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
-            'prefix'   => '',
-        ),
+            'prefix' => '',
+        ],
 
-        'mysql'   => array(
-            'driver'      => 'mysql',
-            'host'        => env('DB_HOST', '127.0.0.1'),
-            'port'        => env('DB_PORT', '3306'),
-            'database'    => env('DB_DATABASE', 'forge'),
-            'username'    => env('DB_USERNAME', 'forge'),
-            'password'    => env('DB_PASSWORD', ''),
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset'     => 'utf8mb4',
-            'collation'   => 'utf8mb4_unicode_ci',
-            'prefix'      => '',
-            'strict'      => true,
-            'engine'      => null,
-        ),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
-        'tracker' => array(
-            'driver'   => 'mysql',
-            'host'     => $tracker_host,
-            'database' => $tracker_database,
-            'username' => $tracker_username,
-            'password' => $tracker_password,
-            'strict'   => false, // to avoid problems on some MySQL installs
-        ),
-        'pgsql'   => array(
+
+        'pgsql'  => [
             'driver'   => 'pgsql',
             'host'     => $host,
             'database' => $database,
@@ -100,20 +78,20 @@ return array(
             'prefix'   => '',
             'schema'   => 'public',
             'sslmode'  => 'prefer',
-        ),
+        ],
 
-        'sqlsrv'  => array(
-            'driver'   => 'sqlsrv',
-            'host'     => env('DB_HOST', 'localhost'),
-            'port'     => env('DB_PORT', '1433'),
+        'sqlsrv' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '1433'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-        ),
+            'charset' => 'utf8',
+            'prefix' => '',
+        ],
 
-    ),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -124,9 +102,9 @@ return array(
     | your application. Using this information, we can determine which of
     | the migrations on disk haven't actually been run in the database.
     |
-     */
+    */
 
-    'migrations'  => 'migrations',
+    'migrations' => 'migrations',
 
     /*
     |--------------------------------------------------------------------------
@@ -137,19 +115,19 @@ return array(
     | provides a richer set of commands than a typical key-value systems
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
-     */
+    */
 
-    'redis'       => array(
+    'redis' => [
 
-        'client'  => 'predis',
+        'client' => 'predis',
 
-        'default' => array(
-            'host'     => env('REDIS_HOST', '127.0.0.1'),
+        'default' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
-            'port'     => env('REDIS_PORT', 6379),
+            'port' => env('REDIS_PORT', 6379),
             'database' => 0,
-        ),
+        ],
 
-    ),
+    ],
 
-);
+];

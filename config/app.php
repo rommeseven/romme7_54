@@ -184,7 +184,6 @@ return array(
         Laratrust\LaratrustServiceProvider::class,
         Krucas\Settings\Providers\SettingsServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
-        PragmaRX\Tracker\Vendor\Laravel\ServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
     ),
 
@@ -244,7 +243,6 @@ return array(
         'Cloudder'     => JD\Cloudder\Facades\Cloudder::class,
         'LAImg'        => App\LaciApp\LAImg::class,
         'LABB'        => App\LaciApp\LABB::class,
-        'Tracker' => 'PragmaRX\Tracker\Vendor\Laravel\Facade',
 
     ),
 

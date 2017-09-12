@@ -18,7 +18,10 @@
         "laravel/tinker": "~1.0",
         "nicolaslopezj/searchable": "1.*",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "pragmarx/tracker": "^3.2",
+=======
+>>>>>>> parent of 151d594... tracker
         "santigarcor/laratrust": "4.0.*",
         "spatie/laravel-cookie-consent": "^2.0"
 =======

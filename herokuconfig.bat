@@ -16,7 +16,6 @@ call heroku config:set DEFAULT_APP_TITLE=%apptitle%
 call heroku addons:create cloudinary:starter
 call heroku addons:create heroku-postgresql:hobby-dev
 call heroku addons:create trevor:hobby
-call heroku addons:create cleardb:ignite
 call heroku labs:enable metrics-beta
 call git push heroku master
 call heroku run php artisan migrate
