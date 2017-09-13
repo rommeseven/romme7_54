@@ -63,7 +63,7 @@ class NewUserAdded extends Notification
              'at' =>  Carbon::now(),
               'newUserID' => $this->newUser->id,
               'newUserNAME' => $this->newUser->name,
-               'user' => $notifiable
+               'user' => auth()->user()
         ];
     }
 }

@@ -60,7 +60,7 @@ class RoleChanged extends Notification
     {
         return [
         'at' => Carbon::now(),
-             'user' => $notifiable     ,
+             'user' => auth()->user()     ,
               'role_id' => $this->role->id,
               'role_display_name' => $this->role->display_name,
               

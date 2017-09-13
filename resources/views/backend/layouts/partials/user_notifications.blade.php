@@ -94,4 +94,3 @@
     <!-- END OF .column expand -->
 </div>
 <!-- END OF .row -->
-{{-- TODO: [notifs] make dynamic --}}

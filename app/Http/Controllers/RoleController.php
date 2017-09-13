@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Permission;
-use App\Role;
-use Illuminate\Http\Request;
 use Session;
+use App\Role;
+use App\User;
+use App\Permission;
+use Illuminate\Http\Request;
+use App\Notifications\UserRoleChanged;
+use Illuminate\Support\Facades\Notification;
 
 class RoleController extends Controller
 {
@@ -142,11 +145,10 @@ class RoleController extends Controller
         {
             $role->syncPermissions(explode(',', $request->permissions));
 
-            // TODO: [notification] @laratrust @internet role filter
-            // $user->syncRoles(explode(',', $request->roles));
+            $users = User::whereRoleIs($role->name)->get()->except(auth()->user()->id);
 
             /*TODO:  [notification] into event listener! */
-            // Notification::send($user, new UserRoleChanged());
+            Notification::send($users, new UserRoleChanged());
         }
 
         Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');

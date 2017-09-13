@@ -57,7 +57,7 @@ class NavigationUpdated extends Notification
     {
         return [
         'at' => Carbon::now(),
-             'user' => $notifiable         
+             'user' =>auth()->user()       
         ];
     }
 }

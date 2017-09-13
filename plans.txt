@@ -13,5 +13,5 @@ TODO: bb type block
 CRISI: [lang]
 
 
-TODO: @internet how to restore backup @fast
+
 TODO: @internet restore initial database from dropbox backup -- no seed?

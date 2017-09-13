@@ -61,7 +61,7 @@ class NewPagePublished extends Notification
     {
         return [
         'at' => Carbon::now(),
-             'user' => $notifiable,
+             'user' =>auth()->user(),
               'page_slug' => $page->slug,
               'page_title' => $page->title
               

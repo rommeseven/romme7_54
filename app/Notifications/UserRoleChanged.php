@@ -56,7 +56,7 @@ class UserRoleChanged extends Notification
     public function toDatabase($notifiable)
     {
         return [
-             'user' => $notifiable,
+             'user' => auth()->user(),
               'at' => Carbon::now()               
         ];
     }
