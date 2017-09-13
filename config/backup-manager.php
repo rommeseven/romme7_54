@@ -6,7 +6,7 @@ return array(
         'root' => storage_path('app'),
     ),
 
-    //CRISI: add dropbox to stammdaten @important @schnell
+
     'dropbox' => array(
         'type'   => 'Dropbox',
         'token'  => '',
