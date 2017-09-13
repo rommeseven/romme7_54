@@ -9,10 +9,10 @@ return array(
 
     'dropbox' => array(
         'type'   => 'Dropbox',
-        'token'  => '',
-        'key'    => env('DBOX_TOKEN'),
+        'token'  => env('DBOX_TOKEN'),
+        'key'    => env('DBOX_KEY'),
         'secret' => env('DBOX_APP_SECRET'),
-        'app'    => '',
+        'app'    => env('APP_CODE'),
         'root'   => 'backups/'.env('APP_CODE'),
     ),
 
