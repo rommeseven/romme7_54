@@ -84,4 +84,16 @@ class User extends Authenticatable
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y.m.d,H:i:s');
     }
+    /**
+     * layout_template can be assigned to pages as well
+     * @author Takács László
+     * @date    2017-07-26
+     * @version v1
+     * @return  relationship
+     */
+    public function layout_templates()
+    {
+        return $this->hasMany('App\LayoutTemplate');
+    }
+
 }

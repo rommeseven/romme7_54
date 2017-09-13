@@ -42,4 +42,16 @@ class LayoutTemplate extends Model
     {
         return $this->hasMany('App\Row', 'layout_template_id', 'id');
     }
+
+    /**
+     * get the creator
+     * @author Takács László
+     * @date    2017-09-13
+     * @version v1
+     * @return  mixed     the USer instance
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }    
 }
