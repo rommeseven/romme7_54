@@ -31,7 +31,7 @@ class UserController extends Controller
         if ($user->delete())
         {
             Session::flash("success", 'You have deleted User#'.$user->id.' successfully!');
-             Session::flash("success_autohide", "4500");
+            Session::flash("success_autohide", "4500");
             return redirect("cmseven/users");
         }
         else
@@ -76,7 +76,7 @@ class UserController extends Controller
         if (!$users->count())
         {
             Session::flash("error", 'Could not find user with data "'.$request->input('search').'".');
-             Session::flash("error_autohide", "4500");
+            Session::flash("error_autohide", "4500");
             return redirect('/cmseven/users');
         }
         $searched = $users->count().' User(s) Found:';
@@ -103,9 +103,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, array(
-            'name'  => 'required|max:255',
-            'username'  => 'required|max:255|unique:users',
-            'email' => "required|email|unique:users",
+            'name'     => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
+            'email'    => "required|email|unique:users",
         ));
         $password = '';
         if ($request->has('password') && !empty($request->password))
@@ -124,25 +124,27 @@ class UserController extends Controller
             {
                 $password .= $keyspace[random_int(0, $max)];
             }
-            
         }
-            $user           = new User();
-            $user->name     = $request->name;
-            $user->username     = $request->username;
-            $user->email    = $request->email;
-            $user->password = Hash::make($password);
-            if ($user->save())
-            {
-                Session::flash("success", "You successfully create this user.");
-                 Session::flash("success_autohide", "4500");
-                return redirect()->route('users.show', $user->id);
-            }
-            else
-            {
-                Session::flash("error", "An error occured while creating the user. (ErrCode: 142)");
-                 Session::flash("error_autohide", "4500");
-                return redirect()->back();
-            }
+        $user           = new User();
+        $user->name     = $request->name;
+        $user->username = $request->username;
+        $user->email    = $request->email;
+        $user->password = Hash::make($password);
+        $admins         = User::wherePermissionIs('read_users')->get()->except(auth()->user()->id);
+        /*TODO:  [notification] into event listener! */
+        Notification::send($admins, new NewUserAdded($user));
+        if ($user->save())
+        {
+            Session::flash("success", "You successfully create this user.");
+            Session::flash("success_autohide", "4500");
+            return redirect()->route('users.show', $user->id);
+        }
+        else
+        {
+            Session::flash("error", "An error occured while creating the user. (ErrCode: 142)");
+            Session::flash("error_autohide", "4500");
+            return redirect()->back();
+        }
     }
 
     /**
@@ -200,19 +202,22 @@ class UserController extends Controller
             $user->password = Hash::make($password);
         }
 
-        $user->name  = (null === $request->input("name")) ? $user->name : $request->input("name");
-        $user->username  = (null === $request->input("username")) ? $user->username : $request->input("username");
-        $user->email = (null === $request->input("email")) ? $user->email : $request->input("email");
+        $user->name     = (null === $request->input("name")) ? $user->name : $request->input("name");
+        $user->username = (null === $request->input("username")) ? $user->username : $request->input("username");
+        $user->email    = (null === $request->input("email")) ? $user->email : $request->input("email");
 
         $user->save();
 
         if ($request->roles)
         {
             $user->syncRoles(explode(',', $request->roles));
+        
+            /*TODO:  [notification] into event listener! */
+            Notification::send($user, new UserRoleChanged());            
         }
 
         Session::flash("success", "Your changes have been saved.");
-         Session::flash("success_autohide", "4500");
+        Session::flash("success_autohide", "4500");
         return redirect()->route('users.show', $user->id);
     }
 };

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Session;
+use App\Notifications\GlobalSettingChanged;
 use App\Page;
 use App\User;
-use Settings;
 use Illuminate\Http\Request;
-use App\Notifications\GlobalSettingChanged;
 use Illuminate\Support\Facades\Notification;
+use Session;
+use Settings;
 
 class SettingController extends Controller
 {
@@ -43,11 +43,11 @@ class SettingController extends Controller
             return ($value !== null && $value !== false && $value !== '');
         });
         $admins = User::wherePermissionIs('update_settings')->get()->except(auth()->user()->id);
-
+        /*TODO:  [notification] into event listener! */
         foreach ($filteredData as $key => $value)
         {
             Settings::set($key, $value);
-            Notification::send($admins, new GlobalSettingChanged($key,$value));
+            Notification::send($admins, new GlobalSettingChanged($key, $value));
         }
 
         Session::flash("success", "Your changes have been saved!");

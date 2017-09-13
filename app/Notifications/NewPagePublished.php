@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Page;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,6 +11,8 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class NewPagePublished extends Notification
 {
+    private $page;
+
     use Queueable;
 
     /**
@@ -16,9 +20,10 @@ class NewPagePublished extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Page $page)
     {
         //
+        $this->page = $page;
     }
 
     /**
@@ -29,7 +34,7 @@ class NewPagePublished extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -52,10 +57,13 @@ class NewPagePublished extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            //
+        'at' => Carbon::now(),
+             'user' => $notifiable,
+              'page' => $page
+              
         ];
     }
 }

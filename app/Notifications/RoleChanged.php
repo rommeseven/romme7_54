@@ -2,13 +2,16 @@
 
 namespace App\Notifications;
 
+use App\Role;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserPermissionChanged extends Notification
+class RoleChanged extends Notification
 {
+    private $role;
+
     use Queueable;
 
     /**
@@ -16,9 +19,10 @@ class UserPermissionChanged extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Role $role)
     {
         //
+        $this->role = $role;
     }
 
     /**
@@ -55,7 +59,10 @@ class UserPermissionChanged extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+        'at' => Carbon::now(),
+             'user' => $notifiable     ,
+              'role' => $this->role,
+              
         ];
     }
 }

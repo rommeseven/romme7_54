@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,6 +11,8 @@ use Illuminate\Notifications\Messages\MailMessage;
 
 class NewUserAdded extends Notification
 {
+    private $newUser;
+
     use Queueable;
 
     /**
@@ -16,9 +20,10 @@ class NewUserAdded extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $newUser)
     {
         //
+        $this->newUser = $newUser;
     }
 
     /**
@@ -52,10 +57,12 @@ class NewUserAdded extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            //
+             'at' =>  Carbon::now(),
+              'newUser' => $this->newUser,
+               'user' => $notifiable
         ];
     }
 }

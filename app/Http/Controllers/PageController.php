@@ -484,6 +484,9 @@ class PageController extends Controller
         $page->step      = 7;
         $page->published = true;
         $page->save();
+        $admins = User::wherePermissionIs('read_pages')->get()->except(auth()->user()->id);
+        /*TODO:  [notification] into event listener! */
+        Notification::send($admins, new NewPagePublished($page));
         Session::flash("success", "The page has been published!");
         Session::flash("success_autohide", "5500");
         return redirect("cmseven/pages");
@@ -511,6 +514,10 @@ class PageController extends Controller
             $page->save();
             $sort++;
         }
+        $admins = User::wherePermissionIs('update_pages')->get()->except(auth()->user()->id);
+        /*TODO:  [notification] into event listener! */
+        Notification::send($admins, new NavigationUpdated());
+
         Session::flash("success", "Your changes have been saved!");
         Session::flash("success_autohide", "4500");
         return redirect("cmseven/navigation");

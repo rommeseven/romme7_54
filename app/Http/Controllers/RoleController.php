@@ -141,6 +141,12 @@ class RoleController extends Controller
         if ($request->permissions)
         {
             $role->syncPermissions(explode(',', $request->permissions));
+
+            // TODO: [notification] @laratrust @internet role filter
+            // $user->syncRoles(explode(',', $request->roles));
+
+            /*TODO:  [notification] into event listener! */
+            // Notification::send($user, new UserRoleChanged());
         }
 
         Session::flash('success', 'Successfully updated the '.$role->display_name.' role.');
