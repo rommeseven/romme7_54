@@ -10,3 +10,4 @@ TODO: bb type img
 TODO: bb type block
 	Can be edited with tinyMCE
 
+CRISI: [lang]
