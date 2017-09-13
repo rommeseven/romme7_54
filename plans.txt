@@ -10,31 +10,3 @@ TODO: bb type img
 TODO: bb type block
 	Can be edited with tinyMCE
 
-
-
-{
-    "patterns":
-    {
-        "TODO": "TODO[\\s]*?:+(?P<todo>.*)$",
-        "REMEMBER": "REMEMBER[\\s]*?:+(?P<REMEMBER>.*)$",
-        "CRISI": "CRISI[\\s]*?:+(?P<CRISI>.*)$",
-        "FIXME": "FIXME[\\s]*?:+(?P<FIXME>.*)$"
-    },
-    "patterns_weight":
-    {
-        "TODO": 54,
-        "CRISI":51,
-        "FIXME": 53,
-        "REMEMBER": 52
-    },
-    "exclude_folders": ["*.git*", "*node_modules*", "*vendor*", "*public*"],
-    "exclude_files": ["*.sublime-workspace", "*.sublime-project"],
-    "case_sensitive": false,
-    "render_include_folder": true,
-    "render_folder_depth": 3,
-    "render_maxspaces": 50,
-    "render_header_format": "%d - %c files in %t seconds",
-    "render_header_date": "%A %Y-%d-%m, %I:%M%p",
-    "navigation_forward_skip": 10,
-    "navigation_backward_skip": 10
-}
