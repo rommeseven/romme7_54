@@ -21,7 +21,6 @@ call heroku addons:create heroku-postgresql:hobby-dev
 call heroku addons:create trevor:hobby
 call heroku labs:enable metrics-beta
 call git push heroku master
-call heroku run php artisan migrate
 call heroku run php artisan cms:install
 call heroku open
 call heroku pipelines:promote -r staging
