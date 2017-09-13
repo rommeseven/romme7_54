@@ -33,7 +33,7 @@ class RoleChanged extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -61,7 +61,8 @@ class RoleChanged extends Notification
         return [
         'at' => Carbon::now(),
              'user' => $notifiable     ,
-              'role' => $this->role,
+              'role_id' => $this->role->id,
+              'role_display_name' => $this->role->display_name,
               
         ];
     }

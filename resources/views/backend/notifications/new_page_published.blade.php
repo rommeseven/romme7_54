@@ -6,7 +6,7 @@
             </a>
         </strong>
         published a new page:  <strong>
-            <a href="{{url($notification->data['page']['slug'])}}" title="See Details">$notification->data['page']['title']</a>
+            <a href="{{url($notification->data['page_slug'])}}" title="See Details">{{$notification->data['page_title']}}</a>
         </strong>
         <small>
             ~ {{$notification->created_at->diffForHumans()}}

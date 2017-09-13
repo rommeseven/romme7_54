@@ -6,7 +6,7 @@
             </a>
         </strong>
         changed your roles and permissions. Check your <strong>
-            <a href="{{ url('cmseven/users/'. auth()->user()->id }}" title="See Details">Profile</a>
+            <a href="{{ url('cmseven/users/'. auth()->user()->id) }}" title="See Details">Profile</a>
         </strong>.
         <small>
             ~ {{$notification->created_at->diffForHumans()}}

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
+use Session;
 use App\Role;
 use App\User;
-use Hash;
 use Illuminate\Http\Request;
-use Session;
+use App\Notifications\NewUserAdded;
+use App\Notifications\UserRoleChanged;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {

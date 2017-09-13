@@ -6,7 +6,7 @@
             </a>
         </strong>
         updated your <strong>
-            <a href="{{route("settings")}}" title="See Details">{{$notification->data['role']['display_name']}}</a>
+            <a href="{{route("role.show",{{$notification->data['role_id']}})}}" title="See Details">{{$notification->data['role_display_name']}}</a>
         </strong> Role
         <small>
             ~ {{$notification->created_at->diffForHumans()}}

@@ -34,7 +34,7 @@ class NewUserAdded extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -61,7 +61,8 @@ class NewUserAdded extends Notification
     {
         return [
              'at' =>  Carbon::now(),
-              'newUser' => $this->newUser,
+              'newUserID' => $this->newUser->id,
+              'newUserNAME' => $this->newUser->name,
                'user' => $notifiable
         ];
     }
