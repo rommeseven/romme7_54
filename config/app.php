@@ -185,7 +185,6 @@ return array(
         Krucas\Settings\Providers\SettingsServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
         BC\Laravel\DropboxDriver\ServiceProvider::class,
-        BackupManager\Laravel\Laravel55ServiceProvider::class,
     ),
 
     /*
