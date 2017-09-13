@@ -13,7 +13,7 @@ call heroku config:set MAIL_FROM_NAME="SEVEN Webagentur"
 call heroku config:set APP_CODE=%1
 call heroku config:set DBOX_APP_SECRET=hoc7vwfos8xt0ss
 call heroku config:set DBOX_APP_KEY=uc2v7iq2qk243ba
-call heroku config:set DBOX_TOKEN=MQAa74FtCyAAAAAAAAAADY1pxQxtorN4QjwQxC3mu6gF0XEZQMcN7DZpJ6GAss3V
+call heroku config:set DBOX_TOKEN=MQAa74FtCyAAAAAAAAAAEB2JmhgitlJMQYE9mYCWba6tCjRG7RV57tp1-VJBZq1N
 call set /p apptitle="App TITLE: "
 call heroku config:set DEFAULT_APP_TITLE="%apptitle%"
 call heroku addons:create cloudinary:starter
