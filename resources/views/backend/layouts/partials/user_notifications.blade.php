@@ -3,7 +3,7 @@
        <div class="row align-justify" style="margin-top:7px"><div class="column shrink">
             <h5>{{settings('app_title')}} Notifications:</h5>
         </div><!-- END OF .column -->   <div class="column shrink">
-        @if(count(auth()->user()->unreadNotifications) > 4)
+        @if(count(auth()->user()->unreadNotifications) > 1)
             <a href="{{route("notif.readAll")}}"  class="button secondary fabu fa-archive" data-toggle="read">Mark all as read</a>
           @endif
             @if(!count(auth()->user()->unreadNotifications))

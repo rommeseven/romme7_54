@@ -11,3 +11,7 @@ TODO: bb type block
 	Can be edited with tinyMCE
 
 CRISI: [lang]
+
+
+TODO: @internet how to restore backup @fast
+TODO: @internet restore initial database from dropbox backup -- no seed?

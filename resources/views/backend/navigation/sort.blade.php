@@ -47,7 +47,6 @@ Create New Page
         <input :value="order" id="order" name="pages" type="hidden"/>
         <br/>
         {{-- TODO: navigation sort design --}}
-        {{-- TODO: navigation sort callout (submenus) --}}
         <transition name="fade">
             <div class="row align-center">
                 <div class="column shrink ">
@@ -177,6 +176,9 @@ ul
 <script>$(function()
     {
         tut("Edit Navigation","Drag and Drop the pages to the position you want them to have!","white","navicon");
+                                setTimeout(function()
+                        {
     tut("Tipp:","Move your page to the right to make it a submenu","none","white","long-arrow-right");
+                        }, 3754);
     });</script>
 @endpush

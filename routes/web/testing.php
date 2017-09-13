@@ -6,8 +6,6 @@
 |--------------------------------------------------------------------------
 
  */
-
-use Carbon\Carbon;
 use App\Mail\TestEmail;
 //use App\Notifications\TestPageVisited;
 
@@ -43,8 +41,5 @@ Route::get("/qtest", function ()
 
 Route::get("/quicktest", function ()
 {
-echo Carbon::now()->subDays(5)->diffForHumans(); 
-dd(auth()->user()->notifications);
-
     return "Wait for it...";
 });

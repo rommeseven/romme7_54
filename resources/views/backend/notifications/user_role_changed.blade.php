@@ -1,4 +1,4 @@
-<div class="callout alert-callout-subtle warning unread radius flex-container align-justify">
+<div class="callout alert-callout-subtle warning unread flex-container align-justify">
     <div class="notif-text"  >
         <strong>
             <a href="{{ url('cmseven/users/'. $notification->data['user']['id']) }}" title="See Details">

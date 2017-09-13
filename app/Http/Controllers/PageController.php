@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Row;
-use Context;
-use Session;
-use App\Page;
-use Settings;
 use App\Column;
 use App\LayoutTemplate;
-use Illuminate\Http\Request;
-use App\Notifications\NewPagePublished;
 use App\Notifications\NavigationUpdated;
+use App\Notifications\NewPagePublished;
+use App\Page;
+use App\Row;
+use Context;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
+use Session;
+use Settings;
 
 class PageController extends Controller
 {
@@ -303,24 +303,13 @@ class PageController extends Controller
         }
         if ($request->saving == "url")
         {
-            // TODO: extract to function @offline
-            $page->url  = $request->input("serial");
-            $page->step = 5;
-            $page->save();
-            Session::flash("success", "Page redirect has been successfully set!");
-            Session::flash("success_autohide", "4500");
-            return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+            return $this->postUrl;
         }
         if ($request->saving == "module")
         {
-            // TODO: extract to function @offline
-            $page->module = $request->input("serial");
-            $page->step   = 5;
-            $page->save();
-            Session::flash("success", "Page Module has been successfully setup!");
-            Session::flash("success_autohide", "4500");
-            return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+            return $this->postModule;
         }
+
         $object = json_decode($request->serial, true);
         if ($request->saving == "page")
         {
@@ -581,4 +570,23 @@ class PageController extends Controller
     {
         //
     }
+
+    private function postModule(Page $page, Request $request)
+    {
+        $page->module = $request->input("serial");
+        $page->step   = 5;
+        $page->save();
+        Session::flash("success", "Page Module has been successfully setup!");
+        Session::flash("success_autohide", "4500");
+        return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+    }
+
+    private function postUrl(Page $page, Request $request)
+    {
+        $page->url  = $request->input("serial");
+        $page->step = 5;
+        $page->save();
+        Session::flash("success", "Page redirect has been successfully set!");
+        Session::flash("success_autohide", "4500");
+        return redirect('cmseven/pages/create/step/6/page/'.$page->id);}
 }
