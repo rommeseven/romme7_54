@@ -1,0 +1,1 @@
+call php artisan db:restore --database=mysql --source=dropbox --sourcePath=project --timestamp="d-m-Y" --compression=gzip
