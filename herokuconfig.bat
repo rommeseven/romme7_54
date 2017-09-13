@@ -25,3 +25,4 @@ call heroku run php artisan migrate
 call heroku run php artisan cms:install
 call heroku open
 call heroku pipelines:promote -r staging
+

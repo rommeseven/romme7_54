@@ -13,7 +13,7 @@ return array(
         'key'    => env('DBOX_KEY'),
         'secret' => env('DBOX_APP_SECRET'),
         'app'    => env('APP_CODE'),
-        'root'   => 'backups/'.env('APP_CODE'),
+        'root'   => env('APP_CODE'),
     ),
 
 );
