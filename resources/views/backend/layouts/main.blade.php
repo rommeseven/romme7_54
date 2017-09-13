@@ -78,7 +78,7 @@
                     </a>
                     <ul class="menu vertical" style="text-align:right">
                         <li>
-                            <a href="#">
+                            <a href="{{route("users.show",auth()->user()->id)}}">
                                 <i class="fa fa-user">
                                 </i>
                                 @lang("Profile")
@@ -139,7 +139,7 @@
                                <a href="#">{{ auth()->user()->name}}</a>
                                <ul class="menu vertical nested">
                                     <li>
-                               <a href="#">
+                               <a href="{{route("users.show",auth()->user()->id)}}">
                                    <i class="fa fa-user">
                                    </i>
                                    @lang("Profile")
