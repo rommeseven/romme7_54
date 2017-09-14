@@ -71,7 +71,7 @@ let editorcol = Vue.component('editorcol',
                         <label :for="panelid('exact')">
                             <i class="fa fa-bullseye">
                             </i>
-                            Exact
+                            @lang("Exact")
                             <span v-show="newSize=='exact'">
                                 :
                             </span>
@@ -84,17 +84,17 @@ let editorcol = Vue.component('editorcol',
                     <ul :id="columnid" class="tabs" data-responsive-accordion-tabs="tabs small-accordion medium-accordion large-tabs">
                         <li class="tabs-title is-active">
                             <a :href="panelhref(1)" aria-selected="true">
-                                Mobile
+                                @lang("Mobile")
                             </a>
                         </li>
                         <li class="tabs-title">
                             <a :href="panelhref(2)">
-                                Tablet (optional)
+                                @lang("Tablet (optional)")
                             </a>
                         </li>
                         <li class="tabs-title">
                             <a :href="panelhref(3)">
-                                Desktop (optional)
+                                @lang("Desktop (optional)")
                             </a>
                         </li>
                     </ul>

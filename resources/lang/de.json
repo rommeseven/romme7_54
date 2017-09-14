@@ -19,5 +19,9 @@
     "Size" : "Größe",
     "Auto" : "Automatisch",
     "Expand" : "Erweitern",
-    "Shrink" : "Verkleinern"
+    "Shrink" : "Verkleinern",
+    "Exact" : "Exakt",
+    "Mobile" : "Mobilgerät",
+    "Tablet (optional)" : "Tablet (optional)",
+    "Desktop (optional)" : "Desktop Computer (optional)",
 }
