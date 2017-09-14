@@ -38203,8 +38203,19 @@ $(function () {
         dropdown.fadeOut('fast');
     });
     $(document).foundation();
-    $(".current a").click(function () {
-        $("body").scrollTop();
+    $(".current_page").click(function (e) {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 500);
+        e.preventDefault();
+        return false;
+    });
+    $("#main-menu").on('show.zf.dropdownmenu', function () {
+        var top = jQuery(window).scrollTop(),
+            divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+        if (divBottom > top) $('html, body').animate({
+            scrollTop: divBottom + 1
+        }, 200);
         return false;
     });
 });

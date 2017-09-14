@@ -1,6 +1,7 @@
 section#one {
   background: #CDE7B0;
   padding-top: 100px;
+  padding-bottom: 80px;
 
   h3 {
     em {
@@ -61,5 +62,14 @@ section#two {
         content: "alle angebote anschauen";
       }
     }
+  }
+}
+
+section#three {
+  padding-top: 100px;
+
+  #kontakticon {
+    font-size: 7em;
+    color: get-color(secondary);
   }
 }

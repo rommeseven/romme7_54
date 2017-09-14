@@ -162,6 +162,24 @@
 </div><!-- END OF .row -->
 </section><!-- END OF #two -->
 
+<section id="three">
+	<div class="row collapse align-center">
+		<div class="column shrink">
+			<h1>SEVEN Webagentur</h1>
+		</div><!-- END OF .column shrink -->
+	</div><!-- END OF .row collapse align-center -->
+	<div class="row align-spaced align-middle">
+		<div class="column" style="text-align:right">
+			<h4>Sie haben Fragen?</h4>
+			<p>Lassen Sie uns eine Nachricht und wird nehmen Kontakt auf!</p>
+		</div><!-- END OF .column -->
+		<div class="column" style="text-align:center"><i class="fa fa-envelope-o" id="kontakticon"></i></div><!-- END OF .column -->
+	</div><!-- END OF .row align-spaced -->
+	
+	{{-- TODO: @internet dl inline label building block --}}
+</section><!-- END OF #three -->
+
+
 
 <section>
 
@@ -187,3 +205,6 @@
 @include('cookieConsent::index')
 </body>
 </html>
+
+
+{{-- CRISI: [landing page] text german correct & [lang] --}}

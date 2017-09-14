@@ -94,6 +94,8 @@ nav {
       }
 
       #main-menu {
+        z-index: 11;
+
         li ~ li {
           border-left: 1px solid #DECACB;
         }

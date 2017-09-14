@@ -83,6 +83,11 @@ $global-flexbox: true !global;
 
 @include add-foundation-colors;
 
+@import "fontawesome/font-awesome";
+@import "fa-buttons/ffab";
+
+@include ffab-everything;
+
 @import "partials/general";
 @import "partials/cookies";
 @import "partials/topbar";
