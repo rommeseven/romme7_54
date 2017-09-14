@@ -50,6 +50,11 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
         Route::get('/find', 'UserController@index')->name("users.find");
         Route::post('/find', 'UserController@search');
     });
+   Route::prefix('my-settings')->group(function ()
+    {
+        Route::get('/', 'UserSettingController@getSettings')->name("usersettings");
+        Route::post('/', 'UserSettingController@postSettings')->name("usersettings.post");
+    });
 
     Route::resource('roles', 'RoleController', array('except' => array('destroy')));
     Route::prefix('roles')->group(function ()

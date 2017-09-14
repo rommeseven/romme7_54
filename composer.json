@@ -20,7 +20,8 @@
         "league/flysystem-dropbox": "^1.0",
         "nicolaslopezj/searchable": "1.*",
         "santigarcor/laratrust": "4.0.*",
-        "spatie/laravel-cookie-consent": "^2.0"
+        "spatie/laravel-cookie-consent": "^2.0",
+        "spatie/laravel-responsecache": "^4.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

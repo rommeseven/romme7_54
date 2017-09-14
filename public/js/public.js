@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -38188,16 +38188,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_foundation_sites__ = __webpack_require__("./node_modules/foundation-sites/dist/js/npm.js");
 __webpack_require__("./resources/assets/frontend/js/bootstrap.js");
 
+var hidden = false;
 $(function () {
+    checkicon();
+    jQuery(window).on('scroll', checkicon);
+    $('#main-menu').on('show.zf.dropdownmenu', function () {
+        var dropdown = $(this).find('.is-dropdown-submenu');
+        dropdown.css('display', 'none');
+        dropdown.fadeIn('fast');
+    });
+    $('#main-menu').on('hide.zf.dropdownmenu', function () {
+        var dropdown = $(this).find('.is-dropdown-submenu');
+        dropdown.css('display', 'inherit');
+        dropdown.fadeOut('fast');
+    });
     $(document).foundation();
+    $(".current a").click(function () {
+        $("body").scrollTop();
+        return false;
+    });
 });
+
+function checkicon() {
+    var top = jQuery(window).scrollTop(),
+        divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+    if (divBottom > top) {
+        if (!hidden) {
+            hidden = true;
+            //jQuery('.topbar-icon').addClass('invisible');
+            jQuery('.topbar-icon>img').css('display', 'inherit');
+            jQuery('.topbar-icon>img').fadeOut('fast');
+        }
+    } else {
+        if (hidden) {
+            hidden = false;
+            jQuery('.topbar-icon>img').removeClass('invisible');
+            jQuery('.topbar-icon>img').css('display', 'none');
+            jQuery('.topbar-icon>img').fadeIn();
+        }
+    }
+}
 
 /***/ }),
 
-/***/ 1:
+/***/ "./resources/assets/frontend/sass/public.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("./resources/assets/frontend/js/public.js");
+__webpack_require__("./resources/assets/frontend/js/public.js");
+module.exports = __webpack_require__("./resources/assets/frontend/sass/public.scss");
 
 
 /***/ })

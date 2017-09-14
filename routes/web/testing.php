@@ -41,5 +41,5 @@ Route::get("/qtest", function ()
 
 Route::get("/quicktest", function ()
 {
-    return "Wait for it...";
+    return view("welcome");
 });
