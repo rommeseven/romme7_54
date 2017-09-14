@@ -45,7 +45,7 @@
 										<ul class="menu vertical nested">
 											<li><a href="">Responsiv Design</a></li>
 											<li><a href="">Logo Design</a></li>
-											<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">Content Management System<s/span></a></li>
+											<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">CMS<s/span></a></li>
 											<li><a href="">Suchmaschinenoptimierung</a></li>
 											<li><a href="">Firmenemail</a></li>
 											<li><a href="">Kundenspeifische Webapplikation</a></li>
@@ -88,7 +88,7 @@
 							<ul class="menu vertical">
 								<li><a href="">Responsiv Design</a></li>
 								<li><a href="">Logo Design</a></li>
-								<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">Content Management System</span></a></li>
+								<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">CMS</span></a></li>
 								<li><a href="">Suchmaschinenoptimierung</a></li>
 								<li><a href="">Firmenemail</a></li>
 								<li><a href="">Kundenspeifische Webapplikation</a></li>
