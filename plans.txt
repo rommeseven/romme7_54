@@ -17,3 +17,9 @@ TODO: @internet laravel snippets dl
 
 
 CRISI: [godaddy] forwarding auf http
+
+
+CRISI: [lang] @fix: justify -> mit maximaler Abstand 
+CRISI: [lang] @fix: tiel -> Titel   <- löschen. Schon übersetzt
+CRISI: [info] @read-then-delete: Wenn das Englische und das Deutsche Wort gleich ist, brauchst nicht die .json Datei ergänzen, nur @lang('Wort')
+CRISI: [info] @read-then-delete: Ein wort musst du nur einmal übersetzten. Er nimmt das andere vorhandene
