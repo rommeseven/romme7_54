@@ -9,20 +9,20 @@ Vue.component('editorrow',
     <div :id="id" class="editor-ignore reveal large" data-reveal="">
         <p>
             <h3>
-                Row Settings
+                @lang("Row Settings")
             </h3>
         </p>
         <div class="row collapse align-bottom">
             <div class="column small-12 medium-expand">
                 <label :for="panelid('spaced')">
-                    Align
+                    @lang("Align")
                 </label>
                 <div class="radio secondary">
                     <input :id="panelid('spaced')" name="Myalign" type="radio" v-model="Myalign" value="spaced">
                         <label :for="panelid('spaced')">
                             <i class="fa fa-exchange">
                             </i>
-                            Auto
+                            @lang("Auto")
                         </label>
                         <br/>
                     </input>
@@ -33,7 +33,7 @@ Vue.component('editorrow',
                         <label :for="panelid('left')">
                             <i class="fa fa-align-left">
                             </i>
-                            Left
+                            @lang("Left")
                         </label>
                         <br/>
                     </input>
@@ -44,7 +44,7 @@ Vue.component('editorrow',
                         <label :for="panelid('right')">
                             <i class="fa fa-align-right">
                             </i>
-                            Right
+                            @lang("Right")
                         </label>
                     </input>
                     <br/>
@@ -55,7 +55,7 @@ Vue.component('editorrow',
                         <label :for="panelid('center')">
                             <i class="fa fa-align-center">
                             </i>
-                            Center
+                            @lang("Center")
                         </label>
                         <br/>
                     </input>
@@ -66,7 +66,7 @@ Vue.component('editorrow',
                         <label :for="panelid('justify')">
                             <i class="fa fa-align-justify">
                             </i>
-                            Justify
+                            @lang("Justify")
                         </label>
                         <br/>
                     </input>
@@ -80,7 +80,7 @@ Vue.component('editorrow',
                 <div class="row align-left">
                     <div class="column shrink">
                         <a @click="update()" class="button fabu fa-plus before" data-close="">
-                            Save Changes
+                            @lang("Save Changes")
                         </a>
                     </div>
                     <!-- END OF .column -->
@@ -89,7 +89,7 @@ Vue.component('editorrow',
             </div>
             <div class="column small-12 medium-expand" style="text-align:right">
                 <a @click.prevent="del()" class="button alert fabu fa-times cover" data-close="" href="#">
-                    Delete Row
+                    @lang("Delete Row")
                 </a>
             </div>
         </div>

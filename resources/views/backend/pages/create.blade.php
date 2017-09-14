@@ -7,7 +7,7 @@ Create New Page
 @push('bread')
 <li>
     <a href="{{ route('dashboard') }}">
-        Management
+        @lang("Management")
     </a>
 </li>
 @endpush
@@ -16,14 +16,14 @@ Create New Page
 @push('bread')
 <li>
     <a href="{{ route('pages.index') }}">
-        Pages
+        @lang("Pages")
     </a>
 </li>
 @endpush
 
 @push('bread')
 <li>
-    Creating
+    @lang("Creating")
 </li>
 @endpush
 
@@ -33,7 +33,7 @@ Create New Page
         <div class="column">
             <p>
                 <h3>
-                    Creating A New Page
+                    @lang("Creating A New Page")
                 </h3>
             </p>
         </div>
@@ -43,7 +43,7 @@ Create New Page
     <div class="column shrink">            <ol class="progress-indicator ">
                 <li class="is-current" data-step="">
                     <span>
-                        Title & Url
+                        @lang("Title & Url")
                     </span>
                 </li></ol></div><!-- END OF .column shrink -->
 </div><!-- END OF .row align-center hide-for-medium -->    
@@ -52,32 +52,32 @@ Create New Page
             <ol class="progress-indicator ">
                 <li class="is-current" data-step="">
                     <span>
-                        Title & Url
+                        @lang("Title & Url")
                     </span>
                 </li>
                 <li class="" data-step="">
                     <span>
-                        Navigation
+                        @lang("Navigation")
                     </span>
                 </li>
                 <li class="" data-step="">
                     <span>
-                        Layout
+                        @lang("Layout")
                     </span>
                 </li>
                 <li class="extra" data-step="">
                     <span>
-                        Content
+                        @lang("Content")
                     </span>
                 </li>                
                 <li class="extra" data-step="">
                     <span>
-                        Settings
+                        @lang("Settings")
                     </span>
                 </li>
                 <li class="extra" data-step="">
                     <span>
-                        <strong>Publish</strong>
+                        <strong>@lang("Publish")</strong>
                     </span>
                 </li>
             </ol>
@@ -92,7 +92,7 @@ Create New Page
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="title">
-                    Title:
+                    @lang("Title:")
                     <input  id="title" name="title" @keyup="autoslug($event.target.value)" placeholder="My Page" type="text" v-model="title"/>
                     @if ($errors->has('title'))
                     <small class="errortext">
@@ -100,7 +100,7 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        This will be shown in the navigation and the title.
+                        @lang("This will be shown in the navigation and the title.")
                     </small
                 </label>
             </div>
@@ -110,7 +110,7 @@ Create New Page
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <br />
                 <label for="slug">
-                    Slug:
+                    @lang("Slug:")
                     <input  id="slug" @keydown.once="slugged=true" name="slug" placeholder="my-page" type="text" v-model="slug"/>
                     @if ($errors->has('slug'))
                     <small class="errortext">
@@ -118,7 +118,7 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        This will be part of the url like this: <br />
+                        @lang("This will be part of the url like this:") <br />
                         <code>{{ url('/') }}/@{{slug}}</code>
                     </small>
                 </label>
@@ -134,7 +134,7 @@ Create New Page
                 <div class="row align-center">
                     <div class="column shrink">
                         <button :disabled=" this.title.length < 2 || this.slug.length < 1" class="button large expanded fabu fa-arrow-right" type="submit" v-bind:class="classObject">
-                            Save & Next Step
+                            @lang("Save & Next Step")
                         </button>
                     </div>
                     <!-- END OF .column small-10 medium-5 -->
