@@ -141,7 +141,7 @@ let editorcol = Vue.component('editorcol',
             <!-- END OF .row -->
         </div>
         <label for="spaced">
-            Offset (optional)
+            @lang("Offset (optional)")
         </label>
         <div @click="updateoffset()" class="slider secondary" data-end="10" data-initial-start="0" data-slider="">
             <span :aria-controls="panelid('offsetslider')" class="slider-handle" data-slider-handle="" role="slider" tabindex="1">
@@ -150,14 +150,14 @@ let editorcol = Vue.component('editorcol',
             </span>
         </div>
         <label for="spaced">
-            Vertical Alignment (optional)
+            @lang("Vertical Alignment (optional)")
         </label>
         <div class="radio secondary">
             <input :id="panelid('top')" name="Myvalign" type="radio" v-model="Myvalign" value="top">
                 <label :for="panelid('top')">
                     <i class="fa fa-exchange">
                     </i>
-                    Top
+                    @lang("Top")
                 </label>
                 <br/>
             </input>
@@ -168,7 +168,7 @@ let editorcol = Vue.component('editorcol',
                 <label :for="panelid('middle')">
                     <i class="fa fa-arrows-h">
                     </i>
-                    Middle
+                    @lang("Middle")
                 </label>
                 <br/>
             </input>
@@ -179,7 +179,7 @@ let editorcol = Vue.component('editorcol',
                 <label :for="panelid('bottom')">
                     <i class="fa fa-caret-square-o-left">
                     </i>
-                    Bottom
+                    @lang("Bottom")
                 </label>
             </input>
             <br/>
@@ -191,13 +191,13 @@ let editorcol = Vue.component('editorcol',
         <div class="row align-left">
             <div class="column shrink">
                 <a @click="update()" class="button fabu fa-plus before" data-close="">
-                    Save Changes
+                    @lang("Save Changes")
                 </a>
             </div>
             <!-- END OF .column -->
             <div class="column small-12 medium-expand" style="text-align:right">
                 <a @click.prevent="del()" class="button alert fabu fa-times cover" data-close="" href="#">
-                    Delete Column
+                    @lang("Delete Column")
                 </a>
             </div>
         </div>
