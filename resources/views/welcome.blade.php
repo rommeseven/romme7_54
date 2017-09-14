@@ -37,24 +37,8 @@
 </div><!-- END OF .row collapse align-justify align-middle -->
 
 
-	<ul class="menu vertical drilldown" data-drilldown>
-		
-			
-			<li class="current_page"><a href="">Start</a></li>
-										<li><a href="">Services</a>
-										<ul class="menu vertical nested">
-											<li><a href="">Responsiv Design</a></li>
-											<li><a href="">Logo Design</a></li>
-											<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">CMS<s/span></a></li>
-											<li><a href="">Suchmaschinenoptimierung</a></li>
-											<li><a href="">Firmenemail</a></li>
-											<li><a href="">Kundenspeifische Webapplikation</a></li>
-											<li><a href="">Domain- und Websitemanagement</a></li>
-										</ul>
-										</li>
-										<li><a href="">Über Seven</a></li>
-										<li><a href="">Kontakt</a></li>
-										<li><a href="">Blog</a></li>
+	<ul class="menu vertical drilldown menu-ul" data-drilldown>
+		@include("frontend.partials.tmp_navigation")
 	</ul><!-- END OF .menu -->
 </div>
     </div>
@@ -83,21 +67,7 @@
 					<div class="column shrink topbar-icon"><img src="{{ asset("img/icon.gif") }}" alt="" /></div><!-- END OF .column shrink -->
 					<div class="column expand show-for-medium">
 						<ul class="menu horizontal dropdown align-center" id="main-menu" data-dropdown-menu data-click-open="true" data-closing-time="1500" data-disable-hover="true">
-							<li class="current_page"><a href="">Start</a></li>
-							<li><a href="">Services</a>
-							<ul class="menu vertical">
-								<li><a href="">Responsiv Design</a></li>
-								<li><a href="">Logo Design</a></li>
-								<li><a href="">Firmenwebseite mit <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Inhalts- verwaltungssystem">CMS</span></a></li>
-								<li><a href="">Suchmaschinenoptimierung</a></li>
-								<li><a href="">Firmenemail</a></li>
-								<li><a href="">Kundenspeifische Webapplikation</a></li>
-								<li><a href="">Domain- und Websitemanagement</a></li>
-							</ul>
-							</li>
-							<li><a href="">Über Seven</a></li>
-							<li><a href="">Kontakt</a></li>
-							<li><a href="">Blog</a></li>
+							@include("frontend.partials.tmp_navigation")
 						</ul><!-- END OF .menu horizontal -->
 					</div><!-- END OF #mainmenu.column expand -->
 					<div class="column shrink hide-for-medium">
@@ -107,15 +77,91 @@
 				</div><!-- END OF #topbar.row collapse --></div></div>
 	</nav>
 
-{{--     <header>
-    	<div class="row collapse align-middle align-center" id="hero">
-    		<div class="column shrink">@include("frontend.partials.logosvg")</div><!-- END OF .column shrink logocol -->
-    	</div><!-- END OF #hero.row align-middle align-center -->
-    	<div class="row collapse align-center align-middle" id = "topbar">
-    		<div class="column shrink align-center show-for-medium">Menu HERE</div><!-- END OF .column align-center show-for-medium -->
-    		<div class="column expand align-right hide-for-medium" style="text-align:right;margin-right:7px">HAMBI</div><!-- END OF .column align-right hide-for-medium -->
-    	</div><!-- END OF .row collapse -->
-    </header> --}}
+<section id="one">
+	<div class="row  align-spaced align-bottom">
+		<div class="column small-12 large-8 small-order-2 large-order-1">
+
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:hinge-in-from-left; animInFromRight:hinge-in-from-right; animOutToLeft:hinge-out-from-left; animOutToRight:hinge-out-from-right;timerDelay:7000">
+  <nav class="orbit-bullets">
+   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+ </nav>
+  <ul class="orbit-container">
+    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    <li class="is-active orbit-slide">
+		<img class="orbit-image" src="{{asset('img/orbit-1.jpg')}}" alt="Space">
+		<figcaption class="orbit-caption">SEVEN Calender Project - <a href="#">Öffnen</a></figcaption>
+    </li>
+    <li class="orbit-slide">
+		<img class="orbit-image" src="{{asset('img/orbit-2.jpg')}}" alt="Space">
+		<figcaption class="orbit-caption">SEVEN Calender Project - Handy</figcaption>
+    </li>
+    <li class="orbit-slide">
+		<img class="orbit-image" src="{{asset('img/orbit-3.jpg')}}" alt="Space">
+		<figcaption class="orbit-caption">SEVEN Calender Project - Tablet</figcaption>
+    </li>
+    <li class="orbit-slide">
+		<img class="orbit-image" src="{{asset('img/orbit-4.jpg')}}" alt="Space">
+		<figcaption class="orbit-caption">SEVEN Calender Project - Desktop</figcaption>
+    </li>
+  </ul>
+</div>
+
+		</div><!-- END OF .column small-12 mediun-6 large-6 -->
+		<div class="column small-12 large-4 small-order-1 large-order-2">
+			<h3><em>1</em> Responsiv Design</h3>
+			<p>Wir bereiten die Designs so, dass verschiedene Endgeräte ein entsprechendes Erlebnis bieten. <br /><br /></p>
+			<div class="row align-center collapse">
+				<div class="colum shrink"><a href="#" class="button hollow tertiary">Mehr Erfahren</a></div><!-- END OF .colum shrink -->
+			</div><!-- END OF .row align-center collapse -->
+		</div><!-- END OF .column small-12 mediun-6 large-6 -->
+	</div><!-- END OF .row collapse align-spaced align-middle -->
+
+
+
+<div class="row align-spaced align-middle">
+		<div class="column small-12 medium-12 large-6 small-order-2 align-middle">
+
+<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;timerDelay:12000">
+  <ul class="orbit-container">
+       <li class="is-active orbit-slide">
+		<img class="two orbit-image" src="{{asset('img/orbit-1.jpg')}}" alt="Space">
+    </li>
+    <li class="orbit-slide">
+		<img class="two orbit-image" src="{{asset('img/orbit-2.jpg')}}" alt="Space">
+    </li>
+    <li class="orbit-slide">
+		<img class="two orbit-image" src="{{asset('img/orbit-3.jpg')}}" alt="Space">
+    </li>
+    <li class="orbit-slide">
+		<img class="two orbit-image" src="{{asset('img/orbit-4.jpg')}}" alt="Space">
+    </li>
+  </ul>
+</div>
+
+		</div><!-- END OF .column small-12 mediun-6 large-6 -->
+		<div class="column small-12 medium-12 large-6 small-order-1 self-align-top align-self-top">
+			<h3><em>2</em> Programmierung & Entwicklung</h3>
+			<p>Mollitia error nihil, aspernatur voluptatem doloremque esse nulla, vitae iusto. Vero magnam minus, ut ab corporis aliquam architecto, ipsam suscipit placeat. Fugiat, vitae tempora non repellat recusandae? In, ad culpa.</p>
+		</div><!-- END OF .column small-12 mediun-6 large-6 -->
+	</div><!-- END OF .row collapse align-spaced align-middle -->	
+</section>
+
+<section id="two">
+<div class="row align-center">
+<div class="column shrink"   id="allfeatures">
+ 		<div class="row align-center">
+ 			<div class="column shrink"><button></button><button></button><button></button></div><!-- END OF .column small-12 -->
+ 		</div><!-- END OF .row -->
+ 		<div class="row align-center">
+ 			<div class="column small-12 small-offset-2"><a href="#"></a></div><!-- END OF .column small-12 -->
+ 		</div><!-- END OF .row --></div><!-- END OF .column small-12 --> </div><!-- END OF .column align-center shrink -->
+</div><!-- END OF .row -->
+</section><!-- END OF #two -->
+
 
 <section>
 

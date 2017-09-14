@@ -72,13 +72,21 @@ nav {
     #topbar {
       height: 60px;
       padding-right: 10px;
+      width: 100%;
+      background: rgb(229, 227, 232);
 
       .topbar-icon {
         width: 53px;
       }
 
-      width: 100%;
-      background: rgb(229, 227, 232);
+      .menu-icon {
+        /* TODO: @internet menu icon color */
+        background: get-color(primary);
+
+        &:hover {
+          background: get-color(secondary);
+        }
+      }
 
       img {
         height: 60px;
@@ -207,33 +215,6 @@ nav {
   }
 }
 
-// #topbar {
-//   background: get-color(logoblue);
-//   height: 60px;
-// }
-
-// #hero {
-//   background: get-color(logoblue);
-//   padding: 20px 0;
-
-//   img {
-//     height: 144px;
-//     width: auto;
-//   }
-// }
-
-// #logo {
-//   max-width: 100%;
-//   height: auto;
-//   width: auto;
-//   max-height: 407px;
-// }
-
-// #topbar {
-//   background: get-color(logoblue);
-//   height: 60px;
-// }
-
 $offcanvas-full-screen-bg: $white;
 $offcanvas-full-screen-side: right;
 $offcanvas-full-screen-closebutton-size: 2rem;
@@ -261,11 +242,11 @@ $offcanvas-full-screen-closebutton-size: 2rem;
 }
 
 .offcanvas-full-screen-close {
-  color: $white;
+  color: get-color(secondary);
   font-size: $offcanvas-full-screen-closebutton-size;
 
   &:hover {
-    color: darken($white, 30%);
+    color: darken(get-color(secondary), 30%);
   }
 }
 

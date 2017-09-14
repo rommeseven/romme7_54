@@ -3206,7 +3206,7 @@ select[multiple] {
   vertical-align: middle;
   margin: 0 0 1rem 0;
   font-family: inherit;
-  padding: 0.85em 1em;
+  padding: 0.9rem 0.9rem 0.4rem;
   -webkit-appearance: none;
   border: 1px solid transparent;
   border-radius: 0;
@@ -4205,7 +4205,7 @@ select[multiple] {
   top: 0.4em;
   display: inline-block;
   float: right;
-  margin-left: 1em;
+  margin-left: 0.9rem;
 }
 
 .button.dropdown.hollow::after {
@@ -6556,7 +6556,7 @@ select[multiple] {
 .orbit-bullets {
   position: relative;
   margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   text-align: center;
 }
 
@@ -6565,19 +6565,19 @@ select[multiple] {
 }
 
 .orbit-bullets button {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: 0.1rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 1.1rem;
   border-radius: 50%;
-  background-color: #527D99;
+  background-color: #3853A4;
 }
 
 .orbit-bullets button:hover {
-  background-color: #375366;
+  background-color: #71A438;
 }
 
 .orbit-bullets button.is-active {
-  background-color: #375366;
+  background-color: #71A438;
 }
 
 .pagination {
@@ -8338,6 +8338,15 @@ nav #topbar-stick #topbar .topbar-icon {
   width: 53px;
 }
 
+nav #topbar-stick #topbar .menu-icon {
+  /* TODO: @internet menu icon color */
+  background: #BD4E40;
+}
+
+nav #topbar-stick #topbar .menu-icon:hover {
+  background: #3853A4;
+}
+
 nav #topbar-stick #topbar img {
   height: 60px;
   width: auto;
@@ -8557,12 +8566,12 @@ nav #topbar-stick.is-anchored #topbar #main-menu li.is-active:hover a {
 }
 
 .offcanvas-full-screen-close {
-  color: #EDFFEC;
+  color: #3853A4;
   font-size: 2rem;
 }
 
 .offcanvas-full-screen-close:hover {
-  color: #5cff53;
+  color: #111932;
 }
 
 .offcanvas-topbar {
@@ -8587,5 +8596,60 @@ body {
 
 body * {
   text-decoration: none !important;
+}
+
+section#one {
+  background: #C4C962;
+  padding-top: 100px;
+}
+
+section#one h3 em {
+  font-size: 3em;
+  color: #71A438;
+}
+
+section#one .orbit-caption a {
+  color: #71A438;
+}
+
+section#one > .row:not(:last-child) {
+  margin-bottom: 160px;
+}
+
+section#one img.two {
+  margin-bottom: 25px;
+  border-radius: 20px;
+  -webkit-box-reflect: unset;
+  border: solid 1px #CCC;
+  -webkit-box-shadow: 0px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 3px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+section#two #allfeatures {
+  cursor: pointer;
+  text-align: center;
+}
+
+section#two #allfeatures button {
+  width: 2rem;
+  height: 2rem;
+  margin: 1.1rem;
+  border-radius: 50%;
+  background-color: #BD4E40;
+}
+
+section#two #allfeatures a::after {
+  content: "Und noch vieles mehr";
+  text-transform: uppercase;
+  color: #BD4E40;
+}
+
+section#two #allfeatures:hover button {
+  background-color: #71A438;
+}
+
+section#two #allfeatures:hover a::after {
+  color: #71A438;
+  content: "alle angebote anschauen";
 }
 

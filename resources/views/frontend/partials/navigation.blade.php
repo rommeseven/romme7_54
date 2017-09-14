@@ -1,7 +1,7 @@
 {{-- 
-
+TODO: [navigation] current_page class to active
  --}}
-<ul id="sortable" class="sortable menu vertical menu-ul">
+{{-- <ul id="sortable" class="sortable menu vertical menu-ul"> --}}
     @foreach($pages as $item)
     <li class="menu-li" id="page_{{$item->id}}" value="{{$item->id}}">
         <a href="{{url($item->slug)}}" >
@@ -53,7 +53,7 @@
         @endif
     </li>
     @endforeach
-</ul>
+{{-- </ul> --}}
 
 {{-- 
 REMEMBER: navigation classes for customization: menu-ul, submenu-ul, menu-li

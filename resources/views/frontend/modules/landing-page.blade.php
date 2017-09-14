@@ -5,4 +5,3 @@ I AM LANDING BABY!
 {{ $motto }}
 
 TODO: [design] landing page 
-TODO: get hero building block @internet
