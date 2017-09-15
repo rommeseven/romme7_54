@@ -9,8 +9,6 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-/* TODO: uncomment everything  [LARAVEL MIX] */
-/* REMEMBER: uncomment mix  [LARAVEL MIX] */
 
 mix.copy('resources/assets/cms/other', 'public/other', false);   
 mix.copy('resources/assets/cms/img', 'public/img', false);   

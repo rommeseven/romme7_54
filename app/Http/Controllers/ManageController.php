@@ -1,9 +1,5 @@
 <?php
 
-/*
-TODO: install command (custom seed)
-
- */
 
 namespace App\Http\Controllers;
 

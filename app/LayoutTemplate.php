@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LayoutTemplate extends Model
 {
-    // TODO: Layout template crud
 
     protected $fillable = array("name");
 
