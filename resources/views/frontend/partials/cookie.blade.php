@@ -1,5 +1,3 @@
-@if($cookieConsentConfig['enabled'] && ! $alreadyConsentedWithCookies)
-
 <div class="okcBeginAnimate js-cookie-consent cookie-consent" id="okCookie">
     <p>
         <span class="cookie-consent__message">
@@ -21,7 +19,7 @@
             var COOKIE_VALUE = 1;
 
             function consentWithCookies() {
-                setCookie('{{ $cookieConsentConfig['cookie_name'] }}', COOKIE_VALUE, 365 * 20);
+                setCookie(env("COOKIE_NAME","COOKIE_YES", COOKIE_VALUE, 365 * 20);
                 hideCookieDialog();
             }
 
@@ -43,7 +41,7 @@
                 document.cookie = name + '=' + value + '; ' + 'expires=' + date.toUTCString() +';path=/{{ config('session.secure') ? ';secure' : null }}';
             }
 
-            if(cookieExists('{{ $cookieConsentConfig['cookie_name'] }}')) {
+            if(cookieExists(env("COOKIE_NAME","COOKIE_YES")) {
                 hideCookieDialog();
             }
 
@@ -59,5 +57,3 @@
             };
         })();
     </script>
-
-@endif
