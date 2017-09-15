@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -38242,18 +38242,10 @@ function checkicon() {
 
 /***/ }),
 
-/***/ "./resources/assets/frontend/sass/public.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./resources/assets/frontend/js/public.js");
-module.exports = __webpack_require__("./resources/assets/frontend/sass/public.scss");
+module.exports = __webpack_require__("./resources/assets/frontend/js/public.js");
 
 
 /***/ })

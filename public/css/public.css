@@ -12029,6 +12029,97 @@ body * {
   text-decoration: none !important;
 }
 
+.errortext {
+  padding-left: 1rem;
+  top: -18px;
+  position: relative;
+  color: #9B1D20;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.errortext::before {
+  content: "*";
+}
+
+label {
+  cursor: pointer;
+}
+
+.input-container {
+  position: relative;
+  padding-top: 2em;
+}
+
+.input-container input:not([type=submit]):not([type=file]),
+.input-container textarea {
+  width: 100%;
+  overflow: hidden;
+}
+
+.input-container input:not([type=submit]):not([type=file]):focus::-webkit-input-placeholder,
+.input-container textarea:focus::-webkit-input-placeholder {
+  color: white;
+}
+
+.input-container input:not([type=submit]):not([type=file]):focus:-moz-placeholder,
+.input-container textarea:focus:-moz-placeholder {
+  color: white;
+}
+
+.input-container input:not([type=submit]):not([type=file]):focus::-moz-placeholder,
+.input-container textarea:focus::-moz-placeholder {
+  color: white;
+}
+
+.input-container input:not([type=submit]):not([type=file]):focus:-ms-input-placeholder,
+.input-container textarea:focus:-ms-input-placeholder {
+  color: white;
+}
+
+.input-container input:not([type=submit]):not([type=file]) + label,
+.input-container textarea + label {
+  left: 0;
+  opacity: 0;
+}
+
+.input-container input:not([type=submit]):not([type=file]):focus + label,
+.input-container input:not([type=submit]):not([type=file]):not(:empty) + label,
+.input-container input:not([type=submit]):not([type=file]):not(:placeholder-shown) + label,
+.input-container textarea:focus + label,
+.input-container textarea:not(:empty) + label,
+.input-container textarea:not(:placeholder-shown) + label {
+  opacity: 1;
+  -webkit-transform: translateY(-30%);
+          transform: translateY(-30%);
+  color: #2b2b2b;
+}
+
+.input-container label {
+  position: absolute;
+  top: 0;
+  font-size: 1em;
+  padding-left: 1.5em;
+  padding-top: 0.935em;
+  color: #fff;
+  -webkit-transition: color 300ms, -webkit-transform 300ms;
+  transition: color 300ms, -webkit-transform 300ms;
+  transition: transform 300ms, color 300ms;
+  transition: transform 300ms, color 300ms, -webkit-transform 300ms;
+}
+
+.input-container label::after {
+  content: ":";
+}
+
+textarea {
+  min-height: 140px;
+}
+
+.fabu::before {
+  line-height: .5;
+}
+
 section#one {
   background: #CDE7B0;
   padding-top: 100px;
@@ -12092,5 +12183,73 @@ section#three {
 section#three #kontakticon {
   font-size: 7em;
   color: #3853A4;
+}
+
+footer {
+  margin-top: 80px;
+}
+
+footer #line {
+  height: 20px;
+  background: #71A438;
+}
+
+footer .main {
+  color: #e5e3e8;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background: linear-gradient(45deg, #3853a4, #6e7ba4);
+  background-size: 400% 400%;
+  -webkit-animation: Footer 22s ease infinite;
+  animation: Footer 22s ease infinite;
+}
+
+footer .main a {
+  color: #EDFFEC;
+}
+
+footer .main a:hover {
+  color: white;
+}
+
+@-webkit-keyframes Footer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 51%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes Footer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 51%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+footer #footer-svg-container {
+  background: #3853A4;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+#horizontal-logo {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  max-height: 150px;
 }
 

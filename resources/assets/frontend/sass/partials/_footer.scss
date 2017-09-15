@@ -1,4 +1,81 @@
-.footer
-{
+footer {
+  margin-top: 80px;
 
+  #line {
+    height: 20px;
+    background: get-color(tertiary);
+  }
+
+  .main {
+    a {
+      color: $white;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    color: rgb(229, 227, 232);
+    padding-top: 60px;
+    padding-bottom: 30px;
+    background: linear-gradient(45deg, #3853a4, #6e7ba4);
+    background-size: 400% 400%;
+    -webkit-animation: Footer 22s ease infinite;
+    -moz-animation: Footer 22s ease infinite;
+    animation: Footer 22s ease infinite;
+
+    @-webkit-keyframes Footer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 51%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @-moz-keyframes Footer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 51%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes Footer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 51%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  }
+
+  #footer-svg-container {
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+}
+
+#horizontal-logo {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  max-height: 150px;
 }

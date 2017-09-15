@@ -51220,11 +51220,19 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./resources/assets/frontend/sass/public.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/cms/js/app.js");
-module.exports = __webpack_require__("./resources/assets/cms/sass/app.scss");
+__webpack_require__("./resources/assets/cms/sass/app.scss");
+module.exports = __webpack_require__("./resources/assets/frontend/sass/public.scss");
 
 
 /***/ })
