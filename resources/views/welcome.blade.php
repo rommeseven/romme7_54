@@ -215,17 +215,24 @@
 
 <footer>
 	<div id="line" class="row"></div><!-- END OF #line.row -->
-	<div class="row main align-justify align-middle">
-		<div class="column small-12 medium-4"><p><small>Voluptates, pariatur. Pariatur, in amet cum vitae nam, enim veniam possimus ullam velit soluta earum omnis asperiores nihil aperiam minima quasi libero quis ad, debitis esse consectetur aliquid. Itaque, atque?</small></p></div><!-- END OF .column small-12 medium-4 -->
+	<div class="row main align-justify align-bottom">
+		<div class="column small-12 medium-4"><p><small>Seven Webagentur ist die Verkaufsname von der Firma Seven Webagentur Christian Neuherz und Takács László GesbR.  </small></p></div><!-- END OF .column small-12 medium-4 -->
 		<div class="column small-12 medium-4">
 			<ul class="menu vertical align-center">
 				<li><a href="#"><i class="fa fa-file-text"></i> Blog</a></li>
 				<li><a href="#"><i class="fa fa-info-circle"></i> Impressum</a></li>
+				{{-- CRISI: [landing-page] Disclaimer   Schreib dazu, dass die firma nocht nicht gegründet is. Die gründung erfolgt ende das Jahr 2017.  Schreib dazu, dass die Webseite noch in bearbeitung ist. --}}
+				{{-- CRISI: [landing-page] Datenschutz --}}
+				{{-- CRISI: [landing-page] Copyright text (such a mustertext) --}}
+				{{-- CRISI: [landing-page] Impressum (mit deine daten für jetzt, dann firmendaten (kannst firmendaten auch schon generieren, in evernote speichern)) --}}
+				<li><a href="#"><i class="fa fa-info-circle"></i> Disclaimer</a></li>
 				<li><a href="#"><i class="fa fa-shield"></i> Datenschutzbedingungen</a></li>
 				<li><a href="#"><i class="fa fa-copyright"></i> Alle rechte vorbehalten.</a></li>
 			</ul><!-- END OF .menu vertical -->
 		</div><!-- END OF .column small-12 medium-4 -->
-		<div class="column small-12 medium-4"><p><small>Ad odit quibusdam quos dignissimos possimus voluptates perspiciatis maiores nesciunt animi quisquam, fugiat quas doloribus deleniti. Aliquam sed totam quia, numquam eaque vitae, error dolore placeat iure quasi sunt, commodi.</small></p></div><!-- END OF .column small-12 medium-4 -->
+
+		{{-- CRISI: [info] @read-and-delete das ist unser firmenbeschreibung für seo und für social media: --}}
+		<div class="column small-12 medium-4"><p>SEVEN Webagentur bietet Webseite Design und Programmierung, Logodesign und individuelle Webapplikationen für Firmen in der Nähe von Graz und Klagenfurt.</p></div><!-- END OF .column small-12 medium-4 -->
 		<div class="column small-12">	<div class="row align-center align-middle" id="footer-svg-container">
 		<div class="column shrink" >
 			@include("frontend.partials.logo-horizontal-svg")
