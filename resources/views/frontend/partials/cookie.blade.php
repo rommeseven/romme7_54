@@ -19,7 +19,7 @@
             var COOKIE_VALUE = 1;
 
             function consentWithCookies() {
-                setCookie({{env("COOKIE_NAME","COOKIE_YES")}}, COOKIE_VALUE, 365 * 20);
+                setCookie("{{env("COOKIE_NAME","COOKIE_YES")}}", COOKIE_VALUE, 365 * 20);
                 hideCookieDialog();
             }
 
@@ -41,7 +41,7 @@
                 document.cookie = name + '=' + value + '; ' + 'expires=' + date.toUTCString() +';path=/{{ config('session.secure') ? ';secure' : null }}';
             }
 
-            if(cookieExists({{env("COOKIE_NAME","COOKIE_YES")}})) {
+            if(cookieExists("{{env("COOKIE_NAME","COOKIE_YES")}}")) {
                 hideCookieDialog();
             }
 
