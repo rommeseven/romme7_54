@@ -21,8 +21,10 @@
     </head>
     <body>
 
-      <div class="off-canvas-wrapper">
-    <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas data-transition="detached">
+{{-- CRISI: [landing-page] Text (Weiß) umschreiben, gleich auf Deutsch, brauchst nicht übersetzen, ist front-end --}}
+
+<div class="off-canvas-wrapper">
+<div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas data-transition="detached">
 <div class="offcanvas-full-screen-inner">
 
 <div class="row collapse align-justify align-middle offcanvas-topbar">
