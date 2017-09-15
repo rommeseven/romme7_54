@@ -249,7 +249,7 @@
 <script src="{{ mix('js/public.js') }}">
 </script>
 @stack("extrajs")
-@include('cookieConsent::index')
+@include('frontend.partials.cookie')
 </body>
 </html>
 
