@@ -12185,6 +12185,10 @@ section#three #kontakticon {
   color: #3853A4;
 }
 
+section#blog {
+  padding-top: 80px;
+}
+
 footer {
   margin-top: 80px;
 }
@@ -12241,7 +12245,6 @@ footer .main a:hover {
 }
 
 footer #footer-svg-container {
-  background: #3853A4;
   padding-top: 25px;
   padding-bottom: 10px;
 }

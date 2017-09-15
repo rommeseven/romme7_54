@@ -193,6 +193,24 @@
 	{{-- TODO: @internet dl inline label building block --}}
 </section><!-- END OF #three -->
 
+<section id="blog">
+<div class="row collapse align-center">
+		<div class="column  small-12 medium-10 large-8">
+			<h2>21 Entscheidungen, die man treffen muss, bevor Webseite zu bestellen.</h2>
+		</div><!-- END OF .column shrink -->
+	</div><!-- END OF .row collapse align-center -->
+	<br />
+	<div class="row align-center">
+		<div class="column small-12 medium-10 large-8">
+			<p>Ullam, error aut voluptates laudantium quod, doloribus tempore eius adipisci. Nesciunt facere, aut dolore quibusdam? Adipisci nam obcaecati harum quos eos mollitia quis deleniti deserunt, ut aperiam quidem, veniam vero saepe animi debitis asperiores doloribus est sequi. Possimus, sit, quos distinctio eum eius ratione dolor accusantium ab suscipit temporibus at incidunt est animi odio unde minima, enim deleniti ipsa nesciunt praesentium consequuntur ex. Dicta laboriosam quaerat architecto, ut itaque accusantium maiores illo voluptas ducimus dignissimos non aliquid quam omnis, tenetur reiciendis eos blanditiis amet ea, quidem labore iste, perferendis explicabo nulla! Mollitia iusto ea voluptate quis eligendi eos iure quaerat, magnam, iste consectetur recusandae explicabo odio ratione perferendis doloribus corporis ab eaque quam modi voluptas dignissimos provident in voluptates accusantium? Delectus tempore ullam laborum alias aut eveniet accusamus dolor nulla, consequatur! Iusto, ratione, quibusdam? Quia maiores provident, molestiae exercitationem soluta eius deleniti omnis saepe architecto impedit temporibus porro natus. Repellendus.</p>
+		</div><!-- END OF .column shrink -->
+	</div><!-- END OF .row align-center -->
+	<div class="row align-center">
+		<div class="column small-offset-3 shrink"><a href="#" class="button large hollow">Weiterlesen im Blog</a></div><!-- END OF .column small-offset-3 -->
+	</div><!-- END OF .row align-center -->
+	
+</section><!-- END OF #blog -->
+
 <footer>
 	<div id="line" class="row"></div><!-- END OF #line.row -->
 	<div class="row main align-justify align-middle">
