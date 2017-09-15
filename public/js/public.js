@@ -38218,27 +38218,27 @@ $(function () {
         }, 200);
         return false;
     });
-});
 
-function checkicon() {
-    var top = jQuery(window).scrollTop(),
-        divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
-    if (divBottom > top) {
-        if (!hidden) {
-            hidden = true;
-            //jQuery('.topbar-icon').addClass('invisible');
-            jQuery('.topbar-icon>img').css('display', 'inherit');
-            jQuery('.topbar-icon>img').fadeOut('fast');
-        }
-    } else {
-        if (hidden) {
-            hidden = false;
-            jQuery('.topbar-icon>img').removeClass('invisible');
-            jQuery('.topbar-icon>img').css('display', 'none');
-            jQuery('.topbar-icon>img').fadeIn();
+    function checkicon() {
+        var top = jQuery(window).scrollTop(),
+            divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+        if (divBottom > top) {
+            if (!hidden) {
+                hidden = true;
+                //jQuery('.topbar-icon').addClass('invisible');
+                jQuery('.topbar-icon>img').css('display', 'inherit');
+                jQuery('.topbar-icon>img').fadeOut('fast');
+            }
+        } else {
+            if (hidden) {
+                hidden = false;
+                jQuery('.topbar-icon>img').removeClass('invisible');
+                jQuery('.topbar-icon>img').css('display', 'none');
+                jQuery('.topbar-icon>img').fadeIn();
+            }
         }
     }
-}
+});
 
 /***/ }),
 

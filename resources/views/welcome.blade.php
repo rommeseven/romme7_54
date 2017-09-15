@@ -63,9 +63,8 @@
 	</div><!-- END OF .row collapse -->
 </header>
 
-<div id="anchor"></div><!-- END OF #anchor -->
 	<nav id="mainnav">
-		<div data-sticky-container id="topbar-wrapper" ><div id="topbar-stick" data-sticky data-top-anchor="anchor" data-options="marginTop:0;stickyOn: small;" style="width:100%" ><div class="row collapse align-justify align-middle" id="topbar">
+		<div data-sticky-container id="topbar-wrapper" ><div id="topbar-stick" data-sticky data-top-anchor="one" data-options="marginTop:0;" style="width:100%" ><div class="row collapse align-justify align-middle" id="topbar">
 					<div class="column shrink topbar-icon"><img src="{{ asset("img/icon.gif") }}" alt="" /></div><!-- END OF .column shrink -->
 					<div class="column expand show-for-medium">
 						<ul class="menu horizontal dropdown align-center" id="main-menu" data-dropdown-menu data-click-open="true" data-closing-time="1500" data-disable-hover="true">

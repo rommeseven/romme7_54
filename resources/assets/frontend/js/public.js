@@ -37,7 +37,6 @@ $(function()
         }, 200);
         return false;
     });
-});
 
 function checkicon()
 {
@@ -64,3 +63,4 @@ function checkicon()
         }
     }
 }
+});
