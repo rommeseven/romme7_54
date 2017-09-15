@@ -4,10 +4,8 @@ var hidden = false;
 $(function()
 {
     $(document).foundation();
-    alert("sind");
-    
     checkicon();
-    jQuery(window).on('scroll', checkicon);
+    $(window).on('scroll', checkicon);
     $('#main-menu').on('show.zf.dropdownmenu', function()
     {
         var dropdown = $(this).find('.is-dropdown-submenu');
@@ -31,8 +29,8 @@ $(function()
     });
     $("#main-menu").on('show.zf.dropdownmenu', function()
     {
-        var top = jQuery(window).scrollTop(),
-            divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+        var top = $(window).scrollTop(),
+            divBottom = $('header').offset().top + $('header').outerHeight();
         if (divBottom > top) $('html, body').animate(
         {
             scrollTop: divBottom + 1
@@ -42,16 +40,17 @@ $(function()
 
     function checkicon()
     {
-        var top = jQuery(window).scrollTop(),
-            divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+        var top = $(window).scrollTop(),
+            divBottom = $('header').offset().top + $('header').outerHeight();
         if (divBottom > top)
         {
             if (!hidden)
             {
                 hidden = true;
-                //jQuery('.topbar-icon').addClass('invisible');
-                jQuery('.topbar-icon>img').css('display', 'inherit');
-                jQuery('.topbar-icon>img').fadeOut('fast');
+                //$('.topbar-icon').addClass('invisible');
+                $('.topbar-icon>img').css('display', 'inherit');
+                $('.topbar-icon>img').fadeOut('fast');
+                $("#topbar-stick").removeClass("is-stuck");
             }
         }
         else
@@ -59,10 +58,12 @@ $(function()
             if (hidden)
             {
                 hidden = false;
-                jQuery('.topbar-icon>img').removeClass('invisible');
-                jQuery('.topbar-icon>img').css('display', 'none');
-                jQuery('.topbar-icon>img').fadeIn();
+                $('.topbar-icon>img').removeClass('invisible');
+                $('.topbar-icon>img').css('display', 'none');
+                $('.topbar-icon>img').fadeIn();
+                $("#topbar-stick").addClass("is-stuck");
             }
         }
     }
 });
+// TODO: sticky on heroku: JAVASCRIPT PROBLEM

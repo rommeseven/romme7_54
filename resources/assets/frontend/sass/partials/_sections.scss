@@ -68,7 +68,7 @@ section#two {
 section#three {
   padding-top: 100px;
 
-  #kontakticon {
+  .kontakticon {
     font-size: 7em;
     color: get-color(secondary);
   }
@@ -76,4 +76,9 @@ section#three {
 
 section#blog {
   padding-top: 80px;
+}
+
+#kontakticon {
+  font-size: 7em;
+  color: get-color(tertiary);
 }

@@ -64,7 +64,7 @@
 </header>
 
 	<nav id="mainnav">
-		<div data-sticky-container id="topbar-wrapper" ><div id="topbar-stick" data-sticky data-top-anchor="one" data-options="marginTop:0;" style="width:100%" ><div class="row collapse align-justify align-middle" id="topbar">
+		<div data-sticky-container id="topbar-wrapper" ><div id="topbar-stick" style="width:100%" ><div class="row collapse align-justify align-middle" id="topbar">
 					<div class="column shrink topbar-icon"><img src="{{ asset("img/icon.gif") }}" alt="" /></div><!-- END OF .column shrink -->
 					<div class="column expand show-for-medium">
 						<ul class="menu horizontal dropdown align-center" id="main-menu" data-dropdown-menu data-click-open="true" data-closing-time="1500" data-disable-hover="true">
@@ -169,14 +169,23 @@
 			<h1>SEVEN Webagentur</h1>
 		</div><!-- END OF .column shrink -->
 	</div><!-- END OF .row collapse align-center -->
-	<div class="row align-spaced align-middle">
+	<div class="row align-spaced align-middle" id = "nokontakt">
 		<div class="column" style="text-align:right">
 			<h4>Sie haben Fragen?</h4>
 			<p>Lassen Sie uns eine Nachricht und wird nehmen Kontakt auf!</p>
 		</div><!-- END OF .column -->
-		<div class="column" style="text-align:center"><i class="fa fa-envelope-o" id="kontakticon"></i></div><!-- END OF .column -->
+		<div class="column" style="text-align:center"><i class="fa fa-envelope-o kontakticon"></i></div><!-- END OF .column -->
 	</div><!-- END OF .row align-spaced -->
-	<div class="row">
+		<div class="row align-center align-middle" id="contacted">
+		<div class="column" style="text-align:right">
+			<h4>Javoll, Nachricht im Wind!</h4>
+			<p>Wir melden uns so bald wie möglich.</p>
+		</div><!-- END OF .column -->
+		<div class="column" style="text-align:left"><i class="fa fa-envelope" id="kontakticon"></i></div><!-- END OF .column -->
+	</div><!-- END OF .row align-spaced -->
+<form action="{{route("kontakt")}}" method="POST" id="kontakt">
+{{csrf_field()}}
+<div class="row">
 		<div class="column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container"><input placeholder="Email" type="text" name="email" id="email"/><label for="email">Email</label></div><!-- END OF .column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container -->
 	</div><!-- END OF .row -->
 	<div class="row">
@@ -185,12 +194,14 @@
 	<div class="row">
 		<div class="column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container"><textarea placeholder="Nachricht" name="message" id="message"></textarea><label for="message" name="subject" id="subject">Nachricht</label></div><!-- END OF .column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container -->
 	</div><!-- END OF .row -->
-
+	
 	<div class="row">
 		<div class="column small-offset-2 small-10 medium-5 medium-offset-5 large-4 large-offset-5">
 		<button type="submit" class="expanded button large fabu fa-envelope">Send</button>
 		</div><!-- END OF .column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container -->
-	</div><!-- END OF .row -->
+	</div><!-- END OF .row --></form>
+
+	<!-- END OF #kontakt -->
 	{{-- TODO: @internet dl inline label building block --}}
 </section><!-- END OF #three -->
 
@@ -245,7 +256,28 @@
     </div> <!-- end of off-canvas-content (PAGE CONTENT) -->
   </div>
 
+
+
 <script src="{{ mix('js/public.js') }}">
+</script>
+<script>
+	$(function() {
+		var contacted = false;
+				$("#contacted").hide();
+		$("body").on("submit","#kontakt",function() {
+			if(!contacted)
+			{
+				contacted=true;
+				$("#nokontakt").hide();
+				$("#contacted").show();
+				$("#kontakt").hide();
+    			// TODO: @internet scroll to element
+			}
+			return false;
+		});
+
+	});
+
 </script>
 @stack("extrajs")
 @include('frontend.partials.cookie')
