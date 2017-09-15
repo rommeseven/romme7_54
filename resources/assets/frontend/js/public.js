@@ -3,6 +3,9 @@ import Foundation from 'foundation-sites'
 var hidden = false;
 $(function()
 {
+    $(document).foundation();
+    alert("sind");
+    
     checkicon();
     jQuery(window).on('scroll', checkicon);
     $('#main-menu').on('show.zf.dropdownmenu', function()
@@ -17,7 +20,6 @@ $(function()
         dropdown.css('display', 'inherit');
         dropdown.fadeOut('fast');
     });
-    $(document).foundation();
     $(".current_page").click(function(e)
     {
         $('html, body').animate(
@@ -38,29 +40,29 @@ $(function()
         return false;
     });
 
-function checkicon()
-{
-    var top = jQuery(window).scrollTop(),
-        divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
-    if (divBottom > top)
+    function checkicon()
     {
-        if (!hidden)
+        var top = jQuery(window).scrollTop(),
+            divBottom = jQuery('header').offset().top + jQuery('header').outerHeight();
+        if (divBottom > top)
         {
-            hidden = true;
-            //jQuery('.topbar-icon').addClass('invisible');
-            jQuery('.topbar-icon>img').css('display', 'inherit');
-            jQuery('.topbar-icon>img').fadeOut('fast');
+            if (!hidden)
+            {
+                hidden = true;
+                //jQuery('.topbar-icon').addClass('invisible');
+                jQuery('.topbar-icon>img').css('display', 'inherit');
+                jQuery('.topbar-icon>img').fadeOut('fast');
+            }
+        }
+        else
+        {
+            if (hidden)
+            {
+                hidden = false;
+                jQuery('.topbar-icon>img').removeClass('invisible');
+                jQuery('.topbar-icon>img').css('display', 'none');
+                jQuery('.topbar-icon>img').fadeIn();
+            }
         }
     }
-    else
-    {
-        if (hidden)
-        {
-            hidden = false;
-            jQuery('.topbar-icon>img').removeClass('invisible');
-            jQuery('.topbar-icon>img').css('display', 'none');
-            jQuery('.topbar-icon>img').fadeIn();
-        }
-    }
-}
 });
