@@ -11,6 +11,7 @@ call heroku config:set MAIL_ENCRYPTION=ssl
 call heroku config:set MAIL_FROM_ADDRESS=noreply@sevenweb.eu
 call heroku config:set MAIL_FROM_NAME="SEVEN Webagentur"
 call heroku config:set APP_CODE=%1
+call heroku config:set COOKIE_NAME="COOKIE_YES"
 call heroku config:set DBOX_APP_SECRET=hoc7vwfos8xt0ss
 call heroku config:set DBOX_APP_KEY=uc2v7iq2qk243ba
 call heroku config:set DBOX_TOKEN=MQAa74FtCyAAAAAAAAAAEB2JmhgitlJMQYE9mYCWba6tCjRG7RV57tp1-VJBZq1N
