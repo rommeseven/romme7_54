@@ -11612,7 +11612,7 @@ a.thumbnail image {
 #okCookie {
   background-color: #F2F2F2;
   color: #333333;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
