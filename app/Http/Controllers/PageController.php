@@ -1,5 +1,13 @@
 <?php
 
+
+     // CRISI: [info] @lang @read-then-delete: Auf diese Seite habe ich schon in die __() Funktion gesammelt, was zum übersetzen ist.
+     // Musst nur auf __(  suchen und die texte in den .json hinzufügen + übersetzen. 
+     // Bitte lösche diese die @read-then-delete Kommentare, wenn du fertig bist.
+
+
+
+
 namespace App\Http\Controllers;
 
 use App\Column;
@@ -62,7 +70,7 @@ class PageController extends Controller
     {
         if ($page->step != 4)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
@@ -80,7 +88,7 @@ class PageController extends Controller
     {
         if ($page->step != 3)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
@@ -90,7 +98,7 @@ class PageController extends Controller
         // $collection = $collection->sortBy('id')->toJson();
         // $collection = str_replace("columns", "cols", $collection);
 
-        $bigcollection = collect(LayoutTemplate::with('user',"rows.columns")->get());
+        $bigcollection = collect(LayoutTemplate::with('user', "rows.columns")->get());
 
         $bigcollection = $bigcollection->sortBy('id')->toJson();
         $bigcollection = str_replace("columns", "cols", $bigcollection);
@@ -107,9 +115,9 @@ class PageController extends Controller
     {
         if (!Page::nav()->count())
         {
-            Session::flash("warning", "You must create and publish a page to edit the navigation");
+            Session::flash("warning", __("You must create and publish a page to edit the navigation"));
             Session::flash("warning_autohide", "4500");
-            Session::flash("error", "There are no pages published!");
+            Session::flash("error", __("There are no pages published!"));
             Session::flash("error_autohide", "4500");
             return redirect('/cmseven/pages/create');
         }
@@ -138,7 +146,7 @@ class PageController extends Controller
     {
         if ($page->step != 6)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
@@ -166,7 +174,7 @@ class PageController extends Controller
         }
         if ($page->step != 5)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
@@ -203,8 +211,8 @@ class PageController extends Controller
             {
                 Session::keep(array('success', 'success_autohide', 'info2', 'info2_autohide', 'info2_flash_title'));
             }
-            Session::flash("info_flash_title", "Skipping Step 2");
-            Session::flash("info", "There are no other pages at the moment.");
+            Session::flash("info_flash_title", __("Skipping Step 2"));
+            Session::flash("info", __("There are no other pages at the moment."));
             Session::flash("info_flash_icon", "angle-double-right");
             Session::flash("info_autohide", "3500");
 
@@ -212,8 +220,8 @@ class PageController extends Controller
         }
         elseif ($page->published)
         {
-            Session::flash("info_flash_title", "Page already published");
-            Session::flash("info", "You can change the navigation on this page");
+            Session::flash("info_flash_title", __("Page already published"));
+            Session::flash("info",__( "You can change the navigation on this page"));
             Session::flash("info_flash_icon", "navicon");
             Session::flash("info_autohide", "3500");
 
@@ -258,7 +266,7 @@ class PageController extends Controller
             }
             $page->step = 4;
             $page->save();
-            Session::flash("success", "Page layout has been successfully set!");
+            Session::flash("success", __("Page layout has been successfully set!"));
             Session::flash("success_autohide", "4500");
             return redirect('cmseven/pages/create/step/4/page/'.$page->id);
         }
@@ -268,7 +276,7 @@ class PageController extends Controller
             {
                 dd("TODO: GENERAL ERROR1");
             }
-            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname,'user_id' => auth()->user()->id));
+            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id));
             foreach ($object as $row)
             {
                 $row_model = new Row(array('align' => $row['align']));
@@ -286,7 +294,7 @@ class PageController extends Controller
                     $row_model->columns()->save($column_model);
                 }
             }
-            Session::flash("success", "Layout Templated created!");
+            Session::flash("success", __("Layout Templated created!"));
             Session::flash("success_autohide", "4500");
             return redirect('cmseven/pages/create/step/3/page/'.$page->id);
         }
@@ -332,7 +340,7 @@ class PageController extends Controller
             }
             $page->step = 4;
             $page->save();
-            Session::flash("success", "Page layout has been successfully set!");
+            Session::flash("success", __("Page layout has been successfully set!"));
             Session::flash("success_autohide", "4500");
             return redirect('cmseven/pages/create/step/4/page/'.$page->id);
         }
@@ -342,7 +350,7 @@ class PageController extends Controller
             {
                 dd("TODO: GENERAL ERROR1");
             }
-            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname,  'user_id' => auth()->user()->id));
+            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id));
             foreach ($object as $row)
             {
                 $row_model = new Row(array('align' => $row['align']));
@@ -360,24 +368,36 @@ class PageController extends Controller
                     $row_model->columns()->save($column_model);
                 }
             }
-            Session::flash("success", "Layout Templated created!");
+            Session::flash("success", __("Layout Templated created!"));
             Session::flash("success_autohide", "4500");
-            Session::flash("info", "Any previous layout with the same name has been overwritten.");
+            Session::flash("info", __("Any previous layout with the same name has been overwritten."));
             Session::flash("info_autohide", "3000");
-            Session::flash("info_title", "Notice");
+            Session::flash("info_title",__( "Notice"));
             return redirect('cmseven/pages/create/step/3/page/'.$page->id);
         }
     }
 
     public function postNavigation(Request $request)
     {
-        $pages = str_replace('anchor#', null, $request->pages);
-        parse_str($pages, $list);
+        if ($page->step != 5)
+        {
+            Session::flash("warning", __("You must complete the steps in order!"));
+            Session::flash("warning_autohide", "4500");
+            return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }        
         $toBePublished            = Page::findOrFail($request->input("page"));
         $toBePublished->published = true;
         $toBePublished->step      = 3;
         $toBePublished->save();
         $sort = 1;
+        if ($request->nonav)
+        {
+            Session::flash("info", __("Page will not be shown in the navigation."));
+            Session::flash("info_autohide", "4500");
+            return redirect()->route("pageeditor.step3", $toBePublished->id);
+        }
+        $pages = str_replace('anchor#', null, $request->pages);
+        parse_str($pages, $list);
         foreach ($list['page'] as $id => $parentId)
         {
             $page                = Page::findOrFail($id);
@@ -387,7 +407,7 @@ class PageController extends Controller
             $page->save();
             $sort++;
         }
-        Session::flash("success", "Page successfully added to the navigation.");
+        Session::flash("success",__( "Page successfully added to the navigation."));
         Session::flash("success_autohide", "4500");
         return redirect()->route("pageeditor.step3", $toBePublished->id);
     }
@@ -409,11 +429,15 @@ class PageController extends Controller
         $users = Page::search($request->input('search'))->paginate(10);
         if (!$users->count())
         {
-            Session::flash("error", 'Could not find page with title "'.$request->input('search').'".');
+            Session::flash("error", __('Could not find page with title "').$request->input('search').'".');
+            // CRISI: [info] @lang @read-then-delete: PAss auf, bei diesem. Die Leertaste und Anführungszeichen zum schluss sind wichtig
+
             Session::flash("error_autohide", "4500");
             return redirect('/cmseven/pages');
         }
-        $searched = $users->unique()->count().' Page(s) Found:';
+        $searched = $users->unique()->count().__(' Page(s) Found:');
+        // CRISI: [info] @lang @read-then-delete: PAss auf bei diesem. Die Leertaste ist wichtig
+
         return view('backend.pages.index')->withPages($users)->with("searched", $searched)->with('searchQuery', $request->input('search'));
     }
 
@@ -429,7 +453,7 @@ class PageController extends Controller
     {
         if ($page->step != 5)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
@@ -450,7 +474,7 @@ class PageController extends Controller
 
         $page->step = 6;
         $page->save();
-        Session::flash("success", "Page-specific settings have been saved!");
+        Session::flash("success",__( "Page-specific settings have been saved!"));
         Session::flash("success_autohide", "4500");
 
         return redirect()->route("pageeditor.step6", $page);
@@ -468,7 +492,7 @@ class PageController extends Controller
     {
         if ($page->step < 6)
         {
-            Session::flash("warning", "You must complete the steps in order!");
+            Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
@@ -479,7 +503,7 @@ class PageController extends Controller
         $admins = User::wherePermissionIs('read_pages')->get()->except(auth()->user()->id);
         /*TODO:  [notification] into event listener! */
         Notification::send($admins, new NewPagePublished($page));
-        Session::flash("success", "The page has been published!");
+        Session::flash("success", __("The page has been published!"));
         Session::flash("success_autohide", "5500");
         return redirect("cmseven/pages");
         // TODO: redirect to page edit page
@@ -510,7 +534,7 @@ class PageController extends Controller
         /*TODO:  [notification] into event listener! */
         Notification::send($admins, new NavigationUpdated());
 
-        Session::flash("success", "Your changes have been saved!");
+        Session::flash("success", __("Your changes have been saved!"));
         Session::flash("success_autohide", "4500");
         return redirect("cmseven/navigation");
     }
@@ -541,8 +565,9 @@ class PageController extends Controller
         if ($request->input('slug') !== str_slug($request->input('slug')))
         {
             Session::flash("info2", 'The slug "'.$request->input('slug').'" has been changed to "'.str_slug($request->input('slug')).'"');
+            // TODO: @laci @lang ^^
             Session::flash("info2_autohide", 5400);
-            Session::flash("info2_flash_title", "Slug Optimization");
+            Session::flash("info2_flash_title", __("Slug Optimization"));
         }
         $p = new Page(array(
             'title' => $request->input('title'),
@@ -554,7 +579,7 @@ class PageController extends Controller
         }
 
         $p->save();
-        Session::flash("success", "Page successfully created.");
+        Session::flash("success",__( "Page successfully created."));
         Session::flash("success_autohide", "4500");
         return redirect('/cmseven/pages/create/step/2/page/'.$p->id);
     }
@@ -576,7 +601,7 @@ class PageController extends Controller
         $page->module = $request->input("serial");
         $page->step   = 5;
         $page->save();
-        Session::flash("success", "Page Module has been successfully setup!");
+        Session::flash("success", __("Page Module has been successfully set up!"));
         Session::flash("success_autohide", "4500");
         return redirect('cmseven/pages/create/step/6/page/'.$page->id);
     }
@@ -586,7 +611,7 @@ class PageController extends Controller
         $page->url  = $request->input("serial");
         $page->step = 5;
         $page->save();
-        Session::flash("success", "Page redirect has been successfully set!");
+        Session::flash("success", __("Page redirect has been successfully set!"));
         Session::flash("success_autohide", "4500");
         return redirect('cmseven/pages/create/step/6/page/'.$page->id);}
 }

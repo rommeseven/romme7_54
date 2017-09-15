@@ -106,12 +106,26 @@ Create New Page
     <!-- END OF .row align-center -->
     <!-- END OF .row -->
     <form action="{{ route('navigation') }}" id="navi" method="POST">
+
         {{csrf_field()}}
+        <input type="hidden" name="nonav" v-model="nonav" />
         <input name="page" type="hidden" value="{{$page->id}}"/>
         <input :value="order" id="order" name="pages" type="hidden"/>
         <br/>
+<div class="row">
+    <div class="column small-12 medium-7 medium-offset-1 large-6 large-offset-0">
+        <div :class="{checkbox:true,primary:true}">
+            <input id="c0" name="c0" type="checkbox" v-model="nonav" value="true">
+                <label for="c0">
+                    @lang("This page is hidden in the navigation")
+                </label>
+                <br/>
+            </input>
+        </div>
+    </div>
+</div>        
         <transition name="fade">
-            <div class="row align-center">
+            <div class="row align-center" v-if="!nonav">
                 <div class="column shrink ">
                     <div class="card">
                         <div class="card-divider menucard">
@@ -163,6 +177,7 @@ let app = new Vue(
     data:
     {
         done: false,
+        nonav:false,
         order: ''
     },
     computed:
