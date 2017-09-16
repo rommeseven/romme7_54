@@ -1,12 +1,14 @@
 let editorlayout = Vue.component('editorlayout',
 {
-    props: ["name", "rows","created_at"],
+    props: ["owner","name", "rows","created_at"],
     template: `
 <div class="card card-success" @click="$emit('choose')">
     <div class="card-divider" v-text="name">
     </div>
     <!-- END OF .card-divider -->
-    <div class="card-section" v-text="when">
+    <div class="card-section">
+    <strong>@{{user.name}}(@{{user.username}})</strong> - <small> @{{created_at}}
+        </small>    
     </div>
     <!-- END OF .card-section -->
 </div>
@@ -16,14 +18,5 @@ let editorlayout = Vue.component('editorlayout',
     {
 
      return {};
-    }
-     ,
-    computed:
-    {
-        when()
-        {
-        {{-- TODO: created at for humans @internet--}}
-            return "Created at: " + this.created_at;
-        }
     }
 });

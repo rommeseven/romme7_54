@@ -204,4 +204,5 @@ class Page extends Model
             $builder->orderBy('display_order', 'asc');
         });
     }
+    
 }
