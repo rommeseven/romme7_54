@@ -169,7 +169,7 @@
                     <hr />
                 </div><!-- END OF .hide-for-large -->
                 <ul class="vertical menu accordion-menu" data-accordion-menu="">
-    
+    {{-- TODO: [sidebar] @offline no nested menus --}}
                     <li>
                     <a href="#">
                         @lang("Pages")
@@ -177,12 +177,12 @@
                     <ul class="menu vertical nested">
                         <li>
                             <a href="{{route('pages.create')}}">
-                                @lang("New Page")
+                                @lang("New Page") {{-- CRISI: @lang << ins de.json --}}
                             </a>
                         </li>
                         <li>
                             <a href="{{route("pages.index")}}">
-                                @lang("Manage Pages")
+                                @lang("Manage Pages") {{-- CRISI: @lang << ins de.json --}}
                             </a>
                         </li>
                     </ul>
@@ -198,6 +198,7 @@
                         </a>
                     </li>
                     <li>
+                    {{-- CRISI: @lang main.blade.php sidebar --}}
                         <a href="#">
                             Manage
                         </a>
