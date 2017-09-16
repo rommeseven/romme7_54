@@ -561,6 +561,7 @@ class PageController extends Controller
     {
         $this->validate($request, array(
             'title' => 'required|min:2|max:255',
+            'menu' => 'required|min:2|max:30',
             'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
         ));
         if ($request->input('slug') !== str_slug($request->input('slug')))
@@ -572,6 +573,7 @@ class PageController extends Controller
         }
         $p = new Page(array(
             'title' => $request->input('title'),
+            'menutitle' => $request->input('menu'),
             'slug'  => str_slug($request->input('slug')),
         ));
         if (!Page::nav()->count())

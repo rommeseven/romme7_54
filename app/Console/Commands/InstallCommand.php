@@ -281,8 +281,6 @@ class InstallCommand extends Command
 
         $this->info('cms: Create Auth connections');
 
-        Settings::set('app_title', env("DEFAULT_APP_TITLE",$this->appname));
-
         $bb          = collect(config("building_blocks"));
         $bb_keys     = $bb->pluck("key");
         $bb_defaults = $bb->pluck("default");

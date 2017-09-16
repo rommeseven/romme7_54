@@ -100,12 +100,32 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        @lang("This will be shown in the navigation and the title.")
+                        @lang("This will be shown in the title of the page.")  {{-- CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
                     </small
                 </label>
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
         </div>
+        <div class="row">
+            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+                <label for="menu">
+                    @lang("Menutitle:")  {{-- CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    <input  id="menu" name="menu" placeholder="My Page" type="text" v-model="menu" @focus="automenu()" @blur="automenu()" />
+                    @if ($errors->has('menu'))
+                    <small class="errortext">
+                        {{ $errors->first('menu') }}
+                    </small>
+                    @endif
+                    <small class="help-text">
+                        @lang("This will be shown in the navigation. Keep it short!"){{--  CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    </small
+                </label>
+            </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>        
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <br />
@@ -124,7 +144,7 @@ Create New Page
                 </label>
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-        </div>
+        </div>        
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 {{--
@@ -156,11 +176,20 @@ Create New Page
         data:{
             title:'',
             slug:'',
+            menu:'',
             slugged : false
         },
         methods:{
+            automenu()
+            {
+                            if(!this.menu)
+            {
+                this.menu = this.title;
+            }
+        },
                     autoslug(str)
         {
+
             if (!this.slugged)
             {
 
@@ -189,8 +218,8 @@ Create New Page
         computed: {
   classObject: function () {
     return {
-      'success': this.title.length >= 2 && this.slug.length >= 2,
-      'secondary': !(this.title.length >= 2 && this.slug.length >= 2),
+      'success': this.title.length >= 2 && this.menu.length >= 2 && this.slug.length >= 2,
+      'secondary': !(this.title.length >= 2 && this.menu.length >= 2 && this.slug.length >= 2),
     }
   }
 }

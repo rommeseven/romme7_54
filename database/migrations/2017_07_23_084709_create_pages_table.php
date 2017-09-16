@@ -27,8 +27,9 @@ class CreatePagesTable extends Migration
         {
             $table->increments('id');
             $table->string('title');
+            $table->string('menutitle');
             $table->string('url')->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('module')->nullable();
             $table->integer('parent_id')->default(0);
             $table->integer('display_order')->default(1);

@@ -5,35 +5,35 @@ TODO: [navigation] current_page class to active
     @foreach($pages as $item)
     <li class="menu-li" id="page_{{$item->id}}" value="{{$item->id}}">
         <a href="{{url($item->slug)}}" >
-            {{ $item->title }}
+            {{ $item->menutitle }}
         </a>
             @if ($item->children()->count() != 0)
         <ul class="menu nested vertical submenu-ul">
             @foreach($item['children'] as $child)
             <li class="menu-li" id="page_{{$child->id}}" value="{{$child->id}}">
                 <a href="{{url($child->slug)}}" >
-                    {{ $child->title }}
+                    {{ $child->menutitle }}
                 </a>
                     @if ($child->children()->count() != 0)
                 <ul class="menu nested vertical submenu-ul">
                     @foreach($child['children'] as $grandchild)
                     <li class="menu-li" id="page_{{$grandchild->id}}" value="{{$grandchild->id}}">
                         <a href="{{url($grandchild->slug)}}" >
-                            {{ $grandchild->title }}
+                            {{ $grandchild->menutitle }}
                         </a>
                             @if ($grandchild->children()->count() != 0)
                         <ul class="menu nested vertical submenu-ul">
                             @foreach($grandchild['children'] as $riesigchild)
                             <li class="menu-li" id="page_{{$riesigchild->id}}" value="{{$riesigchild->id}}">
                                 <a href="{{url($riesigchild->slug)}}" >
-                                    {{ $riesigchild->title }}
+                                    {{ $riesigchild->menutitle }}
                                 </a>
                                     @if ($riesigchild->children()->count() != 0)
                                 <ul class="menu nested vertical submenu-ul">
                                     @foreach($riesigchild['children'] as $hugechild)
                                     <li class="menu-li" id="page_{{$hugechild->id}}" value="{{$hugechild->id}}">
                                         <a href="{{url($hugechild->slug)}}" >
-                                            {{ $hugechild->title }}
+                                            {{ $hugechild->menutitle }}
                                         </a>
                                     </li>
                                     @endforeach

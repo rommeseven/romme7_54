@@ -12,7 +12,7 @@ class Page extends Model
 {
     use SearchableTrait;
 
-    protected $fillable = array('title', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
+    protected $fillable = array('title', 'menutitle', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
 
     /**
      * Searchable rules.
