@@ -243,6 +243,7 @@ return array(
         'Cloudder'     => JD\Cloudder\Facades\Cloudder::class,
         'LAImg'        => App\LaciApp\LAImg::class,
         'LABB'        => App\LaciApp\LABB::class,
+        'LAModule'        => App\LaciApp\LAModule::class,
 
     ),
 

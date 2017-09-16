@@ -139,25 +139,20 @@ Create New Page
                 <input id="url" name="url" placeholder="http://google.com" type="text" v-model="url"/>
             </label>
         </div>
-        <div v-show="hasmodule">
+<div class="row"  v-show="hasmodule">
+    <div class="column small-12 medium-7 large-expand">
+       
             <label>
-                Select Module
+                Select Module:
                 <select name="module" v-model="module">
-                    <option value="landing-page">
-                        Landing Page
-                    </option>
-                    <option value="gallery">
-                        Gallery
-                    </option>
-                    <option value="hotdog">
-                        Hot Dog
-                    </option>
-                    <option value="apollo">
-                        Apollo
-                    </option>
+                @foreach(LAModule::all() as $module)
+                <option value="{{$module['view']}}">{{$module['name']}}</option>
+                @endforeach
                 </select>
             </label>
-        </div>
+       
+    </div><!-- END OF .column -->
+</div><!-- END OF .row -->
         <div class="row" v-show="nocontent || hasmodule">
             <div class="column small-12 medium-7 large-expand">
                 <button @click="savePage()" class="button primary fabu fa-arrow-right">
