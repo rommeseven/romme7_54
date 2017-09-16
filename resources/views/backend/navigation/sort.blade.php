@@ -129,15 +129,38 @@ ul
 }
     });
 </script>
+@endpush@push('extracss')
+
+ @if(App::environment('local'))
+
+<link href="{{asset('other/vendor/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+ @else
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
+@endif
+{{-- TODO: @online ADD LOCAL css for local env --}}
+
+
 @endpush
+
 @push('extracss')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+<style>ul
+    {
+            list-style-type: none;
+    }</style>
+
 @endpush
 
 
 @push('extrajs')
+
+ @if(App::environment('local'))
+<script src="{{asset('other/vendor/nestedSortable.js')}}"></script>
+ @else
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nestedSortable/2.0.0/jquery.mjs.nestedSortable.min.js">
 </script>
+@endif
+
+
 <script>
     $(function()
 {

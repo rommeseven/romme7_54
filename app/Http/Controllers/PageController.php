@@ -204,9 +204,6 @@ class PageController extends Controller
     {
         if (!Page::nav()->count())
         {
-            dump(Page::all());
-            
-            dd(Page::nav());
 
             $page->step      = 3;
             $page->published = false;
