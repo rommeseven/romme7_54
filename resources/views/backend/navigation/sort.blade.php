@@ -129,7 +129,8 @@ ul
 }
     });
 </script>
-@endpush@push('extracss')
+@endpush
+@push('extracss')
 
  @if(App::environment('local'))
 
