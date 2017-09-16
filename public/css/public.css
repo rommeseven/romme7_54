@@ -11769,15 +11769,6 @@ nav #topbar-stick #topbar .topbar-icon {
   width: 53px;
 }
 
-nav #topbar-stick #topbar .menu-icon {
-  /* TODO: @internet menu icon color */
-  background: #BD4E40;
-}
-
-nav #topbar-stick #topbar .menu-icon:hover {
-  background: #3853A4;
-}
-
 nav #topbar-stick #topbar img {
   height: 60px;
   width: auto;
