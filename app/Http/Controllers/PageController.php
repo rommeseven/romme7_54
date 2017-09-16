@@ -511,7 +511,6 @@ class PageController extends Controller
         Session::flash("success", __("The page has been published!"));
         Session::flash("success_autohide", "5500");
         return redirect("cmseven/pages");
-        // TODO: redirect to page edit page
     }
 
     public function putContent(Column $col, Request $request)

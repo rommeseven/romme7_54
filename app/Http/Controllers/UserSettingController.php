@@ -18,4 +18,3 @@ class UserSettingController extends Controller
 }
 
 
-// TODO: locale middleware @internet

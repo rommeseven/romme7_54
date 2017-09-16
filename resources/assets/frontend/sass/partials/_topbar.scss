@@ -79,15 +79,6 @@ nav {
         width: 53px;
       }
 
-      .menu-icon {
-        /* TODO: @internet menu icon color */
-        background: get-color(primary);
-
-        &:hover {
-          background: get-color(secondary);
-        }
-      }
-
       img {
         height: 60px;
         width: auto;
