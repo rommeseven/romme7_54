@@ -474,7 +474,6 @@ class PageController extends Controller
         {
             return ($value !== null && $value !== false && $value !== '');
         });
-        /* TODO: [test] per page settings */
         foreach ($filteredData as $key => $value)
         {
             $page->SetSetting($key, $value);
