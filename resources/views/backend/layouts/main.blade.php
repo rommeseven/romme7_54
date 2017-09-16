@@ -169,7 +169,7 @@
                     <hr />
                 </div><!-- END OF .hide-for-large -->
                 <ul class="vertical menu accordion-menu" data-accordion-menu="">
-    {{-- TODO: [sidebar] @offline no nested menus --}}
+
                     
                     <li><br /></li>
                         <li>

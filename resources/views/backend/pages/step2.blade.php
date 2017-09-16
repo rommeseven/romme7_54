@@ -127,7 +127,7 @@ Create New Page
     </div>
 </div>        
         <transition name="fade">
-            <div class="row align-center" v-if="!nonav">
+            <div class="row align-center" v-show="!nonav">
                 <div class="column shrink ">
                     <div class="card">
                         <div class="card-divider menucard">

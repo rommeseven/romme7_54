@@ -138,7 +138,6 @@ ul
  @else
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css">
 @endif
-{{-- TODO: @online ADD LOCAL css for local env --}}
 
 
 @endpush

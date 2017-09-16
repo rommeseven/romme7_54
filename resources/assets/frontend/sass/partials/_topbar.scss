@@ -79,15 +79,6 @@ nav {
         width: 53px;
       }
 
-      .menu-icon {
-        /* TODO: @internet menu icon color */
-        background: get-color(primary);
-
-        &:hover {
-          background: get-color(secondary);
-        }
-      }
-
       img {
         height: 60px;
         width: auto;
@@ -282,3 +273,5 @@ $offcanvas-full-screen-closebutton-size: 2rem;
 //     text-decoration: none !important;
 //   }
 // }
+
+// TODO: @internet dropdon fix

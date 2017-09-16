@@ -110,7 +110,7 @@ Create New Page
 <!-- END OF .row align-center -->
 <!-- END OF .row -->
 
-<div class="row">
+<div class="row" v-show='!colopen'>
     <div class="column small-offset-1 medium-offset-2">
         <div class="callout">
             Fill your Layout with content! <br />
@@ -121,11 +121,24 @@ Create New Page
         </div><!-- END OF .callout -->
     </div><!-- END OF .column small-offset-1 medium-offset-2 -->
 </div><!-- END OF .row -->
-<div class="forcontent" id="editor">
+<div class="row" v-show='colopen'>
+    <div class="column small-offset-1 medium-offset-2">
+        <div class="callout warning">
+            <div class="row align-spaced align-bottom">
+                 <div class="column shrink">Fill the chosen column with content. <br />
+                     Click the 'Save' button to chose another column</div><!-- END OF .column -->
+                     <div class="column shrink"><img src="{{asset("img/savebtn.png")}}"></div><!-- END OF .column shrink -->
+             </div><!-- END OF .row align-spaced --> {{-- TODO: step4 callout --}}
+
+            
+        </div><!-- END OF .callout -->
+    </div><!-- END OF .column small-offset-1 medium-offset-2 -->
+</div><!-- END OF .row -->
+<div class="forcontent" id="editor" v-if="!colopen">
     <reviewrow :align="row.align" :cols="row.cols" :current="current" :key="row.id" :me="index" @chose="chose($event)" v-for="(row,index) in rows">
     </reviewrow>
 </div>
-<div class="row">
+<div class="row" v-if="!colopen">
     <div class="column small-offset-1 medium-offset-2">
 <form action="{{route('pageeditor.poststep5' , $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
     Save & Next Step
@@ -176,51 +189,60 @@ let app = new Vue(
         currenthtml:'',
         result:'',
         firstsave:true,
-        needtosave:false
+        needtosave:false,
+        firsttimechoosingcol:true,
+        colopen:false
     },
     methods:
     {
         chose(colid)
         {
-            if(this.needtosave)
+            if (this.needtosave)
             {
-                notify("warning","Save your Work!","Click the save button, before going on to an another column!",'save',6000);
+                notify("warning", "Save your Work!", "Click the save button, before going on to an another column!", 'save', 6000);
                 return false;
             }
-            for (var i = this.rows.length - 1; i >= 0; i--) {
-                for (var j = this.rows[i].cols.length - 1; j >= 0; j--) {
+            for (var i = this.rows.length - 1; i >= 0; i--)
+            {
+                for (var j = this.rows[i].cols.length - 1; j >= 0; j--)
+                {
                     let col = this.rows[i].cols[j];
-                    if(col.id== colid)
+                    if (col.id == colid)
                     {
-                        this.currenthtml=col.html;
+                        this.currenthtml = col.html;
+                        this.colopen = true;
                     }
                 };
             };
             let oldcurrent = this.current;
             this.current = colid;
-            if(oldcurrent == -1)
+            if (this.firsttimechoosingcol)
             {
-
-             setTimeout(function(){
-                that = (!that) ? ' ':that;
-
-
-    $(window).trigger('test:event', {test_data: that});
-},1000);
+                this.firsttimechoosingcol = false;
+                setTimeout(function()
+                {
+                    that = (!that) ? ' ' : that;
+                    $(window).trigger('test:event',
+                    {
+                        test_data: that
+                    });
+                }, 1000);
             }
             else
-
             {
-                             setTimeout(function(){
-                that = (!that) ? ' ':that;
-
-
-    $(window).trigger('test:event', {test_data: that});
-},100);
+                setTimeout(function()
+                {
+                    that = (!that) ? ' ' : that;
+                    $(window).trigger('test:event',
+                    {
+                        test_data: that
+                    });
+                }, 200);
             }
-$('html, body').animate({
-        scrollTop: $(".bottomcontent").offset().top
-    }, 1000);            
+            $('html, body').animate(
+            {
+                scrollTop: $(".bottomcontent").offset().top
+            }, 1000);
             var that = this.currenthtml;
         },
         saveme(redirect=false)
@@ -244,6 +266,7 @@ $('html, body').animate({
             axios.put("{{url('/cmseven/pages/create/step/4/column/')}}/"+col_id,{
                 html:col_html
             }).then(data => _then(redirect,this.firstsave)).catch(error => err(error));
+            app.colopen = false;
             function _then(redirect,firstsave=true)
             {
                 if(!redirect)
@@ -262,6 +285,7 @@ $('html, body').animate({
                         }                                    
                     }
                     app.needtosave=false;
+                    
                     notify("success","Changes Saved!","Your changes on the column content have been saved.","save",3000);
 
                 }  else window.location="{{ url('cmseven/pages/'. $page->id .'/preview') }}";
@@ -347,6 +371,7 @@ $(function()
 
 tut("Step 4: Content","Fill up the grey columns with content to proceed!","white","edit");
    $(window).on('test:event', function (event,data) {
+
     //console.log("gotthebus",data.test_data);
     let that = (!data) ? ' ':data.test_data;
    setTimeout(function()
