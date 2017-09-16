@@ -111,65 +111,66 @@
 <!-- END OF .columns shrink -->
 <!-- END OF .header row align-middle align-justify -->
 <!-- END OF .row breadcrumps -->
-            <div class="off-canvas-wrapper">
-          <div class="off-canvas-absolute position-top"  data-auto-focus ="false" id="offCanvasNotifs" data-transition="detached" data-off-canvas>
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-absolute position-top"  data-auto-focus ="false" id="offCanvasNotifs" data-transition="detached" data-off-canvas>
 
-@include("backend.layouts.partials.user_notifications")
+        @include("backend.layouts.partials.user_notifications")
 
-      </div>
+    </div>
 
-<div class="off-canvas-content" style="min-idth: 100%;" data-off-canvas-content>
+    <div class="off-canvas-content" style="min-idth: 100%;" data-off-canvas-content>
 
-<div class="topcontent row collapse" style="padding-top:0 !important;">
-    <div class="column shrink off-canvas in-canvas-for-large position-right" data-off-canvas="" data-transition="detached" id="offCanvas">
-        <div class="topnav">
-            <button aria-label="Close menu" class="close-button" data-close="" type="button">
-                <span aria-hidden="true">
+        <div class="topcontent row collapse" style="padding-top:0 !important;">
+            <div class="column shrink off-canvas in-canvas-for-large position-right" data-off-canvas="" data-transition="detached" id="offCanvas">
+                <div class="topnav">
+                    <button aria-label="Close menu" class="close-button" data-close="" type="button">
+                        <span aria-hidden="true">
                     ×
-                </span>
-            </button>
-            <div class="hide-for-large">
+                        </span>
+                    </button>
+                <div class="hide-for-large">
                 <br/>
                 <br/>
-            </div>
+                </div>
             <!-- END OF .hide-for-large -->
-                       <div class="hide-for-large">
-                            <ul class="vertical menu accordion-menu" data-accordion-menu="">
-                           <li class="hide-for-large">
-                               <a href="#">{{ auth()->user()->name}}</a>
-                               <ul class="menu vertical nested">
-                                    <li>
-                               <a href="{{route("users.show",auth()->user()->id)}}">
-                                   <i class="fa fa-user">
-                                   </i>
-                                   @lang("Profile")
-                               </a>
-                           </li>
-                           <li>
-                               <a href="#">
-                                   <i class="fa fa-cog">
-                                   </i>
-                                   @lang("Account Settings")
-                               </a>
-                           </li>
-                           <li>
-                               <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                   <span>
-                                       @lang("Logout")
-                                   </span>
-                                   <i class="fa fa-sign-out">
-                                   </i>
-                               </a>
-                           </li>
-                               </ul><!-- END OF .menu vertical nested -->
-                           </li><!-- END OF .hide-for-large --> 
-                           </ul>
-                           <hr />
-                       </div><!-- END OF .hide-for-large -->
-            <ul class="vertical menu accordion-menu" data-accordion-menu="">
+                <div class="hide-for-large">
+                    <ul class="vertical menu accordion-menu" data-accordion-menu="">
+                       <li class="hide-for-large">
+                           <a href="#">{{ auth()->user()->name}}</a>
+                           <ul class="menu vertical nested">
+                                <li>
+                                    <a href="{{route("users.show",auth()->user()->id)}}">
+                                    <i class="fa fa-user">
+                                    </i>
+                                    @lang("Profile")
+                                    </a>
+                                </li>
+
+                               <li>
+                                   <a href="#">
+                                       <i class="fa fa-cog">
+                                       </i>
+                                       @lang("Account Settings")
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                       <span>
+                                           @lang("Logout")
+                                       </span>
+                                       <i class="fa fa-sign-out">
+                                       </i>
+                                   </a>
+                               </li>
+                            </ul><!-- END OF .menu vertical nested -->
+                        </li><!-- END OF .hide-for-large --> 
+                    </ul>
+                    <hr />
+                </div><!-- END OF .hide-for-large -->
+                <ul class="vertical menu accordion-menu" data-accordion-menu="">
     
-                <li>
+                    <li>
                     <a href="#">
                         @lang("Pages")
                     </a>
@@ -185,50 +186,50 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
+                    </li>
+                    <li>
                     <a href="{{route("navigation")}}">
                         @lang("Navigation")
                     </a>
-                </li>
-                <li>
-                    <a href="">
-                        @lang("Support")
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Manage
-                    </a>
-                    <ul class="menu vertical nested">
-                        <li>
-                            <a href="{{route("users.index")}}">
-                                Users
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route("roles.index")}}">
-                                Roles
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route("permissions.index")}}">
-                                Permissions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('settings') }}">
-                                Settings
-                            </a>
-                        </li>
+                    </li>
+                    <li>
+                        <a href="">
+                            @lang("Support")
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Manage
+                        </a>
+                        <ul class="menu vertical nested">
+                            <li>
+                                <a href="{{route("users.index")}}">
+                                    Users
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route("roles.index")}}">
+                                    Roles
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{route("permissions.index")}}">
+                                    Permissions
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('settings') }}">
+                                    Settings
+                                </a>
+                            </li>
                     </ul>
-                    <!-- END OF .topnav menu -->
-                    <!-- END OF .menu vertical -->
-                </li>
-            </ul>
-        </div>
+                        <!-- END OF .topnav menu -->
+                        <!-- END OF .menu vertical -->
+                    </li>
+                </ul>
+            </div>
         <!-- END OF .topnav -->
-    </div>
+        </div>
     <!-- END OF .column -->
 
     <div class="column expanded" style="padding-left:15px;padding-right:15px">
@@ -252,20 +253,20 @@
         </div>
             <!-- END OF .column shrink -->
         @stack("content")
-<div class="bottomcontent">
-    @stack('bottomcontent')
-</div>
+        <div class="bottomcontent">
+            @stack('bottomcontent')
+        </div>
         <!-- END OF #app2 -->
     </div>
     <!-- END OF .column -->
 </div>
 <!-- END OF .topcontent -->
 <!-- END OF .bottomcontent -->
-<div class="footer row small-up-1 medium-up-2 large-up-3">
-    @stack("footer")
-</div>
-      </div>
+    <div class="footer row small-up-1 medium-up-2 large-up-3">
+        @stack("footer")
     </div>
+</div>
+</div>
 
 <!-- END OF .footer row small-up-1 medium-up-2 large-up-3 -->
 <!-- END OF .container -->

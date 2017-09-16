@@ -187,7 +187,7 @@ Create New Page
     <!-- END OF .column -->
     <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
 </div>
-    @endpush
+@endpush
 @push('bottomcontent')
     <transition name="fade">
         <div id="editor" v-show="layout_choice=='create' && !nocontent">
@@ -258,8 +258,8 @@ Create New Page
         <input name="layoutname" type="hidden" v-model="layoutname2"/>
     </form>
     @endpush
-
 @include("backend.pages.editor.addRow")
+
 
 @push('extrajs')
     <script>
@@ -267,7 +267,7 @@ Create New Page
 @include("backend.pages.editor.rowComponent")
 @include("backend.pages.editor.layoutComponent")
 
-let app = new Vue(
+var app = new Vue(
 {
     el: '#app2',
     data:

@@ -7,7 +7,7 @@
             </span>
         </button>
         <label for="spaced">
-            @lang"("Align")
+            @lang("Align")
         </label>
         <div class="radio secondary">
             <input id="spaced" name="newRowAlign" type="radio" v-model="newRowAlign" value="spaced">
