@@ -31,10 +31,6 @@ class PagesController extends Controller
         $loadedpage = $page->load("rows.columns");
         $pages      = Page::nav()->get();
         $bbs        = $page->GetPageBbs();
-        if ($page->module)
-        {
-            return view('frontend/modules/'.$page->module)->withPage($loadedpage)->withPages($pages)->with($bbs);
-        }
         return view("frontend/master")->withPage($loadedpage)->withPages($pages)->with($bbs);
     }
 
@@ -51,9 +47,9 @@ class PagesController extends Controller
     public function index()
     {
         return view("landing");
-
+        
         /*$page = Page::find(1);
-    if(!$page) return "landing page";
-    return $this->getPage($page->slug);*/
+        if(!$page) return "landing page";
+        return $this->getPage($page->slug);*/
     }
 }
