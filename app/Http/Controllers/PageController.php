@@ -383,24 +383,27 @@ class PageController extends Controller
     public function postNavigation(Request $request)
     {
         $toBePublished = Page::findOrFail($request->input("page"));
-        $page          = $toBePublished;
 
-        if ($page->step != 2)
+        if ($toBePublished->step != 2)
         {
             Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
-            return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
+            return redirect('/cmseven/pages/create/step/'.$toBePublished->step.'/page/'.$toBePublished->id);
         }
         //$toBePublished->published = true;
         $toBePublished->step = 3;
         $toBePublished->save();
-        $sort = 1;
-        if ($request->nonav)
+        if ($request->nonav == "true")
         {
+        $toBePublished->nonav = true;
+        $toBePublished->save();
+            
             Session::flash("info", __("Page will not be shown in the navigation."));
             Session::flash("info_autohide", "4500");
             return redirect()->route("pageeditor.step3", $toBePublished->id);
         }
+        $sort = 1;
+ 
         $pages = str_replace('anchor#', null, $request->pages);
         parse_str($pages, $list);
         foreach ($list['page'] as $id => $parentId)
