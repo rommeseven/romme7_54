@@ -29,7 +29,7 @@ class AddUserColumnToLayoutTemplateTable extends Migration
     {
         Schema::table('layout_templates', function ($table)
         {
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->default('1');
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');

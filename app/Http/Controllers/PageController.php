@@ -10,17 +10,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Column;
-use App\LayoutTemplate;
-use App\Notifications\NavigationUpdated;
-use App\Notifications\NewPagePublished;
-use App\Page;
 use App\Row;
 use Context;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 use Session;
+use App\Page;
+use App\User;
 use Settings;
+use App\Column;
+use App\LayoutTemplate;
+use Illuminate\Http\Request;
+use App\Notifications\NewPagePublished;
+use App\Notifications\NavigationUpdated;
+use Illuminate\Support\Facades\Notification;
 
 class PageController extends Controller
 {
@@ -311,11 +312,11 @@ class PageController extends Controller
         }
         if ($request->saving == "url")
         {
-            return $this->postUrl();
+            return $this->postUrl($page,$request);
         }
         if ($request->saving == "module")
         {
-            return $this->postModule();
+            return $this->postModule($page,$request);
         }
 
         $object = json_decode($request->serial, true);

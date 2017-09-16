@@ -7,7 +7,7 @@ let editorlayout = Vue.component('editorlayout',
     </div>
     <!-- END OF .card-divider -->
     <div class="card-section">
-    <strong>@{{user.name}}(@{{user.username}})</strong> - <small> @{{created_at}}
+    <strong>@{{owner.name}}(@{{owner.username}})</strong> <br /> <small> @{{created_at}}
         </small>    
     </div>
     <!-- END OF .card-section -->
