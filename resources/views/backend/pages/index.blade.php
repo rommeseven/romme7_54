@@ -108,7 +108,6 @@ Page
             </thead>
             <tbody>
 
-            {{-- TODO: [pages] pages.index Fortfahren button.warning @offline --}}
                 @foreach($pages->unique() as $page)
                 <tr>
                     <td>
