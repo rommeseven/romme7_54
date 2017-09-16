@@ -118,7 +118,13 @@ Page
                         {{$page->id }}
                     </td>
                     <td>
+                        
+                        @if($page->published)
+                        <a  target="_blank" href="{{ url( $page->slug) }}" title="Anzeigen">{{$page->title }}</a>
+                        @else
                         {{$page->title }}
+                        @endif
+                        
                     </td>
                     <td>
                         <code><small>{{url($page->slug) }}</small></code>
@@ -159,10 +165,6 @@ Page
                             </i>
                         </a>
                         @else
-                        <a class="button button-icon" target="_blank" href="{{ url( $page->slug) }}" title="Anzeigen">
-                            <i class="fa fa-eye">
-                            </i>
-                        </a>
                         <a class="button button-icon" href="{{ route('pages.edit' , $page->id ) }}" title="Edit Page">
                             <i class="fa fa-pencil">
                             </i>
@@ -182,7 +184,7 @@ Page
                                             <span class="show-for-medium-only">
                                                 <br/>
                                             </span>
-                                            ( {{$page->name}} )
+                                            ( {{$page->title}} )
                                         </h5>
                                         <h3>
                                             <br/>
