@@ -224,7 +224,7 @@ Create New Page
 <div class="row small-up-2 medium-up-3 large-up-4" v-if="layout_choice=='template' && !nocontent && !hasmodule">
     <!-- END OF .column small-12 medium-expand shrink -->
     <div class="column" v-for="(layout,index) in layouts">
-        <editorlayout :created_at="layout.created_at" :owner="layout.user" :name="layout.name" :rows="layout.rows" @choose="chosen(index)">
+        <editorlayout :created_at="layout.created_at" :name="layout.name" :rows="layout.rows" @choose="chosen(index)">
         </editorlayout>
     </div>
     <!-- END OF .column -->

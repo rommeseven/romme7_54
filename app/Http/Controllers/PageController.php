@@ -98,7 +98,8 @@ class PageController extends Controller
         // $collection = $collection->sortBy('id')->toJson();
         // $collection = str_replace("columns", "cols", $collection);
 
-        $bigcollection = collect(LayoutTemplate::with('user', "rows.columns")->get());
+        // $bigcollection = collect(LayoutTemplate::with('user', "rows.columns")->get()); // LAyout have owber
+        $bigcollection = collect(LayoutTemplate::with("rows.columns")->get());
 
         $bigcollection = $bigcollection->sortBy('id')->toJson();
         $bigcollection = str_replace("columns", "cols", $bigcollection);
@@ -276,7 +277,8 @@ class PageController extends Controller
             {
                 dd("TODO: GENERAL ERROR1");
             }
-            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id));
+            //$templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id)); // layouts have owner
+            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname));
             foreach ($object as $row)
             {
                 $row_model = new Row(array('align' => $row['align']));
@@ -350,7 +352,8 @@ class PageController extends Controller
             {
                 dd("TODO: GENERAL ERROR1");
             }
-            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id));
+            //$templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname, 'user_id' => auth()->user()->id)); // layouts have owner
+            $templ = LayoutTemplate::firstOrCreate(array('name' => $request->layoutname));
             foreach ($object as $row)
             {
                 $row_model = new Row(array('align' => $row['align']));
