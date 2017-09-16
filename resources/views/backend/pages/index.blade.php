@@ -152,14 +152,22 @@ Page
                             {{$page->updated_at }}</small>
                     </td>
                     <td>
-                        <a class="button button-icon" href="{{ route('pages.show' , $page->id) }}" title="Profile">
-                            <i class="fa fa-id-card">
+                                            @if(!$page->published && $page->step < 7)
+
+<a class="button button-icon warning" target="_blank" href="{{ url( 'cmseven/page/create/step/'. $page->step .'/page/'.$page->id) }}" title="Fortfahren">
+                            <i class="fa fa-arrow-right">
+                            </i>
+                        </a>
+                        @else
+                        <a class="button button-icon" target="_blank" href="{{ url( $page->slug) }}" title="Anzeigen">
+                            <i class="fa fa-eye">
                             </i>
                         </a>
                         <a class="button button-icon" href="{{ route('pages.edit' , $page->id ) }}" title="Edit Page">
                             <i class="fa fa-pencil">
                             </i>
                         </a>
+                        @endif
                         <a class="button button-icon" data-toggle="pagedelmodal_{{$page->id}}" title="Remove Page">
                             <i class="fa fa-remove">
                             </i>
