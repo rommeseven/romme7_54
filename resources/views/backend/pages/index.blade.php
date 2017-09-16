@@ -134,7 +134,9 @@ Page
                         @else
                             <div class="label warning">not published</div><!-- END OF .label -->
                         @endif
-                        
+                        @if($page->module)
+                            <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Uses Modul: {{$page->module}}">{{$page->module}}</span></div>
+                        @endif                        
                         @if($page->url)
                             <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Redirects to: {{$page->url}}">redirect</span></div>
                         @endif
@@ -159,7 +161,7 @@ Page
                     <td>
                                             @if(!$page->published && $page->step < 7)
 
-<a class="button button-icon warning" target="_blank" href="{{ url( 'cmseven/page/create/step/'. $page->step .'/page/'.$page->id) }}" title="Fortfahren">
+<a class="button button-icon warning" target="_blank" href="{{ url( 'cmseven/pages/create/step/'. $page->step .'/page/'.$page->id) }}" title="Fortfahren">
                             <i class="fa fa-arrow-right">
                             </i>
                         </a>
