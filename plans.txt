@@ -15,7 +15,7 @@ CRISI: [lang]
 
 TODO: @internet laravel snippets dl
 
-
+CRISI: [godaddy] sendgrid email setup. Du Findest alles in HEroku -> Settings -> cvars ->SENDGRID_
 CRISI: [godaddy] forwarding auf http
 
 

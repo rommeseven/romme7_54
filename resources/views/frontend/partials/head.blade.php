@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- //REMEMBER: Add public favicon --}}
-        <link rel="shortcut icon" href="asset('frontend/img/favicon.ico')" type="image/x-icon">
-        <link rel="icon" href="asset('frontend/img/favicon.ico')" type="image/x-icon">
+        <link rel="shortcut icon" href="{{asset('img/seven.ico')}}" type="image/x-icon">
+        <link rel="icon" href="{{asset('img/seven.ico')}}" type="image/x-icon">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
