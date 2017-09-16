@@ -155,8 +155,11 @@ TODO: tinymice clear-format btn
 @endpush
 @push('extrajs')
 
-<script src="{{ url("other/vendor/tinymce/tinymce.js")}}">
-</script>
+{{-- @if(App::environment('local')) --}}
+    <script src="{{ url("other/vendor/tinymce/tinymce.js")}}"></script>
+{{-- @else --}}
+{{-- @endif --}}
+
 <script>
 @include("backend.pages.editor.reviewColComponent")
 @include("backend.pages.editor.reviewRowComponent")
