@@ -19,7 +19,7 @@
 
 
 	<ul class="menu vertical drilldown menu-ul" data-drilldown>
-		@include("frontend.partials.tmp_navigation")
+		@include("frontend.partials.navigation")
 	</ul><!-- END OF .menu -->
 </div>
     </div>
@@ -47,7 +47,7 @@
 					<div class="column shrink topbar-icon"><img src="{{ asset("img/icon.gif") }}" alt="" /></div><!-- END OF .column shrink -->
 					<div class="column expand show-for-medium">
 						<ul class="menu horizontal dropdown align-center" id="main-menu" data-dropdown-menu data-click-open="true" data-closing-time="1500" data-disable-hover="true">
-							@include("frontend.partials.tmp_navigation")
+							@include("frontend.partials.navigation")
 						</ul><!-- END OF .menu horizontal -->
 					</div><!-- END OF #mainmenu.column expand -->
 					<div class="column shrink hide-for-medium">
