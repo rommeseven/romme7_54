@@ -226,7 +226,7 @@
 <footer>
 	<div id="line" class="row"></div><!-- END OF #line.row -->
 	<div class="row main align-justify align-bottom">
-		<div class="column small-12 medium-4"><p><small>Seven Webagentur ist die Verkaufsname von der Firma Seven Webagentur Christian Neuherz und Takács László GesbR.  </small></p></div><!-- END OF .column small-12 medium-4 -->
+		<div class="column small-12 medium-4"><p><small>Seven Webagentur ist die Verkaufsname von der Firma Seven Webagentur Christian Neuherz und Takács László GesnbR.  </small></p></div><!-- END OF .column small-12 medium-4 -->
 		<div class="column small-12 medium-4">
 			<ul class="menu vertical align-center">
 				<li><a href="#"><i class="fa fa-file-text"></i> Blog</a></li>
