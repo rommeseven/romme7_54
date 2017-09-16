@@ -313,21 +313,13 @@ class PageController extends Controller
         }
         if ($request->saving == "url")
         {
-
-        //     return $this->postUrl;
-        // }
-        // if ($request->saving == "module")
-        // {
-        //     return $this->postModule;
-        // }
-
-            $page->url  = $request->input("serial");
-            $page->step = 6;
-            $page->save();
-            Session::flash("success", "Page redirect has been successfully set!");
-            Session::flash("success_autohide", "4500");
-            return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+            return $this->postUrl();
         }
+        if ($request->saving == "module")
+        {
+            return $this->postModule();
+        }
+
         $object = json_decode($request->serial, true);
         if ($request->saving == "page")
         {

@@ -29,6 +29,7 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('url')->nullable();
             $table->string('slug');
+            $table->string('module')->nullable();
             $table->integer('parent_id')->default(0);
             $table->integer('display_order')->default(1);
             $table->boolean('published')->default(false);
