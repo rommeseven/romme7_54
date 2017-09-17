@@ -26,3 +26,5 @@ CRISI: [info] @read-then-delete: Ein wort musst du nur einmal übersetzten. Er n
 TODO: @internet timestamps carbon without seconds
 
 TODO: redirect skip perpage settings
+
+TODO: @internet set up papertrail with alerts
