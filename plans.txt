@@ -23,8 +23,6 @@ CRISI: [lang] @fix: tiel -> Titel   <- löschen. Schon übersetzt
 CRISI: [info] @read-then-delete: Wenn das Englische und das Deutsche Wort gleich ist, brauchst nicht die .json Datei ergänzen, nur @lang('Wort')
 CRISI: [info] @read-then-delete: Ein wort musst du nur einmal übersetzten. Er nimmt das andere vorhandene
 
-TODO: @internet timestamps carbon without seconds
 
-TODO: redirect skip perpage settings
 
 TODO: @internet set up papertrail with alerts
