@@ -1,5 +1,5 @@
 <?php
-
+Carbon\Carbon::setToStringFormat("d.m.Y, H:i");
 /*
 |--------------------------------------------------------------------------
 | TEST Routes - TODO: Clean test routes
@@ -25,7 +25,7 @@ Route::get("/mailtest", function ()
     // 
     // 
      Mail::raw('Was sagst du zu diesem email? richtig angezeigt? kein spam, oder?', function ($message){
-            $message->to('chrisiilps@gmail.com');
+            $message->to('laszlotakacs.95@gmail.com');
  });
 return "check logs";
 
@@ -41,5 +41,7 @@ Route::get("/qtest", function ()
 
 Route::get("/quicktest", function ()
 {
-    return view("welcome");
+    
+    return Carbon\Carbon::now();
+
 });
