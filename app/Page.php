@@ -2,22 +2,21 @@
 
 namespace App;
 
-use App\LaciApp\FormatDateTrait;
 use Context;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Nicolaslopezj\Searchable\SearchableTrait;
 use Settings;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 /* FIX ME: its too much [NEW TAG]*/
 class Page extends Model
 {
     use SearchableTrait;
-    use FormatDateTrait;
 
     protected $fillable = array('title', 'module', 'menutitle', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
 
-    /**
+  /**
      * Searchable rules.
      *
      * @var array
@@ -129,31 +128,6 @@ class Page extends Model
         return $this->hasMany('App\Page', 'parent_id', 'id');
     }
 
-    /**
-     * Format date fields
-     * @author Takács László
-     * @date    2017-08-02
-     * @version v1
-     * @param   unformatted     $date
-     * @return  date           formatted
-     */
-    public function getCreatedAtAttribute($date)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d.m.Y,H:i:s');
-    }
-
-    /**
-     * Format date fields
-     * @author Takács László
-     * @date    2017-08-02
-     * @version v1
-     * @param   unformatted     $date
-     * @return  date           formatted
-     */
-    public function getUpdatedAtAttribute($date)
-    {
-        return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y.m.d,H:i:s');
-    }
 
     /**
      * parent relationship
@@ -200,6 +174,7 @@ class Page extends Model
     protected static function boot()
     {
         parent::boot();
+        Carbon::setToStringFormat("d.m.Y, H:i");
         static::addGlobalScope('order', function (Builder $builder)
         {
             $builder->orderBy('display_order', 'asc');
