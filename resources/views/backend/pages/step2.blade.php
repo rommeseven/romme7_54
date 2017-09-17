@@ -118,19 +118,14 @@ Create New Page
 @if($page->module == "placeholder")
  hide
 @endif
-"
-
->
+">
     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
         <div :class="{checkbox:true,primary:true}">
-            <input id="c0" name="c0" type="checkbox" v-model="nonav"
-@if($page->module == "placeholder")
-disabled="true"
-@endif
-             value="true">
+            <input id="c0" name="c0" type="checkbox" v-model="nonav">
                 <label for="c0">
                     @lang("This page is hidden in the navigation")
                 </label>
+                <br/>
                 <br/>
             </input>
         </div>
@@ -138,7 +133,7 @@ disabled="true"
 </div>        
         <transition name="fade">
             <div class="row align-center" v-show="!nonav">
-                <div class="column shrink ">
+                <div class="column small-12 medium-7 ">
                     <div class="card">
                         <div class="card-divider menucard">
                             <h5>

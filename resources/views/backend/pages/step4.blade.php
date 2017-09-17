@@ -128,7 +128,7 @@ Create New Page
                  <div class="column shrink">Fill the chosen column with content. <br />
                      Click the 'Save' button to chose another column</div><!-- END OF .column -->
                      <div class="column shrink"><img src="{{asset("img/savebtn.png")}}"></div><!-- END OF .column shrink -->
-             </div><!-- END OF .row align-spaced --> {{-- TODO: step4 callout --}}
+             </div><!-- END OF .row align-spaced -->
 
             
         </div><!-- END OF .callout -->

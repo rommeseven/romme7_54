@@ -1,6 +1,3 @@
-{{-- 
-TODO: [navigation] current_page class to active
- --}}
 {{-- <ul id="sortable" class="sortable menu vertical menu-ul"> --}}
     @foreach($pages as $item)
     <li class="menu-li
