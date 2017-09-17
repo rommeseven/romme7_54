@@ -117,7 +117,7 @@ Create New Page
                     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <label for="{{$bbs[$i]['key']}}">
                             {{$bbs[$i]['name']}}:
-                            <input name="{{$bbs[$i]['key']}}" id="{{$bbs[$i]['key']}}" placeholder="{{settings($bbs[$i]['key'],$bbs[$i]['default'] )}}" type="text" v-model="{{$bbs[$i]['key']}}"/>
+                            <input name="{{$bbs[$i]['key']}}" id="{{$bbs[$i]['key']}}" placeholder="{{$page->GetSetting($bbs[$i]['key'],$bbs[$i]['default'])}}" type="text" value="{{old($bbs[$i]['key'])}}"/>
                             @if ($errors->has($bbs[$i]['key']))
                             <small class="errortext">
                                 {{ $errors->first($bbs[$i]['key']) }}
@@ -151,7 +151,7 @@ let app = new Vue(
     data:
     {
         
-    slogan:'',
+
         page:  {!! $page or '[]' !!}
         
     }        

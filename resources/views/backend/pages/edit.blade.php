@@ -1,174 +1,178 @@
-{{-- TODO: EDIT PAGE --}}
 @extends('backend.layouts.main')
 
 @push('title')
-Edit User#{{ $user->id }}
+Create New Page
 @endpush
 
 @push('bread')
-<li><a href="{{ route('home') }}">Management</a></li>
+<li>
+    <a href="{{ route('dashboard') }}">
+        @lang("Management")
+    </a>
+</li>
 @endpush
 
 
 @push('bread')
-<li><a href="{{ route('users.index') }}">Users</a></li>
+<li>
+    <a href="{{ route('pages.index') }}">
+        @lang("Pages")
+    </a>
+</li>
 @endpush
 
 @push('bread')
-<li>Editing</li>
+<li>
+    @lang("Creating")
+</li>
 @endpush
 
 @push('content')
-<div id="app"><div class="row">
+<div id="app">
+    <div class="row">
         <div class="column">
             <p>
                 <h3>
-                    Editing User#{{ $user->id }} ({{ $user->name }})...
+                    @lang("Creating A New Page")
                 </h3>
             </p>
         </div>
         <!-- END OF .column -->
     </div>
-    <div class="row align-spaced">
-        <div class="column small-12 medium-8 large-7">
-            <div class="callout">
-                <div class="row align-left align-middle">
-                    <div class="column small-12 medium-2 large-1" style="text-align:center">
-                        <i class="fa icon fa-info-circle fa-3x">
-                        </i>
-                    </div>
-                    <!-- END OF .column small-12 medium-4 large-3 -->
-                    <div class="column small-12 medium-10" style="text-align:center; padding-top: 15px;">
-                        <p>
-                            Leave the fields you don't want to change blank
-                        </p>
-                    </div>
-                    <!-- END OF .column small-12 medium-8 large-9 -->
-                </div>
-                <!-- END OF .row -->
-            </div>
-            <!-- END OF .callout -->
+<div class="row align-center hide-for-medium">
+    <div class="column shrink">            <ol class="progress-indicator ">
+                <li class="is-current" data-step="">
+                    <span>
+                        @lang("Title & Url")
+                    </span>
+                </li></ol></div><!-- END OF .column shrink -->
+</div><!-- END OF .row align-center hide-for-medium -->    
+    <div class="row align-center show-for-medium">
+        <div class="column shrink">
+            <ol class="progress-indicator ">
+                <li class="is-current" data-step="">
+                    <span>
+                        @lang("Title & Url")
+                    </span>
+                </li>
+                <li class="" data-step="">
+                    <span>
+                        @lang("Navigation")
+                    </span>
+                </li>
+                <li class="" data-step="">
+                    <span>
+                        @lang("Layout")
+                    </span>
+                </li>
+                <li class="extra" data-step="">
+                    <span>
+                        @lang("Content")
+                    </span>
+                </li>                
+                <li class="extra" data-step="">
+                    <span>
+                        @lang("Settings")
+                    </span>
+                </li>
+                <li class="extra" data-step="">
+                    <span>
+                        <strong>@lang("Publish")</strong>
+                    </span>
+                </li>
+            </ol>
         </div>
         <!-- END OF .column shrink -->
     </div>
+    <br /><br />
+    <!-- END OF .row align-center -->
     <!-- END OF .row -->
-    <!-- END OF .row -->
-    <form action="{{ route('users.update', $user->id) }}" method="POST">
+    <form action="{{ route('pages.post.edit.step1',$page) }}" method="POST">
         {{csrf_field()}}
-        {{method_field("PATCH")}}
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="name">
-                    Username:
-                    <input name="name" placeholder="{{$user->name}}" v-model="username" type="text"/>
-                    @if ($errors->has('name'))
+                <label for="title">
+                    @lang("Title:")
+                    <input  id="title" name="title" @keyup="autoslug($event.target.value)" placeholder="My Page" type="text" v-model="title"/>
+                    @if ($errors->has('title'))
                     <small class="errortext">
-                        {{ $errors->first('name') }}
+                        {{ $errors->first('title') }}
                     </small>
                     @endif
+                    <small class="help-text">
+                        @lang("This will be shown in the title of the page.")  {{-- CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    </small
                 </label>
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
         </div>
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="email">
-                    Email:
-                    <input name="email" placeholder="{{$user->email}}" v-model="email" type="email"/>
-                    @if ($errors->has('email'))
+                <label for="menu">
+                    @lang("Menutitle:")  {{-- CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    <input  id="menu" name="menu" placeholder="My Page" type="text" v-model="menu" @focus="automenu()" @blur="automenu()" />
+                    @if ($errors->has('menu'))
                     <small class="errortext">
-                        {{ $errors->first('email') }}
+                        {{ $errors->first('menu') }}
                     </small>
                     @endif
+                    <small class="help-text">
+                        @lang("This will be shown in the navigation. Keep it short!"){{--  CRISI: [lang] create page
+                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    </small
                 </label>
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-        </div>
-        <div class="row" >
+        </div>        
+        <div class="row" v-show="!isplaceholder">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <label for="password">
-                    Password:
-                    <br/>
-                    <div class="radio primary">
-                        <input id="pw1" name="pwchoice" required="" type="radio" v-model="pwchoice" value="keep">
-                            <label for="pw1">
-                                Keep Current Password
-                            </label>
-                            <br/>
-                        </input>
-                    </div>
-                    <!-- END OF .radio primary -->
-                    <div class="radio primary">
-                        <input id="pw2" name="pwchoice" type="radio" v-model="pwchoice" value="genpw">
-                            <label for="pw2">
-                                Generate New Password
-                            </label>
-                            <br/>
-                        </input>
-                    </div>
-                    <!-- END OF .radio primary -->
-                    <div class="radio primary">
-                        <input id="pw3" name="pwchoice" type="radio" v-model="pwchoice" value="typepw">
-                            <label for="pw3">
-                                Set New Password Manually
-                            </label>
-                            <br/>
-                            <br/>
-                        </input>
-                    </div>
-                    <!-- END OF .radio primary -->
-                    <input name="password" placeholder="Your Password" type="password" v-if="pwchoice == 'typepw'"/>
-                    <input name="password_confirmation" placeholder="Confirm Your Password" type="password" v-if="pwchoice == 'typepw'"/>
-                    @if ($errors->has('password'))
+                        <br />
+                <label for="slug">
+                    @lang("Slug:")
+                    <input  id="slug" @keydown.once="slugged=true" name="slug" placeholder="my-page" type="text" v-model="slug"/>
+                    @if ($errors->has('slug'))
                     <small class="errortext">
-                        {{ $errors->first('password') }}
+                        {{ $errors->first('slug') }}
                     </small>
                     @endif
+                    <small class="help-text">
+                        @lang("This will be part of the url like this:") <br />
+                        <code>{{ url('/') }}/@{{slug}}</code>
+                    </small>
                 </label>
             </div>
+            <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
+        </div>   
+             <div class="row">
+    <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
+        <div :class="{checkbox:true,primary:true}">
+            <input id="c0" name="isplaceholder" type="checkbox" v-model="isplaceholder" value="true">
+                <label for="c0">
+                    @lang("This page will be a placeholder for the navigation")
+                    {{-- CRISI: @lang ^^ --}}
+                </label>
+                <br/>
+            </input>
         </div>
-        <div class="row">
-            <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                <div class="row collapse">
-                    <label>
-                        Roles:
-                    </label>
-                </div>
-                <!-- END OF .row -->
-                <div class="callout">
-                    @foreach($roles as $role)
-                    <div class="checkbox success">
-                        <input class="styled" id="pcheckbox_{{$role->id}}" name="roles" type="checkbox" v-model="roles" value="{{$role->id}}">
-                            <label for="pcheckbox_{{$role->id}}">
-                                {{ $role->display_name }} ({{ $role->description }})
-                            </label>
-                        </input>
-                    </div>
-                    <!-- END OF .checkbox -->
-                    @endforeach
-                </div>
-                <!-- END OF .callout -->
-            </div>
-            <!-- END OF #app -->
-        </div>
+    </div>
+</div>  
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 {{--
                 <input class="button" type="submit" value="Add User"/>
                 --}}
-                <div class="row align-center" v-if="!changed()">
-                    <div class="column small-9 medium-7 large-5 small-offset-3 medium-offset-0 large-offset-7">
-                        <button class="button expanded fabu before fa-save" type="submit">
-                            Save Changes
+                <br/>
+                <div class="row align-center">
+                    <div class="column shrink">
+                        <button :disabled=" this.title.length < 2 || this.menu.length < 2 || ( !this.placeholder && this.slug.length < 1)" class="button large expanded fabu fa-arrow-right" v-show="!isplaceholder" type="submit" v-bind:class="classObject">
+                            @lang("Save & Next Step")
                         </button>
-                    </div>
-                    <!-- END OF .column small-10 medium-5 -->
-                </div>
-                <div class="row align-center" v-if="changed()">
-                    <div class="column small-9 medium-7 large-5 small-offset-3 medium-offset-0 large-offset-7">
-                        <button class="button expanded secondary" disabled="" type="submit">
-                            No Changes
-                        </button>
+                        <button :disabled=" this.title.length < 2 || this.menu.length < 2" class="button large expanded fabu fa-arrow-right" type="submit" v-bind:class="classObject" v-show="isplaceholder">
+                            @lang("Create Menu Placeholder")
+                            {{-- CRISI: @lang ^^ --}}
+                        </button>                        
                     </div>
                     <!-- END OF .column small-10 medium-5 -->
                 </div>
@@ -176,68 +180,87 @@ Edit User#{{ $user->id }}
             </div>
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
         </div>
-        <input type="hidden" name="roles" :value="roles" />
+        <!-- END OF .row -->
     </form>
-    <!-- END OF .row -->
-    <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-    <!-- END OF .row --></div><!-- END OF #app -->@endpush
-@push('extracss')
-<style>
-    .topcontent
-{
-padding-top:24px;
-}
-</style>
+</div>
+<!-- END OF #app -->
 @endpush
-
 
 @push('extrajs')
 <script>
-    // Warn if overriding existing method
-if(Array.prototype.equals)
-    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
-// attach the .equals method to Array's prototype to call it on any array
-Array.prototype.equals = function (array) {
-    // if the other array is a falsy value, return
-    if (!array)
-        return false;
-
-    // compare lengths - can save a lot of time 
-    if (this.length != array.length)
-        return false;
-
-    for (var i = 0, l=this.length; i < l; i++) {
-        // Check if we have nested arrays
-        if (this[i] instanceof Array && array[i] instanceof Array) {
-            // recurse into the nested arrays
-            if (!this[i].equals(array[i]))
-                return false;       
-        }           
-        else if (this[i] != array[i]) { 
-            // Warning - two different object instances will never be equal: {x:20} != {x:20}
-            return false;   
-        }           
-    }       
-    return true;
-}
-// Hide method from for-in loops
-Object.defineProperty(Array.prototype, "equals", {enumerable: false});
-    var app = new Vue({
+    let app = new Vue({
         el:'#app',
         data:{
-            roles:{!! $user->roles->pluck('id') !!},
-            originalroles:{!! $user->roles->pluck('id') !!},
-            username:'',
-            email:'',
-             pwchoice:'keep'
+            title:'{{ (old('title'))?old('title'):  $page->title }}',
+            slug:'{{ (old('slug'))?old('slug'):   $page->slug }}',
+            menu:'{{ (old('menutitle'))?old('menutitle'):   $page->menutitle }}',
+            slugged : true,
+            isplaceholder: 
+            @if(!old('isplaceholder'))
+
+@if($page->module == "placeholder")
+true
+@else
+false
+@endif
+@else
+true
+@endif
         },
         methods:{
-            changed()
+            automenu()
             {
-                return ((this.roles.sort().equals(this.originalroles.sort())) && this.email == '' && this.username == '' && this.pwchoice=='keep');
+                            if(!this.menu)
+            {
+                this.menu = this.title;
             }
-        }
+        },
+                    autoslug(str)
+        {
 
+            if (!this.slugged)
+            {
+
+
+  str = str.replace(/^\s+|\s+$/g, ''); // trim
+  str = str.toLowerCase();
+
+  // remove accents, swap ñ for n, etc
+  var from = "ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;";
+  var to   = "aaaaaeeeeeiiiiooooouuuunc------";
+  for (var i=0, l=from.length ; i<l ; i++) {
+    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+  }
+
+  str = str.replace('ß', 'ss').replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+    .replace(/\s+/g, '-') // collapse whitespace and replace by -
+    .replace(/-+/g, '-'); // collapse dashes
+     // collapse dashes
+
+
+                this.slug = str;
+            }
+
+        }
+        },
+        computed: {
+  classObject: function () {
+    return {
+      'success': this.title.length >= 2 && this.menu.length >= 2 &&( this.slug.length >= 2 || this.isplaceholder),
+      'secondary': !(this.title.length >= 2 && this.menu.length >= 2 &&( this.slug.length >= 2 || this.isplaceholder)),
+    }
+  }
+}
     });
 </script>
+@endpush
+
+
+
+@push('extrajs')
+<script>$(function()
+    {
+        
+        tut("Step 1: General Information","Give your Page a title and an url!","white","file-o");
+    });</script>
 @endpush

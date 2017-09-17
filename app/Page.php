@@ -61,6 +61,19 @@ class Page extends Model
     {
         return \LABB::all();
     }
+    /**
+     * Get all the building blocks
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $default when nothing comes
+     */
+    public static function GetSimpleBbs()
+    {
+        return \LABB::simpleAll();
+    }
 
     /**
      * Get all the building blocks for the current page

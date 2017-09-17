@@ -112,7 +112,7 @@ Create New Page
                 <label for="menu">
                     @lang("Menutitle:")  {{-- CRISI: [lang] create page
                         Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
-                    <input  id="menu" name="menu" placeholder="My Page" type="text" v-model="menu" @focus="automenu()" @blur="automenu()" />
+                    <input  id="menu" name="menu"   placeholder="My Page" type="text" v-model="menu" @focus="automenu()" @blur="automenu()" />
                     @if ($errors->has('menu'))
                     <small class="errortext">
                         {{ $errors->first('menu') }}
@@ -131,7 +131,7 @@ Create New Page
                         <br />
                 <label for="slug">
                     @lang("Slug:")
-                    <input  id="slug" @keydown.once="slugged=true" name="slug" placeholder="my-page" type="text" v-model="slug"/>
+                    <input  id="slug" @keydown.once="slugged=true"    name="slug" placeholder="my-page" type="text" v-model="slug"/>
                     @if ($errors->has('slug'))
                     <small class="errortext">
                         {{ $errors->first('slug') }}
@@ -148,7 +148,7 @@ Create New Page
              <div class="row">
     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
         <div :class="{checkbox:true,primary:true}">
-            <input id="c0" name="isplaceholder" type="checkbox" v-model="isplaceholder" value="true">
+            <input id="c0" name="isplaceholder" type="checkbox" v-model="isplaceholder" >
                 <label for="c0">
                     @lang("This page will be a placeholder for the navigation")
                     {{-- CRISI: @lang ^^ --}}
@@ -191,11 +191,17 @@ Create New Page
     let app = new Vue({
         el:'#app',
         data:{
-            title:'',
-            slug:'',
-            menu:'',
+            title:'{{old('title')}}',
+            slug:'{{old('slug')}}',
+            menu:'{{old('menu')}}',
             slugged : false,
-            isplaceholder: false
+            isplaceholder:
+@if(old('isplaceholder'))
+true
+@else
+false
+@endif
+
         },
         methods:{
             automenu()

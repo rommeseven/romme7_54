@@ -6,19 +6,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Column;
-use App\LayoutTemplate;
-use App\Notifications\NavigationUpdated;
-use App\Notifications\NewPagePublished;
-use App\Notifications\PageDeleted;
-use App\Page;
 use App\Row;
-use App\User;
 use Context;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 use Session;
+use App\Page;
+use App\User;
 use Settings;
+use App\Column;
+use App\LaciApp\LABB;
+use App\LayoutTemplate;
+use Illuminate\Http\Request;
+use App\Notifications\PageDeleted;
+use App\Notifications\NewPagePublished;
+use App\Notifications\NavigationUpdated;
+use Illuminate\Support\Facades\Notification;
 
 class PageController extends Controller
 {
@@ -58,19 +59,64 @@ class PageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Page  $page
-     * @return \Illuminate\Http\Response
+     * Edit General Page Settings (Step 1)
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page [description]
+     * @return  view           edit view
      */
     public function edit(Page $page)
     {
-        //
+        if ($page->step < 6)
+        {
+            Session::flash("warning", __("You must complete the steps in order!"));
+            Session::flash("warning_autohide", "4500");
+
+            return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
+        }
+        return view("backend.pages.edit")->withPage($page);
     }
 
+    // /**
+    //  * get the view for editing nav for one unpublished site
+    //  * @author Takács László
+    //  * @date    2017-09-17
+    //  * @version v1
+    //  * @param   page       $Page [description]
+    //  * @return  [type]           [description]
+    //  */
+    // public function editNavigation(Page $page)
+    // {
+    //     if (!Page::nav()->count())
+    //     {
+    //         Session::flash("warning", __("You must create and publish a page to edit the navigation"));
+    //         Session::flash("warning_autohide", "4500");
+    //         Session::flash("error", __("There are no pages published!"));
+    //         Session::flash("error_autohide", "4500");
+    //         return redirect('/cmseven/pages/create');
+    //     }
+
+    //     $pages = Page::nav()->get();
+    //     $pages->push($page);
+    //     return view("backend.navigation.sort")->withPages($pages);
+    // }
+    public function editSettings(Page $page)
+    {
+        return $this->getSettings($page, true);
+    }
+
+    /**
+     * get the view for the step 4 (Content)
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page [description]
+     * @return  view           step4
+     */
     public function getContent(Page $page)
     {
-        if ($page->step != 4)
+        if ($page->step != 4 && $page->step != 6)
         {
             Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
@@ -81,11 +127,18 @@ class PageController extends Controller
         $collection = collect($init->toArray());
         $collection = $collection->toJson();
         $collection = str_replace("columns", "cols", $collection);
-// dd($collection);
 
         return view("backend.pages.step4")->withPage($page)->withRows($collection);
     }
 
+    /**
+     * get the view for the step3 (layout)
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page [description]
+     * @return  view           step3
+     */
     public function getLayout(Page $page)
     {
         if ($page->step != 3)
@@ -95,7 +148,6 @@ class PageController extends Controller
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-        // dd(LayoutTemplate::where('id',4)->with("rows.columns")->first()->toArray()["rows"]);
         // $collection = collect(LayoutTemplate::where('id', 4)->with("rows.columns")->first()["rows"]);
         // $collection = $collection->sortBy('id')->toJson();
         // $collection = str_replace("columns", "cols", $collection);
@@ -104,7 +156,6 @@ class PageController extends Controller
 
         $bigcollection = $bigcollection->sortBy('id')->toJson();
         $bigcollection = str_replace("columns", "cols", $bigcollection);
-        // dd($collection);
 
         return view("backend.pages.step3")->withPage($page)->withLayouts($bigcollection);
     }
@@ -127,6 +178,14 @@ class PageController extends Controller
         return view("backend.navigation.sort")->withPages($pages);
     }
 
+    /**
+     * preview a page with the frontend template
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page [description]
+     * @return  view           preview
+     */
     public function getPreview(Page $page)
     {
         $loadedpage = $page->load("rows.columns");
@@ -167,21 +226,20 @@ class PageController extends Controller
      * @param   Page       $page The page the user is working on
      * @return  view           the page with the form for the per-page settings
      */
-    public function getSettings(Page $page)
+    public function getSettings(Page $page, $editing = false)
     {
         if ($page->step == 4)
         {
             $page->step = 5;
             $page->save();
-            return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-        if ($page->step != 5)
+        if ($page->step != 5 &&!$editing)
         {
             Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-        $bbs = config("building_blocks.seven");
+        $bbs = LABB::all();
         return view("backend.pages.step5")->withPage($page)->withBbs($bbs);
     }
 
@@ -236,6 +294,15 @@ class PageController extends Controller
         }
     }
 
+    /**
+     * post col layout (!) from step3
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page    page in editing
+     * @param   Request    $request content of column
+     * @return  [type]              [description]
+     */
     public function postContent(Page $page, Request $request)
     {
 
@@ -302,6 +369,15 @@ class PageController extends Controller
         }
     }
 
+    /**
+     * save layout as template
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Page       $page    [description]
+     * @param   Request    $request [description]
+     * @return  [type]              [description]
+     */
     public function postLayout(Page $page, Request $request)
     {
 
@@ -379,6 +455,14 @@ class PageController extends Controller
         }
     }
 
+    /**
+     * setting up nav for the first time
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Request    $request [description]
+     * @return  redirect              [description]
+     */
     public function postNavigation(Request $request)
     {
         $toBePublished = Page::findOrFail($request->input("page"));
@@ -476,7 +560,7 @@ class PageController extends Controller
      */
     public function postSettings(Page $page, Request $request)
     {
-        if ($page->step != 5)
+        if ($page->step < 5)
         {
             Session::flash("warning", __("You must complete the steps in order!"));
             Session::flash("warning_autohide", "4500");
@@ -532,6 +616,15 @@ class PageController extends Controller
         return redirect("cmseven/pages");
     }
 
+    /**
+     * col content from step 4
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Column     $col     [description]
+     * @param   Request    $request [description]
+     * @return  [type]              [description]
+     */
     public function putContent(Column $col, Request $request)
     {
         $col->html = $request->input("html");
@@ -539,6 +632,14 @@ class PageController extends Controller
         return array('message' => "success");
     }
 
+    /**
+     * editing navigation of published pages
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Request    $request [description]
+     * @return  [type]              [description]
+     */
     public function putNavigation(Request $request)
     {
         $pages = str_replace('anchor#', null, $request->pages);
@@ -593,6 +694,76 @@ class PageController extends Controller
             'menu'  => 'required|min:2|max:30',
             'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
         ));
+        $this->optimizeSlug($request);
+
+        $p = new Page(array(
+            'title'     => $request->input('title'),
+            'menutitle' => $request->input('menu'),
+            'slug'      => str_slug($request->input('slug')),
+        ));
+        if ($p->step < 6)
+        {
+            $p->step = 2;
+            $p->save();
+            Session::flash("success", __("Page successfully created."));
+            Session::flash("success_autohide", "4500");
+            return redirect('/cmseven/pages/create/step/2/page/'.$p->id);
+        }
+        else
+        {
+            $p->save();
+            Session::flash("success", __("Your changes have been saved!")); /* CRISI: @lang ins de.json */
+            Session::flash("success_autohide", "4500");
+            return redirect('/cmseven/pages/create/step/6/page/'.$p->id);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Page $page, Request $request)
+    {
+        $slug = "#";
+
+        if ((request()->isplaceholder == "false" || !request()->isplaceholder) && $page->module == "placeholder")
+        {
+            return $this->revertPlaceholder($page, $request);
+        }
+
+        if (request()->isplaceholder != "false" && request()->isplaceholder)
+        {
+            return $this->updatePlaceholder($page, $request);
+        }
+
+        $this->validate($request, array(
+            'title' => 'required|min:2|max:255',
+            'menu'  => 'required|min:2|max:30',
+            'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
+        ));
+        $this->optimizeSlug($request);
+        $page->update(array(
+            'title'     => $request->input('title'),
+            'menutitle' => $request->input('menu'),
+            'slug'      => str_slug($request->input('slug')),
+        ));
+        Session::flash("success", __("Your changes have been saved!")); /* CRISI: @lang ins de.json */
+        Session::flash("success_autohide", "4500");
+        return redirect('/cmseven/pages/create/step/6/page/'.$page->id);
+    }
+
+    /**
+     * [optimizeSlug with larave$requestl]
+     * @author Takács László
+     * @date    2017-09-17
+     * @version v1
+     * @param   Request    $request [description]
+     * @return  [type]              [description]
+     */
+    private function optimizeSlug(Request $request)
+    {
         if ($request->input('slug') !== str_slug($request->input('slug')))
         {
             Session::flash("info2", 'The slug "'.$request->input('slug').'" has been changed to "'.str_slug($request->input('slug')).'"');
@@ -600,29 +771,6 @@ class PageController extends Controller
             Session::flash("info2_autohide", 5400);
             Session::flash("info2_flash_title", __("Slug Optimization"));
         }
-        $p = new Page(array(
-            'title'     => $request->input('title'),
-            'menutitle' => $request->input('menu'),
-            'slug'      => str_slug($request->input('slug')),
-        ));
-        $p->step = 2;
-
-        $p->save();
-        Session::flash("success", __("Page successfully created."));
-        Session::flash("success_autohide", "4500");
-        return redirect('/cmseven/pages/create/step/2/page/'.$p->id);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Page $page)
-    {
-        //
     }
 
     private function postModule(Page $page, Request $request)
@@ -632,7 +780,7 @@ class PageController extends Controller
         $page->save();
         Session::flash("success", __("Page Module has been successfully set up!"));
         Session::flash("success_autohide", "4500");
-        return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+        return redirect('cmseven/pages/create/step/5/page/'.$page->id);
     }
 
     private function postUrl(Page $page, Request $request)
@@ -642,7 +790,31 @@ class PageController extends Controller
         $page->save();
         Session::flash("success", __("Page redirect has been successfully set!"));
         Session::flash("success_autohide", "4500");
-        return redirect('cmseven/pages/create/step/6/page/'.$page->id);}
+        return redirect('cmseven/pages/create/step/6/page/'.$page->id);
+    }
+
+    private function revertPlaceholder(Page $page, Request $request)
+    {
+        $this->validate($request, array(
+            'title' => 'required|min:2|max:255',
+            'menu'  => 'required|min:2|max:30',
+            'slug'  => 'required|min:2|alpha_dash|max:255|unique:pages',
+        ));
+        $this->optimizeSlug($request);
+        $page->update(array(
+            'title'     => $request->input('title'),
+            'menutitle' => $request->input('menu'),
+            'slug'      => str_slug($request->input('slug')),
+            'module'    => '',
+        ));
+        $page->step = 3;
+        $page->save();
+        Session::flash("info_flash_title", __("Back to Step 3"));
+        Session::flash("info", __("This page is no longer a placeholder. You will need a Layout and Content for it."));
+        Session::flash("info_autohide", "4300");
+
+        return redirect('/cmseven/pages/create/step/3/page/'.$page->id);
+    }
 
     private function storePlaceholder(Request $request)
     {
@@ -662,13 +834,38 @@ class PageController extends Controller
         }
         else
         {
-            $p->step = 2;
+            if ($p->step < 6)
+            {
+                $p->step = 2;
+                $p->save();
+                Session::flash("success", __("Menu placeholder successfully created."));
+                Session::flash("success_autohide", "4500");
+                return redirect('/cmseven/pages/create/step/2/page/'.$p->id);
+            }
+            else
+            {
+                $p->save();
+                Session::flash("success", __("Your changes have been saved!")); /* CRISI: @lang ins de.json */
+                Session::flash("success_autohide", "4500");
+                return redirect('/cmseven/pages/create/step/6/page/'.$p->id);
+            }
         }
-
-        $p->save();
-        Session::flash("success", __("Menu placeholder successfully created."));
-        /* CRISI: @lang ^^ */
-        Session::flash("success_autohide", "4500");
-        return redirect('/cmseven/pages/create/step/'.$p->step.'/page/'.$p->id);
     }
-}
+
+    private function updatePlaceholder(Page $page, Request $request)
+    {
+        $this->validate($request, array(
+            'title' => 'required|min:2|max:255',
+            'menu'  => 'required|min:2|max:30',
+        ));
+        $page->update(array(
+            'title'     => $request->input('title'),
+            'menutitle' => $request->input('menu'),
+            'slug'      => "#",
+            'module'    => "placeholder",
+        ));
+        Session::flash("success", __("Your changes have been saved!")); /* CRISI: @lang ins de.json */
+        Session::flash("success_autohide", "4500");
+        return redirect('/cmseven/pages/create/step/6/page/'.$page->id);
+    }
+};

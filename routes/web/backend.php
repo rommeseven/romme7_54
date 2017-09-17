@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 | Backend Routes
 |--------------------------------------------------------------------------
-*/
+ */
 Route::get("/cmseven/blank", function ()
 {
     return " BLANK MESSAGE ";
@@ -23,15 +23,14 @@ Route::post("/cmseven/upload/image", function ()
     return view('backend.upload_result')->withResult($result['result'])->withResultcode($result['resultcode'])->withFilename($result['file_name']);
     /* // Failure TODO: jbimages fail msg
 
-    // Compile data for output
-    $result['result']       = $this->upload->display_errors(' ', ' ');
-    $result['resultcode']   = 'failed';
+// Compile data for output
+$result['result']       = $this->upload->display_errors(' ', ' ');
+$result['resultcode']   = 'failed';
 
-    // Output to user
-    $this->load->view('ajax_upload_result', $result);
-     */
+// Output to user
+$this->load->view('ajax_upload_result', $result);
+ */
 });
-
 
 Route::prefix('cmseven')->middleware('auth')->group(function ()
 {
@@ -50,7 +49,7 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
         Route::get('/find', 'UserController@index')->name("users.find");
         Route::post('/find', 'UserController@search');
     });
-   Route::prefix('my-settings')->group(function ()
+    Route::prefix('my-settings')->group(function ()
     {
         Route::get('/', 'UserSettingController@getSettings')->name("usersettings");
         Route::post('/', 'UserSettingController@postSettings')->name("usersettings.post");
@@ -75,7 +74,7 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
         Route::post('/', 'SettingController@update');
     });
 
-    Route::resource('pages', 'PageController');
+    Route::resource('pages', 'PageController', array('except' => array('edit', 'update')));
     Route::prefix('pages')->group(function ()
     {
         Route::get('/find', 'PageController@index')->name("pages.find");
@@ -100,6 +99,19 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
                 Route::post('/5/page/{page}', 'PageController@postSettings')->name("pageeditor.poststep5");
 
                 Route::get('/6/page/{page}', 'PageController@getPublish')->name("pageeditor.step6");
+            });
+        });
+        Route::prefix('edit')->group(function ()
+        {
+            Route::get('/{page}', 'PageController@editPublish')->name("pages.edit");
+            Route::prefix('step')->group(function ()
+            {
+                Route::get('/1/page/{page}', 'PageController@edit')->name("pages.edit.step1");
+                Route::post('/1/page/{page}', 'PageController@update')->name("pages.post.edit.step1");
+                // Route::get('/2/page/{page}', 'PageController@editNavigation')->name("pages.edit.step2");
+                Route::get('/4/page/{page}', 'PageController@getContent')->name("pages.edit.step4");
+                Route::get('/5/page/{page}', 'PageController@editSettings')->name("pages.edit.step5");
+
             });
         });
     });

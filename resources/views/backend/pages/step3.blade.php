@@ -326,7 +326,7 @@ var app = new Vue(
         nocontent:false,
         hasmodule:false,
         module:'landing-page',
-        url:''
+        url:'{{old('url')}}'
     },
     watch:
     {

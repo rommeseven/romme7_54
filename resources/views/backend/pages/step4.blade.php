@@ -140,7 +140,7 @@ Create New Page
 </div>
 <div class="row" v-if="!colopen">
     <div class="column small-offset-1 medium-offset-2">
-<form action="{{route('pageeditor.poststep5' , $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
+<form action="{{route('pageeditor.step5' , $page->id )}}" method="get"><button type="submit" class="button primary fabu fa-arrow-right" @click="nextstep()" :disabled="needtosave">
     Save & Next Step
     </button> </form>
     </div><!-- END OF .row column small-offset-1 medium-offset 2 -->
