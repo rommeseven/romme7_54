@@ -207,7 +207,6 @@ class PageController extends Controller
         if (!Page::nav()->count())
         {
             $page->step      = 3;
-            $page->published = false;
             $page->save();
 
             if (Session::has("success"))
@@ -391,19 +390,27 @@ class PageController extends Controller
             return redirect('/cmseven/pages/create/step/'.$toBePublished->step.'/page/'.$toBePublished->id);
         }
         //$toBePublished->published = true;
-        $toBePublished->step = 3;
+        if ($toBePublished->module == "placeholder")
+        {
+            $toBePublished->step = 6;
+        }
+        else
+        {
+
+            $toBePublished->step = 3;
+        }
         $toBePublished->save();
         if ($request->nonav == "true")
         {
-        $toBePublished->nonav = true;
-        $toBePublished->save();
-            
+            $toBePublished->nonav = true;
+            $toBePublished->save();
+
             Session::flash("info", __("Page will not be shown in the navigation."));
             Session::flash("info_autohide", "4500");
             return redirect()->route("pageeditor.step3", $toBePublished->id);
         }
         $sort = 1;
- 
+
         $pages = str_replace('anchor#', null, $request->pages);
         parse_str($pages, $list);
         foreach ($list['page'] as $id => $parentId)
@@ -564,6 +571,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        $slug = "#";
+
+        if (request()->isplaceholder == "true")
+        {
+            return $this->storePlaceholder($request);
+        }
+
         $this->validate($request, array(
             'title' => 'required|min:2|max:255',
             'menu'  => 'required|min:2|max:30',
@@ -581,10 +595,7 @@ class PageController extends Controller
             'menutitle' => $request->input('menu'),
             'slug'      => str_slug($request->input('slug')),
         ));
-        if (!Page::nav()->count())
-        {
-            $p->step = 2;
-        }
+        $p->step = 2;
 
         $p->save();
         Session::flash("success", __("Page successfully created."));
@@ -622,4 +633,32 @@ class PageController extends Controller
         Session::flash("success", __("Page redirect has been successfully set!"));
         Session::flash("success_autohide", "4500");
         return redirect('cmseven/pages/create/step/6/page/'.$page->id);}
+
+    private function storePlaceholder(Request $request)
+    {
+        $this->validate($request, array(
+            'title' => 'required|min:2|max:255',
+            'menu'  => 'required|min:2|max:30',
+        ));
+        $p = new Page(array(
+            'title'     => $request->input('title'),
+            'menutitle' => $request->input('menu'),
+            'slug'      => "#",
+            'module'    => "placeholder",
+        ));
+        if (!Page::nav()->count())
+        {
+            $p->step = 6;
+        }
+        else
+        {
+            $p->step = 2;
+        }
+
+        $p->save();
+        Session::flash("success", __("Menu placeholder successfully created."));
+        /* CRISI: @lang ^^ */
+        Session::flash("success_autohide", "4500");
+        return redirect('/cmseven/pages/create/step/'.$p->step.'/page/'.$p->id);
+    }
 }
