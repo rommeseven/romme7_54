@@ -1,5 +1,4 @@
 <?php
-Carbon\Carbon::setToStringFormat("d.m.Y, H:i");
 /*
 |--------------------------------------------------------------------------
 | TEST Routes - TODO: Clean test routes
