@@ -92,7 +92,7 @@
 		</div><!-- END OF .column small-12 mediun-6 large-6 -->
 		<div class="column small-12 large-4 small-order-1 large-order-2">
 			<h3><em>1</em> Responsiv Design</h3>
-			<p>Wir bereiten die Designs so, dass verschiedene Endgeräte ein entsprechendes Erlebnis bieten. <br /><br /></p>
+			<p>Wir erstellen unser Webdesign so, dass es auf vielen verschiedenen Endgeräten ein optimales Erlebnis bietet. <br /><br /></p>
 			<div class="row align-center collapse">
 				<div class="colum shrink"><a href="#" class="button hollow tertiary">Mehr Erfahren</a></div><!-- END OF .colum shrink -->
 			</div><!-- END OF .row align-center collapse -->
