@@ -638,7 +638,7 @@ class PageController extends Controller
     private function postUrl(Page $page, Request $request)
     {
         $page->url  = $request->input("serial");
-        $page->step = 5;
+        $page->step = 6;
         $page->save();
         Session::flash("success", __("Page redirect has been successfully set!"));
         Session::flash("success_autohide", "4500");
