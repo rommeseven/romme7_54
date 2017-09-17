@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use Illuminate\Http\Request;
+use App\Exceptions\WrongSlugException;
 
 class PagesController extends Controller
 {
@@ -18,24 +19,25 @@ class PagesController extends Controller
      */
     public function getPage($slug)
     {
-        if (!$slug)
+        if ($page = Page::where("slug", $slug)->first())
         {
-            abort(404);
-            return;
+            if ($page->url)
+            {
+                return redirect($page->url);
+            }
+            $loadedpage = $page->load("rows.columns");
+            $pages      = Page::nav()->get();
+            $bbs        = $page->GetPageBbs();
+            if ($page->module)
+            {
+                return view('frontend/modules/'.$page->module)->withPage($loadedpage)->withPages($pages)->with($bbs);
+            }
+            return view("frontend/master")->withPage($loadedpage)->withPages($pages)->with($bbs);
         }
-        $page = Page::where("slug", $slug)->first();
-        if ($page->url)
+        else
         {
-            return redirect($page->url);
+            throw new WrongSlugException($slug);
         }
-        $loadedpage = $page->load("rows.columns");
-        $pages      = Page::nav()->get();
-        $bbs        = $page->GetPageBbs();
-        if ($page->module)
-        {
-            return view('frontend/modules/'.$page->module)->withPage($loadedpage)->withPages($pages)->with($bbs);
-        }
-        return view("frontend/master")->withPage($loadedpage)->withPages($pages)->with($bbs);
     }
 
     /**
