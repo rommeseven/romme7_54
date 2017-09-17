@@ -75,9 +75,7 @@
 						</ul><!-- END OF .menu horizontal -->
 					</div><!-- END OF #mainmenu.column expand -->
 					<div class="column shrink hide-for-medium">
-						            <button class="menu-icon" type="button"  data-toggle="offcanvas-full-screen">
-						            {{-- TODO: [menu-icon] @hamburger --}}
-                </button>
+						           <a data-toggle="offcanvas-full-screen"><i class="fa fa-2x fa-navicon"></i></a>
 					</div><!-- END OF .column shrink hide-for-medium -->
 				</div><!-- END OF #topbar.row collapse --></div></div>
 	</nav>
