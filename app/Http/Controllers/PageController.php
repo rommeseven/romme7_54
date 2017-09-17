@@ -206,7 +206,7 @@ class PageController extends Controller
     {
         if (!Page::nav()->count())
         {
-            $page->step      = 3;
+            $page->step = 3;
             $page->save();
 
             if (Session::has("success"))
@@ -422,9 +422,19 @@ class PageController extends Controller
             $page->save();
             $sort++;
         }
-        Session::flash("success", __("Page successfully added to the navigation."));
-        Session::flash("success_autohide", "4500");
-        return redirect()->route("pageeditor.step3", $toBePublished->id);
+        if ($toBePublished->step == 3)
+        {
+            Session::flash("success", __("Page successfully added to the navigation."));
+            Session::flash("success_autohide", "4500");
+            return redirect()->route("pageeditor.step3", $toBePublished->id);
+        }
+        else
+        {
+            Session::flash("success", __("Placeholder successfully added to the navigation."));
+            // CRISI: @lang ^^ "placeholder su..."
+            Session::flash("success_autohide", "4500");
+            return redirect('/cmseven/pages/create/step/'.$toBePublished->step.'/page/'.$toBePublished->id);
+        }
     }
 
     /**
