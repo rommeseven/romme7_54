@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.sendgrid.net'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@email.sevenweb.eu'),
-        'name' => env('MAIL_FROM_NAME', 'Seven Webagentur'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@' . env('APP_DOMAIN')),
+        'name' => env('MAIL_FROM_NAME',env('DEFAULT_APP_TITLE')),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('SENDGRID_USERNAME'),
+    'username' => env('GMAIL_USERNAME'),
 
-    'password' => env('SENDGRID_PASSWORD'),
+    'password' => env('GMAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
