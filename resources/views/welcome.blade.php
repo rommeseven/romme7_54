@@ -124,7 +124,7 @@
 		</div><!-- END OF .column small-12 mediun-6 large-6 -->
 		<div class="column small-12 medium-12 large-6 small-order-1 self-align-top align-self-top">
 			<h3><em>2</em> Programmierung & Entwicklung</h3>
-			<p>Mollitia error nihil, aspernatur voluptatem doloremque esse nulla, vitae iusto. Vero magnam minus, ut ab corporis aliquam architecto, ipsam suscipit placeat. Fugiat, vitae tempora non repellat recusandae? In, ad culpa.</p>
+			<p>Wir unterstellen unterschiedliche Web Anwendungen. Von Online-Terminplanern bis komplexen Websites und Homepages ist alles möglich. </p>
 		</div><!-- END OF .column small-12 mediun-6 large-6 -->
 	</div><!-- END OF .row collapse align-spaced align-middle -->	
 </section>
@@ -149,13 +149,13 @@
 	<div class="row align-spaced align-middle" id = "nokontakt">
 		<div class="column" style="text-align:right">
 			<h4>Sie haben Fragen?</h4>
-			<p>Lassen Sie uns eine Nachricht und wird nehmen Kontakt auf!</p>
+			<p>Lassen Sie uns eine Nachricht da und wird nehmen mit Ihnen Kontakt auf!</p>
 		</div><!-- END OF .column -->
 		<div class="column" style="text-align:center"><i class="fa fa-envelope-o kontakticon"></i></div><!-- END OF .column -->
 	</div><!-- END OF .row align-spaced -->
 		<div class="row align-center align-middle" id="contacted">
 		<div class="column" style="text-align:right">
-			<h4>Javoll, Nachricht im Wind!</h4>
+			<h4>Nachricht wurde gesendet!</h4>
 			<p>Wir melden uns so bald wie möglich.</p>
 		</div><!-- END OF .column -->
 		<div class="column" style="text-align:left"><i class="fa fa-envelope" id="kontakticon"></i></div><!-- END OF .column -->
@@ -174,7 +174,7 @@
 	
 	<div class="row">
 		<div class="column small-offset-2 small-10 medium-5 medium-offset-5 large-4 large-offset-5">
-		<button type="submit" class="expanded button large fabu fa-envelope">Send</button>
+		<button type="submit" class="expanded button large fabu fa-envelope">Senden</button>
 		</div><!-- END OF .column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container -->
 	</div><!-- END OF .row --></form>
 
@@ -184,7 +184,7 @@
 <section id="blog">
 <div class="row collapse align-center">
 		<div class="column  small-12 medium-10 large-8">
-			<h2>21 Entscheidungen, die man treffen muss, bevor Webseite zu bestellen.</h2>
+			<h2>21 Entscheidungen, die man treffen muss, bevor man eine Webseite bestellt.</h2>
 		</div><!-- END OF .column shrink -->
 	</div><!-- END OF .row collapse align-center -->
 	<br />
