@@ -126,14 +126,14 @@ Page
                         
                     </td>
                     <td>
-                        <code><small>
+                        
                         @if($page->module == "placeholder")
                             <div class="label logoblue"><span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Uses Modul: {{$page->module}}">{{$page->module}}</span></div>
-                        @else
-                         {{url($page->slug) }}
+                        @else<code><small>
+                         {{url($page->slug) }}</small></code>
                         @endif  
                        
-                        </small></code>
+                        
                     </td>
                     <td><small>
                         @if($page->published)
