@@ -168,64 +168,52 @@
                     </ul>
                     <hr />
                 </div><!-- END OF .hide-for-large -->
-                <ul class="vertical menu accordion-menu" data-accordion-menu="">
-                    <li>
-                    <a href="#">
-                        @lang("Pages")
-                    </a>
-                    <ul class="menu vertical nested">
+                 <ul class="vertical menu accordion-menu" data-accordion-menu="">
+
+                    
+                    <li><br /></li>
                         <li>
                             <a href="{{route('pages.create')}}">
-                                @lang("New Page") {{-- CRISI: @lang << ins de.json --}}
+                               <i class="fa fa-file-o"></i> @lang("New Page") {{-- CRISI: @lang << ins de.json --}}
                             </a>
                         </li>
                         <li>
                             <a href="{{route("pages.index")}}">
-                                @lang("Manage Pages") {{-- CRISI: @lang << ins de.json --}}
+                               <i class="fa fa-files-o"></i> @lang("Manage Pages") {{-- CRISI: @lang << ins de.json --}}
                             </a>
                         </li>
-                    </ul>
-                    </li>
                     <li>
                     <a href="{{route("navigation")}}">
-                        @lang("Navigation")
+                        <i class="fa fa-navicon"></i> @lang("Navigation")
                     </a>
                     </li>
                     <li>
                         <a href="">
-                            @lang("Support")
+                          <i class="fa fa-question"></i> @lang("Support")
                         </a>
                     </li>
-                    <li>
-                    {{-- CRISI: @lang main.blade.php sidebar --}}
-                        <a href="#">
-                            Manage
-                        </a>
-                        <ul class="menu vertical nested">
+                    <li><br /></li>
                             <li>
                                 <a href="{{route("users.index")}}">
-                                    Users
+                                   <i class="fa fa-users"></i> Users
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("roles.index")}}">
-                                    Roles
+                                  <i class="fa fa-user-secret"></i>  Roles
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route("permissions.index")}}">
-                                    Permissions
+                                  <i class="fa fa-key"></i>  Permissions
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('settings') }}">
-                                    Settings
+                                  <i class="fa fa-cogs"></i>  Settings
                                 </a>
                             </li>
-                    </ul>
-                        <!-- END OF .topnav menu -->
-                        <!-- END OF .menu vertical -->
-                    </li>
+                    
                 </ul>
             </div>
         <!-- END OF .topnav -->
