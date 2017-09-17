@@ -49,7 +49,7 @@ Create New Page
         {{-- TODO: navigation sort design --}}
         <transition name="fade">
             <div class="row align-center">
-                <div class="column shrink ">
+                <div class="column small-12 medium-7 ">
                     <div class="card">
                         <div class="card-divider menucard">
                             <h5>
