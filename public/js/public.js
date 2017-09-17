@@ -38193,16 +38193,18 @@ $(function () {
     $(document).foundation();
     checkicon();
     $(window).on('scroll', checkicon);
-    $('#main-menu').on('show.zf.dropdownmenu', function () {
-        var dropdown = $(this).find('.is-dropdown-submenu');
-        dropdown.css('display', 'none');
-        dropdown.fadeIn('fast');
-    });
-    $('#main-menu').on('hide.zf.dropdownmenu', function () {
-        var dropdown = $(this).find('.is-dropdown-submenu');
-        dropdown.css('display', 'inherit');
-        dropdown.fadeOut('fast');
-    });
+    // $('#main-menu').on('show.zf.dropdownmenu', function()
+    // {
+    //     var dropdown = $(this).find('.is-dropdown-submenu');
+    //     dropdown.css('display', 'none');
+    //     dropdown.fadeIn('fast');
+    // });
+    // $('#main-menu').on('hide.zf.dropdownmenu', function()
+    // {
+    //     var dropdown = $(this).find('.is-dropdown-submenu');
+    //     dropdown.css('display', 'inherit');
+    //     dropdown.fadeOut('fast');
+    // });
     $(".current_page").click(function (e) {
         $('html, body').animate({
             scrollTop: 0

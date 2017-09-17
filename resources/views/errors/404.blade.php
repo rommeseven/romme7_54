@@ -40,7 +40,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Can't find that page!</div>
+                <div class="title">@lang("Can't find that page!")</div>
+                {{-- CRISI: @lang ins de.json --}}
 
             </div>
         </div>

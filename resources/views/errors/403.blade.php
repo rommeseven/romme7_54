@@ -40,7 +40,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">You don't have permission!</div>
+                <div class="title">@lang('You do not have permission!')</div> 
+                {{-- CRISI: ins de.json @lang --}}
 
             </div>
         </div>
