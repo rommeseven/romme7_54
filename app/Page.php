@@ -2,17 +2,20 @@
 
 namespace App;
 
+use App\LaciApp\FormatDateTrait;
 use Context;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Settings;
+
 /* FIX ME: its too much [NEW TAG]*/
 class Page extends Model
 {
     use SearchableTrait;
+    use FormatDateTrait;
 
-    protected $fillable = array('title', 'module','menutitle', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
+    protected $fillable = array('title', 'module', 'menutitle', 'url', 'slug', 'parent_id', 'display_order', 'published', 'step');
 
     /**
      * Searchable rules.
@@ -46,8 +49,6 @@ class Page extends Model
         ),
     );
 
-
-
     /**
      * Get all the building blocks
      * @author Takács László
@@ -74,15 +75,15 @@ class Page extends Model
     public function GetPageBbs()
     {
         $bbs = array(
-                "layout" => "page"//$this->GetSetting("layout", "page")"
-            );
+            "layout" => "page", //$this->GetSetting("layout", "page")"
+        );
 
         $bb          = collect(static::GetBbs());
         $bb_keys     = $bb->pluck("key");
         $bb_defaults = $bb->pluck("default");
         for ($i = 0; $i < sizeof($bb_keys); $i++)
         {
-            $bbs = array_add($bbs,$bb_keys[$i],$this->GetSetting($bb_keys[$i], $bb_defaults[$i])    );
+            $bbs = array_add($bbs, $bb_keys[$i], $this->GetSetting($bb_keys[$i], $bb_defaults[$i]));
         }
         return $bbs;
     }
@@ -188,7 +189,7 @@ class Page extends Model
      */
     public function scopeNav($query)
     {
-        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0)->where('published', '=', 1)->where('hidden_in_nav','=',"false");
+        return $query->with(implode('.', array_fill(0, 4, 'children')))->where('parent_id', '=', 0)->where('published', '=', 1)->where('hidden_in_nav', '=', "false");
     }
 
     /**
@@ -204,5 +205,4 @@ class Page extends Model
             $builder->orderBy('display_order', 'asc');
         });
     }
-    
 }
