@@ -112,25 +112,30 @@ Create New Page
  <form action="{{ url('cmseven/pages/create/step/5/page/' . $page->id) }}" id="navi" method="POST">
         {{csrf_field()}}
         
-        @for ($i = 1; $i < sizeof($bbs); $i++)
-                <div class="row">
-                    <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
-                        <label for="{{$bbs[$i]['key']}}">
-                            {{$bbs[$i]['name']}}:
-                            <input name="{{$bbs[$i]['key']}}" id="{{$bbs[$i]['key']}}" placeholder="{{$page->GetSetting($bbs[$i]['key'],$bbs[$i]['default'])}}" type="text" value="{{old($bbs[$i]['key'])}}"/>
-                            @if ($errors->has($bbs[$i]['key']))
-                            <small class="errortext">
-                                {{ $errors->first($bbs[$i]['key']) }}
-                            </small>
-                            @endif
-                            <small class="help-text">
-                                {{$bbs[$i]['description']}}
-                            </small>
-                        </label>
-                    </div>
-                    <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
-                </div>
-        @endfor
+    <ul class="tabs" data-tabs id="type-tabs">
+@foreach(LABB::types() as $type)
+  <li class="tabs-title"><a href="#panel-{{$type}}">{{LABB::getTypeName($type)}}</a></li>
+@endforeach
+</ul>
+
+<div class="tabs-content" data-tabs-content="type-tabs">
+
+@foreach(LABB::types() as $type)
+
+  <div class="tabs-panel" id="panel-{{$type}}">
+    @foreach(LABB::onlyType($type) as $bb)
+        @component('backend.components.building_block_inputs.' . $type,['bb'=>$bb])
+{{$page->GetSetting($bb['key'],$bb['default'])}}
+@endcomponent
+    @endforeach
+  </div>
+    
+
+@endforeach
+
+  </div>
+<br />
+
 
 <div class="row">
     <div class="column small-offset-1 medium-offset-2">

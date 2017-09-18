@@ -8,6 +8,8 @@ $(function()
     {
         $(this).next("form").submit();
     });
+    $(".tabs-title").first().trigger("click");
+
 });
 require('./form/core');
 require('./vendor/sortable.js');

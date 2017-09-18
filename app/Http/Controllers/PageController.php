@@ -486,7 +486,7 @@ class PageController extends Controller
         $toBePublished->save();
         if ($request->nonav == "true")
         {
-            $toBePublished->nonav = true;
+            $toBePublished->hidden_in_nav = true;
             $toBePublished->save();
 
             Session::flash("info", __("Page will not be shown in the navigation."));

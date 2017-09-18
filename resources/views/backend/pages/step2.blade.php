@@ -157,6 +157,16 @@ Create New Page
                     </button>
                 </div>
             </div>
+
+        </transition>
+        <transition name="fade">
+        <div class="row align-center" v-show="nonav">
+                                    <div class="column shrink align-self-bottom " v-show="nonav">
+                    <button class="button large expanded fabu fa-arrow-right" type="submit">
+                        Save & Next Step
+                    </button>
+                </div>
+                </div>
         </transition>
     </form>
 </div>

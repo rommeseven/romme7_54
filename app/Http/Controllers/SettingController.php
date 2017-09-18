@@ -36,17 +36,18 @@ class SettingController extends Controller
         $arr = collect(Page::GetBbs());
 
         $arr = array_pluck($arr, "validation", "key");
-
         $data         = request()->validate($arr);
         $filteredData = array_filter($data, function ($value)
         {
             return ($value !== null && $value !== false && $value !== '');
         });
+
         $admins = User::wherePermissionIs('update_settings')->get()->except(auth()->user()->id);
         /*TODO:  [notification] into event listener! */
         foreach ($filteredData as $key => $value)
         {
             Settings::set($key, $value);
+
             Notification::send($admins, new GlobalSettingChanged($key, $value));
         }
 

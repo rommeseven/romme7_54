@@ -26,7 +26,36 @@ Settings
     Editing
 </li>
 @endpush
+@push('extrajs')
+<script src="{{ url("other/vendor/tinymce/tinymce.js")}}"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
 
+
+@foreach(LABB::all() as $bb)
+
+      {{$bb['key']}}:'',
+@endforeach   
+            app_title:''
+        },
+        methods:{
+            changed()
+            {
+                return (
+                 this.app_title == ''
+@foreach(LABB::all() as $bb)
+
+      && this.{{$bb['key']}} == ''
+@endforeach   
+                 );
+            }
+        }
+
+    });
+</script>
+@endpush
 
 @push('content')
 <div id="app">
@@ -67,7 +96,31 @@ Settings
     <form action="{{ url('cmseven/settings/') }}" method="POST">
         {{csrf_field()}}
       
-        @for ($i = 0; $i < sizeof($bbs); $i++)
+
+<ul class="tabs" data-tabs id="type-tabs">
+@foreach(LABB::types() as $type)
+  <li class="tabs-title"><a href="#panel-{{$type}}">{{LABB::getTypeName($type)}}</a></li>
+@endforeach
+</ul>
+
+<div class="tabs-content" data-tabs-content="type-tabs">
+
+@foreach(LABB::types() as $type)
+
+  <div class="tabs-panel" id="panel-{{$type}}">
+    @foreach(LABB::onlyType($type) as $bb)
+    @component('backend.components.building_block_inputs.' . $type,['bb'=>$bb])
+    {{settings($bb['key'],$bb['default'] )}}
+    @endcomponent  
+    @endforeach
+  </div>
+    
+
+@endforeach
+
+  </div>
+<br />
+     {{--    @for ($i = 0; $i < sizeof($bbs); $i++)
                 <div class="row">
                     <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                         <label for="{{$bbs[$i]['key']}}">
@@ -85,7 +138,7 @@ Settings
                     </div>
                     <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
                 </div>
-        @endfor
+        @endfor --}}
 
         <!-- END OF #app -->
         <div class="row">
@@ -93,18 +146,10 @@ Settings
                 {{--
                 <input class="button" type="submit" value="Add User"/>
                 --}}
-                <div class="row align-center" v-if="!changed()">
+                <div class="row align-center" >
                     <div class="column small-9 medium-7 large-5 small-offset-3 medium-offset-0 large-offset-7">
                         <button class="button expanded fabu before fa-save" type="submit">
                             Save Changes
-                        </button>
-                    </div>
-                    <!-- END OF .column small-10 medium-5 -->
-                </div>
-                <div class="row align-center" v-if="changed()">
-                    <div class="column small-9 medium-7 large-5 small-offset-3 medium-offset-0 large-offset-7">
-                        <button class="button expanded secondary fabu before fa-save" disabled="" type="submit">
-                            No Changes
                         </button>
                     </div>
                     <!-- END OF .column small-10 medium-5 -->
@@ -114,6 +159,9 @@ Settings
             <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
         </div>
     </form>
+    <div class="row">
+        <div class="column"><small><a href="">I want to change a setting back to default.</a></small></div><!-- END OF .column -->
+    </div><!-- END OF .row -->
     <!-- END OF .row -->
     <!-- END OF .column small-12 medium-7 medium-offset-2 large-6 large-offset-1 -->
     <!-- END OF .row -->
@@ -121,30 +169,5 @@ Settings
 <!-- END OF #app -->
 @endpush
 
-@push('extrajs')
-<script>
-    var app = new Vue({
-        el:'#app',
-        data:{
-            
-@for ($i = 0; $i < sizeof($bbs); $i++)
-      {{$bbs[$i]['key']}}:'',
-@endfor
 
-            app_title:''
-        },
-        methods:{
-            changed()
-            {
-                return (
-                 this.app_title == ''
-@for ($i = 0; $i < sizeof($bbs); $i++)
-      && this.{{$bbs[$i]['key']}} == ''
-@endfor
-                 );
-            }
-        }
 
-    });
-</script>
-@endpush

@@ -50001,6 +50001,7 @@ $(function () {
     $(".userRemover, .pageRemover").click(function () {
         $(this).next("form").submit();
     });
+    $(".tabs-title").first().trigger("click");
 });
 __webpack_require__("./resources/assets/cms/js/form/core.js");
 __webpack_require__("./resources/assets/cms/js/vendor/sortable.js");
