@@ -126,7 +126,21 @@ class Page extends Model
      */
     public function SetSetting($key, $value = '')
     {
+        if(!$value) return $this->ForgetSetting($key);
         return Settings::context(new Context(array("page" => $this->id)))->set($key, $value);
+    }
+    /**
+     * Set The setting for the current page
+     * @author Takács László
+     * @date    2017-08-01
+     * @version v1
+     * @param   Page     $page    the page
+     * @param   [string]     $key     the info
+     * @param   string     $value the value to set the setting to
+     */
+    public function ForgetSetting($key)
+    {
+        return Settings::context(new Context(array("page" => $this->id)))->forget($key);
     }
 
     /**

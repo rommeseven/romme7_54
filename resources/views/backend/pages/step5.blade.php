@@ -38,7 +38,36 @@ Create New Page
     {{$page->title}}
 </li>
 @endpush
+@push('extrajs')
+<script src="{{ url("other/vendor/tinymce/tinymce.js")}}"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
 
+
+@foreach(LABB::all() as $bb)
+
+      {{$bb['key']}}:'',
+@endforeach   
+            app_title:''
+        },
+        methods:{
+            changed()
+            {
+                return (
+                 this.app_title == ''
+@foreach(LABB::all() as $bb)
+
+      && this.{{$bb['key']}} == ''
+@endforeach   
+                 );
+            }
+        }
+
+    });
+</script>
+@endpush
 
 @push('content')
 <div class="row">
@@ -145,6 +174,9 @@ Create New Page
     </div><!-- END OF .row column small-offset-1 medium-offset 2 -->
 </div><!-- END OF .row -->
 </form>
+   <div class="row">
+        <div class="column"><small><a href="">I want to change a setting back to default.</a></small></div><!-- END OF .column -->
+    </div><!-- END OF .row -->
 
 @endpush
 
@@ -153,6 +185,11 @@ Create New Page
 let app = new Vue(
 {
     el: '#app2',
+
+@foreach(LABB::all() as $bb)
+
+      {{$bb['key']}}:'',
+@endforeach      
     data:
     {
         

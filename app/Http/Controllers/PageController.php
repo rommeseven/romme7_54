@@ -567,16 +567,18 @@ class PageController extends Controller
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
 
-        $arr  = Page::GetBbs();
-        $arr  = array_pluck($arr, "validation", "key");
+        $original_arr  = Page::GetBbs();
+        $arr  = array_pluck($original_arr, "validation", "key");
         $data = request()->validate($arr);
 
         $filteredData = array_filter($data, function ($value)
         {
             return ($value !== null && $value !== false && $value !== '');
         });
+
         foreach ($filteredData as $key => $value)
         {
+
             $page->SetSetting($key, $value);
         }
 
