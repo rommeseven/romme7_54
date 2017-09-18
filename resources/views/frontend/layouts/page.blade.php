@@ -20,7 +20,7 @@
         @stack("extracss")
     </head>
     <body>
-
+<header>{{$head}}</header>
 
 <h3>Slogan: {{ $slogen }}</h3>
 <div id="container">
@@ -44,6 +44,7 @@
         </div>
     </div>
 </div>
+<footer>{{$foot}}</footer>
 <script src="{{ mix('js/public.js') }}">
 </script>
 @stack("extrajs")
