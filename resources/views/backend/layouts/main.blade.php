@@ -175,12 +175,12 @@
                     <li><br /></li>
                         <li>
                             <a href="{{route('pages.create')}}">
-                               <i class="fa fa-file-o"></i> @lang("New Page") {{-- CRISI: @lang << ins de.json --}}
+                               <i class="fa fa-file-o"></i> @lang("New Page")
                             </a>
                         </li>
                         <li>
                             <a href="{{route("pages.index")}}">
-                               <i class="fa fa-files-o"></i> @lang("Manage Pages") {{-- CRISI: @lang << ins de.json --}}
+                               <i class="fa fa-files-o"></i> @lang("Manage Pages") 
                             </a>
                         </li>
                     <li>

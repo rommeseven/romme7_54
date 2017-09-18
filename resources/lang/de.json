@@ -45,8 +45,6 @@
     "Creating" : "Erstellen",
     "Creating A New Page" : "Eine neue Seite erstellen",
     "Title & Url" : "Titel & Url",
-    "Navigation" : "Navigation",
-    "Layout" : "Layout",
     "Content" : "Inhalt",
     "Settings" : "Einstellungen",
     "Publish" : "Veröffentlichen",
@@ -55,5 +53,8 @@
     "Slug:" : "Slug",
     "This will be part of the url like this:" : "Das wird ein Teil der Url sein. Wie das:",
     "Save & Next Step" : "Speichern & zum nächsten Schritt",
-    "This page is hidden in the navigation" : "Diese Seite im Hauptmenü nicht anzeigen"
+    "This page is hidden in the navigation" : "Diese Seite im Hauptmenü nicht anzeigen",
+    "New Page" : "Neue Seite",
+    "Manage Pages" : "Seiten verwalten",
+
 }
