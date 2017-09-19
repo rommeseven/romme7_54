@@ -1,7 +1,5 @@
 @include("frontend.partials.head")
 
-{{-- CRISI: [landing-page] Text (Weiß) umschreiben, gleich auf Deutsch, brauchst nicht übersetzen, ist front-end --}}
-
 <div class="off-canvas-wrapper">
 <div id="offcanvas-full-screen" class="offcanvas-full-screen" data-off-canvas data-transition="detached">
 <div class="offcanvas-full-screen-inner">
