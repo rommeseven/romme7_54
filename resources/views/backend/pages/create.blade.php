@@ -100,8 +100,7 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        @lang("This will be shown in the title of the page.")  {{-- CRISI: [lang] create page
-                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                        @lang("This will be shown in the title of the page.")
                     </small
                 </label>
             </div>
@@ -110,8 +109,7 @@ Create New Page
         <div class="row">
             <div class="column small-12 medium-7 medium-offset-2 large-6 large-offset-1">
                 <label for="menu">
-                    @lang("Menutitle:")  {{-- CRISI: [lang] create page
-                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                    @lang("Menutitle:") 
                     <input  id="menu" name="menu"   placeholder="My Page" type="text" v-model="menu" @focus="automenu()" @blur="automenu()" />
                     @if ($errors->has('menu'))
                     <small class="errortext">
@@ -119,8 +117,7 @@ Create New Page
                     </small>
                     @endif
                     <small class="help-text">
-                        @lang("This will be shown in the navigation. Keep it short!"){{--  CRISI: [lang] create page
-                        Zeile habe ich umgeschrieben musst im de.json ändern oder einfach neu hinzufügen --}}
+                        @lang("This will be shown in the navigation. Keep it short!")
                     </small
                 </label>
             </div>
@@ -151,7 +148,6 @@ Create New Page
             <input id="c0" name="isplaceholder" type="checkbox" v-model="isplaceholder" >
                 <label for="c0">
                     @lang("This page will be a placeholder for the navigation")
-                    {{-- CRISI: @lang ^^ --}}
                 </label>
                 <br/>
             </input>
@@ -171,7 +167,6 @@ Create New Page
                         </button>
                         <button :disabled=" this.title.length < 2 || this.menu.length < 2" class="button large expanded fabu fa-arrow-right" type="submit" v-bind:class="classObject" v-show="isplaceholder">
                             @lang("Create Menu Placeholder")
-                            {{-- CRISI: @lang ^^ --}}
                         </button>                        
                     </div>
                     <!-- END OF .column small-10 medium-5 -->

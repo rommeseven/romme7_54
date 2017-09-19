@@ -43,12 +43,16 @@
     "Publish" : "Veröffentlichen",
     "Title:" : "Titel:",
     "This will be shown in the navigation and the title." : "Das wird in der Navigation und im Titel angezeigt.",
-    "Slug:" : "Slug",
     "This will be part of the url like this:" : "Das wird ein Teil der Url sein. Wie das:",
     "Save & Next Step" : "Speichern & zum nächsten Schritt",
     "This page is hidden in the navigation" : "Diese Seite im Hauptmenü nicht anzeigen",
     "New Page" : "Neue Seite",
     "Manage Pages" : "Seiten verwalten",
     "Placeholder" : "Platzhalter",
-
+    "This will be shown in the title of the page." : "Das wird im Titel der Seite angezeigt.",
+    "Menutitle:" : "Menü Titel",
+    "This will be shown in the navigation. Keep it short!" : "Das wird in der Navigation angezeigt. Halten Sie sich kurz!",
+    "This page will be a placeholder for the navigation" : "Diese Seite wird als Platzhalter für die Navigation verwendet werden",
+    "Create Menu Placeholder" : "Einen neuen Menü Platzhalter erstellen",
+    
 }
