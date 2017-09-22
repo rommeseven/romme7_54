@@ -57,8 +57,8 @@ class WrongSlugVisited extends Notification
     {
         return [
         'at' => Carbon::now(),
-             'username' => ($user = auth()->user()->username)? $user :__("Anonymous Visitor"),
-             // CRISI: @lang ins de.json Unbekannter User
+             'username' => ($user = auth()->user()->username)? $user :__(@lang("Anonymous Visitor")),
+             // LACI: Passt das wie ich das gemacht habe? @lang ins de.json Unbekannter User
               'slug' => $this->slug
               
         ];
