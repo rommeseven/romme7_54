@@ -86,29 +86,29 @@
 
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:hinge-in-from-left; animInFromRight:hinge-in-from-right; animOutToLeft:hinge-out-from-left; animOutToRight:hinge-out-from-right;timerDelay:7000">
   <nav class="orbit-bullets">
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
-   <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+   <button class="is-active" data-slide="0"><span class="show-for-sr">Erste Folie - Details</span><span class="show-for-sr">Aktuelle Folie</span></button>
+   <button data-slide="1"><span class="show-for-sr">Zweite Folie - Details.</span></button>
+   <button data-slide="2"><span class="show-for-sr">Dritte Folie - Details.</span></button>
+   <button data-slide="3"><span class="show-for-sr">Vierte Folie - Details.</span></button>
  </nav>
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Nächste Folie</span>&#9654;</button>
     <li class="is-active orbit-slide">
 		<img class="orbit-image" src="{{asset('img/orbit-1.jpg')}}" alt="Space">
-		<figcaption class="orbit-caption">SEVEN Calender Project - <a href="#">Öffnen</a></figcaption>
+		<figcaption class="orbit-caption">SEVEN Kalender Projekt - <a href="#">Öffnen</a></figcaption>
     </li>
     <li class="orbit-slide">
 		<img class="orbit-image" src="{{asset('img/orbit-2.jpg')}}" alt="Space">
-		<figcaption class="orbit-caption">SEVEN Calender Project - Handy</figcaption>
+		<figcaption class="orbit-caption">SEVEN Kalender Projekt - Handy</figcaption>
     </li>
     <li class="orbit-slide">
 		<img class="orbit-image" src="{{asset('img/orbit-3.jpg')}}" alt="Space">
-		<figcaption class="orbit-caption">SEVEN Calender Project - Tablet</figcaption>
+		<figcaption class="orbit-caption">SEVEN Kalender Projekt - Tablet</figcaption>
     </li>
     <li class="orbit-slide">
 		<img class="orbit-image" src="{{asset('img/orbit-4.jpg')}}" alt="Space">
-		<figcaption class="orbit-caption">SEVEN Calender Project - Desktop</figcaption>
+		<figcaption class="orbit-caption">SEVEN Kalender Projekt - Desktop</figcaption>
     </li>
   </ul>
 </div>
@@ -116,7 +116,7 @@
 		</div><!-- END OF .column small-12 mediun-6 large-6 -->
 		<div class="column small-12 large-4 small-order-1 large-order-2">
 			<h3><em>1</em> Responsiv Design</h3>
-			<p>Wir bereiten die Designs so, dass verschiedene Endgeräte ein entsprechendes Erlebnis bieten. <br /><br /></p>
+			<p>Wir erstellen das Design so, dass verschiedene Endgeräte eine ideale Benutzerfreundlichkeit bieten.<br /><br /></p>
 			<div class="row align-center collapse">
 				<div class="colum shrink"><a href="#" class="button hollow tertiary">Mehr Erfahren</a></div><!-- END OF .colum shrink -->
 			</div><!-- END OF .row align-center collapse -->
@@ -173,13 +173,13 @@
 	<div class="row align-spaced align-middle" id = "nokontakt">
 		<div class="column" style="text-align:right">
 			<h4>Sie haben Fragen?</h4>
-			<p>Lassen Sie uns eine Nachricht und wird nehmen Kontakt auf!</p>
+			<p>Lassen Sie uns eine Nachricht da und wird nehmen Kontakt auf!</p>
 		</div><!-- END OF .column -->
 		<div class="column" style="text-align:center"><i class="fa fa-envelope-o kontakticon"></i></div><!-- END OF .column -->
 	</div><!-- END OF .row align-spaced -->
 		<div class="row align-center align-middle" id="contacted">
 		<div class="column" style="text-align:right">
-			<h4>Javoll, Nachricht im Wind!</h4>
+			<h4>Nachricht wurde gesendet!</h4>
 			<p>Wir melden uns so bald wie möglich.</p>
 		</div><!-- END OF .column -->
 		<div class="column" style="text-align:left"><i class="fa fa-envelope" id="kontakticon"></i></div><!-- END OF .column -->
@@ -198,7 +198,7 @@
 	
 	<div class="row">
 		<div class="column small-offset-2 small-10 medium-5 medium-offset-5 large-4 large-offset-5">
-		<button type="submit" class="expanded button large fabu fa-envelope">Send</button>
+		<button type="submit" class="expanded button large fabu fa-envelope">Senden</button>
 		</div><!-- END OF .column small-12 medium-7 medium-offset-3 large-5 large-offset-4 input-container -->
 	</div><!-- END OF .row --></form>
 
@@ -208,7 +208,7 @@
 <section id="blog">
 <div class="row collapse align-center">
 		<div class="column  small-12 medium-10 large-8">
-			<h2>21 Entscheidungen, die man treffen muss, bevor Webseite zu bestellen.</h2>
+			<h2>21 Entscheidungen, die man treffen muss, bevor man sich eine Website erstellen lässt.</h2>
 		</div><!-- END OF .column shrink -->
 	</div><!-- END OF .row collapse align-center -->
 	<br />
@@ -226,7 +226,7 @@
 <footer>
 	<div id="line" class="row"></div><!-- END OF #line.row -->
 	<div class="row main align-justify align-bottom">
-		<div class="column small-12 medium-4"><p><small>Seven Webagentur ist die Verkaufsname von der Firma Seven Webagentur Christian Neuherz und Takács László GesnbR.  </small></p></div><!-- END OF .column small-12 medium-4 -->
+		<div class="column small-12 medium-4"><p><small>Seven Webagentur ist der Verkaufsname der Firma Seven Webagentur Christian Neuherz und Takács László GesnbR.  </small></p></div><!-- END OF .column small-12 medium-4 -->
 		<div class="column small-12 medium-4">
 			<ul class="menu vertical align-center">
 				<li><a href="#"><i class="fa fa-file-text"></i> Blog</a></li>
