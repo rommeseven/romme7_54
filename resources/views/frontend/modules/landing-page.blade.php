@@ -55,10 +55,10 @@
 		<h1 class="dontlook">SEVEN Webagentur</h1><!-- END OF .dontlook --></div><!-- END OF .column small-12 medium-5 -->
 		<div class="column small-12 large-7 align-middle heroavatars">
 			<div class="row align-spaced align-middle">
-				<div class="column small-12 medium-6 heroavatar"><img src="{{ asset("img/chrisi.jpg") }}" alt="" /><div class="bio row collapse align-center"><div class="column shrink"><h2>Christian Neuherz</h2><span class="nickname">"the Problem Solver"</span><br /><h3 class="position">Konzeptentwicklung und Management</h3>
+				<div class="column small-12 medium-6 heroavatar"><img src="{{ asset("img/chrisi.jpg") }}" alt="" /><div class="bio row collapse align-center"><div class="column shrink"><h2>Christian Neuherz</h2><span class="nickname">info@sevenweb.eu</span><br /><h3 class="position">Konzeptentwicklung und Management</h3>
 				</div><!-- END OF .column shrink align-center -->
 				</div><!-- END OF .bio --></div><!-- END OF .column small-12 medium-6 avatar -->
-								<div class="column small-12 medium-6 heroavatar"><img src="{{ asset("img/laci.jpg") }}" alt="" /><div class="bio row collapse align-center"><div class="column shrink"><h2>Takács László</h2><span class="nickname">"the Hungarian Genius"</span><br /><h3 class="position">Programmierung und Design</h3>
+								<div class="column small-12 medium-6 heroavatar"><img src="{{ asset("img/laci.jpg") }}" alt="" /><div class="bio row collapse align-center"><div class="column shrink"><h2>Takács László</h2><span class="nickname">info@sevenweb.eu</span><br /><h3 class="position">Programmierung und Design</h3>
 				</div><!-- END OF .column shrink align-center -->
 				</div><!-- END OF .bio --></div><!-- END OF .column small-12 medium-6 avatar -->
 			</div><!-- END OF .row align-spaced align-middle -->
