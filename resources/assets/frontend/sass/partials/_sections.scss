@@ -1,4 +1,5 @@
 section#one {
+  background: $white;
   padding-top: 100px;
   padding-bottom: 80px;
 
@@ -68,7 +69,7 @@ section#two {
 
 section#three {
   padding-top: 100px;
-  background: white;
+  background: #CDE7B0;
 
   .kontakticon {
     font-size: 7em;
@@ -77,6 +78,7 @@ section#three {
 }
 
 section#blog {
+  background: #CDE7B0;
   padding-top: 80px;
 }
 
@@ -84,3 +86,5 @@ section#blog {
   font-size: 7em;
   color: get-color(tertiary);
 }
+
+// TODO: @css blaue linie wegbringen

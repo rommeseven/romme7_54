@@ -1423,7 +1423,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #EDFFEC;
+  background: #CDE7B0;
   font-family: "Biryani", "Roboto", sans-serif;
   font-weight: normal;
   line-height: 1.5;
@@ -12118,6 +12118,7 @@ textarea {
 }
 
 section#one {
+  background: #EDFFEC;
   padding-top: 100px;
   padding-bottom: 80px;
 }
@@ -12178,7 +12179,7 @@ section#two #allfeatures:hover a::after {
 
 section#three {
   padding-top: 100px;
-  background: white;
+  background: #CDE7B0;
 }
 
 section#three .kontakticon {
@@ -12187,6 +12188,7 @@ section#three .kontakticon {
 }
 
 section#blog {
+  background: #CDE7B0;
   padding-top: 80px;
 }
 
