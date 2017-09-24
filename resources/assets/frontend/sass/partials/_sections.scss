@@ -1,5 +1,4 @@
 section#one {
-  background: #CDE7B0;
   padding-top: 100px;
   padding-bottom: 80px;
 
@@ -34,6 +33,8 @@ section#one {
 }
 
 section#two {
+  background: white;
+
   #allfeatures {
     cursor: pointer;
     text-align: center;
@@ -67,6 +68,7 @@ section#two {
 
 section#three {
   padding-top: 100px;
+  background: white;
 
   .kontakticon {
     font-size: 7em;
