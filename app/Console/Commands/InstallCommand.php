@@ -279,6 +279,7 @@ class InstallCommand extends Command
 
         $this->info('cms: Create Auth connections');
 
+        // install command from dump.
         $bb          = collect(config("building_blocks"));
         $bb_keys     = $bb->pluck("key");
         $bb_defaults = $bb->pluck("default");
@@ -288,10 +289,10 @@ class InstallCommand extends Command
         }
         $this->info('cms: Initialized settings and building blocks');
 
-        $landing_page = $this->choice('Art of Landing Page:', array('module', 'simple-page'), "simple-page");
+        $landing_page = $this->choice('Art of Landing Page:', array('module', 'simplepage'), 1);
         if ($landing_page == "module")
         {
-            new Page(array('title' => "Willkommen!",
+            $page = new Page(array('title' => "Willkommen!",
                 'menutitle'       => "Start",
                 'display_order'   => 1,
                 'published'       => 1,
@@ -300,6 +301,8 @@ class InstallCommand extends Command
                 'module'          => "landing-page",
 
             ));
+            $page->save();
+
 
             $this->info('cms: Landing page generated');
         }
