@@ -212,9 +212,6 @@ class PageController extends Controller
 
             return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
         }
-        /*
-        TODO: page info on publish confirm @offline
-         */
         return view("backend/pages/step6")->withPage($page);
     }
 

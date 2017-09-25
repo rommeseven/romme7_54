@@ -42,9 +42,6 @@ class PagesController extends Controller
 
     /**
      * shows the landing page
-     * TODO: Show landing page
-     * TODO: add landing page to cms seed
-     * TODO: Pages -> Page Types
      * @author Takács László
      * @date    2017-08-02
      * @version v1
@@ -52,10 +49,17 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view("landing");
-
-        /*$page = Page::find(1);
-    if(!$page) return "landing page";
-    return $this->getPage($page->slug);*/
+        $landing = Page::where("module","=","landing-page");
+        if($landing->count())
+        {
+            return redirect(url($landing->first()->slug));
+        }
+        $landing = Page::where("slug","!=",null)->first();
+        if(!$landing)
+        {
+            abort(503);
+            return false;
+        }
+        return redirect(url($landing->slug));
     }
 }

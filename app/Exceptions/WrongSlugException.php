@@ -2,9 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Notifications\WrongSlugVisited;
 use App\User;
 use Exception;
-use App\Notifications\WrongSlugVisited;
 use Illuminate\Support\Facades\Notification;
 
 class WrongSlugException extends Exception
@@ -23,8 +23,7 @@ class WrongSlugException extends Exception
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request
-    )
+    public function render($request)
     {
         return abort(404);
     }

@@ -46,7 +46,6 @@ Create New Page
         {{method_field("put")}}
         <input :value="order" id="order" name="pages" type="hidden"/>
         <br/>
-        {{-- TODO: navigation sort design --}}
         <transition name="fade">
             <div class="row align-center">
                 <div class="column small-12 medium-7 ">

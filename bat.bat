@@ -6,11 +6,9 @@ call heroku config:set APP_DEBUG=true
 call heroku config:set DB_CONNECTION=pgsql
 call heroku config:set MAIL_DRIVER=smtp
 rem call heroku config:set MAIL_HOST=smtp.sendgrid.net
-rem call heroku config:set MAIL_PORT=587   
-rem SENGDRID
+rem call heroku config:set MAIL_PORT=587   rem SENGDRID
 call heroku config:set MAIL_HOST=smtp.gmail.com
-call heroku config:set MAIL_PORT=465
-rem GMAIL
+call heroku config:set MAIL_PORT=465 rem GMAIL
 call heroku config:set MAIL_ENCRYPTION=ssl
 call heroku config:set MAIL_FROM_ADDRESS=noreply@sevenweb.eu
 call heroku config:set MAIL_FROM_NAME="SEVEN Webagentur"
@@ -25,12 +23,3 @@ call set /p appdomain="App DOMAIN: "
 call heroku config:set APP_DOMAIN="%appdomain%"
 call heroku config:set GMAIL_USERNAME="webungar@sevenweb.eu"
 call heroku config:set GMAIL_PASSWORD="sipjokvhlmvzcsho"
-call heroku addons:create cloudinary:starter
-call heroku addons:create heroku-postgresql:hobby-dev
-call heroku addons:create trevor:hobby
-call heroku labs:enable metrics-beta
-call git push heroku master
-call heroku run php artisan cms:install
-call heroku open
-call heroku pipelines:promote -r staging
-

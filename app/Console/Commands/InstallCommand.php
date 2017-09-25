@@ -1,8 +1,9 @@
 <?php
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
+use App\Page;
 use Settings;
+use Illuminate\Console\Command;
 
 class InstallCommand extends Command
 {
@@ -31,7 +32,6 @@ class InstallCommand extends Command
     {
         parent::__construct();
         $this->appname = $app_name;
-
     }
 
     /**
@@ -41,8 +41,6 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-
-
 
         // 1. User Erstellen
 
@@ -74,7 +72,7 @@ class InstallCommand extends Command
         $person->password = bcrypt("admin"); // lass admin als pw, ich programiere später, dass es nach änderung fragt beim ersten einlogge;
         $person->save();
 
- $this->info('cms: Created Users');
+        $this->info('cms: Created Users');
 
         // 2. Rollen erstellen
         $superadmin               = new \App\Role;
@@ -102,123 +100,123 @@ class InstallCommand extends Command
         $editor->save();
 
         $this->info('cms: Created Roles');
-        
+
         $create_users               = new \App\Permission;
-        $create_users->name         = 'create-users'; 
+        $create_users->name         = 'create-users';
         $create_users->display_name = "Benutzer erstellen";
         $create_users->description  = "Das Recht Benutzer zu erstellen";
         $create_users->save();
 
         $update_users               = new \App\Permission;
-        $update_users->name         = 'update-users'; 
+        $update_users->name         = 'update-users';
         $update_users->display_name = "Benutzer ändern";
         $update_users->description  = "Das Recht Benutzer zu ändern";
         $update_users->save();
 
         $delete_users               = new \App\Permission;
-        $delete_users->name         = 'delete-users'; 
+        $delete_users->name         = 'delete-users';
         $delete_users->display_name = "Benutzer löschen";
         $delete_users->description  = "Das Recht Benutzer zu löschen";
         $delete_users->save();
 
         $read_users               = new \App\Permission;
-        $read_users->name         = 'read-users'; 
+        $read_users->name         = 'read-users';
         $read_users->display_name = "Chrisi macht display name";
         $read_users->description  = "Chrisi macht description";
         $read_users->save();
 
         $create_permissions               = new \App\Permission;
-        $create_permissions->name         = 'create-permissions'; 
+        $create_permissions->name         = 'create-permissions';
         $create_permissions->display_name = "Berechtigungen erstellen";
         $create_permissions->description  = "Das Recht Berechtigungen zu erstellen";
         $create_permissions->save();
 
         $give_permissions               = new \App\Permission;
-        $give_permissions->name         = 'give-permissions'; 
+        $give_permissions->name         = 'give-permissions';
         $give_permissions->display_name = "Berechtigungen vergeben";
         $give_permissions->description  = "Das Recht Berechtigungen zu vergeben";
         $give_permissions->save();
 
         $read_permissions               = new \App\Permission;
-        $read_permissions->name         = 'read-permissions'; 
+        $read_permissions->name         = 'read-permissions';
         $read_permissions->display_name = "Berechtigungen lesen";
         $read_permissions->description  = "Das Recht Berechtigungen zu lesen";
         $read_permissions->save();
 
         $delete_permissions               = new \App\Permission;
-        $delete_permissions->name         = 'delete-permissions'; 
+        $delete_permissions->name         = 'delete-permissions';
         $delete_permissions->display_name = "Berechtigungen löschen";
         $delete_permissions->description  = "Das Recht Berechtigungen zu löschen";
         $delete_permissions->save();
 
         $update_permissions               = new \App\Permission;
-        $update_permissions->name         = 'update-permissions'; 
+        $update_permissions->name         = 'update-permissions';
         $update_permissions->display_name = "Berechtigungen ändern";
         $update_permissions->description  = "Das Recht Berechtigungen zu verändern";
         $update_permissions->save();
 
         $create_pages               = new \App\Permission;
-        $create_pages->name         = 'create-pages'; 
+        $create_pages->name         = 'create-pages';
         $create_pages->display_name = "Seiten erstellen";
         $create_pages->description  = "Das Recht Seiten zu erstellen";
         $create_pages->save();
 
         $give_pages               = new \App\Permission;
-        $give_pages->name         = 'give-pages'; 
+        $give_pages->name         = 'give-pages';
         $give_pages->display_name = "Seiten vergeben"; //LACI: stimmt die Übersetzung?
         $give_pages->description  = "Das Recht Seiten zu vergeben";
         $give_pages->save();
 
         $read_pages               = new \App\Permission;
-        $read_pages->name         = 'read-pages'; 
+        $read_pages->name         = 'read-pages';
         $read_pages->display_name = "Seiten lesen";
         $read_pages->description  = "Das Recht Seiten zu lesen";
         $read_pages->save();
 
         $delete_pages               = new \App\Permission;
-        $delete_pages->name         = 'delete-pages'; 
+        $delete_pages->name         = 'delete-pages';
         $delete_pages->display_name = "Seiten löschen";
         $delete_pages->description  = "Das Recht Seiten zu löschen";
         $delete_pages->save();
 
         $update_pages               = new \App\Permission;
-        $update_pages->name         = 'update-pages'; 
+        $update_pages->name         = 'update-pages';
         $update_pages->display_name = "Seiten ändern";
         $update_pages->description  = "Das Recht Seiten zu verändern";
         $update_pages->save();
 
         $read_roles               = new \App\Permission;
-        $read_roles->name         = 'read-roles'; 
+        $read_roles->name         = 'read-roles';
         $read_roles->display_name = "Rollen lesen";
         $read_roles->description  = "Das Recht Rollen zu lesen";
         $read_roles->save();
 
         $delete_roles               = new \App\Permission;
-        $delete_roles->name         = 'delete-roles'; 
+        $delete_roles->name         = 'delete-roles';
         $delete_roles->display_name = "Rollen löschen";
         $delete_roles->description  = "Das Recht Rollen zu löschen";
         $delete_roles->save();
 
         $update_roles               = new \App\Permission;
-        $update_roles->name         = 'update-roles'; 
+        $update_roles->name         = 'update-roles';
         $update_roles->display_name = "Rollen ändern";
         $update_roles->description  = "Das Recht Rollen zu verändern";
         $update_roles->save();
 
         $update_settings               = new \App\Permission;
-        $update_settings->name         = 'update-settings'; 
+        $update_settings->name         = 'update-settings';
         $update_settings->display_name = "Einstellungen ändern";
         $update_settings->description  = "Das Recht Einstellungen zu verändern";
         $update_settings->save();
 
         $give_roles               = new \App\Permission;
-        $give_roles->name         = 'give-roles'; 
+        $give_roles->name         = 'give-roles';
         $give_roles->display_name = "Rollen vergeben";
         $give_roles->description  = "Das Recht Rollen zu vergeben";
         $give_roles->save();
 
         $create_roles               = new \App\Permission;
-        $create_roles->name         = 'create-roles'; 
+        $create_roles->name         = 'create-roles';
         $create_roles->display_name = "Rollen erstellen";
         $create_roles->description  = "Das Recht Rollen zu erstellen";
         $create_roles->save();
@@ -242,7 +240,7 @@ class InstallCommand extends Command
         $superadmin->permissions()->save($create_pages);
         $superadmin->permissions()->save($update_pages);
         $superadmin->permissions()->save($delete_pages);
-        
+
         $superadmin->permissions()->save($read_pages);
         $superadmin->permissions()->save($update_settings);
 
@@ -290,5 +288,25 @@ class InstallCommand extends Command
         }
         $this->info('cms: Initialized settings and building blocks');
 
+        $landing_page = $this->choice('Art of Landing Page:', array('module', 'simple-page'), "simple-page");
+        if ($landing_page == "module")
+        {
+            new Page(array('title' => "Willkommen!",
+                'menutitle'       => "Start",
+                'display_order'   => 1,
+                'published'       => 1,
+                'step'            => 7,
+                'slug'            => "start",
+                'module'          => "landing-page",
+
+            ));
+
+            $this->info('cms: Landing page generated');
+        }
+        else
+        {
+            $this->info('cms: Landing page must be created manually!');
+        }
+        $this->info('cms: Initialized settings and building blocks');
     }
 }
