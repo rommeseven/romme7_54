@@ -173,7 +173,7 @@ Page
                             </i>
                         </a>
                         @else
-                        <a class="button button-icon" href="{{ route('pages.edit' , $page->id ) }}" title="Edit Page">
+                        <a class="button button-icon" data-toggle="pageeditmodal_{{$page->id}}"  title="Edit Page">
                             <i class="fa fa-pencil">
                             </i>
                         </a>
@@ -182,6 +182,50 @@ Page
                             <i class="fa fa-remove">
                             </i>
                         </a>
+                        <div class="small reveal" data-animation-in="scale-in-up fast" data-animation-out="scale-out-down fast" data-reveal="" id="pageeditmodal_{{ $page->id }}">
+                            <div style="text-align:center">
+                                <div class="row align-center">
+                                    <div class="small-12 column">
+                                        <h5 class="subheader">
+                                            <br/>
+                                            To edit the page, you have to <strong>unpublish</strong> it: 
+                                            <span class="show-for-medium-only">
+                                                <br/>
+                                            </span>
+                                            ( {{$page->title}} )
+                                        </h5>
+                                        <h3>
+                                            <br/>
+                                            Are you sure?
+                                            <br/>
+                                            <br/>
+                                        </h3>
+                                    </div>
+                                    <!-- END OF .small-12 column -->
+                                </div>
+                                <!-- END OF .row -->
+                                <div class="row">
+                                    <div class="column">
+                                        <a href="{{ route('pages.edit' , $page->id ) }}" class="button fabu remove fa-pencil responsive_button">
+                                            Yes.
+                                        </a>
+
+                                    </div>
+                                    <!-- END OF .column -->
+                                    <div class="column">
+                                        <a class="secondary button fabu before fa-remove responsive_button" data-close="">
+                                            Cancel
+                                        </a>
+                                    </div>
+                                    <!-- END OF .column -->
+                                </div>
+                                <!-- END OF .row -->
+                            </div>
+                            <button aria-label="Close reveal" class="close-button" data-close="" type="button">
+                                <span aria-hidden="true">                                ×
+                                </span>
+                            </button>
+                        </div>                        
                         <div class="small reveal" data-animation-in="scale-in-up fast" data-animation-out="scale-out-down fast" data-reveal="" id="pagedelmodal_{{ $page->id }}">
                             <div style="text-align:center">
                                 <div class="row align-center">

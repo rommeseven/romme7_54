@@ -77,6 +77,7 @@ Route::prefix('cmseven')->middleware('auth')->group(function ()
     Route::resource('pages', 'PageController', array('except' => array('edit', 'update')));
     Route::prefix('pages')->group(function ()
     {
+
         Route::get('/find', 'PageController@index')->name("pages.find");
         Route::post('/find', 'PageController@postSearch');
 

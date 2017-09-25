@@ -78,6 +78,14 @@ class PageController extends Controller
         return view("backend.pages.edit")->withPage($page);
     }
 
+    public function editPublish(Page $page)
+    {
+        $page->step = 6;
+        $page->published = false;
+        $page->save();
+        return redirect('/cmseven/pages/create/step/'.$page->step.'/page/'.$page->id);
+    }
+
     // /**
     //  * get the view for editing nav for one unpublished site
     //  * @author Takács László
