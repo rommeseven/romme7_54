@@ -33,7 +33,7 @@ class Role extends LaratrustRole
         'columns' => array(
             'permissions.name'        => 10,
             'roles.name'              => 10,
-            'permissions.description' => 4,
+            'permissions.name' => 4,
             'permissions.description' => 4,
 /*
 'users.bio' => 2,
