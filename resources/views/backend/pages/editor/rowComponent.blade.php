@@ -196,3 +196,4 @@ Vue.component('editorrow',
         }
     }
 });
+ 

@@ -39,7 +39,7 @@ class User extends Authenticatable
         /**
          * Columns and their priority in search results.
          * Columns with higher values are more important.
-         * Columns with equal values have equal importance.
+     * Columns with equal values have equal importance.
          *
          * @var array
          */

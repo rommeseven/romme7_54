@@ -97,6 +97,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+    
         $this->validate($request, array(
             'display_name' => 'required|max:255',
             'name'         => 'required|max:100|alpha_dash|unique:roles,name',
